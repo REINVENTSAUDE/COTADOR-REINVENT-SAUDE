@@ -2,8 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cotador APVida</title>
+<title>Cotador HAPVIDA - REINVENT SAÚDE</title>
 
 <style>
 body {
@@ -12,28 +11,97 @@ body {
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-h2 {
+h1 {
+    text-align: center;
+    color: #0d6efd;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.planos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.plano-btn {
+    flex: 1 1 48%;
+    padding: 12px;
+    border: 2px solid #0d6efd;
+    border-radius: 8px;
+    background: #fff;
+    color: #0d6efd;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.plano-btn.active {
     background: #0d6efd;
     color: #fff;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
     padding: 10px;
+    margin-top: 6px;
     border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+input.error {
+    border: 2px solid red;
+}
+
+.error-text {
+    color: red;
+    font-size: 13px;
+    display: none;
+}
+
+button.calcular {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.resultado {
+    margin-top: 25px;
+    display: none;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 40px;
-    background: #fff;
 }
 
 th, td {
-    padding: 10px;
     border: 1px solid #ddd;
+    padding: 10px;
     text-align: center;
 }
 
@@ -41,12 +109,9 @@ th {
     background: #e9ecef;
 }
 
-.valor {
-    font-weight: bold;
-}
-
-.desconto {
-    color: #198754;
+.totais {
+    margin-top: 15px;
+    font-size: 18px;
     font-weight: bold;
 }
 </style>
@@ -54,47 +119,135 @@ th {
 
 <body>
 
-<h1>Cotador APVida</h1>
+<div class="container">
 
-<h2>Apartamento Coparticipação Parcial</h2>
-<table>
-<tr>
-    <th>Faixa Etária</th>
-    <th>Plano (R$)</th>
-    <th>Odonto (R$)</th>
-    <th>Total (R$)</th>
-    <th>Com 15%</th>
-</tr>
-<tr><td>00 a 18</td><td>325,77</td><td>24,50</td><td class="valor">350,27</td><td class="desconto">297,73</td></tr>
-<tr><td>19 a 23</td><td>430,02</td><td>24,50</td><td class="valor">454,52</td><td class="desconto">386,34</td></tr>
-<tr><td>24 a 28</td><td>494,52</td><td>24,50</td><td class="valor">519,02</td><td class="desconto">441,17</td></tr>
-<tr><td>29 a 33</td><td>553,86</td><td>24,50</td><td class="valor">578,36</td><td class="desconto">491,61</td></tr>
-<tr><td>34 a 38</td><td>581,55</td><td>24,50</td><td class="valor">606,05</td><td class="desconto">515,14</td></tr>
-<tr><td>39 a 43</td><td>657,15</td><td>24,50</td><td class="valor">681,65</td><td class="desconto">579,40</td></tr>
-<tr><td>44 a 48</td><td>801,72</td><td>24,50</td><td class="valor">826,22</td><td class="desconto">702,29</td></tr>
-<tr><td>49 a 53</td><td>1.106,37</td><td>24,50</td><td class="valor">1.130,87</td><td class="desconto">961,24</td></tr>
-<tr><td>54 a 58</td><td>1.493,60</td><td>24,50</td><td class="valor">1.518,10</td><td class="desconto">1.290,39</td></tr>
-<tr><td>59+</td><td>1.941,68</td><td>24,50</td><td class="valor">1.966,18</td><td class="desconto">1.671,25</td></tr>
-</table>
+<h1>Cotador HAPVIDA</h1>
+<div class="subtitle">Cotador exclusivo – REINVENT SAÚDE</div>
 
-<h2>Super Simples Enfermaria Parcial</h2>
-<table>
-<tr>
-    <th>Faixa Etária</th>
-    <th>Valor (R$)</th>
-    <th>Com 15%</th>
-</tr>
-<tr><td>00 a 18</td><td class="valor">187,76</td><td class="desconto">159,60</td></tr>
-<tr><td>19 a 23</td><td class="valor">210,29</td><td class="desconto">178,75</td></tr>
-<tr><td>24 a 28</td><td class="valor">235,52</td><td class="desconto">200,19</td></tr>
-<tr><td>29 a 33</td><td class="valor">270,85</td><td class="desconto">230,22</td></tr>
-<tr><td>34 a 38</td><td class="valor">311,48</td><td class="desconto">264,76</td></tr>
-<tr><td>39 a 43</td><td class="valor">370,66</td><td class="desconto">315,06</td></tr>
-<tr><td>44 a 48</td><td class="valor">463,33</td><td class="desconto">393,83</td></tr>
-<tr><td>49 a 53</td><td class="valor">579,16</td><td class="desconto">492,29</td></tr>
-<tr><td>54 a 58</td><td class="valor">984,57</td><td class="desconto">836,88</td></tr>
-<tr><td>59+</td><td class="valor">1.102,72</td><td class="desconto">937,31</td></tr>
-</table>
+<div class="planos" id="planos">
+    <button class="plano-btn" data-plano="enf_parcial">Enfermaria Copart. Parcial</button>
+    <button class="plano-btn" data-plano="enf_total">Enfermaria Copart. Total</button>
+    <button class="plano-btn" data-plano="apt_parcial">Apartamento Copart. Parcial</button>
+    <button class="plano-btn" data-plano="apt_total">Apartamento Copart. Total</button>
+    <button class="plano-btn" data-plano="super_parcial">Super Simples Enfermaria Parcial</button>
+    <button class="plano-btn" data-plano="super_total">Super Simples Enfermaria Total</button>
+</div>
+
+<label>Idade(s)</label>
+<input type="text" id="idades" placeholder="Ex: 34 ou 34, 29, 5">
+<div class="error-text" id="erroTexto">Preencha somente números e vírgulas. Ex: 34 ou 34, 29, 5</div>
+
+<button class="calcular" onclick="calcular()">Calcular</button>
+
+<div class="resultado" id="resultado">
+    <table>
+        <thead>
+            <tr>
+                <th>Faixa etária</th>
+                <th>Idade</th>
+                <th>Valor normal</th>
+                <th>15% (3 primeiros meses)</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaResultado"></tbody>
+    </table>
+
+    <div class="totais">
+        Total normal: <span id="totalNormal"></span><br>
+        Total com 15%: <span id="total15"></span>
+    </div>
+</div>
+
+</div>
+
+<script>
+let planoSelecionado = null;
+
+const planos = document.querySelectorAll('.plano-btn');
+planos.forEach(btn => {
+    btn.addEventListener('click', () => {
+        planos.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        planoSelecionado = btn.dataset.plano;
+    });
+});
+
+// TABELAS DE VALORES (resumo simplificado – você pode trocar depois)
+const tabela = {
+    enf_parcial: [
+        {faixa:"00-18", min:0, max:18, normal:241.68, d15:205.43, odonto:true},
+        {faixa:"19-23", min:19, max:23, normal:311.18, d15:264.50, odonto:true},
+        {faixa:"24-28", min:24, max:28, normal:354.18, d15:301.05, odonto:true},
+        {faixa:"29-33", min:29, max:33, normal:393.74, d15:334.68, odonto:true},
+        {faixa:"34-38", min:34, max:38, normal:412.20, d15:350.37, odonto:true},
+        {faixa:"39-43", min:39, max:43, normal:462.60, d15:393.21, odonto:true},
+        {faixa:"44-48", min:44, max:48, normal:558.98, d15:475.13, odonto:true},
+        {faixa:"49-53", min:49, max:53, normal:762.08, d15:647.77, odonto:true},
+        {faixa:"54-58", min:54, max:58, normal:1020.23, d15:867.20, odonto:true},
+        {faixa:"59+", min:59, max:120, normal:1318.95, d15:1121.11, odonto:true}
+    ],
+    super_parcial: [
+        {faixa:"00-18", min:0, max:18, normal:187.76, d15:159.60, odonto:false},
+        {faixa:"19-23", min:19, max:23, normal:210.29, d15:178.75, odonto:false},
+        {faixa:"24-28", min:24, max:28, normal:235.52, d15:200.19, odonto:false},
+        {faixa:"29-33", min:29, max:33, normal:270.85, d15:230.22, odonto:false},
+        {faixa:"34-38", min:34, max:38, normal:311.48, d15:264.76, odonto:false},
+        {faixa:"39-43", min:39, max:43, normal:370.66, d15:315.06, odonto:false},
+        {faixa:"44-48", min:44, max:48, normal:463.33, d15:393.83, odonto:false},
+        {faixa:"49-53", min:49, max:53, normal:579.16, d15:492.29, odonto:false},
+        {faixa:"54-58", min:54, max:58, normal:984.57, d15:836.88, odonto:false},
+        {faixa:"59+", min:59, max:120, normal:1102.72, d15:937.31, odonto:false}
+    ]
+};
+
+function calcular() {
+    const input = document.getElementById('idades');
+    const erro = document.getElementById('erroTexto');
+    const resultadoDiv = document.getElementById('resultado');
+    const tabelaResultado = document.getElementById('tabelaResultado');
+
+    const valor = input.value.trim();
+
+    if (!planoSelecionado || !/^[0-9,\s]+$/.test(valor)) {
+        input.classList.add('error');
+        erro.style.display = 'block';
+        resultadoDiv.style.display = 'none';
+        return;
+    }
+
+    input.classList.remove('error');
+    erro.style.display = 'none';
+
+    const idades = valor.split(',').map(v => parseInt(v.trim())).filter(v => !isNaN(v));
+
+    let totalNormal = 0;
+    let total15 = 0;
+
+    tabelaResultado.innerHTML = "";
+
+    idades.forEach(idade => {
+        const faixa = tabela[planoSelecionado].find(f => idade >= f.min && idade <= f.max);
+        if (faixa) {
+            totalNormal += faixa.normal;
+            total15 += faixa.d15;
+
+            tabelaResultado.innerHTML += `
+                <tr>
+                    <td>${faixa.faixa}</td>
+                    <td>${idade}</td>
+                    <td>R$ ${faixa.normal.toFixed(2)}</td>
+                    <td>R$ ${faixa.d15.toFixed(2)}</td>
+                </tr>
+            `;
+        }
+    });
+
+    document.getElementById('totalNormal').innerText = "R$ " + totalNormal.toFixed(2);
+    document.getElementById('total15').innerText = "R$ " + total15.toFixed(2);
+
+    resultadoDiv.style.display = 'block';
+}
+</script>
 
 </body>
 </html>
