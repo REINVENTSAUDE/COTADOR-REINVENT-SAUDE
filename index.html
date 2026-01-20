@@ -574,7 +574,7 @@
     }
 
     if(isSuperSimples(tipoSelecionado) && idades.length < 2){
-      alert("Plano coletivo: mínimo 2 vidas (duas idades).");
+      alert("Plano Empresarial: mínimo 2 vidas (duas idades).");
       return;
     }
 
@@ -665,7 +665,7 @@
     const canvas = await html2canvas(area, {
       backgroundColor: "#ffffff",
       useCORS: true,
-      scale: 2
+      scale: 3
     });
 
     return new Promise(resolve=>{
