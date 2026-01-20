@@ -1,275 +1,589 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Cotador HAPVIDA</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cotador HAPVIDA – Fortaleza/CE</title>
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background:#f5f7fb;
-  padding:10px;
-}
+  :root{
+    --azul:#005baa;
+    --bg:#f5f7fb;
+    --verde:#28a745;
+    --borda:#d9d9d9;
+  }
 
-.container {
-  max-width:900px;
-  margin:auto;
-  background:#fff;
-  border-radius:12px;
-  padding:15px;
-}
+  body{
+    font-family: Arial, sans-serif;
+    background:var(--bg);
+    margin:0;
+    padding:12px;
+  }
 
-h1 {
-  text-align:center;
-  color:#005baa;
-  margin-bottom:15px;
-}
+  .container{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+  }
 
-/* ===== PLANOS ===== */
-.planos {
-  display:grid;
-  gap:14px;
-}
+  h1{
+    text-align:center;
+    color:var(--azul);
+    margin:8px 0 14px;
+    font-size:22px;
+  }
 
-.grupo-plano {
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:10px;
-}
+  /* ===== Seletor de planos (topo do vendedor) ===== */
+  .planos{ display:grid; gap:12px; }
 
-.tipo, .opcao {
-  border:2px solid #005baa;
-  border-radius:8px;
-  background:#fff;
-  color:#005baa;
-  font-weight:bold;
-  cursor:pointer;
-  transition:all .25s ease;
-}
+  .grupo-plano{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap:10px;
+    align-items:stretch;
+  }
 
-.tipo {
-  font-size:16px;
-}
+  .tipo, .opcao{
+    border:2px solid var(--azul);
+    border-radius:10px;
+    background:#fff;
+    color:var(--azul);
+    font-weight:700;
+    cursor:pointer;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, opacity .18s ease;
+    user-select:none;
+  }
 
-.opcoes {
-  display:grid;
-  grid-template-rows:1fr 1fr;
-  gap:8px;
-}
+  .tipo{
+    font-size:16px;
+    padding:14px 12px;
+    letter-spacing:.2px;
+    text-align:left;
+  }
+  .tipo small{
+    display:block;
+    font-weight:700;
+    opacity:.9;
+  }
 
-.tipo:hover, .opcao:hover {
-  transform:scale(1.03);
-}
+  .opcoes{
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    gap:8px;
+  }
 
-.tipo.ativo, .opcao.ativo {
-  background:#005baa;
-  color:#fff;
-  box-shadow:0 6px 14px rgba(0,91,170,.35);
-  transform:scale(1.05);
-}
+  .opcao{
+    font-size:14px;
+    padding:10px 8px;
+  }
 
-/* ===== FORM ===== */
-textarea {
-  width:100%;
-  height:40px;
-  margin-top:12px;
-  padding:8px;
-  resize:none;
-  border-radius:6px;
-}
+  .tipo:hover, .opcao:hover{ transform: scale(1.02); }
 
-button.calcular {
-  width:100%;
-  margin-top:12px;
-  padding:12px;
-  background:#005baa;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  cursor:pointer;
-}
+  .ativo{
+    background:var(--azul) !important;
+    color:#fff !important;
+    box-shadow:0 10px 18px rgba(0,91,170,0.25);
+    transform: scale(1.03);
+  }
 
-/* ===== RESULTADO ===== */
-#resultado {
-  display:none;
-  margin-top:20px;
-}
+  /* Opções desativadas quando o tipo não está selecionado */
+  .opcao.disabled{
+    opacity:0.35;
+    cursor:not-allowed;
+    transform:none !important;
+    box-shadow:none !important;
+  }
 
-table {
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
-}
+  /* ===== Entrada ===== */
+  .idades{ margin-top:12px; }
+  textarea{
+    width:100%;
+    height:40px;
+    padding:8px 10px;
+    border:2px solid var(--borda);
+    border-radius:10px;
+    box-sizing:border-box;
+    resize:none;
+    font-size:14px;
+  }
 
-th, td {
-  border:1px solid #ddd;
-  padding:6px;
-  text-align:center;
-}
+  .calcular{
+    width:100%;
+    margin-top:12px;
+    padding:12px;
+    background:var(--azul);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:opacity .15s ease;
+  }
+  .calcular:hover{ opacity:0.92; }
 
-th {
-  background:#005baa;
-  color:#fff;
-}
+  /* ===== Resultado ===== */
+  #resultado{ display:none; margin-top:16px; }
 
-#total {
-  margin-top:10px;
-  font-weight:bold;
-}
+  /* Somente esta área vira imagem */
+  #areaImagem{
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:14px;
+    background:#fff;
+  }
 
-button.share {
-  margin-top:10px;
-  padding:10px;
-  width:100%;
-  border:none;
-  border-radius:6px;
-  background:#28a745;
-  color:#fff;
-  font-size:15px;
-  cursor:pointer;
-}
+  .logos{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:8px;
+  }
+  .logos img{
+    height:40px;
+    object-fit:contain;
+    display:block;
+  }
+
+  #nomePlanoCliente{
+    margin:8px 0 6px;
+    color:#111;
+    font-size:18px;
+  }
+
+  #obsPlano{
+    margin:0 0 8px;
+    font-size:13px;
+    color:#444;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    margin-top:8px;
+  }
+  th, td{
+    padding:8px;
+    border:1px solid #ddd;
+    text-align:center;
+  }
+  th{
+    background:var(--azul);
+    color:#fff;
+  }
+
+  .totais{
+    margin-top:10px;
+    font-weight:700;
+    display:grid;
+    gap:4px;
+  }
+
+  .share{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    background:var(--verde);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+  }
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="container" id="app">
 
-<h1>Cotador HAPVIDA</h1>
+  <h1>Cotador HAPVIDA – Fortaleza/CE</h1>
 
-<div class="planos">
+  <!-- TOPO DO VENDEDOR (abreviado) -->
+  <div class="planos">
 
-  <div class="grupo-plano">
-    <button class="tipo" onclick="setTipo('enf', this)">ENFERMARIA</button>
-    <div class="opcoes">
-      <button class="opcao" onclick="setModo('parcial', this)">PARCIAL</button>
-      <button class="opcao" onclick="setModo('total', this)">TOTAL</button>
+    <div class="grupo-plano" data-plan="ind_enf">
+      <button class="tipo" onclick="selecionarTipo('ind_enf', this)">
+        <small>IND - ENFERMARIA</small>
+      </button>
+      <div class="opcoes">
+        <button class="opcao disabled" data-plan="ind_enf" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
+        <button class="opcao disabled" data-plan="ind_enf" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
+      </div>
     </div>
-  </div>
 
-  <div class="grupo-plano">
-    <button class="tipo" onclick="setTipo('amb', this)">AMBULATORIAL</button>
-    <div class="opcoes">
-      <button class="opcao" onclick="setModo('parcial', this)">PARCIAL</button>
-      <button class="opcao" onclick="setModo('total', this)">TOTAL</button>
+    <div class="grupo-plano" data-plan="ind_amb">
+      <button class="tipo" onclick="selecionarTipo('ind_amb', this)">
+        <small>IND - AMBULATORIAL</small>
+      </button>
+      <div class="opcoes">
+        <button class="opcao disabled" data-plan="ind_amb" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
+        <button class="opcao disabled" data-plan="ind_amb" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
+      </div>
     </div>
-  </div>
 
-  <div class="grupo-plano">
-    <button class="tipo" onclick="setTipo('apto', this)">APARTAMENTO</button>
-    <div class="opcoes">
-      <button class="opcao" onclick="setModo('parcial', this)">PARCIAL</button>
-      <button class="opcao" onclick="setModo('total', this)">TOTAL</button>
+    <div class="grupo-plano" data-plan="ind_apto">
+      <button class="tipo" onclick="selecionarTipo('ind_apto', this)">
+        <small>IND - APARTAMENTO</small>
+      </button>
+      <div class="opcoes">
+        <button class="opcao disabled" data-plan="ind_apto" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
+        <button class="opcao disabled" data-plan="ind_apto" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
+      </div>
     </div>
-  </div>
 
-  <div class="grupo-plano">
-    <button class="tipo" onclick="setTipo('super', this)">SUPER SIMPLES</button>
-    <div class="opcoes">
-      <button class="opcao" onclick="setModo('parcial', this)">PARCIAL</button>
-      <button class="opcao" onclick="setModo('total', this)">TOTAL</button>
+    <div class="grupo-plano" data-plan="ss_enf">
+      <button class="tipo" onclick="selecionarTipo('ss_enf', this)">
+        <small>SS - ENFERMARIA</small>
+      </button>
+      <div class="opcoes">
+        <button class="opcao disabled" data-plan="ss_enf" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
+        <button class="opcao disabled" data-plan="ss_enf" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
+      </div>
     </div>
+
+    <div class="grupo-plano" data-plan="ss_amb">
+      <button class="tipo" onclick="selecionarTipo('ss_amb', this)">
+        <small>SS - AMBULATORIAL</small>
+      </button>
+      <div class="opcoes">
+        <button class="opcao disabled" data-plan="ss_amb" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
+        <button class="opcao disabled" data-plan="ss_amb" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
+      </div>
+    </div>
+
   </div>
 
-</div>
-
-<textarea id="idades" placeholder="Digite as idades separadas por vírgula. Ex: 23, 35, 62"></textarea>
-
-<button class="calcular" onclick="calcular()">Calcular Orçamento</button>
-
-<div id="resultado">
-  <h2 id="nomePlano"></h2>
-
-  <div id="areaImagem">
-    <table>
-      <thead>
-        <tr>
-          <th>Faixa</th>
-          <th>Idade</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody id="tabela"></tbody>
-    </table>
-    <div id="total"></div>
+  <div class="idades">
+    <textarea id="idades" placeholder="Digite as idades separadas por vírgula. Ex: 23, 35, 62"></textarea>
   </div>
 
-  <button class="share" onclick="compartilhar()">Compartilhar Orçamento</button>
-</div>
+  <button class="calcular" onclick="calcular()">Calcular Orçamento</button>
+
+  <!-- RESULTADO / IMAGEM -->
+  <div id="resultado">
+    <div id="areaImagem">
+      <div class="logos">
+        <img src="logo-reinvent.png" alt="Reinvent Saúde" />
+        <img src="logo-hapvida.png" alt="Hapvida" />
+      </div>
+
+      <!-- NOME COMPLETO PARA O CLIENTE -->
+      <h2 id="nomePlanoCliente"></h2>
+      <div id="obsPlano"></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Faixa Etária</th>
+            <th>Idade</th>
+            <th>Valor Normal</th>
+            <th>15% (3 meses)</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaResultado"></tbody>
+      </table>
+
+      <div class="totais">
+        <div id="totalNormal"></div>
+        <div id="totalPromo"></div>
+      </div>
+    </div>
+
+    <button class="share" onclick="compartilharOrcamento()">Compartilhar Orçamento</button>
+  </div>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
-let tipo = null;
-let modo = null;
+  // ===== Estado =====
+  let tipoSelecionado = null;    // ex: "ind_enf"
+  let modoSelecionado = null;    // "parcial" | "total"
 
-const tabelas = {
-  enf_parcial:[["0-18",0,18,241.68],["19-23",19,23,311.18],["24-28",24,28,354.18],["29-33",29,33,393.74],["34-38",34,38,412.20],["39-43",39,43,462.60],["44-48",44,48,558.98],["49-53",49,53,762.08],["54-58",54,58,1020.23],["59+",59,200,1318.95]],
-  enf_total:[["0-18",0,18,198.23],["19-23",19,23,253.82],["24-28",24,28,288.22],["29-33",29,33,319.87],["34-38",34,38,334.64],["39-43",39,43,374.96],["44-48",44,48,452.06],["49-53",49,53,614.53],["54-58",54,58,821.04],["59+",59,200,1060.00]],
-  amb_parcial:[["0-18",0,18,202.80],["19-23",19,23,267.06],["24-28",24,28,304.44],["29-33",29,33,339.61],["34-38",34,38,357.41],["39-43",39,43,401.25],["44-48",44,48,490.67],["49-53",49,53,680.53],["54-58",54,58,917.37],["59+",59,200,1191.43]],
-  amb_total:[["0-18",0,18,130.22],["19-23",19,23,171.04],["24-28",24,28,194.78],["29-33",29,33,217.12],["34-38",34,38,228.42],["39-43",39,43,256.27],["44-48",44,48,313.06],["49-53",49,53,433.65],["54-58",54,58,584.08],["59+",59,200,758.15]],
-  apto_parcial:[["0-18",0,18,350.27],["19-23",19,23,454.52],["24-28",24,28,519.02],["29-33",29,33,578.36],["34-38",34,38,606.05],["39-43",39,43,681.65],["44-48",44,48,826.22],["49-53",49,53,1130.87],["54-58",54,58,1518.10],["59+",59,200,1966.18]],
-  apto_total:[["0-18",0,18,285.10],["19-23",19,23,368.49],["24-28",24,28,420.09],["29-33",29,33,467.56],["34-38",34,38,489.71],["39-43",39,43,550.19],["44-48",44,48,665.84],["49-53",49,53,909.55],["54-58",54,58,1219.32],["59+",59,200,1577.77]],
-  super_parcial:[["0-18",0,18,187.76],["19-23",19,23,210.29],["24-28",24,28,235.52],["29-33",29,33,270.85],["34-38",34,38,311.48],["39-43",39,43,370.66],["44-48",44,48,463.33],["49-53",49,53,579.16],["54-58",54,58,984.57],["59+",59,200,1102.72]],
-  super_total:[["0-18",0,18,146.72],["19-23",19,23,164.33],["24-28",24,28,184.05],["29-33",29,33,211.66],["34-38",34,38,243.41],["39-43",39,43,289.66],["44-48",44,48,362.08],["49-53",49,53,452.60],["54-58",54,58,769.42],["59+",59,200,861.75]]
-};
+  // ===== Nome completo para o cliente =====
+  const nomesClienteBase = {
+    ind_enf: "INDIVIDUAL ENFERMARIA COPARTICIPAÇÃO",
+    ind_amb: "INDIVIDUAL AMBULATORIAL COPARTICIPAÇÃO",
+    ind_apto:"INDIVIDUAL APARTAMENTO COPARTICIPAÇÃO",
+    ss_enf:  "SUPER SIMPLES ENFERMARIA COPARTICIPAÇÃO",
+    ss_amb:  "SUPER SIMPLES AMBULATORIAL COPARTICIPAÇÃO"
+  };
 
-function resetResultado(){
-  document.getElementById("resultado").style.display="none";
-}
+  function nomeClienteCompleto(tipo, modo){
+    const base = nomesClienteBase[tipo] || "";
+    const mod  = (modo || "").toUpperCase();
+    return `${base} ${mod}`.trim();
+  }
 
-function setTipo(t, btn){
-  tipo=t;
-  document.querySelectorAll(".tipo").forEach(b=>b.classList.remove("ativo"));
-  btn.classList.add("ativo");
-  resetResultado();
-}
+  function isSuperSimples(tipo){
+    return typeof tipo === "string" && tipo.startsWith("ss_");
+  }
 
-function setModo(m, btn){
-  modo=m;
-  document.querySelectorAll(".opcao").forEach(b=>b.classList.remove("ativo"));
-  btn.classList.add("ativo");
-  resetResultado();
-}
+  // ===== Tabelas (normal e 15%) =====
+  // Formato: [faixaLabel, minIdade, maxIdade, valorNormal, valor15]
+  const tabelas = {
+    // IND - ENFERMARIA
+    ind_enf_parcial: [
+      ["00 a 18",0,18,241.68,205.43],["19 a 23",19,23,311.18,264.50],["24 a 28",24,28,354.18,301.05],
+      ["29 a 33",29,33,393.74,334.68],["34 a 38",34,38,412.20,350.37],["39 a 43",39,43,462.60,393.21],
+      ["44 a 48",44,48,558.98,475.13],["49 a 53",49,53,762.08,647.77],["54 a 58",54,58,1020.23,867.20],
+      ["59+",59,200,1318.95,1121.11]
+    ],
+    ind_enf_total: [
+      ["00 a 18",0,18,198.23,168.50],["19 a 23",19,23,253.82,215.75],["24 a 28",24,28,288.22,244.99],
+      ["29 a 33",29,33,319.87,271.89],["34 a 38",34,38,334.64,284.44],["39 a 43",39,43,374.96,318.72],
+      ["44 a 48",44,48,452.06,384.25],["49 a 53",49,53,614.53,522.35],["54 a 58",54,58,821.04,697.88],
+      ["59+",59,200,1060.00,901.00]
+    ],
 
-function calcular(){
-  if(!tipo || !modo) return alert("Selecione o plano completo.");
-  const idades=document.getElementById("idades").value.split(",").map(i=>parseInt(i.trim())).filter(i=>!isNaN(i));
-  const chave=tipo+"_"+modo;
-  let total=0;
-  let tbody=document.getElementById("tabela");
-  tbody.innerHTML="";
-  idades.forEach(idade=>{
-    let f=tabelas[chave].find(x=>idade>=x[1]&&idade<=x[2]);
-    if(f){
-      total+=f[3];
-      tbody.innerHTML+=`<tr><td>${f[0]}</td><td>${idade}</td><td>R$ ${f[3].toFixed(2)}</td></tr>`;
-    }
-  });
-  document.getElementById("nomePlano").innerText=tipo.toUpperCase()+" "+modo.toUpperCase();
-  document.getElementById("total").innerText="Total: R$ "+total.toFixed(2);
-  document.getElementById("resultado").style.display="block";
-}
+    // IND - AMBULATORIAL
+    ind_amb_parcial: [
+      ["00 a 18",0,18,202.80,172.38],["19 a 23",19,23,267.06,227.00],["24 a 28",24,28,304.44,258.77],
+      ["29 a 33",29,33,339.61,288.67],["34 a 38",34,38,357.41,303.80],["39 a 43",39,43,401.25,341.06],
+      ["44 a 48",44,48,490.67,417.07],["49 a 53",49,53,680.53,578.45],["54 a 58",54,58,917.37,779.76],
+      ["59+",59,200,1191.43,1012.72]
+    ],
+    ind_amb_total: [
+      ["00 a 18",0,18,130.22,110.69],["19 a 23",19,23,171.04,145.38],["24 a 28",24,28,194.78,165.56],
+      ["29 a 33",29,33,217.12,184.55],["34 a 38",34,38,228.42,194.16],["39 a 43",39,43,256.27,217.83],
+      ["44 a 48",44,48,313.06,266.10],["49 a 53",49,53,433.65,368.60],["54 a 58",54,58,584.08,496.47],
+      ["59+",59,200,758.15,644.43]
+    ],
 
-function compartilhar(){
-  html2canvas(document.getElementById("areaImagem")).then(canvas=>{
-    canvas.toBlob(blob=>{
-      const file=new File([blob],"orcamento.png",{type:"image/png"});
-      if(navigator.share){
-        navigator.share({files:[file],title:"Orçamento HAPVIDA"});
-      }else{
-        const a=document.createElement("a");
-        a.href=URL.createObjectURL(blob);
-        a.download="orcamento.png";
-        a.click();
+    // IND - APARTAMENTO
+    ind_apto_parcial: [
+      ["00 a 18",0,18,350.27,297.73],["19 a 23",19,23,454.52,386.34],["24 a 28",24,28,519.02,441.17],
+      ["29 a 33",29,33,578.36,491.61],["34 a 38",34,38,606.05,515.14],["39 a 43",39,43,681.65,579.40],
+      ["44 a 48",44,48,826.22,702.29],["49 a 53",49,53,1130.87,961.24],["54 a 58",54,58,1518.10,1290.39],
+      ["59+",59,200,1966.18,1671.25]
+    ],
+    ind_apto_total: [
+      ["00 a 18",0,18,285.10,242.34],["19 a 23",19,23,368.49,313.22],["24 a 28",24,28,420.09,357.08],
+      ["29 a 33",29,33,467.56,397.43],["34 a 38",34,38,489.71,416.25],["39 a 43",39,43,550.19,467.66],
+      ["44 a 48",44,48,665.84,565.96],["49 a 53",49,53,909.55,773.12],["54 a 58",54,58,1219.32,1036.42],
+      ["59+",59,200,1577.77,1341.10]
+    ],
+
+    // SS - ENFERMARIA (do seu conjunto antigo)
+    ss_enf_parcial: [
+      ["00 a 18",0,18,187.76,159.60],["19 a 23",19,23,210.29,178.75],["24 a 28",24,28,235.52,200.19],
+      ["29 a 33",29,33,270.85,230.22],["34 a 38",34,38,311.48,264.76],["39 a 43",39,43,370.66,315.06],
+      ["44 a 48",44,48,463.33,393.83],["49 a 53",49,53,579.16,492.29],["54 a 58",54,58,984.57,836.88],
+      ["59+",59,200,1102.72,937.31]
+    ],
+    ss_enf_total: [
+      ["00 a 18",0,18,146.72,124.71],["19 a 23",19,23,164.33,139.68],["24 a 28",24,28,184.05,156.44],
+      ["29 a 33",29,33,211.66,179.91],["34 a 38",34,38,243.41,206.90],["39 a 43",39,43,289.66,246.21],
+      ["44 a 48",44,48,362.08,307.77],["49 a 53",49,53,452.60,384.71],["54 a 58",54,58,769.42,654.01],
+      ["59+",59,200,861.75,732.49]
+    ],
+
+    // SS - AMBULATORIAL (tabelas que você enviou)
+    ss_amb_parcial: [
+      ["00 a 18",0,18,139.18,118.30],
+      ["19 a 23",19,23,155.88,132.50],
+      ["24 a 28",24,28,174.59,148.40],
+      ["29 a 33",29,33,200.78,170.66],
+      ["34 a 38",34,38,230.90,196.27],
+      ["39 a 43",39,43,274.77,233.55],
+      ["44 a 48",44,48,343.46,291.94],
+      ["49 a 53",49,53,429.33,364.93],
+      ["54 a 58",54,58,729.86,620.38],
+      ["59+",59,200,817.44,694.82]
+    ],
+    ss_amb_total: [
+      ["00 a 18",0,18,102.77,87.35],
+      ["19 a 23",19,23,115.10,97.84],
+      ["24 a 28",24,28,128.91,109.57],
+      ["29 a 33",29,33,148.25,126.01],
+      ["34 a 38",34,38,170.49,144.92],
+      ["39 a 43",39,43,202.88,172.45],
+      ["44 a 48",44,48,253.60,215.56],
+      ["49 a 53",49,53,317.00,269.45],
+      ["54 a 58",54,58,538.90,458.07],
+      ["59+",59,200,603.57,513.03]
+    ]
+  };
+
+  // ===== UI helpers =====
+  function esconderResultado(){
+    document.getElementById("resultado").style.display = "none";
+    document.getElementById("tabelaResultado").innerHTML = "";
+    document.getElementById("totalNormal").textContent = "";
+    document.getElementById("totalPromo").textContent = "";
+    document.getElementById("nomePlanoCliente").textContent = "";
+    document.getElementById("obsPlano").textContent = "";
+  }
+
+  function atualizarOpcoesAtivas(){
+    document.querySelectorAll(".opcao").forEach(btn=>{
+      const plan = btn.dataset.plan;
+      if(plan === tipoSelecionado){
+        btn.classList.remove("disabled");
+      } else {
+        btn.classList.add("disabled");
+        btn.classList.remove("ativo");
       }
     });
-  });
-}
-</script>
+  }
 
+  // ===== Seleção =====
+  function selecionarTipo(planKey, btn){
+    tipoSelecionado = planKey;
+    modoSelecionado = null;
+
+    document.querySelectorAll(".tipo").forEach(b=>b.classList.remove("ativo"));
+    btn.classList.add("ativo");
+
+    atualizarOpcoesAtivas();
+    esconderResultado();
+  }
+
+  function selecionarModo(btn){
+    const plan = btn.dataset.plan;
+    const modo = btn.dataset.modo;
+
+    // Só permite clicar no modo do tipo selecionado
+    if(!tipoSelecionado || plan !== tipoSelecionado || btn.classList.contains("disabled")){
+      return;
+    }
+
+    modoSelecionado = modo;
+
+    // Desmarca apenas as opções do bloco atual
+    const bloco = btn.closest(".grupo-plano");
+    bloco.querySelectorAll(".opcao").forEach(b=>b.classList.remove("ativo"));
+    btn.classList.add("ativo");
+
+    esconderResultado();
+  }
+
+  // ===== Cálculo =====
+  function parseIdades(){
+    return document.getElementById("idades").value
+      .split(",")
+      .map(s => parseInt(s.trim(), 10))
+      .filter(n => Number.isFinite(n));
+  }
+
+  function encontrarFaixa(lista, idade){
+    return lista.find(f => idade >= f[1] && idade <= f[2]);
+  }
+
+  function calcular(){
+    if(!tipoSelecionado || !modoSelecionado){
+      alert("Selecione o plano e depois PARCIAL ou TOTAL.");
+      return;
+    }
+
+    const idades = parseIdades();
+    if(idades.length === 0){
+      alert("Informe ao menos uma idade (ex: 23, 35, 62).");
+      return;
+    }
+
+    // Regra SS: mínimo 2 vidas
+    if(isSuperSimples(tipoSelecionado) && idades.length < 2){
+      alert("Super Simples é coletivo: mínimo 2 vidas (duas idades).");
+      return;
+    }
+
+    const chave = `${tipoSelecionado}_${modoSelecionado}`;
+    const lista = tabelas[chave];
+    if(!lista){
+      alert("Tabela não encontrada para este plano.");
+      return;
+    }
+
+    const tbody = document.getElementById("tabelaResultado");
+    tbody.innerHTML = "";
+
+    let totalN = 0;
+    let total15 = 0;
+
+    idades.forEach(idade=>{
+      const faixa = encontrarFaixa(lista, idade);
+      if(!faixa) return;
+
+      const vN = Number(faixa[3]) || 0;
+      const v15 = Number(faixa[4]) || 0;
+
+      totalN += vN;
+      total15 += v15;
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${faixa[0]}</td>
+        <td>${idade}</td>
+        <td>R$ ${vN.toFixed(2)}</td>
+        <td>R$ ${v15.toFixed(2)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    const tituloCliente = nomeClienteCompleto(tipoSelecionado, modoSelecionado);
+    document.getElementById("nomePlanoCliente").textContent = tituloCliente;
+
+    document.getElementById("obsPlano").textContent =
+      isSuperSimples(tipoSelecionado) ? "Plano coletivo – mínimo 2 vidas." : "";
+
+    document.getElementById("totalNormal").textContent = `Total normal: R$ ${totalN.toFixed(2)}`;
+    document.getElementById("totalPromo").textContent = `Total 15% (3 meses): R$ ${total15.toFixed(2)}`;
+
+    document.getElementById("resultado").style.display = "block";
+  }
+
+  // ===== Compartilhar (imagem só do orçamento) =====
+  async function compartilharOrcamento(){
+    const area = document.getElementById("areaImagem");
+
+    const canvas = await html2canvas(area, {
+      backgroundColor: "#ffffff",
+      useCORS: true,
+      scale: 2
+    });
+
+    return new Promise(resolve=>{
+      canvas.toBlob(async (blob)=>{
+        try{
+          const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+
+          if(navigator.share && navigator.canShare && navigator.canShare({ files:[file] })){
+            await navigator.share({
+              title: "Orçamento HAPVIDA",
+              files: [file]
+            });
+          } else if(navigator.share){ // alguns browsers não têm canShare
+            await navigator.share({
+              title: "Orçamento HAPVIDA",
+              files: [file]
+            });
+          } else {
+            // fallback: download
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "orcamento_hapvida.png";
+            a.click();
+            URL.revokeObjectURL(a.href);
+          }
+        } catch(e){
+          // fallback silencioso
+          const a = document.createElement("a");
+          a.href = canvas.toDataURL("image/png");
+          a.download = "orcamento_hapvida.png";
+          a.click();
+        }
+        resolve();
+      }, "image/png");
+    });
+  }
+</script>
 </body>
 </html>
