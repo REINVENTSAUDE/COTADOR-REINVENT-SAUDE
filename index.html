@@ -482,15 +482,24 @@
 
   // ===== Seleção =====
   function selecionarTipo(planKey, btn){
-    tipoSelecionado = planKey;
-    modoSelecionado = null;
+  tipoSelecionado = planKey;
+  modoSelecionado = null;
 
-    document.querySelectorAll(".tipo").forEach(b=>b.classList.remove("ativo"));
-    btn.classList.add("ativo");
+  document.querySelectorAll(".tipo").forEach(b=>b.classList.remove("ativo"));
+  btn.classList.add("ativo");
 
-    atualizarOpcoesAtivas();
-    esconderResultado();
+  atualizarOpcoesAtivas();
+  esconderResultado();
+
+  const chkFamiliar = document.getElementById("familiar1grau");
+
+  if(isSuperSimples(planKey)){
+    chkFamiliar.checked = false;
+    chkFamiliar.disabled = true;
+  } else {
+    chkFamiliar.disabled = false;
   }
+}
 
   function selecionarModo(btn){
     const plan = btn.dataset.plan;
