@@ -28,8 +28,8 @@
   background-image: url("logo-reinvent.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 65%;
-  opacity: 0.05;
+  background-size: clamp(140px, 55%, 420px);
+  opacity: 0.08;
   z-index: 0;
   pointer-events:none;
 }
@@ -487,6 +487,13 @@
   // ===== UI helpers =====
   function esconderResultado(){
     document.getElementById("resultado").style.display = "none";
+    setTimeout(() => {
+  document.getElementById("resultado").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}, 100);
+
     document.getElementById("tabelaResultado").innerHTML = "";
     document.getElementById("cabecalhoTabela").innerHTML = "";
     document.getElementById("total1").textContent = "";
