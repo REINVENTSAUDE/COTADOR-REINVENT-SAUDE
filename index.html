@@ -340,6 +340,7 @@
   </div>
 
   <button class="calcular" onclick="calcular()">Calcular Orçamento</button>
+  <div id="ancoraResultado"></div>
 
   <!-- RESULTADO / IMAGEM -->
   <div id="resultado">
@@ -688,7 +689,12 @@
     }
 
     document.getElementById("resultado").style.display = "block";
-  }
+    setTimeout(() => {
+      document.getElementById("ancoraResultado").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 200);
 
   // ===== Compartilhar (imagem só do orçamento) =====
   async function compartilharOrcamento(){
