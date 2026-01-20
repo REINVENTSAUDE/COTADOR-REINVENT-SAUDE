@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cotador HAPVIDA – Fortaleza/CE</title>
+<title>REINVENT SAÚDE - COTADOR</title>
 
 <style>
   :root{
@@ -11,6 +11,7 @@
     --bg:#f5f7fb;
     --verde:#28a745;
     --borda:#d9d9d9;
+    --texto:#111;
   }
 
   body{
@@ -29,11 +30,21 @@
     box-shadow:0 0 10px rgba(0,0,0,0.08);
   }
 
-  h1{
+  .titulo{
     text-align:center;
     color:var(--azul);
-    margin:8px 0 14px;
+    margin:6px 0 2px;
     font-size:22px;
+    font-weight:800;
+    letter-spacing:.2px;
+  }
+
+  .subtitulo{
+    text-align:center;
+    color:#3a3a3a;
+    margin:0 0 14px;
+    font-size:14px;
+    font-weight:700;
   }
 
   /* ===== Seletor de planos (topo do vendedor) ===== */
@@ -51,7 +62,7 @@
     border-radius:10px;
     background:#fff;
     color:var(--azul);
-    font-weight:700;
+    font-weight:800;
     cursor:pointer;
     transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, opacity .18s ease;
     user-select:none;
@@ -60,13 +71,12 @@
   .tipo{
     font-size:16px;
     padding:14px 12px;
-    letter-spacing:.2px;
     text-align:left;
   }
   .tipo small{
     display:block;
-    font-weight:700;
-    opacity:.9;
+    font-weight:800;
+    opacity:.95;
   }
 
   .opcoes{
@@ -110,6 +120,15 @@
     font-size:14px;
   }
 
+  .linha-opcoes{
+    margin-top:10px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+    font-size:14px;
+  }
+
   .calcular{
     width:100%;
     margin-top:12px;
@@ -119,7 +138,7 @@
     border:none;
     border-radius:10px;
     font-size:16px;
-    font-weight:700;
+    font-weight:800;
     cursor:pointer;
     transition:opacity .15s ease;
   }
@@ -140,25 +159,44 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:12px;
+    gap:14px;
     margin-bottom:8px;
   }
-  .logos img{
-    height:40px;
-    object-fit:contain;
+
+  /* wrappers para "recortar" o vazio do PNG */
+  .logo-wrap{
+    height:46px;
+    width:220px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .logo{
+    width:100%;
+    height:100%;
     display:block;
   }
 
+  /* Hapvida geralmente já vem “no limite”, então mantém contain */
+  .logo.hapvida{ object-fit:contain; }
+
+  /* Reinvent veio com “margem” na imagem: usa cover para preencher e parecer do mesmo tamanho */
+  .logo.reinvent{ object-fit:cover; object-position:center; }
+
   #nomePlanoCliente{
-    margin:8px 0 6px;
-    color:#111;
+    margin:8px 0 4px;
+    color:var(--texto);
     font-size:18px;
+    font-weight:800;
   }
 
-  #obsPlano{
+  #linhaData{
     margin:0 0 8px;
-    font-size:13px;
+    font-size:12px;
     color:#444;
+    font-weight:700;
   }
 
   table{
@@ -179,7 +217,7 @@
 
   .totais{
     margin-top:10px;
-    font-weight:700;
+    font-weight:800;
     display:grid;
     gap:4px;
   }
@@ -193,8 +231,12 @@
     border:none;
     border-radius:10px;
     font-size:15px;
-    font-weight:700;
+    font-weight:800;
     cursor:pointer;
+  }
+
+  @media (max-width:520px){
+    .logo-wrap{ width:160px; height:42px; }
   }
 </style>
 </head>
@@ -202,15 +244,14 @@
 <body>
 <div class="container" id="app">
 
-  <h1>Cotador HAPVIDA – Fortaleza/CE</h1>
+  <div class="titulo">REINVENT SAÚDE - COTADOR</div>
+  <div class="subtitulo">Fortaleza - CE</div>
 
   <!-- TOPO DO VENDEDOR (abreviado) -->
   <div class="planos">
 
     <div class="grupo-plano" data-plan="ind_enf">
-      <button class="tipo" onclick="selecionarTipo('ind_enf', this)">
-        <small>IND - ENFERMARIA</small>
-      </button>
+      <button class="tipo" onclick="selecionarTipo('ind_enf', this)"><small>IND - ENFERMARIA</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ind_enf" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ind_enf" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
@@ -218,9 +259,7 @@
     </div>
 
     <div class="grupo-plano" data-plan="ind_amb">
-      <button class="tipo" onclick="selecionarTipo('ind_amb', this)">
-        <small>IND - AMBULATORIAL</small>
-      </button>
+      <button class="tipo" onclick="selecionarTipo('ind_amb', this)"><small>IND - AMBULATORIAL</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ind_amb" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ind_amb" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
@@ -228,9 +267,7 @@
     </div>
 
     <div class="grupo-plano" data-plan="ind_apto">
-      <button class="tipo" onclick="selecionarTipo('ind_apto', this)">
-        <small>IND - APARTAMENTO</small>
-      </button>
+      <button class="tipo" onclick="selecionarTipo('ind_apto', this)"><small>IND - APARTAMENTO</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ind_apto" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ind_apto" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
@@ -238,9 +275,7 @@
     </div>
 
     <div class="grupo-plano" data-plan="ss_enf">
-      <button class="tipo" onclick="selecionarTipo('ss_enf', this)">
-        <small>SS - ENFERMARIA</small>
-      </button>
+      <button class="tipo" onclick="selecionarTipo('ss_enf', this)"><small>SS - ENFERMARIA</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ss_enf" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ss_enf" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
@@ -248,9 +283,7 @@
     </div>
 
     <div class="grupo-plano" data-plan="ss_amb">
-      <button class="tipo" onclick="selecionarTipo('ss_amb', this)">
-        <small>SS - AMBULATORIAL</small>
-      </button>
+      <button class="tipo" onclick="selecionarTipo('ss_amb', this)"><small>SS - AMBULATORIAL</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ss_amb" data-modo="parcial" onclick="selecionarModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ss_amb" data-modo="total" onclick="selecionarModo(this)">TOTAL</button>
@@ -263,35 +296,35 @@
     <textarea id="idades" placeholder="Digite as idades separadas por vírgula. Ex: 23, 35, 62"></textarea>
   </div>
 
+  <div class="linha-opcoes">
+    <label><input type="checkbox" id="familiar1grau" /> Familiar 1º grau (5% sobre o valor normal)</label>
+  </div>
+
   <button class="calcular" onclick="calcular()">Calcular Orçamento</button>
 
   <!-- RESULTADO / IMAGEM -->
   <div id="resultado">
     <div id="areaImagem">
       <div class="logos">
-        <img src="logo-reinvent.png" alt="Reinvent Saúde" />
-        <img src="logo-hapvida.png" alt="Hapvida" />
+        <div class="logo-wrap">
+          <img src="logo-reinvent.png" class="logo reinvent" alt="Reinvent Saúde" />
+        </div>
+        <div class="logo-wrap">
+          <img src="logo-hapvida.png" class="logo hapvida" alt="Hapvida" />
+        </div>
       </div>
 
-      <!-- NOME COMPLETO PARA O CLIENTE -->
       <h2 id="nomePlanoCliente"></h2>
-      <div id="obsPlano"></div>
+      <div id="linhaData"></div>
 
       <table>
-        <thead>
-          <tr>
-            <th>Faixa Etária</th>
-            <th>Idade</th>
-            <th>Valor Normal</th>
-            <th>15% (3 meses)</th>
-          </tr>
-        </thead>
+        <thead id="cabecalhoTabela"></thead>
         <tbody id="tabelaResultado"></tbody>
       </table>
 
       <div class="totais">
-        <div id="totalNormal"></div>
-        <div id="totalPromo"></div>
+        <div id="total1"></div>
+        <div id="total2"></div>
       </div>
     </div>
 
@@ -308,6 +341,7 @@
   let modoSelecionado = null;    // "parcial" | "total"
 
   // ===== Nome completo para o cliente =====
+  // (No orçamento SS vira "PLANO EMPRESARIAL ...")
   const nomesClienteBase = {
     ind_enf: "INDIVIDUAL ENFERMARIA COPARTICIPAÇÃO",
     ind_amb: "INDIVIDUAL AMBULATORIAL COPARTICIPAÇÃO",
@@ -316,14 +350,25 @@
     ss_amb:  "SUPER SIMPLES AMBULATORIAL COPARTICIPAÇÃO"
   };
 
+  function isSuperSimples(tipo){
+    return typeof tipo === "string" && tipo.startsWith("ss_");
+  }
+
   function nomeClienteCompleto(tipo, modo){
-    const base = nomesClienteBase[tipo] || "";
-    const mod  = (modo || "").toUpperCase();
+    let base = nomesClienteBase[tipo] || "";
+    if(isSuperSimples(tipo)){
+      base = base.replace(/^SUPER SIMPLES /, "PLANO EMPRESARIAL ");
+    }
+    const mod = (modo || "").toUpperCase();
     return `${base} ${mod}`.trim();
   }
 
-  function isSuperSimples(tipo){
-    return typeof tipo === "string" && tipo.startsWith("ss_");
+  function dataHojeBR(){
+    const d = new Date();
+    const dd = String(d.getDate()).padStart(2,"0");
+    const mm = String(d.getMonth()+1).padStart(2,"0");
+    const yyyy = d.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
   }
 
   // ===== Tabelas (normal e 15%) =====
@@ -371,7 +416,7 @@
       ["59+",59,200,1577.77,1341.10]
     ],
 
-    // SS - ENFERMARIA (do seu conjunto antigo)
+    // SS - ENFERMARIA
     ss_enf_parcial: [
       ["00 a 18",0,18,187.76,159.60],["19 a 23",19,23,210.29,178.75],["24 a 28",24,28,235.52,200.19],
       ["29 a 33",29,33,270.85,230.22],["34 a 38",34,38,311.48,264.76],["39 a 43",39,43,370.66,315.06],
@@ -385,7 +430,7 @@
       ["59+",59,200,861.75,732.49]
     ],
 
-    // SS - AMBULATORIAL (tabelas que você enviou)
+    // SS - AMBULATORIAL
     ss_amb_parcial: [
       ["00 a 18",0,18,139.18,118.30],
       ["19 a 23",19,23,155.88,132.50],
@@ -416,10 +461,11 @@
   function esconderResultado(){
     document.getElementById("resultado").style.display = "none";
     document.getElementById("tabelaResultado").innerHTML = "";
-    document.getElementById("totalNormal").textContent = "";
-    document.getElementById("totalPromo").textContent = "";
+    document.getElementById("cabecalhoTabela").innerHTML = "";
+    document.getElementById("total1").textContent = "";
+    document.getElementById("total2").textContent = "";
     document.getElementById("nomePlanoCliente").textContent = "";
-    document.getElementById("obsPlano").textContent = "";
+    document.getElementById("linhaData").textContent = "";
   }
 
   function atualizarOpcoesAtivas(){
@@ -450,14 +496,12 @@
     const plan = btn.dataset.plan;
     const modo = btn.dataset.modo;
 
-    // Só permite clicar no modo do tipo selecionado
     if(!tipoSelecionado || plan !== tipoSelecionado || btn.classList.contains("disabled")){
       return;
     }
 
     modoSelecionado = modo;
 
-    // Desmarca apenas as opções do bloco atual
     const bloco = btn.closest(".grupo-plano");
     bloco.querySelectorAll(".opcao").forEach(b=>b.classList.remove("ativo"));
     btn.classList.add("ativo");
@@ -477,6 +521,29 @@
     return lista.find(f => idade >= f[1] && idade <= f[2]);
   }
 
+  function montarCabecalhoTabela(familiar){
+    const thead = document.getElementById("cabecalhoTabela");
+    if(familiar){
+      thead.innerHTML = `
+        <tr>
+          <th>Faixa Etária</th>
+          <th>Idade</th>
+          <th>15% (3 meses)</th>
+          <th>5% Familiar</th>
+        </tr>
+      `;
+    } else {
+      thead.innerHTML = `
+        <tr>
+          <th>Faixa Etária</th>
+          <th>Idade</th>
+          <th>Valor Normal</th>
+          <th>15% (3 meses)</th>
+        </tr>
+      `;
+    }
+  }
+
   function calcular(){
     if(!tipoSelecionado || !modoSelecionado){
       alert("Selecione o plano e depois PARCIAL ou TOTAL.");
@@ -489,9 +556,8 @@
       return;
     }
 
-    // Regra SS: mínimo 2 vidas
     if(isSuperSimples(tipoSelecionado) && idades.length < 2){
-      alert("Super Simples é coletivo: mínimo 2 vidas (duas idades).");
+      alert("Plano coletivo: mínimo 2 vidas (duas idades).");
       return;
     }
 
@@ -502,11 +568,16 @@
       return;
     }
 
+    const familiar = document.getElementById("familiar1grau").checked;
+
+    montarCabecalhoTabela(familiar);
+
     const tbody = document.getElementById("tabelaResultado");
     tbody.innerHTML = "";
 
-    let totalN = 0;
+    let totalNormal = 0;
     let total15 = 0;
+    let total5 = 0; // 5% sobre o normal
 
     idades.forEach(idade=>{
       const faixa = encontrarFaixa(lista, idade);
@@ -514,28 +585,43 @@
 
       const vN = Number(faixa[3]) || 0;
       const v15 = Number(faixa[4]) || 0;
+      const v5 = vN * 0.95;
 
-      totalN += vN;
+      totalNormal += vN;
       total15 += v15;
+      total5 += v5;
 
       const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${faixa[0]}</td>
-        <td>${idade}</td>
-        <td>R$ ${vN.toFixed(2)}</td>
-        <td>R$ ${v15.toFixed(2)}</td>
-      `;
+
+      if(familiar){
+        tr.innerHTML = `
+          <td>${faixa[0]}</td>
+          <td>${idade}</td>
+          <td>R$ ${v15.toFixed(2)}</td>
+          <td>R$ ${v5.toFixed(2)}</td>
+        `;
+      } else {
+        tr.innerHTML = `
+          <td>${faixa[0]}</td>
+          <td>${idade}</td>
+          <td>R$ ${vN.toFixed(2)}</td>
+          <td>R$ ${v15.toFixed(2)}</td>
+        `;
+      }
+
       tbody.appendChild(tr);
     });
 
-    const tituloCliente = nomeClienteCompleto(tipoSelecionado, modoSelecionado);
-    document.getElementById("nomePlanoCliente").textContent = tituloCliente;
+    document.getElementById("nomePlanoCliente").textContent = nomeClienteCompleto(tipoSelecionado, modoSelecionado);
+    document.getElementById("linhaData").textContent = `Orçamento dia ${dataHojeBR()}`;
 
-    document.getElementById("obsPlano").textContent =
-      isSuperSimples(tipoSelecionado) ? "Plano coletivo – mínimo 2 vidas." : "";
-
-    document.getElementById("totalNormal").textContent = `Total normal: R$ ${totalN.toFixed(2)}`;
-    document.getElementById("totalPromo").textContent = `Total 15% (3 meses): R$ ${total15.toFixed(2)}`;
+    if(familiar){
+      document.getElementById("total1").textContent = `Total 15% (3 meses): R$ ${total15.toFixed(2)}`;
+      document.getElementById("total2").textContent = `Total 5% Familiar: R$ ${total5.toFixed(2)}`;
+    } else {
+      document.getElementById("total1").textContent = `Total normal: R$ ${totalNormal.toFixed(2)}`;
+      document.getElementById("total2").textContent = `Total 15% (3 meses): R$ ${total15.toFixed(2)}`;
+    }
 
     document.getElementById("resultado").style.display = "block";
   }
@@ -553,31 +639,23 @@
     return new Promise(resolve=>{
       canvas.toBlob(async (blob)=>{
         try{
-          const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+          const file = new File([blob], "orcamento_reinvent_hapvida.png", { type:"image/png" });
 
           if(navigator.share && navigator.canShare && navigator.canShare({ files:[file] })){
-            await navigator.share({
-              title: "Orçamento HAPVIDA",
-              files: [file]
-            });
-          } else if(navigator.share){ // alguns browsers não têm canShare
-            await navigator.share({
-              title: "Orçamento HAPVIDA",
-              files: [file]
-            });
+            await navigator.share({ title: "Orçamento", files: [file] });
+          } else if(navigator.share){
+            await navigator.share({ title: "Orçamento", files: [file] });
           } else {
-            // fallback: download
             const a = document.createElement("a");
             a.href = URL.createObjectURL(blob);
-            a.download = "orcamento_hapvida.png";
+            a.download = "orcamento_reinvent_hapvida.png";
             a.click();
             URL.revokeObjectURL(a.href);
           }
         } catch(e){
-          // fallback silencioso
           const a = document.createElement("a");
           a.href = canvas.toDataURL("image/png");
-          a.download = "orcamento_hapvida.png";
+          a.download = "orcamento_reinvent_hapvida.png";
           a.click();
         }
         resolve();
