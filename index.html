@@ -13,6 +13,13 @@
     --borda:#d9d9d9;
     --texto:#111;
   }
+  .taxa-adesao{
+  margin-top:6px;
+  text-align:right;
+  font-size:13px;
+  font-weight:700;
+  color:#333;
+}
 /* ===== Marca d’água SOMENTE na tabela ===== */
 .tabela-precos{
   position: relative;
@@ -353,6 +360,7 @@
         <thead id="cabecalhoTabela"></thead>
         <tbody id="tabelaResultado"></tbody>
       </table>
+      <div class="taxa-adesao" id="taxaAdesao"></div>
 
       <div class="totais">
         <div id="total1"></div>
@@ -498,6 +506,7 @@
     block: "start"
   });
 }, 100);
+    document.getElementById("taxaAdesao").textContent = "";
 
     document.getElementById("tabelaResultado").innerHTML = "";
     document.getElementById("cabecalhoTabela").innerHTML = "";
@@ -597,6 +606,13 @@
       alert("Selecione o plano e depois PARCIAL ou TOTAL.");
       return;
     }
+    const taxaEl = document.getElementById("taxaAdesao");
+    if(isSuperSimples(tipoSelecionado)){
+  taxaEl.textContent = "Taxa de adesão: R$ 20,00 por beneficiário";
+    } else {
+      taxaEl.textContent = "Taxa de adesão: R$ 35,00 por contrato";
+    }
+
 
     const idades = parseIdades();
     if(idades.length === 0){
