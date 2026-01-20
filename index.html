@@ -13,7 +13,34 @@
     --borda:#d9d9d9;
     --texto:#111;
   }
+/* ===== Marca d’água SOMENTE na tabela ===== */
+.tabela-precos{
+  position: relative;
+  overflow: hidden;
+  background:#fff;
+}
 
+/* marca d’água */
+.tabela-precos::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: url("logo-reinvent.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 65%;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events:none;
+}
+
+/* garante que o conteúdo fique acima da marca */
+.tabela-precos th,
+.tabela-precos td{
+  position: relative;
+  z-index: 1;
+}
+  
   body{
     font-family: Arial, sans-serif;
     background:var(--bg);
@@ -317,7 +344,7 @@
       <h2 id="nomePlanoCliente"></h2>
       <div id="linhaData"></div>
 
-      <table>
+      <table class="tabela-precos">
         <thead id="cabecalhoTabela"></thead>
         <tbody id="tabelaResultado"></tbody>
       </table>
