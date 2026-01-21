@@ -228,18 +228,18 @@
   }
   /* não quebrar dinheiro nas duas colunas de valores */
   #areaImagem .tabela-precos td:nth-child(3),
-  #areaImagem .tabela-precos td:nth-child(4){
+  #area .tabela-precos td:nth-child(4){
     white-space: nowrap;
   }
   /* larguras equilibradas (4 colunas sempre) */
-  #areaImagem .tabela-precos th:nth-child(1),
-  #areaImagem .tabela-precos td:nth-child(1){ width:34%; }
-  #areaImagem .tabela-precos th:nth-child(2),
-  #areaImagem .tabela-precos td:nth-child(2){ width:14%; }
-  #areaImagem .tabela-precos th:nth-child(3),
-  #areaImagem .tabela-precos td:nth-child(3){ width:26%; }
-  #areaImagem .tabela-precos th:nth-child(4),
-  #areaImagem .tabela-precos td:nth-child(4){ width:26%; }
+  #area .tabela-precos th:nth-child(1),
+  #area .tabela-precos td:nth-child(1){ width:34%; }
+  #area .tabela-precos th:nth-child(2),
+  #area .tabela-precos td:nth-child(2){ width:14%; }
+  #area .tabela-precos th:nth-child(3),
+  #area .tabela-precos td:nth-child(3){ width:26%; }
+  #area .tabela-precos th:nth-child(4),
+  #area .tabela-precos td:nth-child(4){ width:26%; }
 
   /* ===== Marca d’água SOMENTE na tabela ===== */
   .tabela-precos{
@@ -255,7 +255,7 @@
   background-repeat: no-repeat;
 
   /* DESCE a marca d’água */
-  background-position: center bottom 22%;
+  background-position: center bottom 32%;
 
   background-size: 55%;      /* um pouco menor e mais elegante */
   opacity: 0.08;             /* mais discreta */
@@ -303,8 +303,8 @@
     .logo-wrap{ width:160px; height:42px; }
   }
 /* Ajuste fino: dá mais espaço para a coluna "Idade" */
-#areaImagem .tabela-precos th:nth-child(1),
-#areaImagem .tabela-precos td:nth-child(1){ width:32%; }
+#area .tabela-precos th:nth-child(1),
+#area .tabela-precos td:nth-child(1){ width:32%; }
 
 #areaImagem .tabela-precos th:nth-child(2),
 #areaImagem .tabela-precos td:nth-child(2){
@@ -424,11 +424,11 @@
 
   // ===== Nome completo para o cliente =====
   const nomesClienteBase = {
-    ind_enf: "INDIVIDUAL ENFERMARIA COPARTICIPAÇÃO",
-    ind_amb: "INDIVIDUAL AMBULATORIAL COPARTICIPAÇÃO",
-    ind_apto:"INDIVIDUAL APARTAMENTO COPARTICIPAÇÃO",
-    ss_enf:  "SUPER SIMPLES ENFERMARIA COPARTICIPAÇÃO",
-    ss_amb:  "SUPER SIMPLES AMBULATORIAL COPARTICIPAÇÃO"
+    ind_enf: "NOSSO PLANO ENFERMARIA COPARTICIPAÇÃO",
+    ind_amb: "NOSSO PLANO AMBULATORIAL COPARTICIPAÇÃO",
+    ind_apto:"NOSSO PLANO APARTAMENTO COPARTICIPAÇÃO",
+    ss_enf:  "PLANO EMPRESARIAL ENFERMARIA COPARTICIPAÇÃO",
+    ss_amb:  "PLANO EMPRESARIAL AMBULATORIAL COPARTICIPAÇÃO"
   };
 
   function isSuperSimples(tipo){
