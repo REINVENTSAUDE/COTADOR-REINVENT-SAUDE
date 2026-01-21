@@ -14,38 +14,6 @@
     --texto:#111;
   }
 
-  .taxa-adesao{
-    margin-top:10px;
-    text-align:right;
-    font-size:13px;
-    font-weight:700;
-    color:#333;
-  }
-
-  /* ===== Marca d’água SOMENTE na tabela ===== */
-  .tabela-precos{
-    position: relative;
-    overflow: hidden;
-    background:#fff;
-  }
-  .tabela-precos::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image: url("logo-reinvent.png");
-    background-repeat: no-repeat;
-    background-position: center 70%;
-    background-size: contain;
-    opacity: 0.07;
-    z-index: 0;
-    pointer-events:none;
-  }
-  .tabela-precos th,
-  .tabela-precos td{
-    position: relative;
-    z-index: 1;
-  }
-
   body{
     font-family: Arial, sans-serif;
     background:var(--bg);
@@ -182,8 +150,9 @@
   #areaImagem{
     border:1px solid #eee;
     border-radius:12px;
-    padding:14px;
+    padding:18px;
     background:#fff;
+    overflow: hidden; /* mantém tudo dentro da imagem sem “cortar” por bug de layout */
   }
 
   .logos{
@@ -191,7 +160,7 @@
     justify-content:space-between;
     align-items:center;
     gap:14px;
-    margin-bottom:8px;
+    margin-bottom:10px;
   }
 
   .logo-wrap{
@@ -221,40 +190,97 @@
   }
 
   #nomePlanoCliente{
-    margin:8px 0 4px;
+    margin: 10px 0 6px;
     color:var(--texto);
     font-size:17px;
     font-weight:800;
   }
 
   #linhaData{
-    margin:0 0 8px;
+    margin: 0 0 12px;
     font-size:12px;
     color:#444;
     font-weight:700;
   }
 
+  /* ===== Tabela ===== */
   table{
     width:100%;
     border-collapse:collapse;
-    font-size:14px;
     margin-top:8px;
   }
-  th, td{
-    padding:8px;
+
+  /* Ajustes para não cortar na imagem do html2canvas */
+  #areaImagem .tabela-precos{
+    table-layout: fixed;      /* FORÇA caber no container */
+    width:100%;
+  }
+  #areaImagem .tabela-precos th,
+  #areaImagem .tabela-precos td{
+    padding:7px;              /* um pouco menor para caber sempre */
     border:1px solid #ddd;
     text-align:center;
+    font-size:13px;           /* melhora captura */
   }
-  th{
+  #areaImagem .tabela-precos th{
     background:var(--azul);
     color:#fff;
   }
+  /* não quebrar dinheiro nas duas colunas de valores */
+  #areaImagem .tabela-precos td:nth-child(3),
+  #areaImagem .tabela-precos td:nth-child(4){
+    white-space: nowrap;
+  }
+  /* larguras equilibradas (4 colunas sempre) */
+  #areaImagem .tabela-precos th:nth-child(1),
+  #areaImagem .tabela-precos td:nth-child(1){ width:34%; }
+  #areaImagem .tabela-precos th:nth-child(2),
+  #areaImagem .tabela-precos td:nth-child(2){ width:14%; }
+  #areaImagem .tabela-precos th:nth-child(3),
+  #areaImagem .tabela-precos td:nth-child(3){ width:26%; }
+  #areaImagem .tabela-precos th:nth-child(4),
+  #areaImagem .tabela-precos td:nth-child(4){ width:26%; }
+
+  /* ===== Marca d’água SOMENTE na tabela ===== */
+  .tabela-precos{
+    position: relative;
+    overflow: hidden;
+    background:#fff;
+  }
+  .tabela-precos::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image: url("logo-reinvent.png");
+    background-repeat: no-repeat;
+    background-position: center 70%;
+    background-size: contain;
+    opacity: 0.07;
+    z-index: 0;
+    pointer-events:none;
+  }
+  .tabela-precos th,
+  .tabela-precos td{
+    position: relative;
+    z-index: 1;
+  }
+
+  .taxa-adesao{
+    margin-top:10px;
+    margin-bottom:10px;
+    line-height:1.3;
+    text-align:right;
+    font-size:13px;
+    font-weight:700;
+    color:#333;
+  }
 
   .totais{
-    margin-top:10px;
+    margin-top:12px;
     font-weight:800;
     display:grid;
-    gap:4px;
+    gap:6px;
+    line-height:1.25;
   }
 
   .share{
@@ -273,51 +299,6 @@
   @media (max-width:520px){
     .logo-wrap{ width:160px; height:42px; }
   }
-/* ===== Espaçamento vertical maior no ORÇAMENTO (imagem) ===== */
-#areaImagem{
-  padding: 18px;              /* antes 14px */
-}
-
-#areaImagem #nomePlanoCliente{
-  margin: 10px 0 6px;         /* mais respiro acima/abaixo */
-}
-
-#areaImagem #linhaData{
-  margin: 0 0 12px;           /* mais distância até a tabela */
-}
-
-#areaImagem .tabela-precos{
-  margin-top: 10px;           /* afasta da data */
-  margin-bottom: 10px;        /* afasta da taxa */
-}
-
-#areaImagem .taxa-adesao{
-  margin-top: 10px;           /* afasta da tabela */
-  margin-bottom: 10px;        /* afasta dos totais */
-  line-height: 1.3;
-}
-
-#areaImagem .totais{
-  margin-top: 12px;           /* mais espaço antes dos totais */
-  gap: 6px;                   /* separa total1 e total2 */
-  line-height: 1.25;
-}
-/* Evita quebra de linha nos valores (principalmente no html2canvas) */
-.tabela-precos td{
-  white-space: nowrap;
-}
-
-/* Dá mais espaço para a coluna "Valor Normal" (3ª coluna) */
-.tabela-precos th:nth-child(3),
-.tabela-precos td:nth-child(3){
-  min-width: 130px;
-}
-
-/* (Opcional) garante que a tabela use melhor o espaço */
-#areaImagem table{
-  table-layout: auto;
-}
-
 </style>
 </head>
 
@@ -449,6 +430,13 @@
     const mm = String(d.getMonth()+1).padStart(2,"0");
     const yyyy = d.getFullYear();
     return `${dd}/${mm}/${yyyy}`;
+  }
+
+  function formatarBR(valor){
+    return Number(valor).toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
   }
 
   // ===== Tabelas =====
@@ -606,13 +594,6 @@
     }
   }
 
-  function formatarBR(valor){
-  return valor.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-}
-
   function calcular(){
     if(!tipoSelecionado || !modoSelecionado){
       alert("Selecione o plano e depois PARCIAL ou TOTAL.");
@@ -645,7 +626,7 @@
       taxaEl.textContent = "Taxa de adesão: R$ 35,00 por contrato, demais informações devem ser repassadas pelo vendedor";
     }
 
-    // Familiar: SS não permite (força false)
+    // Familiar: SS não permite
     let familiar = document.getElementById("familiar1grau").checked;
     if(isSuperSimples(tipoSelecionado)) familiar = false;
 
@@ -662,32 +643,34 @@
       const faixa = encontrarFaixa(lista, idade);
       if(!faixa) return;
 
-      const vN = Number(faixa[3]) || 0;
+      const vN  = Number(faixa[3]) || 0;
       const v15 = Number(faixa[4]) || 0;
-      const v5 = vN * 0.95;
+      const v5  = vN * 0.95;
 
       totalNormal += vN;
       total15 += v15;
       total5 += v5;
 
       const tr = document.createElement("tr");
+
       if(familiar){
+        // ✅ Familiar: mostrar 15% e 5% (não mostra normal)
         tr.innerHTML = `
           <td>${faixa[0]}</td>
           <td>${idade}</td>
-          <td>R$ ${formatarBR(vN)}</td>
           <td>R$ ${formatarBR(v15)}</td>
-
+          <td>R$ ${formatarBR(v5)}</td>
         `;
       } else {
+        // ✅ Normal: mostrar normal e 15%
         tr.innerHTML = `
           <td>${faixa[0]}</td>
           <td>${idade}</td>
           <td>R$ ${formatarBR(vN)}</td>
           <td>R$ ${formatarBR(v15)}</td>
-
         `;
       }
+
       tbody.appendChild(tr);
     });
 
@@ -696,13 +679,12 @@
 
     if(familiar){
       document.getElementById("total1").textContent = `Total 15% (3 meses): R$ ${formatarBR(total15)}`;
-      document.getElementById("total2").textContent = `Total 5% Familiar: R$ ${formatarBR(total15)}`;
+      document.getElementById("total2").textContent = `Total 5% Familiar: R$ ${formatarBR(total5)}`; // ✅ aqui estava errado
     } else {
       document.getElementById("total1").textContent = `Total normal: R$ ${formatarBR(totalNormal)}`;
       document.getElementById("total2").textContent = `Total 15% (3 meses): R$ ${formatarBR(total15)}`;
     }
 
-    // Mostra resultado e rola até ele
     document.getElementById("resultado").style.display = "block";
     setTimeout(() => {
       document.getElementById("ancoraResultado").scrollIntoView({
@@ -719,7 +701,7 @@
     const canvas = await html2canvas(area, {
       backgroundColor: "#ffffff",
       useCORS: true,
-      scale: 3
+      scale: 2  // ✅ 2 é suficiente e reduz chance de corte/artefato
     });
 
     return new Promise(resolve=>{
