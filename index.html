@@ -248,17 +248,20 @@
     background:#fff;
   }
   .tabela-precos::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image: url("logo-reinvent.png");
-    background-repeat: no-repeat;
-    background-position: center 70%;
-    background-size: contain;
-    opacity: 0.07;
-    z-index: 0;
-    pointer-events:none;
-  }
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: url("logo-reinvent.png");
+  background-repeat: no-repeat;
+
+  /* DESCE a marca d’água */
+  background-position: center bottom 12%;
+
+  background-size: 55%;      /* um pouco menor e mais elegante */
+  opacity: 0.06;             /* mais discreta */
+  z-index: 0;
+  pointer-events:none;
+}
   .tabela-precos th,
   .tabela-precos td{
     position: relative;
