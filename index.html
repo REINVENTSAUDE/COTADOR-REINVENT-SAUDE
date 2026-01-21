@@ -195,7 +195,7 @@
   }
 
   .logo-wrap{
-    height:46px;
+    height:56px;
     width:50%;
     overflow:visible;
     display:flex;
@@ -204,7 +204,7 @@
   }
 
   .logo{
-    width:46%;
+    width:56%;
     height:auto;
     max-width:100%;
     display:block;
@@ -223,7 +223,7 @@
   #nomePlanoCliente{
     margin:8px 0 4px;
     color:var(--texto);
-    font-size:18px;
+    font-size:17px;
     font-weight:800;
   }
 
@@ -588,9 +588,9 @@
     // Taxa adesão (somente informativo)
     const taxaEl = document.getElementById("taxaAdesao");
     if(isSuperSimples(tipoSelecionado)){
-      taxaEl.textContent = "Taxa de adesão: R$ 20,00 por beneficiário";
+      taxaEl.textContent = "Taxa de adesão: R$ 20,00 por beneficiário, demais informações devem ser repassadas pelo vendedor";
     } else {
-      taxaEl.textContent = "Taxa de adesão: R$ 35,00 por contrato";
+      taxaEl.textContent = "Taxa de adesão: R$ 35,00 por contrato, demais informações devem ser repassadas pelo vendedor";
     }
 
     // Familiar: SS não permite (força false)
