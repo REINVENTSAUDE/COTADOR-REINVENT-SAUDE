@@ -247,21 +247,35 @@
     overflow: hidden;
     background:#fff;
   }
-  .tabela-precos::before{
+  /* ===== Marca d’água APENAS nas linhas (tbody) ===== */
+.tabela-precos tbody{
+  position: relative;
+}
+
+.tabela-precos tbody::before{
   content:"";
   position:absolute;
   inset:0;
+
   background-image: url("logo-reinvent.png");
   background-repeat: no-repeat;
 
-  /* DESCE a marca d’água */
-  background-position: center bottom 32%;
+  /* centraliza SOMENTE na área das linhas */
+  background-position: center center;
 
-  background-size: 55%;      /* um pouco menor e mais elegante */
-  opacity: 0.08;             /* mais discreta */
+  background-size: 55%;
+  opacity: 0.08;
+
   z-index: 0;
   pointer-events:none;
 }
+
+/* garante que as células fiquem acima da marca */
+.tabela-precos tbody td{
+  position: relative;
+  z-index: 1;
+}
+
   .tabela-precos th,
   .tabela-precos td{
     position: relative;
