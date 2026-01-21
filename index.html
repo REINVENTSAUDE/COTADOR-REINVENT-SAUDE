@@ -299,6 +299,23 @@
   @media (max-width:520px){
     .logo-wrap{ width:160px; height:42px; }
   }
+/* Ajuste fino: dá mais espaço para a coluna "Idade" */
+#areaImagem .tabela-precos th:nth-child(1),
+#areaImagem .tabela-precos td:nth-child(1){ width:32%; }
+
+#areaImagem .tabela-precos th:nth-child(2),
+#areaImagem .tabela-precos td:nth-child(2){
+  width:16%;
+  text-align:center;          /* garante centralizado */
+  white-space:nowrap;         /* evita quebrar "Idade" */
+}
+
+#areaImagem .tabela-precos th:nth-child(3),
+#areaImagem .tabela-precos td:nth-child(3){ width:26%; }
+
+#areaImagem .tabela-precos th:nth-child(4),
+#areaImagem .tabela-precos td:nth-child(4){ width:26%; }
+
 </style>
 </head>
 
