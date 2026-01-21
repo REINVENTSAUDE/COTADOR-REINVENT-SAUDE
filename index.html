@@ -302,6 +302,21 @@
   gap: 6px;                   /* separa total1 e total2 */
   line-height: 1.25;
 }
+/* Evita quebra de linha nos valores (principalmente no html2canvas) */
+.tabela-precos td{
+  white-space: nowrap;
+}
+
+/* Dá mais espaço para a coluna "Valor Normal" (3ª coluna) */
+.tabela-precos th:nth-child(3),
+.tabela-precos td:nth-child(3){
+  min-width: 130px;
+}
+
+/* (Opcional) garante que a tabela use melhor o espaço */
+#areaImagem table{
+  table-layout: auto;
+}
 
 </style>
 </head>
@@ -591,6 +606,13 @@
     }
   }
 
+  function formatarBR(valor){
+  return valor.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
   function calcular(){
     if(!tipoSelecionado || !modoSelecionado){
       alert("Selecione o plano e depois PARCIAL ou TOTAL.");
@@ -653,15 +675,17 @@
         tr.innerHTML = `
           <td>${faixa[0]}</td>
           <td>${idade}</td>
-          <td>R$ ${v15.toFixed(2)}</td>
-          <td>R$ ${v5.toFixed(2)}</td>
+          <td>R$ ${formatarBR(vN)}</td>
+          <td>R$ ${formatarBR(v15)}</td>
+
         `;
       } else {
         tr.innerHTML = `
           <td>${faixa[0]}</td>
           <td>${idade}</td>
-          <td>R$ ${vN.toFixed(2)}</td>
-          <td>R$ ${v15.toFixed(2)}</td>
+          <td>R$ ${formatarBR(vN)}</td>
+          <td>R$ ${formatarBR(v15)}</td>
+
         `;
       }
       tbody.appendChild(tr);
@@ -671,11 +695,11 @@
     document.getElementById("linhaData").textContent = `Orçamento dia ${dataHojeBR()}`;
 
     if(familiar){
-      document.getElementById("total1").textContent = `Total 15% (3 meses): R$ ${total15.toFixed(2)}`;
-      document.getElementById("total2").textContent = `Total 5% Familiar: R$ ${total5.toFixed(2)}`;
+      document.getElementById("total1").textContent = `Total 15% (3 meses): R$ ${formatarBR(total15)}`;
+      document.getElementById("total2").textContent = `Total 5% Familiar: R$ ${formatarBR(total15)}`;
     } else {
-      document.getElementById("total1").textContent = `Total normal: R$ ${totalNormal.toFixed(2)}`;
-      document.getElementById("total2").textContent = `Total 15% (3 meses): R$ ${total15.toFixed(2)}`;
+      document.getElementById("total1").textContent = `Total normal: R$ ${formatarBR(totalNormal)}`;
+      document.getElementById("total2").textContent = `Total 15% (3 meses): R$ ${formatarBR(total15)}`;
     }
 
     // Mostra resultado e rola até ele
