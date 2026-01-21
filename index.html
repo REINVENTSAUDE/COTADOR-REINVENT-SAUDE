@@ -15,7 +15,7 @@
   }
 
   .taxa-adesao{
-    margin-top:6px;
+    margin-top:10px;
     text-align:right;
     font-size:13px;
     font-weight:700;
@@ -195,7 +195,7 @@
   }
 
   .logo-wrap{
-    height:56px;
+    height:76px;
     width:50%;
     overflow:visible;
     display:flex;
@@ -204,7 +204,7 @@
   }
 
   .logo{
-    width:56%;
+    width:76%;
     height:auto;
     max-width:100%;
     display:block;
@@ -273,6 +273,36 @@
   @media (max-width:520px){
     .logo-wrap{ width:160px; height:42px; }
   }
+/* ===== Espaçamento vertical maior no ORÇAMENTO (imagem) ===== */
+#areaImagem{
+  padding: 18px;              /* antes 14px */
+}
+
+#areaImagem #nomePlanoCliente{
+  margin: 10px 0 6px;         /* mais respiro acima/abaixo */
+}
+
+#areaImagem #linhaData{
+  margin: 0 0 12px;           /* mais distância até a tabela */
+}
+
+#areaImagem .tabela-precos{
+  margin-top: 10px;           /* afasta da data */
+  margin-bottom: 10px;        /* afasta da taxa */
+}
+
+#areaImagem .taxa-adesao{
+  margin-top: 10px;           /* afasta da tabela */
+  margin-bottom: 10px;        /* afasta dos totais */
+  line-height: 1.3;
+}
+
+#areaImagem .totais{
+  margin-top: 12px;           /* mais espaço antes dos totais */
+  gap: 6px;                   /* separa total1 e total2 */
+  line-height: 1.25;
+}
+
 </style>
 </head>
 
