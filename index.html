@@ -721,11 +721,11 @@ body.capturando .tabela-precos td{
   }
 
   function taxaAdesaoTexto(tipo, vidas){
-    if(isSuperSimples(tipo)){
-      return `Taxa de adesão: R$ 20,00 por beneficiário (R$ ${formatarBR(20*vidas)});
-    }
-    return `Taxa de adesão: R$ 35,00 por contrato;
+  if(isSuperSimples(tipo)){
+    return `Taxa de adesão: R$ 20,00 por beneficiário (R$ ${formatarBR(20*vidas)})`;
   }
+  return `Taxa de adesão: R$ 35,00 por contrato`;
+}
 
   function colgroupHTML(){
     return `
