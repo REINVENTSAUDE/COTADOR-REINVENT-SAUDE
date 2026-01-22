@@ -239,57 +239,20 @@
     font-weight:900;
   }
 
-  /* ===== Tabela (corrigida p/ html2canvas) ===== */
-  table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:13px;
-    margin-top:10px;
-    table-layout:fixed; /* IMPORTANTÍSSIMO */
-  }
-
-  th, td{
-    padding:8px;
-    border:1px solid #ddd;
-    text-align:center;
-    vertical-align:middle;
-  }
-
-  /* Cabeçalho azul */
-  thead .cab th{
-    background:var(--azul);
-    color:#fff;
-    white-space:normal;
-    line-height:1.15;
-    font-size:12px;
-    padding:7px 6px;
-  }
-
-  /* Linha de "título" dentro da tabela (branca) */
-  thead .titulo-tabela th{
-    background:#fff;
-    color:#111;
-    font-size:14px;
-    font-weight:900;
-    padding:10px 8px;
-    border:1px solid #ddd;
-  }
-
-  /* Valores nunca quebram (evita "R$" cair pra baixo no print) */
-  tbody td{ white-space:nowrap; }
-
-  /* ===== Marca d’água: SOMENTE dentro das tabelas (abaixo do cabeçalho) ===== */
+  /* ===== Tabela (corrigida p/ html2canvas iOS) ===== */
   .tabela-wrap{
     position:relative;
     overflow:hidden;
     border-radius:10px;
   }
+
+  /* Marca d’água só na área do corpo (abaixo dos headers) */
   .tabela-wrap::before{
     content:"";
     position:absolute;
     left:0;
     right:0;
-    top:110px;           /* abaixo do cabeçalho (linha do plano + cabeçalho azul) */
+    top:110px;     /* joga abaixo do cabeçalho */
     bottom:0;
     background-image:url("logo-reinvent.png");
     background-repeat:no-repeat;
@@ -299,13 +262,65 @@
     z-index:0;
     pointer-events:none;
   }
-  /* garante que tabela/conteúdo fiquem acima da marca */
+
   .tabela-wrap table,
   .tabela-wrap th,
   .tabela-wrap td{
     position:relative;
     z-index:1;
   }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+    table-layout:fixed; /* crucial pra imagem */
+  }
+
+  /* Fonte um pouco menor só na tabela pra não estourar na imagem */
+  .tabela-wrap table{ font-size:12px; }
+
+  th, td{
+    padding:8px 10px;
+    border:1px solid #ddd;
+    text-align:center;
+    vertical-align:middle;
+
+    /* evita “desenhar por cima” na captura */
+    overflow:hidden;
+  }
+
+  thead .cab th{
+    background:var(--azul);
+    color:#fff;
+    white-space:normal;
+    line-height:1.15;
+    font-size:12px;
+    padding:7px 6px;
+  }
+
+  thead .titulo-tabela th{
+    background:#fff;
+    color:#111;
+    font-size:14px;
+    font-weight:900;
+    padding:10px 8px;
+    border:1px solid #ddd;
+  }
+
+  /* Valores sem quebra */
+  tbody td{ white-space:nowrap; }
+
+  /* Força largura das colunas (colgroup + nth-child) */
+  col.col-faixa{ width:38%; }
+  col.col-idade{ width:14%; }
+  col.col-normal{ width:24%; }
+  col.col-15{ width:24%; }
+
+  th:nth-child(1), td:nth-child(1){ width:38%; }
+  th:nth-child(2), td:nth-child(2){ width:14%; }
+  th:nth-child(3), td:nth-child(3){ width:24%; }
+  th:nth-child(4), td:nth-child(4){ width:24%; }
 
   .taxa-adesao{
     margin-top:10px;
@@ -348,7 +363,7 @@
 
   @media (max-width:520px){
     .logo-wrap{ width:160px; height:52px; }
-    .tabela-wrap::before{ top:118px; } /* ajuste mobile */
+    .tabela-wrap::before{ top:118px; }
   }
 </style>
 </head>
@@ -413,7 +428,6 @@
 
   <div id="resultado">
     <div id="areaImagem">
-      <!-- logos só uma vez -->
       <div class="logos">
         <div class="logo-wrap">
           <img src="logo-reinvent.png" class="logo reinvent" alt="Reinvent Saúde" />
@@ -423,9 +437,7 @@
         </div>
       </div>
 
-      <!-- data só uma vez -->
       <div class="linhaDataGeral" id="linhaDataGeral"></div>
-
       <div id="orcamentosContainer"></div>
     </div>
 
@@ -673,10 +685,10 @@
   function colgroupHTML(){
     return `
       <colgroup>
-        <col style="width:40%">
-        <col style="width:16%">
-        <col style="width:22%">
-        <col style="width:22%">
+        <col class="col-faixa">
+        <col class="col-idade">
+        <col class="col-normal">
+        <col class="col-15">
       </colgroup>
     `;
   }
@@ -748,7 +760,6 @@
       }
 
       const isSS = isSuperSimples(sel.tipo);
-
       const aplicarFamiliar = (!isSS) && familiarAtivo;
       const aplicarOdonto   = (isSS) && odontoAtivo;
 
