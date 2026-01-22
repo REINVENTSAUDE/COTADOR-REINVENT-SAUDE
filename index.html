@@ -365,6 +365,34 @@
     .logo-wrap{ width:160px; height:52px; }
     .tabela-wrap::before{ top:118px; }
   }
+  /* ===== MODO CAPTURA (só na imagem) ===== */
+body.capturando #areaImagem{
+  width: 760px;
+  max-width: 760px;
+}
+
+body.capturando .tabela-wrap{
+  overflow: visible;
+}
+
+body.capturando .tabela-precos th,
+body.capturando .tabela-precos td{
+  overflow: visible;
+  white-space: nowrap;
+}
+
+body.capturando .tabela-precos th:nth-child(1),
+body.capturando .tabela-precos td:nth-child(1){ width: 260px; }
+body.capturando .tabela-precos th:nth-child(2),
+body.capturando .tabela-precos td:nth-child(2){ width: 90px; }
+body.capturando .tabela-precos th:nth-child(3),
+body.capturando .tabela-precos td:nth-child(3){ width: 190px; }
+body.capturando .tabela-precos th:nth-child(4),
+body.capturando .tabela-precos td:nth-child(4){ width: 190px; }
+
+body.capturando .tabela-precos thead th{
+  white-space: normal;
+}
 </style>
 </head>
 
@@ -867,6 +895,8 @@
     blurActive();
 
     const area = document.getElementById("areaImagem");
+    document.body.classList.add("capturando");
+await new Promise(r => setTimeout(r, 80));
 
     const canvas = await html2canvas(area, {
       backgroundColor: "#ffffff",
@@ -875,7 +905,8 @@
       windowWidth: area.scrollWidth,
       windowHeight: area.scrollHeight
     });
-
+    document.body.classList.remove("capturando");
+    
     return new Promise(resolve=>{
       canvas.toBlob(async (blob)=>{
         try{
