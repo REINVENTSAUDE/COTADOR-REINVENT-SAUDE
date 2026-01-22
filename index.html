@@ -109,10 +109,7 @@
     gap:8px;
   }
 
-  .opcao{
-    font-size:14px;
-    padding:10px 8px;
-  }
+  .opcao{ font-size:14px; padding:10px 8px; }
 
   .tipo:hover, .opcao:hover{ transform: scale(1.02); }
 
@@ -133,7 +130,7 @@
   /* ===== Entrada ===== */
   .idades{ margin-top:12px; }
 
-  /* iOS: evita zoom ao focar campos (font-size >= 16px) */
+  /* iOS: evita zoom ao focar (>=16px) */
   #idades{
     width:100%;
     height:40px;
@@ -180,7 +177,7 @@
   /* ===== Resultado ===== */
   #resultado{ display:none; margin-top:16px; }
 
-  /* Área que vira imagem (2 orçamentos juntos) */
+  /* Área que vira imagem */
   #areaImagem{
     border:1px solid #eee;
     border-radius:12px;
@@ -188,20 +185,12 @@
     background:#fff;
   }
 
-  .orcamento{
-    border:1px solid #f0f0f0;
-    border-radius:12px;
-    padding:14px;
-    margin-top:12px;
-  }
-  .orcamento:first-child{ margin-top:0; }
-
   .logos{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:14px;
-    margin-bottom:10px;
+    margin-bottom:8px;
   }
 
   .logo-wrap{
@@ -228,53 +217,68 @@
     transform-origin: center;
   }
 
-  .nomePlanoCliente{
-    margin:10px 0 6px;
-    color:var(--texto);
-    font-size:15px; /* menor na imagem */
+  /* Data (uma vez no topo da imagem) */
+  .linhaDataGeral{
+    margin:0 0 12px;
+    font-size:12px;
+    color:#444;
     font-weight:900;
-    line-height:1.2;
   }
-  .nomePlanoCliente .total-red{
+
+  /* Bloco de cada orçamento */
+  .orcamento{
+    border:1px solid #f0f0f0;
+    border-radius:12px;
+    padding:14px;
+    margin-top:12px;
+  }
+  .orcamento:first-child{ margin-top:0; }
+
+  .total-red{
     color:var(--vermelho);
     font-weight:900;
   }
 
-  .linhaData{
-    margin:0 0 12px;
-    font-size:12px;
-    color:#444;
-    font-weight:800;
-  }
-
-  /* ===== Tabela =====
-     Ajuste crucial: colunas travadas via COLGROUP (html2canvas respeita melhor),
-     e cabeçalho pode quebrar linha para não cortar textos.
-  */
+  /* ===== Tabela (corrigida p/ html2canvas) ===== */
   table{
     width:100%;
     border-collapse:collapse;
     font-size:13px;
     margin-top:10px;
-    table-layout:fixed; /* mantém colgroup firme */
+    table-layout:fixed; /* IMPORTANTÍSSIMO */
   }
+
   th, td{
     padding:8px;
     border:1px solid #ddd;
     text-align:center;
     vertical-align:middle;
   }
-  th{
+
+  /* Cabeçalho azul (pode quebrar linha sem cortar palavras) */
+  thead .cab th{
     background:var(--azul);
     color:#fff;
-    white-space:normal;   /* permite quebrar no cabeçalho */
+    white-space:normal;
     line-height:1.15;
-  }
-  td{
-    white-space:nowrap;   /* valores nunca quebram */
+    font-size:12px;   /* menor só no cabeçalho */
+    padding:7px 6px;  /* mais compacto */
   }
 
-  /* Marca d’água apenas nas linhas (tbody) */
+  /* Linha de "título" dentro da tabela (branca) */
+  thead .titulo-tabela th{
+    background:#fff;
+    color:#111;
+    font-size:14px;
+    font-weight:900;
+    padding:10px 8px;
+    border:1px solid #ddd;
+  }
+
+  /* Valores nunca quebram (evita "R$" cair pra baixo) */
+  tbody td{ white-space:nowrap; }
+
+  /* Marca d’água só no corpo da tabela */
   .tabela-precos tbody{ position:relative; }
   .tabela-precos tbody::before{
     content:"";
@@ -308,7 +312,7 @@
     display:grid;
     gap:6px;
     line-height:1.25;
-    font-size:13px; /* menor na imagem */
+    font-size:13px;
   }
 
   .odonto-info{
@@ -346,9 +350,8 @@
   <div class="subtitulo">Fortaleza - CE</div>
 
   <div class="planos">
-
     <div class="grupo-plano" data-plan="ind_enf">
-      <button class="tipo" onclick="toggleTipo('ind_enf', this)"><small>IND - ENFERMARIA</small></button>
+      <button class="tipo" onclick="toggleTipo('ind_enf')"><small>IND - ENFERMARIA</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ind_enf" data-modo="parcial" onclick="toggleModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ind_enf" data-modo="total" onclick="toggleModo(this)">TOTAL</button>
@@ -356,7 +359,7 @@
     </div>
 
     <div class="grupo-plano" data-plan="ind_amb">
-      <button class="tipo" onclick="toggleTipo('ind_amb', this)"><small>IND - AMBULATORIAL</small></button>
+      <button class="tipo" onclick="toggleTipo('ind_amb')"><small>IND - AMBULATORIAL</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ind_amb" data-modo="parcial" onclick="toggleModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ind_amb" data-modo="total" onclick="toggleModo(this)">TOTAL</button>
@@ -364,7 +367,7 @@
     </div>
 
     <div class="grupo-plano" data-plan="ind_apto">
-      <button class="tipo" onclick="toggleTipo('ind_apto', this)"><small>IND - APARTAMENTO</small></button>
+      <button class="tipo" onclick="toggleTipo('ind_apto')"><small>IND - APARTAMENTO</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ind_apto" data-modo="parcial" onclick="toggleModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ind_apto" data-modo="total" onclick="toggleModo(this)">TOTAL</button>
@@ -372,7 +375,7 @@
     </div>
 
     <div class="grupo-plano" data-plan="ss_enf">
-      <button class="tipo" onclick="toggleTipo('ss_enf', this)"><small>SS - ENFERMARIA</small></button>
+      <button class="tipo" onclick="toggleTipo('ss_enf')"><small>SS - ENFERMARIA</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ss_enf" data-modo="parcial" onclick="toggleModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ss_enf" data-modo="total" onclick="toggleModo(this)">TOTAL</button>
@@ -380,13 +383,12 @@
     </div>
 
     <div class="grupo-plano" data-plan="ss_amb">
-      <button class="tipo" onclick="toggleTipo('ss_amb', this)"><small>SS - AMBULATORIAL</small></button>
+      <button class="tipo" onclick="toggleTipo('ss_amb')"><small>SS - AMBULATORIAL</small></button>
       <div class="opcoes">
         <button class="opcao disabled" data-plan="ss_amb" data-modo="parcial" onclick="toggleModo(this)">PARCIAL</button>
         <button class="opcao disabled" data-plan="ss_amb" data-modo="total" onclick="toggleModo(this)">TOTAL</button>
       </div>
     </div>
-
   </div>
 
   <div class="idades">
@@ -400,8 +402,22 @@
 
   <div id="resultado">
     <div id="areaImagem">
+      <!-- logos só uma vez -->
+      <div class="logos">
+        <div class="logo-wrap">
+          <img src="logo-reinvent.png" class="logo reinvent" alt="Reinvent Saúde" />
+        </div>
+        <div class="logo-wrap">
+          <img src="logo-hapvida.png" class="logo hapvida" alt="Hapvida" />
+        </div>
+      </div>
+
+      <!-- data só uma vez -->
+      <div class="linhaDataGeral" id="linhaDataGeral"></div>
+
       <div id="orcamentosContainer"></div>
     </div>
+
     <button class="share" onclick="compartilharOrcamentos()">Compartilhar Orçamento</button>
   </div>
 </div>
@@ -412,13 +428,9 @@
   const LIMITE_ORCAMENTOS = 2;
   const ODONTO_POR_VIDA = 23.15;
 
-  // Tipos ativos (habilita clicar nas opções)
   const tiposAtivos = new Set();
-  // Orçamentos selecionados (máx 2): { tipo, modo }
   let selecionados = [];
 
-  // ===== Nome completo para o cliente =====
-  // Ajuste pedido: substituir "INDIVIDUAL" por "NOSSO PLANO"
   const nomesClienteBase = {
     ind_enf: "NOSSO PLANO ENFERMARIA COPARTICIPAÇÃO",
     ind_amb: "NOSSO PLANO AMBULATORIAL COPARTICIPAÇÃO",
@@ -429,6 +441,15 @@
 
   function isSuperSimples(tipo){
     return typeof tipo === "string" && tipo.startsWith("ss_");
+  }
+
+  function nomeClienteCompletoTexto(tipo, modo){
+    let base = nomesClienteBase[tipo] || "";
+    if(isSuperSimples(tipo)){
+      base = base.replace(/^SUPER SIMPLES /, "PLANO EMPRESARIAL ");
+    }
+    const mod = (modo || "").toUpperCase();
+    return `${base} ${mod}`.trim();
   }
 
   function nomeClienteCompletoHTML(tipo, modo){
@@ -526,13 +547,6 @@
     return lista.find(f => idade >= f[1] && idade <= f[2]);
   }
 
-  function parseIdades(){
-    return document.getElementById("idades").value
-      .split(",")
-      .map(s => parseInt(s.trim(), 10))
-      .filter(n => Number.isFinite(n));
-  }
-
   // ===== Toast =====
   let toastTimer = null;
   function showToast(msg){
@@ -546,6 +560,33 @@
   function limparResultado(){
     document.getElementById("resultado").style.display = "none";
     document.getElementById("orcamentosContainer").innerHTML = "";
+  }
+
+  function atualizarCheckboxes(){
+    const temIND = selecionados.some(s => !isSuperSimples(s.tipo));
+    const temSS  = selecionados.some(s => isSuperSimples(s.tipo));
+
+    const container = document.getElementById("opcoesExtras");
+    container.innerHTML = "";
+
+    if(!temIND && !temSS) return;
+
+    if(temIND){
+      container.insertAdjacentHTML("beforeend", `
+        <label class="opt-label">
+          <input type="checkbox" id="familiar1grau" />
+          Familiar 1º grau (5% sobre o valor normal)
+        </label>
+      `);
+    }
+    if(temSS){
+      container.insertAdjacentHTML("beforeend", `
+        <label class="opt-label">
+          <input type="checkbox" id="odontoSS" />
+          Odonto (somar R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário)
+        </label>
+      `);
+    }
   }
 
   function atualizarOpcoesAtivas(){
@@ -566,7 +607,6 @@
       });
     });
 
-    // marca opções selecionadas
     document.querySelectorAll(".opcao").forEach(op=>{
       const tipo = op.dataset.plan;
       const modo = op.dataset.modo;
@@ -578,34 +618,6 @@
     atualizarCheckboxes();
   }
 
-  function atualizarCheckboxes(){
-    const temIND = selecionados.some(s => !isSuperSimples(s.tipo));
-    const temSS  = selecionados.some(s => isSuperSimples(s.tipo));
-
-    const container = document.getElementById("opcoesExtras");
-    container.innerHTML = "";
-
-    if(!temIND && !temSS) return;
-
-    if(temIND){
-      container.insertAdjacentHTML("beforeend", `
-        <label class="opt-label" id="lblFamiliar">
-          <input type="checkbox" id="familiar1grau" />
-          Familiar 1º grau (5% sobre o valor normal)
-        </label>
-      `);
-    }
-    if(temSS){
-      container.insertAdjacentHTML("beforeend", `
-        <label class="opt-label" id="lblOdonto">
-          <input type="checkbox" id="odontoSS" />
-          Odonto (somar R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário)
-        </label>
-      `);
-    }
-  }
-
-  // ===== Seleção =====
   function toggleTipo(planKey){
     if(tiposAtivos.has(planKey)){
       tiposAtivos.delete(planKey);
@@ -644,48 +656,11 @@
     atualizarOpcoesAtivas();
   }
 
-  // ===== Cabeçalho + colgroup travado (corrige a imagem) =====
-  function colgroupHTML(familiar){
-    // travando largura: faixa / idade / valor / valor
-    if(familiar){
-      return `
-        <colgroup>
-          <col style="width:34%">
-          <col style="width:14%">
-          <col style="width:26%">
-          <col style="width:26%">
-        </colgroup>
-      `;
-    }
-    return `
-      <colgroup>
-        <col style="width:34%">
-        <col style="width:14%">
-        <col style="width:26%">
-        <col style="width:26%">
-      </colgroup>
-    `;
-  }
-
-  function cabecalhoTabelaHTML(familiar){
-    if(familiar){
-      return `
-        <tr>
-          <th>Faixa Etária</th>
-          <th>Idade</th>
-          <th>15% (3 meses)</th>
-          <th>5% Familiar</th>
-        </tr>
-      `;
-    }
-    return `
-      <tr>
-        <th>Faixa Etária</th>
-        <th>Idade</th>
-        <th>Valor Normal</th>
-        <th>15% (3 meses)</th>
-      </tr>
-    `;
+  function parseIdades(){
+    return document.getElementById("idades").value
+      .split(",")
+      .map(s => parseInt(s.trim(), 10))
+      .filter(n => Number.isFinite(n));
   }
 
   function taxaAdesaoTexto(tipo, vidas){
@@ -695,10 +670,45 @@
     return `Taxa de adesão: R$ 35,00 por contrato. Demais informações devem ser repassadas pelo vendedor.`;
   }
 
-  // ===== Cálculo =====
-  function calcular(){
-    // iPhone: tira o foco do campo para não ficar com zoom
+  // colunas MAIS LARGAS p/ Idade e para não cortar cabeçalho no canvas
+  function colgroupHTML(){
+    return `
+      <colgroup>
+        <col style="width:40%">
+        <col style="width:16%">
+        <col style="width:22%">
+        <col style="width:22%">
+      </colgroup>
+    `;
+  }
+
+  function cabecalhoTabelaHTML(familiar){
+    if(familiar){
+      return `
+        <tr class="cab">
+          <th>Faixa<br>Etária</th>
+          <th>Idade</th>
+          <th>15%<br>(3 meses)</th>
+          <th>5%<br>Familiar</th>
+        </tr>
+      `;
+    }
+    return `
+      <tr class="cab">
+        <th>Faixa<br>Etária</th>
+        <th>Idade</th>
+        <th>Valor<br>Normal</th>
+        <th>15%<br>(3 meses)</th>
+      </tr>
+    `;
+  }
+
+  function blurActive(){
     if (document.activeElement) document.activeElement.blur();
+  }
+
+  function calcular(){
+    blurActive();
 
     if(selecionados.length === 0){
       alert("Selecione até 2 orçamentos (tipo + parcial/total).");
@@ -728,9 +738,10 @@
     const cont = document.getElementById("orcamentosContainer");
     cont.innerHTML = "";
 
+    document.getElementById("linhaDataGeral").textContent = `Orçamento dia ${dataHojeBR()}`;
     document.getElementById("resultado").style.display = "block";
 
-    selecionados.forEach(sel=>{
+    selecionados.forEach((sel)=>{
       const chave = `${sel.tipo}_${sel.modo}`;
       const lista = tabelas[chave];
       if(!lista){
@@ -755,7 +766,6 @@
         let vN = Number(faixa[3]) || 0;
         let v15 = Number(faixa[4]) || 0;
 
-        // Odonto: soma por vida no normal e no 15%
         if(aplicarOdonto){
           vN += ODONTO_POR_VIDA;
           v15 += ODONTO_POR_VIDA;
@@ -768,7 +778,6 @@
         total5 += v5;
 
         if(aplicarFamiliar){
-          // quando familiar: exibe 15% e 5% (sobre o normal)
           rowsHTML += `
             <tr>
               <td>${faixa[0]}</td>
@@ -789,8 +798,7 @@
         }
       });
 
-      const nomeHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
-      const dataHTML = `Orçamento dia ${dataHojeBR()}`;
+      const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
       const taxa = taxaAdesaoTexto(sel.tipo, idades.length);
 
       let total1 = "";
@@ -811,22 +819,17 @@
 
       cont.insertAdjacentHTML("beforeend", `
         <div class="orcamento">
-          <div class="logos">
-            <div class="logo-wrap">
-              <img src="logo-reinvent.png" class="logo reinvent" alt="Reinvent Saúde" />
-            </div>
-            <div class="logo-wrap">
-              <img src="logo-hapvida.png" class="logo hapvida" alt="Hapvida" />
-            </div>
-          </div>
-
-          <div class="nomePlanoCliente">${nomeHTML}</div>
-          <div class="linhaData">${dataHTML}</div>
-
           <table class="tabela-precos">
-            ${colgroupHTML(aplicarFamiliar)}
-            <thead>${cabecalhoTabelaHTML(aplicarFamiliar)}</thead>
-            <tbody>${rowsHTML}</tbody>
+            ${colgroupHTML()}
+            <thead>
+              <tr class="titulo-tabela">
+                <th colspan="4">${nomeDentroTabelaHTML}</th>
+              </tr>
+              ${cabecalhoTabelaHTML(aplicarFamiliar)}
+            </thead>
+            <tbody>
+              ${rowsHTML}
+            </tbody>
           </table>
 
           <div class="taxa-adesao">${taxa}</div>
@@ -849,8 +852,9 @@
     }, 200);
   }
 
-  // ===== Compartilhar (imagem com os 2 orçamentos juntos) =====
   async function compartilharOrcamentos(){
+    blurActive();
+
     const area = document.getElementById("areaImagem");
 
     const canvas = await html2canvas(area, {
@@ -888,7 +892,7 @@
     });
   }
 
-  // Inicializa: nenhum ativo
+  // init
   atualizarOpcoesAtivas();
 </script>
 </body>
