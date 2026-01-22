@@ -255,14 +255,14 @@
     vertical-align:middle;
   }
 
-  /* Cabeçalho azul (pode quebrar linha sem cortar palavras) */
+  /* Cabeçalho azul */
   thead .cab th{
     background:var(--azul);
     color:#fff;
     white-space:normal;
     line-height:1.15;
-    font-size:12px;   /* menor só no cabeçalho */
-    padding:7px 6px;  /* mais compacto */
+    font-size:12px;
+    padding:7px 6px;
   }
 
   /* Linha de "título" dentro da tabela (branca) */
@@ -275,24 +275,34 @@
     border:1px solid #ddd;
   }
 
-  /* Valores nunca quebram (evita "R$" cair pra baixo) */
+  /* Valores nunca quebram (evita "R$" cair pra baixo no print) */
   tbody td{ white-space:nowrap; }
 
-  /* Marca d’água só no corpo da tabela */
-  .tabela-precos tbody{ position:relative; }
-  .tabela-precos tbody::before{
+  /* ===== Marca d’água: SOMENTE dentro das tabelas (abaixo do cabeçalho) ===== */
+  .tabela-wrap{
+    position:relative;
+    overflow:hidden;
+    border-radius:10px;
+  }
+  .tabela-wrap::before{
     content:"";
     position:absolute;
-    inset:0;
+    left:0;
+    right:0;
+    top:110px;           /* abaixo do cabeçalho (linha do plano + cabeçalho azul) */
+    bottom:0;
     background-image:url("logo-reinvent.png");
     background-repeat:no-repeat;
-    background-position:center 58%;
+    background-position:center 55%;
     background-size:55%;
     opacity:.06;
     z-index:0;
     pointer-events:none;
   }
-  .tabela-precos tbody td{
+  /* garante que tabela/conteúdo fiquem acima da marca */
+  .tabela-wrap table,
+  .tabela-wrap th,
+  .tabela-wrap td{
     position:relative;
     z-index:1;
   }
@@ -338,6 +348,7 @@
 
   @media (max-width:520px){
     .logo-wrap{ width:160px; height:52px; }
+    .tabela-wrap::before{ top:118px; } /* ajuste mobile */
   }
 </style>
 </head>
@@ -443,15 +454,6 @@
     return typeof tipo === "string" && tipo.startsWith("ss_");
   }
 
-  function nomeClienteCompletoTexto(tipo, modo){
-    let base = nomesClienteBase[tipo] || "";
-    if(isSuperSimples(tipo)){
-      base = base.replace(/^SUPER SIMPLES /, "PLANO EMPRESARIAL ");
-    }
-    const mod = (modo || "").toUpperCase();
-    return `${base} ${mod}`.trim();
-  }
-
   function nomeClienteCompletoHTML(tipo, modo){
     let base = nomesClienteBase[tipo] || "";
     if(isSuperSimples(tipo)){
@@ -479,7 +481,6 @@
     });
   }
 
-  // ===== Tabelas =====
   const tabelas = {
     ind_enf_parcial: [
       ["00 a 18",0,18,241.68,205.43],["19 a 23",19,23,311.18,264.50],["24 a 28",24,28,354.18,301.05],
@@ -547,7 +548,6 @@
     return lista.find(f => idade >= f[1] && idade <= f[2]);
   }
 
-  // ===== Toast =====
   let toastTimer = null;
   function showToast(msg){
     const t = document.getElementById("toast");
@@ -670,7 +670,6 @@
     return `Taxa de adesão: R$ 35,00 por contrato. Demais informações devem ser repassadas pelo vendedor.`;
   }
 
-  // colunas MAIS LARGAS p/ Idade e para não cortar cabeçalho no canvas
   function colgroupHTML(){
     return `
       <colgroup>
@@ -721,7 +720,6 @@
       return;
     }
 
-    // SS: mínimo 2 vidas
     for(const sel of selecionados){
       if(isSuperSimples(sel.tipo) && idades.length < 2){
         alert("Plano Empresarial (SS): mínimo 2 vidas (duas idades).");
@@ -819,18 +817,20 @@
 
       cont.insertAdjacentHTML("beforeend", `
         <div class="orcamento">
-          <table class="tabela-precos">
-            ${colgroupHTML()}
-            <thead>
-              <tr class="titulo-tabela">
-                <th colspan="4">${nomeDentroTabelaHTML}</th>
-              </tr>
-              ${cabecalhoTabelaHTML(aplicarFamiliar)}
-            </thead>
-            <tbody>
-              ${rowsHTML}
-            </tbody>
-          </table>
+          <div class="tabela-wrap">
+            <table class="tabela-precos">
+              ${colgroupHTML()}
+              <thead>
+                <tr class="titulo-tabela">
+                  <th colspan="4">${nomeDentroTabelaHTML}</th>
+                </tr>
+                ${cabecalhoTabelaHTML(aplicarFamiliar)}
+              </thead>
+              <tbody>
+                ${rowsHTML}
+              </tbody>
+            </table>
+          </div>
 
           <div class="taxa-adesao">${taxa}</div>
 
@@ -892,7 +892,6 @@
     });
   }
 
-  // init
   atualizarOpcoesAtivas();
 </script>
 </body>
