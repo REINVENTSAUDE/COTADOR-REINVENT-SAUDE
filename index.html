@@ -472,6 +472,25 @@ body.capturando .total-red{
       padding:8px 6px;
     }
   }
+  /* ===== Ajuda passo a passo ===== */
+.ajuda-passo{
+  margin-top:18px;
+  padding:14px 6px;
+  text-align:center;
+  color:#555;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.ajuda-titulo{
+  font-weight:900;
+  color:#333;
+  margin-bottom:8px;
+}
+
+.ajuda-linha{
+  margin-top:4px;
+}
 </style>
 </head>
 
@@ -532,6 +551,16 @@ body.capturando .total-red{
 
   <button class="calcular" onclick="calcular()">Calcular Orçamento</button>
   <div id="ancoraResultado"></div>
+<!-- AJUDA PASSO A PASSO -->
+<div id="ajudaPasso" class="ajuda-passo">
+  <div class="ajuda-titulo">Não sabe como cotar?</div>
+
+  <div class="ajuda-linha">1️⃣ Selecione o <b>tipo de plano</b></div>
+  <div class="ajuda-linha">2️⃣ Escolha <b>Parcial</b> ou <b>Total</b></div>
+  <div class="ajuda-linha">3️⃣ Digite as <b>idades</b></div>
+  <div class="ajuda-linha">4️⃣ Você pode fazer <b>até 2 orçamentos</b> de uma vez</div>
+  <div class="ajuda-linha">5️⃣ Clique em <b>Compartilhar</b> ou <b>Baixar</b> e pronto ✅</div>
+</div>
 
   <div id="resultado">
     <div id="areaImagem">
@@ -595,6 +624,14 @@ body.capturando .total-red{
     const yyyy = d.getFullYear();
     return `${dd}/${mm}/${yyyy}`;
   }
+  function esconderAjuda(){
+  const ajuda = document.getElementById("ajudaPasso");
+  if(ajuda) ajuda.style.display = "none";
+}
+  function mostrarAjuda(){
+  const ajuda = document.getElementById("ajudaPasso");
+  if(ajuda) ajuda.style.display = "block";
+}
 
   function formatarBR(valor){
     return Number(valor).toLocaleString("pt-BR", {
@@ -682,6 +719,7 @@ body.capturando .total-red{
   function limparResultado(){
     document.getElementById("resultado").style.display = "none";
     document.getElementById("orcamentosContainer").innerHTML = "";
+    mostrarAjuda();
   }
 
   function atualizarCheckboxes(){
@@ -835,6 +873,7 @@ body.capturando .total-red{
       alert("Selecione até 2 orçamentos (tipo + parcial/total).");
       return;
     }
+    esconderAjuda();
 
     const idades = parseIdades();
     if(idades.length === 0){
