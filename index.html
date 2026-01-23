@@ -899,49 +899,60 @@
   function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
   async function gerarImagem(modo = "share"){
-    const area = document.getElementById("areaImagem");
-    if(!area) return;
+  const area = document.getElementById("areaImagem");
 
-    // >>> ativa modo captura (você já tinha o CSS, faltava só ativar)
-    document.body.classList.add("capturando");
+  // ativa estilos de captura (se você já usa)
+  document.body.classList.add("capturando");
 
-    // garante que o layout "assente" no iOS antes do html2canvas
-    await sleep(120);
+  // dá um respiro pro browser aplicar o CSS antes da captura
+  await new Promise(r => requestAnimationFrame(() => r()));
 
-    try{
-      const canvas = await html2canvas(area, {
-        backgroundColor: "#ffffff",
-        useCORS: true,
-        scale: 3
-      });
+  const canvas = await html2canvas(area, {
+    backgroundColor: "#ffffff",
+    useCORS: true,
+    scale: 3
+  });
 
-      canvas.toBlob(async (blob)=>{
-        try{
-          const file = new File([blob], "orcamento_reinvent_hapvida.png", { type:"image/png" });
+  // volta ao normal
+  document.body.classList.remove("capturando");
 
-          if(modo === "share" && navigator.share && navigator.canShare && navigator.canShare({ files:[file] })){
-            await navigator.share({ title: "Orçamento", files: [file] });
-          } else {
-            const a = document.createElement("a");
-            a.href = URL.createObjectURL(blob);
-            a.download = "orcamento_reinvent_hapvida.png";
-            a.click();
-            URL.revokeObjectURL(a.href);
-          }
-        } catch(e){
-          const a = document.createElement("a");
-          a.href = canvas.toDataURL("image/png");
-          a.download = "orcamento_reinvent_hapvida.png";
-          a.click();
-        } finally {
-          document.body.classList.remove("capturando");
-        }
-      }, "image/png");
-    } catch(e){
-      document.body.classList.remove("capturando");
-      alert("Não foi possível gerar a imagem agora. Tente novamente.");
-    }
+  // transforma toBlob em await (isso mantém o "clique" vivo no iOS)
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+  if(!blob){
+    alert("Não foi possível gerar a imagem. Tente novamente.");
+    return;
   }
+
+  const file = new File([blob], "orcamento_reinvent_hapvida.png", { type:"image/png" });
+
+  // --- COMPARTILHAR ---
+  if(modo === "share"){
+    const podeCompartilhar =
+      navigator.share &&
+      (!navigator.canShare || navigator.canShare({ files:[file] }));
+
+    if(podeCompartilhar){
+      try{
+        await navigator.share({ title: "Orçamento", files: [file] });
+        return; // sucesso
+      } catch(e){
+        // se o usuário cancelar, só sai sem baixar
+        return;
+      }
+    }
+
+    // Se iPhone bloquear share por algum motivo, avisa e NÃO força download
+    alert("No seu iPhone, o compartilhamento não ficou disponível. Use 'Baixar Orçamento' e compartilhe pela galeria.");
+    return;
+  }
+
+  // --- DOWNLOAD ---
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "orcamento_reinvent_hapvida.png";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
 
   atualizarOpcoesAtivas();
 </script>
