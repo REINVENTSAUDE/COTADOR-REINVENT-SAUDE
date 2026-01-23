@@ -243,10 +243,12 @@
 
   /* ===== Tabela (corrigida p/ html2canvas iOS) ===== */
   .tabela-wrap{
-    position:relative;
-    overflow:hidden;
-    border-radius:10px;
-  }
+  position:relative;
+  overflow-x:auto;      /* permite rolar lateral */
+  overflow-y:hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius:10px;
+}
 
   /* Marca d’água só na área do corpo (abaixo dos headers) */
   .tabela-wrap::before{
@@ -278,7 +280,9 @@
     margin-top:10px;
     table-layout:fixed;
   }
-
+  .tabela-precos{
+  min-width: 520px;   /* ajuste: 480–600 conforme seu gosto */
+}
   .tabela-wrap table{ font-size:14px; }
 
   th, td{
@@ -395,6 +399,20 @@
   body.capturando .tabela-precos td:nth-child(3){ width: 190px; }
   body.capturando .tabela-precos th:nth-child(4),
   body.capturando .tabela-precos td:nth-child(4){ width: 190px; }
+  @media (max-width: 420px){
+  .tabela-wrap table{ font-size:13px; }
+  th, td{ padding:6px 6px; }
+
+  thead .cab th{
+    font-size:11px;
+    padding:6px 4px;
+  }
+
+  thead .titulo-tabela th{
+    font-size:12px;
+    padding:8px 6px;
+  }
+}
 </style>
 </head>
 
