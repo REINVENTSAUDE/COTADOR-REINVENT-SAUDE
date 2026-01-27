@@ -890,6 +890,13 @@ body.capturando .total-red{
       alert("Informe ao menos uma idade (ex: 23, 35, 62).");
       return;
     }
+    if (typeof gtag === "function") {
+  gtag("event", "orcamento_calculado", {
+    orcamentos_qtd: selecionados.length,
+    tem_ss: selecionados.some(s => isSuperSimples(s.tipo)) ? 1 : 0,
+    tem_ind: selecionados.some(s => !isSuperSimples(s.tipo)) ? 1 : 0
+  });
+}
 
     for(const sel of selecionados){
       if(isSuperSimples(sel.tipo) && idades.length < 2){
