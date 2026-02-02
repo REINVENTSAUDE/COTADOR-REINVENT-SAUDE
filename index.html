@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WRRZ5R5EXZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRRZ5R5EXZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WRRZ5R5EXZ');
+  </script>
 
-  gtag('config', 'G-WRRZ5R5EXZ');
-</script>
-  
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,25 +86,23 @@
 
   /* =========================================================
      ✅ NOVO LAYOUT: BOTÕES “CHIP”
-     - Tipo (esquerda) mais baixo e moderno
-     - Parcial/Total (direita) lado a lado
      ========================================================= */
 
   .planos{
     display:grid;
-    gap:16px; /* menos altura */
+    gap:16px;
   }
 
   .grupo-plano{
     display:grid;
-    grid-template-columns: 1.7fr auto; /* tipo + chips */
+    grid-template-columns: 1.7fr auto;
     gap:14px;
     align-items:center;
   }
 
   .tipo, .opcao{
     border:2px solid var(--chip-borda);
-    border-radius:999px;        /* pill */
+    border-radius:999px;
     background:#fff;
     color:var(--azul);
     font-weight:900;
@@ -115,7 +112,6 @@
     transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease, opacity .12s ease;
   }
 
-  /* Tipo: menos alto */
   .tipo{
     padding:10px 14px;
     font-size:14px;
@@ -133,7 +129,6 @@
     opacity:.95;
   }
 
-  /* Parcial/Total: lado a lado */
   .opcoes{
     display:flex;
     gap:8px;
@@ -145,7 +140,7 @@
     padding:10px 14px;
     font-size:13px;
     min-height:40px;
-    min-width:92px; /* mantém padrão visual */
+    min-width:92px;
   }
 
   .tipo:hover, .opcao:hover{
@@ -174,7 +169,6 @@
   /* ===== Entrada ===== */
   .idades{ margin-top:12px; }
 
-  /* iOS: evita zoom ao focar (>=16px) */
   #idades{
     width:100%;
     height:40px;
@@ -221,7 +215,6 @@
   /* ===== Resultado ===== */
   #resultado{ display:none; margin-top:16px; }
 
-  /* Área que vira imagem */
   #areaImagem{
     border:1px solid #eee;
     border-radius:12px;
@@ -262,7 +255,6 @@
     transform-origin: center;
   }
 
-  /* Data (uma vez no topo da imagem) */
   .linhaDataGeral{
     margin:0 0 12px;
     font-size:14px;
@@ -270,7 +262,6 @@
     font-weight:900;
   }
 
-  /* Bloco de cada orçamento */
   .orcamento{
     border:1px solid #f0f0f0;
     border-radius:12px;
@@ -285,16 +276,14 @@
     font-size: 1.05em;
   }
 
-  /* ===== Tabela (corrigida p/ html2canvas iOS) ===== */
   .tabela-wrap{
     position:relative;
-    overflow-x:auto;      /* permite rolar lateral */
+    overflow-x:auto;
     overflow-y:hidden;
     -webkit-overflow-scrolling: touch;
     border-radius:10px;
   }
 
-  /* Marca d’água só na área do corpo (abaixo dos headers) */
   .tabela-wrap::before{
     content:"";
     position:absolute;
@@ -326,7 +315,7 @@
   }
 
   .tabela-precos{
-    min-width: 520px;   /* ajuste: 480–600 conforme seu gosto */
+    min-width: 520px;
   }
 
   .tabela-wrap table{ font-size:14px; }
@@ -336,7 +325,7 @@
     border:1px solid #ddd;
     text-align:center;
     vertical-align:middle;
-    overflow:visible; /* não cortar valores na imagem */
+    overflow:visible;
   }
 
   thead .cab th{
@@ -359,15 +348,11 @@
 
   tbody td{ white-space:nowrap; }
 
+  /* >>> Mantemos classes antigas, mas agora colgroup é dinâmico */
   col.col-faixa{ width:28%; }
   col.col-idade{ width:14%; }
-  col.col-normal{ width:24%; }
-  col.col-15{ width:24%; }
-
-  th:nth-child(1), td:nth-child(1){ width:28%; }
-  th:nth-child(2), td:nth-child(2){ width:14%; }
-  th:nth-child(3), td:nth-child(3){ width:24%; }
-  th:nth-child(4), td:nth-child(4){ width:24%; }
+  col.col-normal{ width:29%; } /* usado quando 3 colunas */
+  col.col-15{ width:29%; }     /* usado quando familiar (valor + 5%) */
 
   .taxa-adesao{
     margin-top:10px;
@@ -408,7 +393,6 @@
     cursor:pointer;
   }
 
-  /* Mobile: deixa chips mais compactos sem quebrar */
   @media (max-width:520px){
     .logo-wrap{ width:160px; height:52px; }
     .tabela-wrap::before{ top:118px; }
@@ -440,33 +424,25 @@
     overflow: visible;
   }
 
-  /* mantém sua intenção de aumentar na captura, mas sem cortar */
   body.capturando .tabela-precos th,
   body.capturando .tabela-precos td{
     overflow: visible;
     white-space: nowrap;
     font-size: 20px;
   }
-  body.capturando .totais{
-  font-size: 17px;   /* aumenta só na imagem */
-  line-height: 1.25;
-}
 
-body.capturando .total-red{
-  font-size: 18px;   /* TOTAL (coparticipação total) maior */
-}
+  body.capturando .totais{
+    font-size: 17px;
+    line-height: 1.25;
+  }
+
+  body.capturando .total-red{
+    font-size: 18px;
+  }
+
   body.capturando .tabela-precos thead th{
     white-space: normal;
   }
-
-  body.capturando .tabela-precos th:nth-child(1),
-  body.capturando .tabela-precos td:nth-child(1){ width: 260px; }
-  body.capturando .tabela-precos th:nth-child(2),
-  body.capturando .tabela-precos td:nth-child(2){ width: 90px; }
-  body.capturando .tabela-precos th:nth-child(3),
-  body.capturando .tabela-precos td:nth-child(3){ width: 190px; }
-  body.capturando .tabela-precos th:nth-child(4),
-  body.capturando .tabela-precos td:nth-child(4){ width: 190px; }
 
   @media (max-width: 420px){
     .tabela-wrap table{ font-size:13px; }
@@ -482,25 +458,26 @@ body.capturando .total-red{
       padding:8px 6px;
     }
   }
+
   /* ===== Ajuda passo a passo ===== */
-.ajuda-passo{
-  margin-top:18px;
-  padding:14px 6px;
-  text-align:center;
-  color:#555;
-  font-size:14px;
-  line-height:1.5;
-}
+  .ajuda-passo{
+    margin-top:18px;
+    padding:14px 6px;
+    text-align:center;
+    color:#555;
+    font-size:14px;
+    line-height:1.5;
+  }
 
-.ajuda-titulo{
-  font-weight:900;
-  color:#333;
-  margin-bottom:8px;
-}
+  .ajuda-titulo{
+    font-weight:900;
+    color:#333;
+    margin-bottom:8px;
+  }
 
-.ajuda-linha{
-  margin-top:4px;
-}
+  .ajuda-linha{
+    margin-top:4px;
+  }
 </style>
 </head>
 
@@ -561,16 +538,16 @@ body.capturando .total-red{
 
   <button class="calcular" onclick="calcular()">Calcular Orçamento</button>
   <div id="ancoraResultado"></div>
-<!-- AJUDA PASSO A PASSO -->
-<div id="ajudaPasso" class="ajuda-passo">
-  <div class="ajuda-titulo">Não sabe como cotar?</div>
 
-  <div class="ajuda-linha">1️⃣ Selecione o <b>tipo de plano</b></div>
-  <div class="ajuda-linha">2️⃣ Escolha <b>Parcial</b> ou <b>Total</b></div>
-  <div class="ajuda-linha">3️⃣ Digite as <b>idades</b></div>
-  <div class="ajuda-linha">4️⃣ Você pode fazer <b>até 2 orçamentos</b> de uma vez</div>
-  <div class="ajuda-linha">5️⃣ Clique em <b>Compartilhar</b> ou <b>Baixar</b> e pronto ✅</div>
-</div>
+  <!-- AJUDA PASSO A PASSO -->
+  <div id="ajudaPasso" class="ajuda-passo">
+    <div class="ajuda-titulo">Não sabe como cotar?</div>
+    <div class="ajuda-linha">1️⃣ Selecione o <b>tipo de plano</b></div>
+    <div class="ajuda-linha">2️⃣ Escolha <b>Parcial</b> ou <b>Total</b></div>
+    <div class="ajuda-linha">3️⃣ Digite as <b>idades</b></div>
+    <div class="ajuda-linha">4️⃣ Você pode fazer <b>até 2 orçamentos</b> de uma vez</div>
+    <div class="ajuda-linha">5️⃣ Clique em <b>Compartilhar</b> ou <b>Baixar</b> e pronto ✅</div>
+  </div>
 
   <div id="resultado">
     <div id="areaImagem">
@@ -634,14 +611,15 @@ body.capturando .total-red{
     const yyyy = d.getFullYear();
     return `${dd}/${mm}/${yyyy}`;
   }
+
   function esconderAjuda(){
-  const ajuda = document.getElementById("ajudaPasso");
-  if(ajuda) ajuda.style.display = "none";
-}
+    const ajuda = document.getElementById("ajudaPasso");
+    if(ajuda) ajuda.style.display = "none";
+  }
   function mostrarAjuda(){
-  const ajuda = document.getElementById("ajudaPasso");
-  if(ajuda) ajuda.style.display = "block";
-}
+    const ajuda = document.getElementById("ajudaPasso");
+    if(ajuda) ajuda.style.display = "block";
+  }
 
   function formatarBR(valor){
     return Number(valor).toLocaleString("pt-BR", {
@@ -840,23 +818,41 @@ body.capturando .total-red{
     return `Taxa de adesão: R$ 35,00 por contrato`;
   }
 
-  function colgroupHTML(){
+  /* ✅ colgroup dinâmico:
+     - sem familiar: 3 colunas (faixa, idade, valor)
+     - com familiar: 4 colunas (faixa, idade, valor, 5%)
+  */
+  function colgroupHTML(familiar){
+    if(familiar){
+      return `
+        <colgroup>
+          <col class="col-faixa">
+          <col class="col-idade">
+          <col class="col-normal">
+          <col class="col-15">
+        </colgroup>
+      `;
+    }
     return `
       <colgroup>
         <col class="col-faixa">
         <col class="col-idade">
         <col class="col-normal">
-        <col class="col-15">
       </colgroup>
     `;
   }
 
+  /* ✅ Cabeçalho sem 15%:
+     - sem familiar: Faixa | Idade | Valor
+     - com familiar: Faixa | Idade | Valor | 5% Familiar
+  */
   function cabecalhoTabelaHTML(familiar){
     if(familiar){
       return `
         <tr class="cab">
           <th>Faixa<br>Etária</th>
           <th>Idade</th>
+          <th>Valor</th>
           <th>5%<br>Familiar</th>
         </tr>
       `;
@@ -865,8 +861,7 @@ body.capturando .total-red{
       <tr class="cab">
         <th>Faixa<br>Etária</th>
         <th>Idade</th>
-        <th>Valor<br>Normal</th>
-        <th>15%<br>(3 meses)</th>
+        <th>Valor</th>
       </tr>
     `;
   }
@@ -889,13 +884,14 @@ body.capturando .total-red{
       alert("Informe ao menos uma idade (ex: 23, 35, 62).");
       return;
     }
+
     if (typeof gtag === "function") {
-  gtag("event", "orcamento_calculado", {
-    orcamentos_qtd: selecionados.length,
-    tem_ss: selecionados.some(s => isSuperSimples(s.tipo)) ? 1 : 0,
-    tem_ind: selecionados.some(s => !isSuperSimples(s.tipo)) ? 1 : 0
-  });
-}
+      gtag("event", "orcamento_calculado", {
+        orcamentos_qtd: selecionados.length,
+        tem_ss: selecionados.some(s => isSuperSimples(s.tipo)) ? 1 : 0,
+        tem_ind: selecionados.some(s => !isSuperSimples(s.tipo)) ? 1 : 0
+      });
+    }
 
     for(const sel of selecionados){
       if(isSuperSimples(sel.tipo) && idades.length < 2){
@@ -929,7 +925,6 @@ body.capturando .total-red{
       const aplicarOdonto   = (isSS) && odontoAtivo;
 
       let totalNormal = 0;
-      let total15 = 0;
       let total5 = 0;
 
       let rowsHTML = "";
@@ -938,17 +933,17 @@ body.capturando .total-red{
         if(!faixa) return;
 
         let vN = Number(faixa[3]) || 0;
+        // v15 continua existindo na tabela, mas não aparece no visual
         let v15 = Number(faixa[4]) || 0;
 
         if(aplicarOdonto){
           vN += ODONTO_POR_VIDA;
-          v15 += ODONTO_POR_VIDA;
+          v15 += ODONTO_POR_VIDA; // guardado (caso volte 15% no futuro)
         }
 
         const v5 = vN * 0.95;
 
         totalNormal += vN;
-        total15 += v15;
         total5 += v5;
 
         if(aplicarFamiliar){
@@ -956,6 +951,7 @@ body.capturando .total-red{
             <tr>
               <td>${faixa[0]}</td>
               <td>${idade}</td>
+              <td>R$ ${formatarBR(vN)}</td>
               <td>R$ ${formatarBR(v5)}</td>
             </tr>
           `;
@@ -965,7 +961,6 @@ body.capturando .total-red{
               <td>${faixa[0]}</td>
               <td>${idade}</td>
               <td>R$ ${formatarBR(vN)}</td>
-              <td>R$ ${formatarBR(v15)}</td>
             </tr>
           `;
         }
@@ -974,15 +969,11 @@ body.capturando .total-red{
       const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
       const taxa = taxaAdesaoTexto(sel.tipo, idades.length);
 
-      let total1 = "";
-      let total2 = "";
-      if(aplicarFamiliar){
-        total1 = "";
-        total2 = `Total 5% Familiar: R$ ${formatarBR(total5)}`;
-      } else {
-        total1 = `Total normal: R$ ${formatarBR(totalNormal)}`;
-        total2 = "";
-      }
+      // ✅ Totais sem 15%:
+      // - sempre mostra Total: ...
+      // - se familiar: mostra também Total 5% Familiar
+      const total1 = `Total: R$ ${formatarBR(totalNormal)}`;
+      const total2 = aplicarFamiliar ? `Total 5% Familiar: R$ ${formatarBR(total5)}` : "";
 
       let odontoInfo = "";
       if(aplicarOdonto){
@@ -990,14 +981,16 @@ body.capturando .total-red{
         odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário (R$ ${formatarBR(totalOdonto)}) — incluído nos valores</div>`;
       }
 
+      const COLS = aplicarFamiliar ? 4 : 3;
+
       cont.insertAdjacentHTML("beforeend", `
         <div class="orcamento">
           <div class="tabela-wrap">
             <table class="tabela-precos">
-              ${colgroupHTML()}
+              ${colgroupHTML(aplicarFamiliar)}
               <thead>
                 <tr class="titulo-tabela">
-                  <th colspan="4">${nomeDentroTabelaHTML}</th>
+                  <th colspan="${COLS}">${nomeDentroTabelaHTML}</th>
                 </tr>
                 ${cabecalhoTabelaHTML(aplicarFamiliar)}
               </thead>
@@ -1011,7 +1004,8 @@ body.capturando .total-red{
 
           <div class="totais">
             <div>${total1}</div>
-           </div>
+            ${total2 ? `<div>${total2}</div>` : ``}
+          </div>
 
           ${odontoInfo}
         </div>
@@ -1029,10 +1023,7 @@ body.capturando .total-red{
   async function gerarImagem(modo = "share"){
     const area = document.getElementById("areaImagem");
 
-    // ativa estilos de captura
     document.body.classList.add("capturando");
-
-    // dá um respiro pro browser aplicar o CSS antes da captura
     await new Promise(r => requestAnimationFrame(() => r()));
 
     const canvas = await html2canvas(area, {
@@ -1041,7 +1032,6 @@ body.capturando .total-red{
       scale: 3
     });
 
-    // volta ao normal
     document.body.classList.remove("capturando");
 
     const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
@@ -1052,7 +1042,6 @@ body.capturando .total-red{
 
     const file = new File([blob], "orcamento_reinvent_hapvida.png", { type:"image/png" });
 
-    // --- COMPARTILHAR ---
     if(modo === "share"){
       const podeCompartilhar =
         navigator.share &&
@@ -1071,7 +1060,6 @@ body.capturando .total-red{
       return;
     }
 
-    // --- DOWNLOAD ---
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "orcamento_reinvent_hapvida.png";
