@@ -979,11 +979,11 @@ body.capturando .total-red{
       let total1 = "";
       let total2 = "";
       if(aplicarFamiliar){
-        total1 = `Total 15% (3 meses): R$ ${formatarBR(total15)}`;
+        total1 = "";
         total2 = `Total 5% Familiar: R$ ${formatarBR(total5)}`;
       } else {
         total1 = `Total normal: R$ ${formatarBR(totalNormal)}`;
-        total2 = `Total 15% (3 meses): R$ ${formatarBR(total15)}`;
+        total2 = "";
       }
 
       let odontoInfo = "";
@@ -1013,8 +1013,7 @@ body.capturando .total-red{
 
           <div class="totais">
             <div>${total1}</div>
-            <div>${total2}</div>
-          </div>
+           </div>
 
           ${odontoInfo}
         </div>
