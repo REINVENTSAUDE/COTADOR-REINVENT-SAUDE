@@ -475,6 +475,24 @@
     body.capturando .tabela-precos td:nth-child(2){ width: 110px; }
     body.capturando .tabela-precos th:nth-child(3),
     body.capturando .tabela-precos td:nth-child(3){ width: 300px; }
+    /* ===== Cor por TABELA (somente na Tabela Completa) ===== */
+.orcamento.tabela-completa{
+  border:1px solid rgba(0,0,0,0.06);
+}
+
+/* aplica cor suave no corpo da tabela (sem mexer no cabeçalho azul) */
+.orcamento.tabela-completa .tabela-wrap{
+  border-radius:10px;
+}
+
+.orcamento.tabela-completa table{
+  background: var(--tabela-bg, #f4f8ff);
+}
+
+.orcamento.tabela-completa tbody td{
+  background: transparent; /* garante que segue o fundo da tabela */
+}
+
 
   </style>
 </head>
@@ -865,15 +883,17 @@
       }
     }
 
-    function corSuavePorLinha(i, total){
-      if(total <= 1) return "#E8F1FF";
-      const t = i / (total - 1);
-      // azul (210) -> vermelho (10), sem passar por verde
-      const h = 210 + (10 - 210) * t;
-      const s = 70;
-      const l = 92;
-      return `hsl(${h}, ${s}%, ${l}%)`;
-    }
+    function corTabelaPorIndice(idx){
+  // Paleta suave indo de azul -> vermelho claro (sem verde)
+  const cores = [
+    "hsl(210, 70%, 94%)", // azul suave
+    "hsl(195, 70%, 94%)", // azul/ciano suave
+    "hsl(30, 80%, 94%)",  // laranja bem suave
+    "hsl(10, 80%, 94%)"   // vermelho claro suave
+  ];
+  return cores[idx % cores.length];
+}
+
 
     document.addEventListener("DOMContentLoaded", ()=>{
       const cb = document.getElementById("tabelaCompleta");
@@ -940,7 +960,7 @@
       document.getElementById("linhaDataGeral").textContent = `Orçamento dia ${dataHojeBR()}`;
       document.getElementById("resultado").style.display = "block";
 
-      selecionados.forEach((sel)=>{
+      selecionados.forEach((sel, idxOrcamento)=>{
         const chave = `${sel.tipo}_${sel.modo}`;
         const lista = tabelas[chave];
         if(!lista){
@@ -964,12 +984,11 @@
               v += ODONTO_POR_VIDA;
             }
 
-            const cor = corSuavePorLinha(i, totalLinhas);
             rowsHTML += `
-              <tr style="background:${cor}">
-                <td class="tr-faixa">${faixa[0]}</td>
-                <td></td>
-                <td>R$ ${formatarBR(v)}</td>
+              <tr>
+               <td class="tr-faixa">${faixa[0]}</td>
+               <td></td>
+               <td>R$ ${formatarBR(v)}</td>
               </tr>
             `;
           });
@@ -1014,30 +1033,15 @@
           ? `<div class="totais"><div>Total: R$ ${formatarBR(total)}</div></div>`
           : `<div class="totais" style="display:none;"></div>`;
 
-        cont.insertAdjacentHTML("beforeend", `
-          <div class="orcamento">
-            <div class="tabela-wrap">
-              <table class="tabela-precos">
-                ${colgroupHTML()}
-                <thead>
-                  <tr class="titulo-tabela">
-                    <th colspan="3">${nomeDentroTabelaHTML}</th>
-                  </tr>
-                  ${cabecalhoTabelaHTML()}
-                </thead>
-                <tbody>
-                  ${rowsHTML}
-                </tbody>
-              </table>
-            </div>
+        const classeTabelaCompleta = tabelaCompleta ? "tabela-completa" : "";
+const corTabela = tabelaCompleta ? corTabelaPorIndice(idxOrcamento) : "";
 
-            ${taxa ? `<div class="taxa-adesao">${taxa}</div>` : ""}
+cont.insertAdjacentHTML("beforeend", `
+  <div class="orcamento ${classeTabelaCompleta}" style="${tabelaCompleta ? `--tabela-bg:${corTabela};` : ""}">
+    ...
+  </div>
+`);
 
-            ${totalHTML}
-
-            ${odontoInfo}
-          </div>
-        `);
       });
 
       setTimeout(() => {
