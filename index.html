@@ -487,6 +487,30 @@
   background-size: 58%;
   opacity: .07;
 }
+  /* Já existe (tabelas normais) */
+.tabela-wrap::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:110px;
+  bottom:0;
+  background-image:url("logo-reinvent.png");
+  background-repeat:no-repeat;
+  background-position:center 55%;
+  background-size:55%;
+  opacity:.06;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ✅ TABELA COMPLETA (sem cabeçalho azul): marca d'água começa mais cedo */
+.orcamento.tabela-completa .tabela-wrap::before{
+  top:18px;              /* <- aqui é o principal */
+  background-position:center 55%;
+  background-size:58%;
+  opacity:.07;
+}
 
 </style>
 </head>
