@@ -18,7 +18,7 @@
   :root{
     --azul:#005baa;
     --bg:#f5f7fb;
-    --verde:#28a745;
+    --verde:#28a745; /* só pros botões (não usamos verde nas tabelas completas) */
     --borda:#d9d9d9;
     --texto:#111;
     --vermelho:#c62828;
@@ -84,9 +84,7 @@
     transform:translateX(-50%) translateY(4px);
   }
 
-  /* =========================================================
-     ✅ LAYOUT: BOTÕES “CHIP”
-     ========================================================= */
+  /* ===== Layout chips ===== */
   .planos{
     display:grid;
     gap:16px;
@@ -176,11 +174,7 @@
     border-radius:10px;
     box-sizing:border-box;
     resize:none;
-    font-size:16px; /* iOS no-zoom */
-  }
-  #idades:disabled{
-    background:#f4f5f7;
-    color:#888;
+    font-size:16px; /* iOS: evita zoom */
   }
 
   .linha-opcoes{
@@ -270,6 +264,7 @@
     border-radius:12px;
     padding:14px;
     margin-top:12px;
+    background:#fff;
   }
   .orcamento:first-child{ margin-top:0; }
 
@@ -288,6 +283,7 @@
     border-radius:10px;
   }
 
+  /* Marca d’água (sempre que tiver .tabela-wrap) */
   .tabela-wrap::before{
     content:"";
     position:absolute;
@@ -318,7 +314,10 @@
     table-layout:fixed;
   }
 
-  .tabela-precos{ min-width: 520px; }
+  .tabela-precos{
+    min-width: 520px;
+  }
+
   .tabela-wrap table{ font-size:14px; }
 
   th, td{
@@ -329,6 +328,7 @@
     overflow:visible;
   }
 
+  /* ✅ FAIXA AZUL (garantida) */
   thead .cab th{
     background:var(--azul);
     color:#fff;
@@ -348,6 +348,15 @@
   }
 
   tbody td{ white-space:nowrap; }
+
+  /* colunas padrão (3 colunas: faixa, idade, valor) */
+  col.col-faixa{ width:36%; }
+  col.col-idade{ width:18%; }
+  col.col-valor{ width:46%; }
+
+  /* colunas tabela completa (2 colunas: faixa, valor) */
+  col.col-faixa2{ width:48%; }
+  col.col-valor2{ width:52%; }
 
   .taxa-adesao{
     margin-top:10px;
@@ -379,7 +388,7 @@
     margin-top:12px;
     width:100%;
     padding:10px;
-    background:var(--verde);
+    background:#2f7dff;
     color:#fff;
     border:none;
     border-radius:10px;
@@ -388,40 +397,18 @@
     cursor:pointer;
   }
 
-  /* ===== Ajuda passo a passo ===== */
-  .ajuda-passo{
-    margin-top:18px;
-    padding:14px 6px;
-    text-align:center;
-    color:#555;
-    font-size:14px;
-    line-height:1.5;
-  }
-  .ajuda-titulo{
-    font-weight:900;
-    color:#333;
-    margin-bottom:8px;
-  }
-  .ajuda-linha{ margin-top:4px; }
+  /* ===== Cores suaves (SÓ tabela completa) - sem verde ===== */
+  .tabela-completa.tblc-1 { background:#eef5ff; }
+  .tabela-completa.tblc-2 { background:#f3efff; }
+  .tabela-completa.tblc-3 { background:#fff1f1; }
+  .tabela-completa.tblc-4 { background:#fff6e9; }
+  .tabela-completa.tblc-5 { background:#f0fbff; }
+  .tabela-completa.tblc-6 { background:#f7f2ff; }
 
-  /* ===== Tabela completa com cor suave (apenas quando marcado) ===== */
-  .orcamento.tabela-completa{
-    --tbl:#e8f2ff; /* fallback */
-  }
-  .orcamento.tabela-completa .tabela-wrap::before{
-    top:76px; /* cabeçalho menor no modo completo */
-  }
-  .orcamento.tabela-completa table th,
-  .orcamento.tabela-completa table td{
-    background: var(--tbl);
-  }
-  .orcamento.tabela-completa thead .cab th{
-    background: rgba(0,0,0,0.06);
-    color:#111;
-  }
-  .orcamento.tabela-completa thead .titulo-tabela th{
-    background: rgba(255,255,255,0.65);
-  }
+  /* aplica cor suave no corpo e no título da tabela completa */
+  .tabela-completa .tabela-wrap table { background: transparent; }
+  .tabela-completa .tabela-wrap tbody td{ background: rgba(255,255,255,0.55); }
+  .tabela-completa .titulo-tabela th{ background: rgba(255,255,255,0.75); }
 
   @media (max-width:520px){
     .logo-wrap{ width:160px; height:52px; }
@@ -444,74 +431,46 @@
     }
   }
 
-  /* ===== MODO CAPTURA (só na imagem) ===== */
+  /* ===== MODO CAPTURA ===== */
   body.capturando #areaImagem{
     width: 760px;
     max-width: 760px;
   }
-  body.capturando .tabela-wrap{ overflow: visible; }
-
+  body.capturando .tabela-wrap{
+    overflow: visible;
+  }
   body.capturando .tabela-precos th,
   body.capturando .tabela-precos td{
     overflow: visible;
     white-space: nowrap;
     font-size: 20px;
   }
-
   body.capturando .totais{
     font-size: 17px;
     line-height: 1.25;
   }
-  body.capturando .total-red{ font-size: 18px; }
-
-  body.capturando .tabela-precos thead th{ white-space: normal; }
-
-  @media (max-width: 420px){
-    .tabela-wrap table{ font-size:13px; }
-    th, td{ padding:6px 6px; }
-
-    thead .cab th{
-      font-size:11px;
-      padding:6px 4px;
-    }
-
-    thead .titulo-tabela th{
-      font-size:12px;
-      padding:8px 6px;
-    }
+  body.capturando .total-red{
+    font-size: 18px;
   }
-  /* Quando for tabela completa, a marca d'água não pode ter top 110px */
-.orcamento.tabela-completa .tabela-wrap::before{
-  top: 48px;              /* ajuste fino: 35–70 */
-  background-position: center 55%;
-  background-size: 58%;
-  opacity: .07;
-}
-  /* Já existe (tabelas normais) */
-.tabela-wrap::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:110px;
-  bottom:0;
-  background-image:url("logo-reinvent.png");
-  background-repeat:no-repeat;
-  background-position:center 55%;
-  background-size:55%;
-  opacity:.06;
-  z-index:0;
-  pointer-events:none;
-}
+  body.capturando .tabela-precos thead th{
+    white-space: normal;
+  }
 
-/* ✅ TABELA COMPLETA (sem cabeçalho azul): marca d'água começa mais cedo */
-.orcamento.tabela-completa .tabela-wrap::before{
-  top:18px;              /* <- aqui é o principal */
-  background-position:center 55%;
-  background-size:58%;
-  opacity:.07;
-}
-
+  /* ===== Ajuda passo a passo ===== */
+  .ajuda-passo{
+    margin-top:18px;
+    padding:14px 6px;
+    text-align:center;
+    color:#555;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .ajuda-titulo{
+    font-weight:900;
+    color:#333;
+    margin-bottom:8px;
+  }
+  .ajuda-linha{ margin-top:4px; }
 </style>
 </head>
 
@@ -577,8 +536,8 @@
   <div id="ajudaPasso" class="ajuda-passo">
     <div class="ajuda-titulo">Não sabe como cotar?</div>
     <div class="ajuda-linha">1️⃣ Selecione o <b>tipo de plano</b></div>
-    <div class="ajuda-linha">2️⃣ Escolha <b>Parcial</b> ou <b>Total</b> (pode fazer <b>2 orçamentos</b>)</div>
-    <div class="ajuda-linha">3️⃣ Digite as <b>idades</b> (ou marque <b>Tabela completa</b>)</div>
+    <div class="ajuda-linha">2️⃣ Escolha <b>Parcial</b> ou <b>Total</b> (até <b>2 orçamentos</b>)</div>
+    <div class="ajuda-linha">3️⃣ Digite as <b>idades</b> (ou marque tabela completa)</div>
     <div class="ajuda-linha">4️⃣ Clique em <b>Calcular</b></div>
     <div class="ajuda-linha">5️⃣ Clique em <b>Compartilhar</b> ou <b>Baixar</b> e pronto ✅</div>
   </div>
@@ -610,15 +569,6 @@
 <script>
   const LIMITE_ORCAMENTOS = 2;
   const ODONTO_POR_VIDA = 23.25;
-
-  // cores suaves (sem verde) — usadas APENAS no modo "Tabela completa"
-  const CORES_TABELA_COMPLETA = [
-    "#e8f2ff", // azul clarinho
-    "#efe8ff", // lilás claro
-    "#fff1e3", // pêssego claro
-    "#ffe9ea", // rosado claro
-    "#fff0f0"  // vermelho bem claro
-  ];
 
   const tiposAtivos = new Set();
   let selecionados = [];
@@ -655,6 +605,15 @@
     return `${dd}/${mm}/${yyyy}`;
   }
 
+  function esconderAjuda(){
+    const ajuda = document.getElementById("ajudaPasso");
+    if(ajuda) ajuda.style.display = "none";
+  }
+  function mostrarAjuda(){
+    const ajuda = document.getElementById("ajudaPasso");
+    if(ajuda) ajuda.style.display = "block";
+  }
+
   function formatarBR(valor){
     return Number(valor).toLocaleString("pt-BR", {
       minimumFractionDigits: 2,
@@ -662,6 +621,7 @@
     });
   }
 
+  /* ====== TABELAS ====== */
   const tabelas = {
     ind_enf_parcial: [
       ["00 a 18",0,18,241.68,205.43],["19 a 23",19,23,311.18,264.50],["24 a 28",24,28,354.18,301.05],
@@ -725,10 +685,6 @@
     ]
   };
 
-  function encontrarFaixa(lista, idade){
-    return lista.find(f => idade >= f[1] && idade <= f[2]);
-  }
-
   let toastTimer = null;
   function showToast(msg){
     const t = document.getElementById("toast");
@@ -738,53 +694,30 @@
     toastTimer = setTimeout(()=> t.classList.remove("show"), 1600);
   }
 
-  function esconderAjuda(){
-    const ajuda = document.getElementById("ajudaPasso");
-    if(ajuda) ajuda.style.display = "none";
-  }
-  function mostrarAjuda(){
-    const ajuda = document.getElementById("ajudaPasso");
-    if(ajuda) ajuda.style.display = "block";
-  }
-
   function limparResultado(){
     document.getElementById("resultado").style.display = "none";
     document.getElementById("orcamentosContainer").innerHTML = "";
     mostrarAjuda();
   }
 
-  function isTabelaCompleta(){
-    const el = document.getElementById("tabelaCompleta");
-    return !!(el && el.checked);
-  }
-
-  function setIdadesEnabled(enabled){
-    const t = document.getElementById("idades");
-    if(!t) return;
-    t.disabled = !enabled;
-    if(!enabled) t.value = "";
-  }
-
   function atualizarCheckboxes(){
     const temIND = selecionados.some(s => !isSuperSimples(s.tipo));
     const temSS  = selecionados.some(s => isSuperSimples(s.tipo));
-    const completa = isTabelaCompleta();
 
     const container = document.getElementById("opcoesExtras");
     container.innerHTML = "";
 
-    // sempre aparece se houver seleção (pra pessoa não esquecer que existe)
-    if(temIND || temSS){
-      container.insertAdjacentHTML("beforeend", `
-        <label class="opt-label">
-          <input type="checkbox" id="tabelaCompleta" onchange="onToggleTabelaCompleta()" />
-          Tabela completa (não precisa digitar idades)
-        </label>
-      `);
-    }
+    if(!temIND && !temSS) return;
 
-    // se tabela completa: não mostra 5% familiar
-    if(!completa && temIND){
+    // ✅ tabela completa (vale pra qualquer seleção)
+    container.insertAdjacentHTML("beforeend", `
+      <label class="opt-label">
+        <input type="checkbox" id="tabelaCompleta" />
+        Tabela completa (sem idades)
+      </label>
+    `);
+
+    if(temIND){
       container.insertAdjacentHTML("beforeend", `
         <label class="opt-label">
           <input type="checkbox" id="familiar1grau" />
@@ -792,7 +725,6 @@
         </label>
       `);
     }
-
     if(temSS){
       container.insertAdjacentHTML("beforeend", `
         <label class="opt-label">
@@ -801,17 +733,6 @@
         </label>
       `);
     }
-
-    // re-aplica estado do checkbox tabela completa se ele existia antes
-    // (porque recriamos o HTML)
-    const old = document.querySelector('input[data-keep="tabelaCompleta"]');
-  }
-
-  function onToggleTabelaCompleta(){
-    const completa = isTabelaCompleta();
-    setIdadesEnabled(!completa);
-    limparResultado();
-    atualizarOpcoesAtivas(); // para esconder familiar se marcar
   }
 
   function atualizarOpcoesAtivas(){
@@ -840,23 +761,7 @@
       else op.classList.remove("ativo");
     });
 
-    // reconstruir opções extras (mantendo estado do "tabela completa" se existir)
-    const tinhaTabelaCompleta = !!document.getElementById("tabelaCompleta")?.checked;
-    const tinhaFamiliar = !!document.getElementById("familiar1grau")?.checked;
-    const tinhaOdonto = !!document.getElementById("odontoSS")?.checked;
-
     atualizarCheckboxes();
-
-    if(document.getElementById("tabelaCompleta")){
-      document.getElementById("tabelaCompleta").checked = tinhaTabelaCompleta;
-      setIdadesEnabled(!tinhaTabelaCompleta);
-    }
-    if(document.getElementById("familiar1grau")){
-      document.getElementById("familiar1grau").checked = tinhaFamiliar;
-    }
-    if(document.getElementById("odontoSS")){
-      document.getElementById("odontoSS").checked = tinhaOdonto;
-    }
   }
 
   function toggleTipo(planKey){
@@ -911,46 +816,62 @@
     return `Taxa de adesão: R$ 35,00 por contrato`;
   }
 
-  function blurActive(){
-    if (document.activeElement) document.activeElement.blur();
-  }
-
-  function colgroupHTML(cols){
-    // cols é um array de widths em %
+  function colgroupHTML(completa){
+    if(completa){
+      return `
+        <colgroup>
+          <col class="col-faixa2">
+          <col class="col-valor2">
+        </colgroup>
+      `;
+    }
     return `
       <colgroup>
-        ${cols.map(w => `<col style="width:${w}%">`).join("")}
+        <col class="col-faixa">
+        <col class="col-idade">
+        <col class="col-valor">
       </colgroup>
     `;
   }
 
+  /* ✅ CABEÇALHO AZUL GARANTIDO (sempre gera <tr class="cab">) */
   function cabecalhoTabelaHTML({ completa = false, familiar = false }){
-  if(completa){
+    if(completa){
+      return `
+        <tr class="cab">
+          <th>Faixa<br>Etária</th>
+          <th>VALOR</th>
+        </tr>
+      `;
+    }
+
+    if(familiar){
+      return `
+        <tr class="cab">
+          <th>Faixa<br>Etária</th>
+          <th>Idade</th>
+          <th>VALOR</th>
+        </tr>
+      `;
+    }
+
     return `
       <tr class="cab">
         <th>Faixa<br>Etária</th>
-        <th>Valor</th>
+        <th>Idade</th>
+        <th>VALOR</th>
       </tr>
     `;
   }
 
-  if(familiar){
-    return `
-      <tr class="cab">
-        <th>Faixa<br>Etária</th>
-        <th>5%<br>Familiar</th>
-      </tr>
-    `;
+  function blurActive(){
+    if (document.activeElement) document.activeElement.blur();
   }
 
-  return `
-    <tr class="cab">
-      <th>Faixa<br>Etária</th>
-      <th>Valor</th>
-    </tr>
-  `;
-}
-
+  function corTabelaCompletaPorIndice(i){
+    const n = (i % 6) + 1;
+    return `tblc-${n}`;
+  }
 
   function calcular(){
     blurActive();
@@ -962,29 +883,27 @@
 
     esconderAjuda();
 
-    const completa = isTabelaCompleta();
+    const tabelaCompletaEl = document.getElementById("tabelaCompleta");
+    const completa = tabelaCompletaEl ? tabelaCompletaEl.checked : false;
 
-    let idades = [];
-    if(!completa){
-      idades = parseIdades();
-      if(idades.length === 0){
-        alert("Informe ao menos uma idade (ex: 23, 35, 62) OU marque Tabela completa.");
-        return;
-      }
+    const idades = completa ? [] : parseIdades();
+
+    if(!completa && idades.length === 0){
+      alert("Informe ao menos uma idade (ex: 23, 35, 62) ou marque 'Tabela completa'.");
+      return;
     }
 
-    // GA evento ao calcular
+    // evento GA ao calcular
     if (typeof gtag === "function") {
       gtag("event", "orcamento_calculado", {
         orcamentos_qtd: selecionados.length,
-        tabela_completa: completa ? 1 : 0,
-        tem_ss: selecionados.some(s => isSuperSimples(s.tipo)) ? 1 : 0,
-        tem_ind: selecionados.some(s => !isSuperSimples(s.tipo)) ? 1 : 0
+        modo_tabela: completa ? "completa" : "idades"
       });
     }
 
+    // Regras SS
     for(const sel of selecionados){
-      if(!completa && isSuperSimples(sel.tipo) && idades.length < 2){
+      if(isSuperSimples(sel.tipo) && !completa && idades.length < 2){
         alert("Plano Empresarial (SS): mínimo 2 vidas (duas idades).");
         return;
       }
@@ -993,7 +912,8 @@
     const familiarEl = document.getElementById("familiar1grau");
     const odontoEl   = document.getElementById("odontoSS");
 
-    const familiarAtivo = (!completa && familiarEl) ? familiarEl.checked : false; // completa: não usa
+    // ✅ Tabela completa: não tem 5%
+    const familiarAtivo = (!completa && familiarEl) ? familiarEl.checked : false;
     const odontoAtivo   = odontoEl ? odontoEl.checked : false;
 
     const cont = document.getElementById("orcamentosContainer");
@@ -1002,7 +922,7 @@
     document.getElementById("linhaDataGeral").textContent = `Orçamento dia ${dataHojeBR()}`;
     document.getElementById("resultado").style.display = "block";
 
-    selecionados.forEach((sel, idxOrc)=>{
+    selecionados.forEach((sel, idx)=>{
       const chave = `${sel.tipo}_${sel.modo}`;
       const lista = tabelas[chave];
       if(!lista){
@@ -1011,120 +931,94 @@
       }
 
       const isSS = isSuperSimples(sel.tipo);
-      const aplicarFamiliar = (!completa) && (!isSS) && familiarAtivo;
       const aplicarOdonto   = (isSS) && odontoAtivo;
 
-      let total = 0;
-      let total5 = 0;
+      // ✅ Tabela completa: sem 5%
+      const aplicarFamiliar = (!completa) && (!isSS) && familiarAtivo;
 
+      let total = 0;
       let rowsHTML = "";
 
       if(completa){
-        // TABELA COMPLETA: só faixas e valor (sem idade)
+        // gera linhas por faixa (sem idade)
         lista.forEach(faixa=>{
-          let vN = Number(faixa[3]) || 0;
+          let v = Number(faixa[3]) || 0;
 
+          // se SS + odonto marcado, soma odonto por vida (na tabela completa, não tem "vidas", então não soma por vida total)
+          // aqui faz sentido somar o ODONTO no valor base da faixa (como "por beneficiário")? Sim: é por beneficiário.
           if(aplicarOdonto){
-            // no modo tabela completa, odonto soma "por beneficiário".
-            // Como não há idades/vidas aqui, exibimos o valor com odonto SOMADO 1x,
-            // e colocamos o aviso abaixo (para não "mentir" total).
-            // -> mais correto: manter sem somar e só avisar.
-            // Você pediu "somar por beneficiário" (faz sentido quando tem idades).
-            // Então aqui vamos: NÃO somar no valor da faixa. Só avisar.
+            v += ODONTO_POR_VIDA;
           }
 
           rowsHTML += `
             <tr>
               <td>${faixa[0]}</td>
-              <td>R$ ${formatarBR(vN)}</td>
+              <td>R$ ${formatarBR(v)}</td>
             </tr>
           `;
         });
 
       } else {
-        // ORÇAMENTO POR IDADES
+        // por idades: faixa + idade + valor (ou valor já com familiar)
         idades.forEach(idade=>{
-          const faixa = encontrarFaixa(lista, idade);
+          const faixa = lista.find(f => idade >= f[1] && idade <= f[2]);
           if(!faixa) return;
 
-          let vN = Number(faixa[3]) || 0;
-
+          let v = Number(faixa[3]) || 0;
           if(aplicarOdonto){
-            vN += ODONTO_POR_VIDA;
+            v += ODONTO_POR_VIDA;
           }
 
-          const v5 = vN * 0.95;
-
-          total += vN;
-          total5 += v5;
-
+          // familiar: aplica 5% no valor
           if(aplicarFamiliar){
-            rowsHTML += `
-              <tr>
-                <td>${faixa[0]}</td>
-                <td>${idade}</td>
-                <td>R$ ${formatarBR(v5)}</td>
-              </tr>
-            `;
-          } else {
-            rowsHTML += `
-              <tr>
-                <td>${faixa[0]}</td>
-                <td>${idade}</td>
-                <td>R$ ${formatarBR(vN)}</td>
-              </tr>
-            `;
+            v = v * 0.95;
           }
+
+          total += v;
+
+          rowsHTML += `
+            <tr>
+              <td>${faixa[0]}</td>
+              <td>${idade}</td>
+              <td>R$ ${formatarBR(v)}</td>
+            </tr>
+          `;
         });
       }
 
-      const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
-
-      // colunas e colspan
-      let cols = [];
-      let colCount = 0;
-
-      if(completa){
-        cols = [55,45]; // faixa / valor
-        colCount = 2;
-      } else {
-        cols = [42,18,40]; // faixa / idade / valor
-        colCount = 3;
-      }
-
-      const taxa = (!completa) ? taxaAdesaoTexto(sel.tipo, idades.length) : "";
-
+      // total só faz sentido no modo por idades
       let totalHTML = "";
       if(!completa){
-        if(aplicarFamiliar){
-          totalHTML = `Total 5% Familiar: R$ ${formatarBR(total5)}`;
-        } else {
-          totalHTML = `Total: R$ ${formatarBR(total)}`;
-        }
-      } else {
-        totalHTML = `Tabela completa por faixa etária`;
+        totalHTML = `
+          <div class="totais">
+            <div>Total: R$ ${formatarBR(total)}</div>
+          </div>
+        `;
       }
 
+      // info odonto
       let odontoInfo = "";
       if(aplicarOdonto){
         if(completa){
-          odontoInfo = `<div class="odonto-info">Odonto: + R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário (aplicado quando você usa idades)</div>`;
+          odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário — incluído no valor</div>`;
         } else {
           const totalOdonto = ODONTO_POR_VIDA * idades.length;
           odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário (R$ ${formatarBR(totalOdonto)}) — incluído nos valores</div>`;
         }
       }
 
-      // cor (somente se tabela completa)
-      const cor = CORES_TABELA_COMPLETA[idxOrc % CORES_TABELA_COMPLETA.length];
-      const classeCompleta = completa ? "tabela-completa" : "";
-      const styleTbl = completa ? `style="--tbl:${cor};"` : "";
+      const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
+      const taxa = completa ? "" : taxaAdesaoTexto(sel.tipo, idades.length);
+
+      const classeCompleta = completa ? `tabela-completa ${corTabelaCompletaPorIndice(idx)}` : "";
+
+      const colCount = completa ? 2 : 3;
 
       cont.insertAdjacentHTML("beforeend", `
-        <div class="orcamento tabela-completa ${classeCompleta}" ${styleTbl}>
+        <div class="orcamento ${classeCompleta}">
           <div class="tabela-wrap">
             <table class="tabela-precos">
-              ${colgroupHTML(cols)}
+              ${colgroupHTML(completa)}
               <thead>
                 <tr class="titulo-tabela">
                   <th colspan="${colCount}">${nomeDentroTabelaHTML}</th>
@@ -1137,11 +1031,9 @@
             </table>
           </div>
 
-          ${taxa ? `<div class="taxa-adesao">${taxa}</div>` : ""}
+          ${completa ? "" : `<div class="taxa-adesao">${taxa}</div>`}
 
-          <div class="totais">
-            <div>${totalHTML}</div>
-          </div>
+          ${totalHTML}
 
           ${odontoInfo}
         </div>
@@ -1203,7 +1095,7 @@
     URL.revokeObjectURL(a.href);
   }
 
-  // inicial
+  // inicia estado
   atualizarOpcoesAtivas();
 </script>
 </body>
