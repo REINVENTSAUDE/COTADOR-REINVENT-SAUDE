@@ -924,32 +924,33 @@
     `;
   }
 
-  function cabecalhoTabelaHTML({ completa, familiar }){
-    if(completa){
-      return `
-        <tr class="cab">
-          <th>Faixa<br>Etária</th>
-          <th>VALOR</th>
-        </tr>
-      `;
-    }
-    if(familiar){
-      return `
-        <tr class="cab">
-          <th>Faixa<br>Etária</th>
-          <th>Idade</th>
-          <th>VALOR</th>
-        </tr>
-      `;
-    }
+  function cabecalhoTabelaHTML({ completa = false, familiar = false }){
+  if(completa){
     return `
       <tr class="cab">
         <th>Faixa<br>Etária</th>
-        <th>Idade</th>
-        <th>VALOR</th>
+        <th>Valor</th>
       </tr>
     `;
   }
+
+  if(familiar){
+    return `
+      <tr class="cab">
+        <th>Faixa<br>Etária</th>
+        <th>5%<br>Familiar</th>
+      </tr>
+    `;
+  }
+
+  return `
+    <tr class="cab">
+      <th>Faixa<br>Etária</th>
+      <th>Valor</th>
+    </tr>
+  `;
+}
+
 
   function calcular(){
     blurActive();
