@@ -480,6 +480,14 @@
       padding:8px 6px;
     }
   }
+  /* Quando for tabela completa, a marca d'água não pode ter top 110px */
+.orcamento.tabela-completa .tabela-wrap::before{
+  top: 48px;              /* ajuste fino: 35–70 */
+  background-position: center 55%;
+  background-size: 58%;
+  opacity: .07;
+}
+
 </style>
 </head>
 
@@ -1088,7 +1096,7 @@
       const styleTbl = completa ? `style="--tbl:${cor};"` : "";
 
       cont.insertAdjacentHTML("beforeend", `
-        <div class="orcamento ${classeCompleta}" ${styleTbl}>
+        <div class="orcamento tabela-completa ${classeCompleta}" ${styleTbl}>
           <div class="tabela-wrap">
             <table class="tabela-precos">
               ${colgroupHTML(cols)}
