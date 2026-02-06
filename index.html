@@ -370,7 +370,16 @@
     color:#333;
     line-height:1.3;
   }
-
+  .ss-aviso{
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #444;
+  text-align: right;
+}
+body.capturando .ss-aviso{
+  font-size: 13px; /* um pouco maior só na imagem */
+}
   .totais{
     margin-top:12px;
     font-weight:900;
@@ -906,13 +915,7 @@
     }
 
     // Regras SS
-    for(const sel of selecionados){
-      if(isSuperSimples(sel.tipo) && !completa && idades.length < 2){
-        alert("Plano Empresarial (SS): mínimo 2 vidas (duas idades).");
-        return;
-      }
-    }
-
+   
     const familiarEl = document.getElementById("familiar1grau");
     const odontoEl   = document.getElementById("odontoSS");
 
@@ -1010,6 +1013,11 @@
           odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário (R$ ${formatarBR(totalOdonto)}) — incluído nos valores</div>`;
         }
       }
+      let ssAviso = "";
+if(isSS){
+  ssAviso = `<div class="ss-aviso">A PARTIR DE 2 PESSOAS</div>`;
+}
+
 
       const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
       const taxa = completa ? "" : taxaAdesaoTexto(sel.tipo, idades.length);
@@ -1034,6 +1042,7 @@
               </tbody>
             </table>
           </div>
+          ${ssAviso}
 
           ${completa ? "" : `<div class="taxa-adesao">${taxa}</div>`}
 
