@@ -484,6 +484,42 @@ body.capturando .ss-aviso{
     margin-bottom:8px;
   }
   .ajuda-linha{ margin-top:4px; }
+  /* ===== Caixa de Novidades ===== */
+.novidades-box{
+  margin: 10px 0 14px;
+  border: 1px solid #d9e3f2;
+  background: #f3f7fd;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #333;
+}
+
+.novidades-topo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:900;
+  color:#005baa;
+  margin-bottom:6px;
+}
+
+.novidades-topo button{
+  background:none;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  color:#666;
+}
+
+.novidades-conteudo{
+  line-height:1.45;
+}
+
+/* NÃO aparece na imagem */
+body.capturando .novidades-box{
+  display:none !important;
+}
 </style>
 </head>
 
@@ -493,6 +529,18 @@ body.capturando .ss-aviso{
 <div class="container" id="app">
   <div class="titulo">REINVENT SAÚDE - COTADOR</div>
   <div class="subtitulo">Fortaleza - CE</div>
+  <!-- CAIXA DE NOVIDADES -->
+<div id="novidadesBox" class="novidades-box" style="display:none;">
+  <div class="novidades-topo">
+    <strong>Novidades</strong>
+    <button onclick="fecharNovidades()">✕</button>
+  </div>
+  <div class="novidades-conteudo">
+    <!-- ✏️ EDITE APENAS AQUI -->
+    ✅ Atualização:<b>pode fazer orçamento com 1 vida super simples, apenas comparativo.</b><br>
+    ✅ Ajustes visuais nos botões<br>
+    </div>
+</div>
 
   <div class="planos">
     <div class="grupo-plano" data-plan="ind_enf">
@@ -1110,6 +1158,42 @@ if(isSS){
 
   // inicia estado
   atualizarOpcoesAtivas();
+  /* ===== Caixa de Novidades ===== */
+.novidades-box{
+  margin: 10px 0 14px;
+  border: 1px solid #d9e3f2;
+  background: #f3f7fd;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #333;
+}
+
+.novidades-topo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:900;
+  color:#005baa;
+  margin-bottom:6px;
+}
+
+.novidades-topo button{
+  background:none;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  color:#666;
+}
+
+.novidades-conteudo{
+  line-height:1.45;
+}
+
+/* NÃO aparece na imagem */
+body.capturando .novidades-box{
+  display:none !important;
+}
 </script>
 </body>
 </html>
