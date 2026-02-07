@@ -400,6 +400,18 @@
       text-align:right;
     }
 
+    /* ✅ Observação Familiar */
+    .familiar-info{
+      margin-top:8px;
+      font-size:12px;
+      font-weight:900;
+      color:#444;
+      text-align:right;
+    }
+    body.capturando .familiar-info{
+      font-size:13px;
+    }
+
     .share{
       margin-top:12px;
       width:100%;
@@ -543,6 +555,7 @@
       <div class="novidades-conteudo">
         <!-- ✏️ EDITE APENAS AQUI -->
         &#9989; Atualização: <b>pode fazer orçamento com 1 vida super simples, apenas comparativo</b><br>
+        &#9989; Ajustes visuais nos botões<br>
       </div>
     </div>
 
@@ -897,7 +910,7 @@
       return `Taxa de adesão: R$ 35,00 por contrato`;
     }
 
-    function colgroupHTML(completa){
+    function colgroupHTML(completa, familiar){
       if(completa){
         return `
           <colgroup>
@@ -906,6 +919,18 @@
           </colgroup>
         `;
       }
+
+      if(familiar){
+        return `
+          <colgroup>
+            <col style="width:32%;">
+            <col style="width:14%;">
+            <col style="width:27%;">
+            <col style="width:27%;">
+          </colgroup>
+        `;
+      }
+
       return `
         <colgroup>
           <col class="col-faixa">
@@ -930,7 +955,8 @@
           <tr class="cab">
             <th>Faixa<br>Etária</th>
             <th>Idade</th>
-            <th>VALOR</th>
+            <th>VALOR<br>NORMAL</th>
+            <th>VALOR<br>COM 5%</th>
           </tr>
         `;
       }
@@ -1005,6 +1031,9 @@
         const aplicarFamiliar = (!completa) && (!isSS) && familiarAtivo;
 
         let total = 0;
+        let totalNormal = 0;
+        let totalCom5 = 0;
+
         let rowsHTML = "";
 
         if(completa){
@@ -1024,29 +1053,53 @@
             const faixa = lista.find(f => idade >= f[1] && idade <= f[2]);
             if(!faixa) return;
 
-            let v = Number(faixa[3]) || 0;
-            if(aplicarOdonto) v += ODONTO_POR_VIDA;
-            if(aplicarFamiliar) v = v * 0.95;
+            let vNormal = Number(faixa[3]) || 0;
+            if(aplicarOdonto) vNormal += ODONTO_POR_VIDA;
 
-            total += v;
+            if(aplicarFamiliar){
+              const vDesc = vNormal * 0.95;
 
-            rowsHTML += `
-              <tr>
-                <td>${faixa[0]}</td>
-                <td>${idade}</td>
-                <td>R$ ${formatarBR(v)}</td>
-              </tr>
-            `;
+              totalNormal += vNormal;
+              totalCom5 += vDesc;
+
+              rowsHTML += `
+                <tr>
+                  <td>${faixa[0]}</td>
+                  <td>${idade}</td>
+                  <td>R$ ${formatarBR(vNormal)}</td>
+                  <td>R$ ${formatarBR(vDesc)}</td>
+                </tr>
+              `;
+            } else {
+              total += vNormal;
+
+              rowsHTML += `
+                <tr>
+                  <td>${faixa[0]}</td>
+                  <td>${idade}</td>
+                  <td>R$ ${formatarBR(vNormal)}</td>
+                </tr>
+              `;
+            }
           });
         }
 
         let totalHTML = "";
         if(!completa){
-          totalHTML = `
-            <div class="totais">
-              <div>Total: R$ ${formatarBR(total)}</div>
-            </div>
-          `;
+          if(aplicarFamiliar){
+            totalHTML = `
+              <div class="totais">
+                <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
+                <div>Total com 5%: R$ ${formatarBR(totalCom5)}</div>
+              </div>
+            `;
+          } else {
+            totalHTML = `
+              <div class="totais">
+                <div>Total: R$ ${formatarBR(total)}</div>
+              </div>
+            `;
+          }
         }
 
         let odontoInfo = "";
@@ -1059,6 +1112,11 @@
           }
         }
 
+        let familiarInfo = "";
+        if(aplicarFamiliar){
+          familiarInfo = `<div class="familiar-info">*Aplicado desconto de 5% para familiar de 1º grau</div>`;
+        }
+
         let ssAviso = "";
         if(isSS){
           ssAviso = `<div class="ss-aviso">Condição empresarial: a partir de 2 vidas</div>`;
@@ -1067,13 +1125,13 @@
         const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
         const taxa = completa ? "" : taxaAdesaoTexto(sel.tipo, idades.length);
         const classeCompleta = completa ? `tabela-completa ${corTabelaCompletaPorIndice(idx)}` : "";
-        const colCount = completa ? 2 : 3;
+        const colCount = completa ? 2 : (aplicarFamiliar ? 4 : 3);
 
         cont.insertAdjacentHTML("beforeend", `
           <div class="orcamento ${classeCompleta}">
             <div class="tabela-wrap">
               <table class="tabela-precos">
-                ${colgroupHTML(completa)}
+                ${colgroupHTML(completa, aplicarFamiliar)}
                 <thead>
                   <tr class="titulo-tabela">
                     <th colspan="${colCount}">${nomeDentroTabelaHTML}</th>
@@ -1090,6 +1148,7 @@
             ${completa ? "" : `<div class="taxa-adesao">${taxa}</div>`}
             ${totalHTML}
             ${odontoInfo}
+            ${familiarInfo}
           </div>
         `);
       });
