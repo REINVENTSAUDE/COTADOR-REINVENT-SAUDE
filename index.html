@@ -20,7 +20,7 @@
     :root{
       --azul:#005baa;
       --bg:#f5f7fb;
-      --verde:#28a745; /* só pros botões (não usamos verde nas tabelas completas) */
+      --verde:#28a745; /* (mantido só pra consistência; botões estão em azul) */
       --borda:#d9d9d9;
       --texto:#111;
       --vermelho:#c62828;
@@ -285,7 +285,7 @@
       border-radius:10px;
     }
 
-    /* Marca d’água (sempre que tiver .tabela-wrap) */
+    /* Marca d’água */
     .tabela-wrap::before{
       content:"";
       position:absolute;
@@ -319,10 +319,7 @@
       table-layout:fixed;
     }
 
-    .tabela-precos{
-      min-width: 520px;
-    }
-
+    .tabela-precos{ min-width: 520px; }
     .tabela-wrap table{ font-size:14px; }
 
     th, td{
@@ -333,7 +330,7 @@
       overflow:visible;
     }
 
-    /* ✅ FAIXA AZUL (garantida) */
+    /* ✅ FAIXA AZUL */
     thead .cab th{
       background:var(--azul);
       color:#fff;
@@ -354,15 +351,6 @@
 
     tbody td{ white-space:nowrap; }
 
-    /* colunas padrão (3 colunas: faixa, idade, valor) */
-    col.col-faixa{ width:36%; }
-    col.col-idade{ width:18%; }
-    col.col-valor{ width:46%; }
-
-    /* colunas tabela completa (2 colunas: faixa, valor) */
-    col.col-faixa2{ width:48%; }
-    col.col-valor2{ width:52%; }
-
     .taxa-adesao{
       margin-top:10px;
       text-align:right;
@@ -379,9 +367,7 @@
       color: #444;
       text-align: right;
     }
-    body.capturando .ss-aviso{
-      font-size: 13px; /* um pouco maior só na imagem */
-    }
+    body.capturando .ss-aviso{ font-size: 13px; }
 
     .totais{
       margin-top:12px;
@@ -400,7 +386,6 @@
       text-align:right;
     }
 
-    /* ✅ Observação Familiar */
     .familiar-info{
       margin-top:8px;
       font-size:12px;
@@ -408,9 +393,7 @@
       color:#444;
       text-align:right;
     }
-    body.capturando .familiar-info{
-      font-size:13px;
-    }
+    body.capturando .familiar-info{ font-size:13px; }
 
     .share{
       margin-top:12px;
@@ -433,7 +416,6 @@
     .tabela-completa.tblc-5 { background:#f0fbff; }
     .tabela-completa.tblc-6 { background:#f7f2ff; }
 
-    /* aplica cor suave no corpo e no título da tabela completa */
     .tabela-completa .tabela-wrap table { background: transparent; }
     .tabela-completa .tabela-wrap tbody td{ background: rgba(255,255,255,0.55); }
     .tabela-completa .titulo-tabela th{ background: rgba(255,255,255,0.75); }
@@ -442,47 +424,23 @@
       .logo-wrap{ width:160px; height:52px; }
       .tabela-wrap::before{ top:118px; }
 
-      .grupo-plano{
-        grid-template-columns: 1.55fr auto;
-        gap:8px;
-      }
-      .tipo{
-        padding:9px 12px;
-        font-size:13px;
-        min-height:38px;
-      }
-      .opcao{
-        padding:9px 10px;
-        min-width:84px;
-        min-height:38px;
-        font-size:12px;
-      }
+      .grupo-plano{ grid-template-columns: 1.55fr auto; gap:8px; }
+      .tipo{ padding:9px 12px; font-size:13px; min-height:38px; }
+      .opcao{ padding:9px 10px; min-width:84px; min-height:38px; font-size:12px; }
     }
 
     /* ===== MODO CAPTURA ===== */
-    body.capturando #areaImagem{
-      width: 760px;
-      max-width: 760px;
-    }
-    body.capturando .tabela-wrap{
-      overflow: visible;
-    }
+    body.capturando #areaImagem{ width: 760px; max-width: 760px; }
+    body.capturando .tabela-wrap{ overflow: visible; }
     body.capturando .tabela-precos th,
     body.capturando .tabela-precos td{
       overflow: visible;
       white-space: nowrap;
       font-size: 20px;
     }
-    body.capturando .totais{
-      font-size: 17px;
-      line-height: 1.25;
-    }
-    body.capturando .total-red{
-      font-size: 18px;
-    }
-    body.capturando .tabela-precos thead th{
-      white-space: normal;
-    }
+    body.capturando .totais{ font-size: 17px; line-height: 1.25; }
+    body.capturando .total-red{ font-size: 18px; }
+    body.capturando .tabela-precos thead th{ white-space: normal; }
 
     /* ===== Ajuda passo a passo ===== */
     .ajuda-passo{
@@ -510,7 +468,6 @@
       font-size: 13px;
       color: #333;
     }
-
     .novidades-topo{
       display:flex;
       justify-content:space-between;
@@ -519,7 +476,6 @@
       color:#005baa;
       margin-bottom:6px;
     }
-
     .novidades-topo button{
       background:none;
       border:none;
@@ -527,15 +483,10 @@
       cursor:pointer;
       color:#666;
     }
-
-    .novidades-conteudo{
-      line-height:1.45;
-    }
+    .novidades-conteudo{ line-height:1.45; }
 
     /* NÃO aparece na imagem */
-    body.capturando .novidades-box{
-      display:none !important;
-    }
+    body.capturando .novidades-box{ display:none !important; }
   </style>
 </head>
 
@@ -554,8 +505,7 @@
       </div>
       <div class="novidades-conteudo">
         <!-- ✏️ EDITE APENAS AQUI -->
-        &#9989; Atualização: <b>pode fazer orçamento com 1 vida super simples, apenas comparativo</b><br>
-        &#9989; Ajustes visuais nos botões<br>
+        ✅ Atualização: <b>a promoção voltouooou! 15% de desconto nos 3 primeiros meses. Tabela atualizada!😎</b>
       </div>
     </div>
 
@@ -652,7 +602,8 @@
     let selecionados = [];
 
     /* ===== Caixa de Novidades ===== */
-    const NOVIDADES_STORAGE_KEY = "reinvent_novidades_fechadas_v1";
+    // mudou pra v2 pra reaparecer pra todos após atualizar
+    const NOVIDADES_STORAGE_KEY = "reinvent_novidades_fechadas_v2";
 
     function mostrarNovidades(){
       const box = document.getElementById("novidadesBox");
@@ -910,21 +861,14 @@
       return `Taxa de adesão: R$ 35,00 por contrato`;
     }
 
-    function colgroupHTML(completa, familiar){
+    // cenários:
+    // - completa: faixa + (normal/5%) + 15%
+    // - idades: faixa + idade + (normal/5%) + 15%
+    function colgroupHTML({ completa=false, familiar=false }){
       if(completa){
         return `
           <colgroup>
-            <col class="col-faixa2">
-            <col class="col-valor2">
-          </colgroup>
-        `;
-      }
-
-      if(familiar){
-        return `
-          <colgroup>
-            <col style="width:32%;">
-            <col style="width:14%;">
+            <col style="width:46%;">
             <col style="width:27%;">
             <col style="width:27%;">
           </colgroup>
@@ -933,39 +877,22 @@
 
       return `
         <colgroup>
-          <col class="col-faixa">
-          <col class="col-idade">
-          <col class="col-valor">
+          <col style="width:32%;">
+          <col style="width:14%;">
+          <col style="width:27%;">
+          <col style="width:27%;">
         </colgroup>
       `;
     }
 
-    function cabecalhoTabelaHTML({ completa = false, familiar = false }){
-      if(completa){
-        return `
-          <tr class="cab">
-            <th>Faixa<br>Etária</th>
-            <th>VALOR</th>
-          </tr>
-        `;
-      }
-
-      if(familiar){
-        return `
-          <tr class="cab">
-            <th>Faixa<br>Etária</th>
-            <th>Idade</th>
-            <th>VALOR<br>NORMAL</th>
-            <th>VALOR<br>COM 5%</th>
-          </tr>
-        `;
-      }
-
+    function cabecalhoTabelaHTML({ completa=false, familiar=false }){
+      const col3 = familiar ? "5%<br>Familiar" : "VALOR<br>Normal";
       return `
         <tr class="cab">
           <th>Faixa<br>Etária</th>
-          <th>Idade</th>
-          <th>VALOR</th>
+          ${completa ? "" : "<th>Idade</th>"}
+          <th>${col3}</th>
+          <th>15%<br>(3 meses)</th>
         </tr>
       `;
     }
@@ -1002,14 +929,16 @@
       if (typeof gtag === "function") {
         gtag("event", "orcamento_calculado", {
           orcamentos_qtd: selecionados.length,
-          modo_tabela: completa ? "completa" : "idades"
+          modo_tabela: completa ? "completa" : "idades",
+          promo_15: 1
         });
       }
 
       const familiarEl = document.getElementById("familiar1grau");
       const odontoEl   = document.getElementById("odontoSS");
 
-      const familiarAtivo = (!completa && familiarEl) ? familiarEl.checked : false;
+      // ✅ familiar pode afetar também tabela completa (para IND)
+      const familiarAtivo = (familiarEl) ? familiarEl.checked : false;
       const odontoAtivo   = odontoEl ? odontoEl.checked : false;
 
       const cont = document.getElementById("orcamentosContainer");
@@ -1028,23 +957,33 @@
 
         const isSS = isSuperSimples(sel.tipo);
         const aplicarOdonto   = (isSS) && odontoAtivo;
-        const aplicarFamiliar = (!completa) && (!isSS) && familiarAtivo;
 
-        let total = 0;
+        // familiar só vale pra IND
+        const aplicarFamiliar = (!isSS) && familiarAtivo;
+
         let totalNormal = 0;
-        let totalCom5 = 0;
+        let total15 = 0;
+        let total5 = 0;
 
         let rowsHTML = "";
 
         if(completa){
           lista.forEach(faixa=>{
-            let v = Number(faixa[3]) || 0;
-            if(aplicarOdonto) v += ODONTO_POR_VIDA;
+            let vN = Number(faixa[3]) || 0;
+            let v15 = Number(faixa[4]) || 0;
+
+            if(aplicarOdonto){
+              vN += ODONTO_POR_VIDA;
+              v15 += ODONTO_POR_VIDA;
+            }
+
+            const v5 = vN * 0.95;
 
             rowsHTML += `
               <tr>
                 <td>${faixa[0]}</td>
-                <td>R$ ${formatarBR(v)}</td>
+                <td>R$ ${formatarBR(aplicarFamiliar ? v5 : vN)}</td>
+                <td>R$ ${formatarBR(v15)}</td>
               </tr>
             `;
           });
@@ -1053,50 +992,46 @@
             const faixa = lista.find(f => idade >= f[1] && idade <= f[2]);
             if(!faixa) return;
 
-            let vNormal = Number(faixa[3]) || 0;
-            if(aplicarOdonto) vNormal += ODONTO_POR_VIDA;
+            let vN = Number(faixa[3]) || 0;
+            let v15 = Number(faixa[4]) || 0;
 
-            if(aplicarFamiliar){
-              const vDesc = vNormal * 0.95;
-
-              totalNormal += vNormal;
-              totalCom5 += vDesc;
-
-              rowsHTML += `
-                <tr>
-                  <td>${faixa[0]}</td>
-                  <td>${idade}</td>
-                  <td>R$ ${formatarBR(vNormal)}</td>
-                  <td>R$ ${formatarBR(vDesc)}</td>
-                </tr>
-              `;
-            } else {
-              total += vNormal;
-
-              rowsHTML += `
-                <tr>
-                  <td>${faixa[0]}</td>
-                  <td>${idade}</td>
-                  <td>R$ ${formatarBR(vNormal)}</td>
-                </tr>
-              `;
+            if(aplicarOdonto){
+              vN += ODONTO_POR_VIDA;
+              v15 += ODONTO_POR_VIDA;
             }
+
+            const v5 = vN * 0.95;
+
+            totalNormal += vN;
+            total15 += v15;
+            total5 += v5;
+
+            rowsHTML += `
+              <tr>
+                <td>${faixa[0]}</td>
+                <td>${idade}</td>
+                <td>R$ ${formatarBR(aplicarFamiliar ? v5 : vN)}</td>
+                <td>R$ ${formatarBR(v15)}</td>
+              </tr>
+            `;
           });
         }
 
+        // Totais (só no modo por idades)
         let totalHTML = "";
         if(!completa){
           if(aplicarFamiliar){
             totalHTML = `
               <div class="totais">
-                <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
-                <div>Total com 5%: R$ ${formatarBR(totalCom5)}</div>
+                <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
+                <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
               </div>
             `;
           } else {
             totalHTML = `
               <div class="totais">
-                <div>Total: R$ ${formatarBR(total)}</div>
+                <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
+                <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
               </div>
             `;
           }
@@ -1124,14 +1059,15 @@
 
         const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
         const taxa = completa ? "" : taxaAdesaoTexto(sel.tipo, idades.length);
+
         const classeCompleta = completa ? `tabela-completa ${corTabelaCompletaPorIndice(idx)}` : "";
-        const colCount = completa ? 2 : (aplicarFamiliar ? 4 : 3);
+        const colCount = completa ? 3 : 4;
 
         cont.insertAdjacentHTML("beforeend", `
           <div class="orcamento ${classeCompleta}">
             <div class="tabela-wrap">
               <table class="tabela-precos">
-                ${colgroupHTML(completa, aplicarFamiliar)}
+                ${colgroupHTML({ completa, familiar: aplicarFamiliar })}
                 <thead>
                   <tr class="titulo-tabela">
                     <th colspan="${colCount}">${nomeDentroTabelaHTML}</th>
