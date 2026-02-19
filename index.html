@@ -1442,25 +1442,95 @@
       }, 200);
     }
 
-    async function gerarImagem(modo = "share"){
-      const area = document.getElementById("areaImagem");
+    <script>
+  function isMobileDevice(){
+    // heurística bem segura: mobile UA OU touchpoints
+    const ua = navigator.userAgent || "";
+    const mobileUA = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(ua);
+    const touch = (navigator.maxTouchPoints || 0) > 1;
+    return mobileUA || touch;
+  }
 
-      document.body.classList.add("capturando");
-      await new Promise(r => requestAnimationFrame(() => r()));
+  async function gerarImagem(modo = "share"){
+    const area = document.getElementById("areaImagem");
 
-      const canvas = await html2canvas(area, {
-        backgroundColor: "#ffffff",
-        useCORS: true,
-        scale: 3
-      });
+    document.body.classList.add("capturando");
+    await new Promise(r => requestAnimationFrame(() => r()));
 
-      document.body.classList.remove("capturando");
+    const canvas = await html2canvas(area, {
+      backgroundColor: "#ffffff",
+      useCORS: true,
+      scale: 3
+    });
 
-      const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-      if(!blob){
-        alert("Não foi possível gerar a imagem. Tente novamente.");
-        return;
+    document.body.classList.remove("capturando");
+
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+    if(!blob){
+      alert("Não foi possível gerar a imagem. Tente novamente.");
+      return;
+    }
+
+    // ✅ No PC: sempre baixa (mesmo se clicar em compartilhar)
+    const mobile = isMobileDevice();
+    const deveCompartilhar = (modo === "share") && mobile;
+
+    if(deveCompartilhar){
+      const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+      const podeCompartilhar =
+        navigator.share &&
+        (!navigator.canShare || navigator.canShare({ files:[file] }));
+
+      if(podeCompartilhar){
+        try{
+          await navigator.share({ title: "Orçamento", files: [file] });
+          return;
+        } catch(e){
+          // se o usuário cancelar, não faz nada
+          return;
+        }
       }
+      // se no celular não suportar share, cai pro download
+    }
+
+    // ✅ Download (PC sempre cai aqui / celular quando share não disponível)
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "orcamento_hapvida.png";
+    a.click();
+    setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+  }
+
+     // ✅ No PC: baixa direto
+    const mobile = isMobileDevice();
+    const podeTentarShareNoCelular = mobile;
+
+    if(podeTentarShareNoCelular){
+      const file = new File([blob], fileName, { type:"image/png" });
+
+      const podeCompartilhar =
+        navigator.share &&
+        (!navigator.canShare || navigator.canShare({ files:[file] }));
+
+      if(podeCompartilhar){
+        try{
+          await navigator.share({ title: "Hapvida", files: [file] });
+          return;
+        } catch(e){
+          return;
+        }
+      }
+      // se no celular não suportar share, cai pro download
+    }
+
+    // ✅ Download (PC sempre cai aqui / celular quando share não disponível)
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = fileName;
+    a.click();
+    setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+  }
+</script>
 
       const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
 
