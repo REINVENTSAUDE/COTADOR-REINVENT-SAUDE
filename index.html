@@ -669,7 +669,7 @@
         <button type="button" onclick="fecharNovidades()">✕</button>
       </div>
       <div class="novidades-conteudo">
-        ✅ Novidade: 🚀<b>Adicionamos o botão de Coparticipações/Carências! Gere e compartilhe as informações em imagem separada, pronta para enviar ao cliente.</b>
+        ✅ Novidade: <b>Layout mais limpo e focado na Hapvida. Removemos temporariamente a marca da corretora para evitar dúvidas e facilitar a venda.</b>
       </div>
     </div>
 
@@ -770,6 +770,7 @@
         <button class="btn-modal" type="button" onclick="compartilharInfo('copart')">Compartilhar Coparticipações</button>
         <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Compartilhar Carências</button>
         <div class="modal-hint">
+          *Se o iPhone não abrir o “compartilhar”, ele vai baixar a imagem. Aí é só enviar pelo WhatsApp pela galeria.
         </div>
       </div>
     </div>
@@ -813,7 +814,7 @@
       </div>
 
       <div class="rodape-info">
-        *sujeito a alteração.
+        *Valores conforme material enviado. Se você quiser, eu coloco um rodapé padrão “sujeito a alteração” também.
       </div>
     </div>
   </div>
@@ -1442,94 +1443,25 @@
       }, 200);
     }
 
-   function isMobileDevice(){
-  const ua = navigator.userAgent || "";
-  const mobileUA = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(ua);
-  const touch = (navigator.maxTouchPoints || 0) > 1;
-  return mobileUA || touch;
-}
+    async function gerarImagem(modo = "share"){
+      const area = document.getElementById("areaImagem");
 
-async function gerarImagem(modo = "share"){
-  const area = document.getElementById("areaImagem");
+      document.body.classList.add("capturando");
+      await new Promise(r => requestAnimationFrame(() => r()));
 
-  document.body.classList.add("capturando");
-  await new Promise(r => requestAnimationFrame(() => r()));
+      const canvas = await html2canvas(area, {
+        backgroundColor: "#ffffff",
+        useCORS: true,
+        scale: 3
+      });
 
-  const canvas = await html2canvas(area, {
-    backgroundColor: "#ffffff",
-    useCORS: true,
-    scale: 3
-  });
+      document.body.classList.remove("capturando");
 
-  document.body.classList.remove("capturando");
-
-  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-  if(!blob){
-    alert("Não foi possível gerar a imagem.");
-    return;
-  }
-
-  const mobile = isMobileDevice();
-
-  // ✅ No celular tenta compartilhar
-  if(modo === "share" && mobile && navigator.share){
-    const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
-    try{
-      await navigator.share({ files:[file] });
-      return;
-    }catch(e){
-      return;
-    }
-  }
-
-  // ✅ No PC sempre baixa
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "orcamento_hapvida.png";
-  a.click();
-  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
-}
-
-async function gerarImagemDeElemento(elementId, fileName){
-  const area = document.getElementById(elementId);
-
-  document.body.classList.add("capturando");
-  await new Promise(r => requestAnimationFrame(() => r()));
-
-  const canvas = await html2canvas(area, {
-    backgroundColor: "#ffffff",
-    useCORS: true,
-    scale: 3
-  });
-
-  document.body.classList.remove("capturando");
-
-  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-  if(!blob){
-    alert("Não foi possível gerar a imagem.");
-    return;
-  }
-
-  const mobile = isMobileDevice();
-
-  // ✅ Celular compartilha
-  if(mobile && navigator.share){
-    const file = new File([blob], fileName, { type:"image/png" });
-    try{
-      await navigator.share({ files:[file] });
-      return;
-    }catch(e){
-      return;
-    }
-  }
-
-  // ✅ PC baixa direto
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = fileName;
-  a.click();
-  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
-}
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+      if(!blob){
+        alert("Não foi possível gerar a imagem. Tente novamente.");
+        return;
+      }
 
       const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
 
@@ -1591,7 +1523,14 @@ async function gerarImagemDeElemento(elementId, fileName){
       await gerarImagemDeElemento(alvoId, nome);
     }
 
-         document.body.classList.add("capturando");
+    async function gerarImagemDeElemento(elementId, fileName){
+      const area = document.getElementById(elementId);
+      if(!area){
+        alert("Área não encontrada para gerar imagem.");
+        return;
+      }
+
+      document.body.classList.add("capturando");
       await new Promise(r => requestAnimationFrame(() => r()));
 
       const canvas = await html2canvas(area, {
