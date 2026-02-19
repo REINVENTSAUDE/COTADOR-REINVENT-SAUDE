@@ -929,10 +929,15 @@
 
     function isMobileDevice(){
       const ua = navigator.userAgent || "";
-      const mobileUA = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(ua);
-      const touch = (navigator.maxTouchPoints || 0) > 1;
-      return mobileUA || touch;
-    }
+
+  // Detecta SOMENTE dispositivos móveis reais
+      const isAndroid = /Android/i.test(ua);
+      const isiPhone = /iPhone/i.test(ua);
+      const isiPad = /iPad/i.test(ua);
+      const isIPod = /iPod/i.test(ua);
+
+  return isAndroid || isiPhone || isiPad || isIPod;
+}
 
     /* ====== ✅ Fallback da logo (aplica em TODAS as logos) ====== */
     function tentarCarregarLogo(){
