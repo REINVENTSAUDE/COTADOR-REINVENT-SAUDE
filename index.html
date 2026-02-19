@@ -669,7 +669,7 @@
         <button type="button" onclick="fecharNovidades()">✕</button>
       </div>
       <div class="novidades-conteudo">
-        ✅ Novidade: <b>Nova opção para gerar valores de coparticipação e também as carências.</b>
+        ✅ Novidade: <b>Layout mais limpo e focado na Hapvida. Removemos temporariamente a marca da corretora para evitar dúvidas e facilitar a venda.</b>
       </div>
     </div>
 
@@ -770,6 +770,7 @@
         <button class="btn-modal" type="button" onclick="compartilharInfo('copart')">Compartilhar Coparticipações</button>
         <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Compartilhar Carências</button>
         <div class="modal-hint">
+          *Se o iPhone não abrir o “compartilhar”, ele vai baixar a imagem. Aí é só enviar pelo WhatsApp pela galeria.
         </div>
       </div>
     </div>
@@ -813,7 +814,7 @@
       </div>
 
       <div class="rodape-info">
-        *Sujeito a alteração.
+        *Valores conforme material enviado. Se você quiser, eu coloco um rodapé padrão “sujeito a alteração” também.
       </div>
     </div>
   </div>
@@ -1442,95 +1443,25 @@
       }, 200);
     }
 
-    <script>
-  function isMobileDevice(){
-    // heurística bem segura: mobile UA OU touchpoints
-    const ua = navigator.userAgent || "";
-    const mobileUA = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(ua);
-    const touch = (navigator.maxTouchPoints || 0) > 1;
-    return mobileUA || touch;
-  }
+    async function gerarImagem(modo = "share"){
+      const area = document.getElementById("areaImagem");
 
-  async function gerarImagem(modo = "share"){
-    const area = document.getElementById("areaImagem");
+      document.body.classList.add("capturando");
+      await new Promise(r => requestAnimationFrame(() => r()));
 
-    document.body.classList.add("capturando");
-    await new Promise(r => requestAnimationFrame(() => r()));
+      const canvas = await html2canvas(area, {
+        backgroundColor: "#ffffff",
+        useCORS: true,
+        scale: 3
+      });
 
-    const canvas = await html2canvas(area, {
-      backgroundColor: "#ffffff",
-      useCORS: true,
-      scale: 3
-    });
+      document.body.classList.remove("capturando");
 
-    document.body.classList.remove("capturando");
-
-    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-    if(!blob){
-      alert("Não foi possível gerar a imagem. Tente novamente.");
-      return;
-    }
-
-    // ✅ No PC: sempre baixa (mesmo se clicar em compartilhar)
-    const mobile = isMobileDevice();
-    const deveCompartilhar = (modo === "share") && mobile;
-
-    if(deveCompartilhar){
-      const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
-      const podeCompartilhar =
-        navigator.share &&
-        (!navigator.canShare || navigator.canShare({ files:[file] }));
-
-      if(podeCompartilhar){
-        try{
-          await navigator.share({ title: "Orçamento", files: [file] });
-          return;
-        } catch(e){
-          // se o usuário cancelar, não faz nada
-          return;
-        }
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+      if(!blob){
+        alert("Não foi possível gerar a imagem. Tente novamente.");
+        return;
       }
-      // se no celular não suportar share, cai pro download
-    }
-
-    // ✅ Download (PC sempre cai aqui / celular quando share não disponível)
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "orcamento_hapvida.png";
-    a.click();
-    setTimeout(()=> URL.revokeObjectURL(a.href), 800);
-  }
-
-     // ✅ No PC: baixa direto
-    const mobile = isMobileDevice();
-    const podeTentarShareNoCelular = mobile;
-
-    if(podeTentarShareNoCelular){
-      const file = new File([blob], fileName, { type:"image/png" });
-
-      const podeCompartilhar =
-        navigator.share &&
-        (!navigator.canShare || navigator.canShare({ files:[file] }));
-
-      if(podeCompartilhar){
-        try{
-          await navigator.share({ title: "Hapvida", files: [file] });
-          return;
-        } catch(e){
-          return;
-        }
-      }
-      // se no celular não suportar share, cai pro download
-    }
-
-    // ✅ Download (PC sempre cai aqui / celular quando share não disponível)
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = fileName;
-    a.click();
-    setTimeout(()=> URL.revokeObjectURL(a.href), 800);
-  }
-</script>
 
       const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
 
