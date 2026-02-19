@@ -18,7 +18,7 @@
     :root{
       --azul:#005baa;
       --bg:#f5f7fb;
-      --verde:#28a745; /* (mantido só pra consistência; botões estão em azul) */
+      --verde:#28a745;
       --borda:#d9d9d9;
       --texto:#111;
       --vermelho:#c62828;
@@ -26,6 +26,10 @@
       /* chips */
       --chip-borda: rgba(0,91,170,0.35);
       --chip-shadow: 0 6px 14px rgba(0,0,0,0.06);
+
+      /* botão laranja (inspirado na Hapvida) */
+      --laranja:#ff9f1a;
+      --laranja-hover:#f28f00;
     }
 
     body{
@@ -174,7 +178,7 @@
       border-radius:10px;
       box-sizing:border-box;
       resize:none;
-      font-size:16px; /* iOS: evita zoom */
+      font-size:16px;
     }
 
     .linha-opcoes{
@@ -220,7 +224,6 @@
       overflow: visible;
     }
 
-    /* ✅ Logos agora ficam centralizadas */
     .logos{
       display:flex;
       justify-content:center;
@@ -237,7 +240,6 @@
       min-height:64px;
     }
 
-    /* ✅ Logo com tamanho consistente (tela + captura) */
     .logo{
       width: 220px;
       max-width: 80%;
@@ -277,10 +279,6 @@
       border-radius:10px;
     }
 
-    .tabela-completa .tabela-wrap::before{
-      opacity: .16; /* mais forte só na completa */
-    }
-
     .tabela-wrap table,
     .tabela-wrap th,
     .tabela-wrap td{
@@ -306,7 +304,6 @@
       overflow:visible;
     }
 
-    /* ✅ FAIXA AZUL */
     thead .cab th{
       background:var(--azul);
       color:#fff;
@@ -384,7 +381,7 @@
       cursor:pointer;
     }
 
-    /* ===== Cores suaves (SÓ tabela completa) - sem verde ===== */
+    /* ===== Cores suaves (SÓ tabela completa) ===== */
     .tabela-completa.tblc-1 { background:#eef5ff; }
     .tabela-completa.tblc-2 { background:#f3efff; }
     .tabela-completa.tblc-3 { background:#fff1f1; }
@@ -462,8 +459,6 @@
       color:#666;
     }
     .novidades-conteudo{ line-height:1.45; }
-
-    /* NÃO aparece na imagem */
     body.capturando .novidades-box{ display:none !important; }
 
     /* ===== BOTÃO INFO (COPART/CARÊNCIA) ===== */
@@ -478,15 +473,19 @@
       padding:12px 14px;
       border:none;
       border-radius:999px;
-      background: var(--azul);
-      color:#fff;
+      background: var(--laranja);
+      color:#1a1a1a;
       font-size:14px;
       font-weight:900;
       cursor:pointer;
-      box-shadow:0 10px 18px rgba(0,91,170,0.25);
-      transition: opacity .15s ease, transform .12s ease;
+      box-shadow:0 10px 18px rgba(255,159,26,0.25);
+      transition: opacity .15s ease, transform .12s ease, background .15s ease;
     }
-    .btn-info-central button:hover{ opacity:.95; transform: translateY(-1px); }
+    .btn-info-central button:hover{
+      opacity:.98;
+      transform: translateY(-1px);
+      background: var(--laranja-hover);
+    }
 
     /* ===== MODAL INFO ===== */
     .modal-overlay{
@@ -550,8 +549,6 @@
       line-height:1.35;
       margin-top:2px;
     }
-
-    /* Modal nunca entra em captura */
     body.capturando .modal-overlay{ display:none !important; }
 
     /* ===== ÁREAS OFFSCREEN PARA CAPTURA ===== */
@@ -669,7 +666,7 @@
         <button type="button" onclick="fecharNovidades()">✕</button>
       </div>
       <div class="novidades-conteudo">
-        ✅ Novidade: <b>Layout mais limpo e focado na Hapvida. Removemos temporariamente a marca da corretora para evitar dúvidas e facilitar a venda.</b>
+        🚀 Novidade: <b>Adicionamos o botão de Coparticipações/Carências! Gere e compartilhe as informações em imagem separada, pronta para enviar ao cliente.</b>
       </div>
     </div>
 
@@ -741,10 +738,9 @@
 
     <div id="resultado">
       <div id="areaImagem" class="capture-area">
-        <!-- ✅ Logo Hapvida centralizada -->
         <div class="logos">
           <div class="logo-wrap">
-            <img id="logoHapvida" class="logo" src="./logo-hapvida.png" alt="Hapvida">
+            <img id="logoHapvida" class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
           </div>
         </div>
 
@@ -770,7 +766,7 @@
         <button class="btn-modal" type="button" onclick="compartilharInfo('copart')">Compartilhar Coparticipações</button>
         <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Compartilhar Carências</button>
         <div class="modal-hint">
-          *Se o iPhone não abrir o “compartilhar”, ele vai baixar a imagem. Aí é só enviar pelo WhatsApp pela galeria.
+          *No celular abre o compartilhar. No computador baixa automaticamente.
         </div>
       </div>
     </div>
@@ -781,7 +777,7 @@
     <div id="areaCopart" class="capture-area">
       <div class="logos">
         <div class="logo-wrap">
-          <img class="logo" src="./logo-hapvida.png" alt="Hapvida">
+          <img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
         </div>
       </div>
       <div class="info-title">COPARTICIPAÇÕES — NOSSO PLANO</div>
@@ -814,7 +810,7 @@
       </div>
 
       <div class="rodape-info">
-        *Valores conforme material enviado. Se você quiser, eu coloco um rodapé padrão “sujeito a alteração” também.
+        *Informações em formato de imagem para envio rápido ao cliente.
       </div>
     </div>
   </div>
@@ -824,7 +820,7 @@
     <div id="areaCarencias" class="capture-area">
       <div class="logos">
         <div class="logo-wrap">
-          <img class="logo" src="./logo-hapvida.png" alt="Hapvida">
+          <img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
         </div>
       </div>
       <div class="info-title">CARÊNCIAS — NOSSO PLANO PF</div>
@@ -832,9 +828,7 @@
 
       <div class="carencias-section">
         <div class="head">24hrs* (urgência/emergência)</div>
-        <div class="body">
-          casos de urgência/emergência.
-        </div>
+        <div class="body">casos de urgência/emergência.</div>
       </div>
 
       <div style="height:10px;"></div>
@@ -881,7 +875,7 @@
             <li>Angiografia (cerebral central e/ou periférica)</li>
             <li>procedimentos que necessitem de Hemodinâmica (ex.: Cateterismo Cardíaco)</li>
             <li>Radioterapia e Quimioterapia</li>
-            <li>Consultas, Sessões e Terapias Simples, Especiais, Isoladas e Multidisciplinares, inclusive com métodos específicos — ABA, BOBATH e outras (ex.: psicoterapia, fonoaudiologia, nutricionista, fisioterapia, terapia ocupacional) — para todos os procedimentos não mencionados nos itens anteriores.</li>
+            <li>Consultas, Sessões e Terapias Simples, Especiais, Isoladas e Multidisciplinares, inclusive com métodos específicos — ABA, BOBATH e outras (ex.: psicoterapia, fonoaudiologia, nutricionista, fisioterapia, terapia ocupacional)</li>
           </ul>
         </div>
       </div>
@@ -890,23 +884,18 @@
 
       <div class="carencias-section">
         <div class="head">300 dias*</div>
-        <div class="body">
-          Partos a termo (somente para planos com segmentação HOSPITALAR COM OBSTETRÍCIA)
-        </div>
+        <div class="body">Partos a termo (somente para planos com segmentação HOSPITALAR COM OBSTETRÍCIA)</div>
       </div>
 
       <div style="height:10px;"></div>
 
       <div class="carencias-section">
         <div class="head">720 dias*</div>
-        <div class="body">
-          Cobertura de doenças ou lesões pré-existentes.
-        </div>
+        <div class="body">Cobertura de doenças ou lesões pré-existentes.</div>
       </div>
 
       <div class="rodape-info">
         *Estas carências correspondem ao plano Nosso Plano PF. Elas podem variar de acordo com o plano apresentado.
-        O consultor lhe passará o material de carência para o plano que for necessário.
       </div>
     </div>
   </div>
@@ -938,11 +927,15 @@
       try{ localStorage.setItem(NOVIDADES_STORAGE_KEY, "1"); }catch(e){}
     }
 
-    /* ====== ✅ Fallback da logo (resolve “nomezinho”) ====== */
-    function tentarCarregarLogo(){
-      const img = document.getElementById("logoHapvida");
-      if(!img) return;
+    function isMobileDevice(){
+      const ua = navigator.userAgent || "";
+      const mobileUA = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(ua);
+      const touch = (navigator.maxTouchPoints || 0) > 1;
+      return mobileUA || touch;
+    }
 
+    /* ====== ✅ Fallback da logo (aplica em TODAS as logos) ====== */
+    function tentarCarregarLogo(){
       const candidatos = [
         "./logo-hapvida.png",
         "logo-hapvida.png",
@@ -958,14 +951,14 @@
         const t = new Image();
         t.onload = () => resolve({ ok:true, src });
         t.onerror = () => resolve({ ok:false, src });
-        t.src = src + (src.includes("?") ? "" : ("?v=" + Date.now())); // evita cache antigo
+        t.src = src + (src.includes("?") ? "" : ("?v=" + Date.now()));
       });
 
       (async () => {
         for(const src of candidatos){
           const r = await testar(src);
           if(r.ok){
-            img.src = src; // coloca o caminho limpo
+            document.querySelectorAll(".logo-hapvida-img").forEach(img => { img.src = src; });
             return;
           }
         }
@@ -1020,7 +1013,6 @@
       });
     }
 
-    /* ====== TABELAS ====== */
     const tabelas = {
       ind_enf_parcial: [
         ["00 a 18",0,18,241.68,205.43],["19 a 23",19,23,311.18,264.50],["24 a 28",24,28,354.18,301.05],
@@ -1459,68 +1451,29 @@
 
       const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
       if(!blob){
-        alert("Não foi possível gerar a imagem. Tente novamente.");
+        alert("Não foi possível gerar a imagem.");
         return;
       }
 
-      const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+      const mobile = isMobileDevice();
 
-      if(modo === "share"){
-        const podeCompartilhar =
-          navigator.share &&
-          (!navigator.canShare || navigator.canShare({ files:[file] }));
-
-        if(podeCompartilhar){
-          try{
-            await navigator.share({ title: "Orçamento", files: [file] });
-            return;
-          } catch(e){
-            return;
-          }
+      // ✅ Celular: tenta compartilhar
+      if(modo === "share" && mobile && navigator.share){
+        const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+        try{
+          await navigator.share({ title: "Orçamento", files: [file] });
+          return;
+        }catch(e){
+          return;
         }
-
-        alert("No seu iPhone, o compartilhamento não ficou disponível. Use 'Baixar Orçamento' e compartilhe pela galeria.");
-        return;
       }
 
+      // ✅ PC: sempre baixa
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
       a.download = "orcamento_hapvida.png";
       a.click();
-      URL.revokeObjectURL(a.href);
-    }
-
-    /* ====== ✅ MODAL INFO ====== */
-    function abrirModalInfo(){
-      const m = document.getElementById("modalInfo");
-      if(m) m.style.display = "flex";
-
-      // atualiza datas nas imagens
-      const hoje = dataHojeBR();
-      const d1 = document.getElementById("dataCopart");
-      const d2 = document.getElementById("dataCarencias");
-      if(d1) d1.textContent = hoje;
-      if(d2) d2.textContent = hoje;
-    }
-
-    function fecharModalInfo(){
-      const m = document.getElementById("modalInfo");
-      if(m) m.style.display = "none";
-    }
-
-    function clicouForaModal(e){
-      if(e.target && e.target.id === "modalInfo"){
-        fecharModalInfo();
-      }
-    }
-
-    async function compartilharInfo(tipo){
-      fecharModalInfo();
-
-      const alvoId = (tipo === "copart") ? "areaCopart" : "areaCarencias";
-      const nome = (tipo === "copart") ? "coparticipacoes_hapvida.png" : "carencias_hapvida.png";
-
-      await gerarImagemDeElemento(alvoId, nome);
+      setTimeout(()=> URL.revokeObjectURL(a.href), 800);
     }
 
     async function gerarImagemDeElemento(elementId, fileName){
@@ -1543,40 +1496,64 @@
 
       const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
       if(!blob){
-        alert("Não foi possível gerar a imagem. Tente novamente.");
+        alert("Não foi possível gerar a imagem.");
         return;
       }
 
-      const file = new File([blob], fileName, { type:"image/png" });
+      const mobile = isMobileDevice();
 
-      const podeCompartilhar =
-        navigator.share &&
-        (!navigator.canShare || navigator.canShare({ files:[file] }));
-
-      if(podeCompartilhar){
+      // ✅ Celular: compartilha
+      if(mobile && navigator.share){
+        const file = new File([blob], fileName, { type:"image/png" });
         try{
           await navigator.share({ title: "Hapvida", files: [file] });
           return;
-        } catch(e){
+        }catch(e){
           return;
         }
       }
 
-      // fallback: baixa
+      // ✅ PC: baixa direto
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
       a.download = fileName;
       a.click();
-      URL.revokeObjectURL(a.href);
+      setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+    }
 
-      alert("Se não apareceu o compartilhar, a imagem foi baixada. Envie pelo WhatsApp pela galeria.");
+    /* ====== MODAL INFO ====== */
+    function abrirModalInfo(){
+      const m = document.getElementById("modalInfo");
+      if(m) m.style.display = "flex";
+
+      const hoje = dataHojeBR();
+      const d1 = document.getElementById("dataCopart");
+      const d2 = document.getElementById("dataCarencias");
+      if(d1) d1.textContent = hoje;
+      if(d2) d2.textContent = hoje;
+    }
+
+    function fecharModalInfo(){
+      const m = document.getElementById("modalInfo");
+      if(m) m.style.display = "none";
+    }
+
+    function clicouForaModal(e){
+      if(e.target && e.target.id === "modalInfo"){
+        fecharModalInfo();
+      }
+    }
+
+    async function compartilharInfo(tipo){
+      fecharModalInfo();
+      const alvoId = (tipo === "copart") ? "areaCopart" : "areaCarencias";
+      const nome = (tipo === "copart") ? "coparticipacoes_hapvida.png" : "carencias_hapvida.png";
+      await gerarImagemDeElemento(alvoId, nome);
     }
 
     // inicia estado
     atualizarOpcoesAtivas();
     mostrarNovidades();
-
-    // ✅ tenta resolver a logo automaticamente
     tentarCarregarLogo();
   </script>
 </body>
