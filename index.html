@@ -1443,25 +1443,94 @@
       }, 200);
     }
 
-    async function gerarImagem(modo = "share"){
-      const area = document.getElementById("areaImagem");
+   function isMobileDevice(){
+  const ua = navigator.userAgent || "";
+  const mobileUA = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(ua);
+  const touch = (navigator.maxTouchPoints || 0) > 1;
+  return mobileUA || touch;
+}
 
-      document.body.classList.add("capturando");
-      await new Promise(r => requestAnimationFrame(() => r()));
+async function gerarImagem(modo = "share"){
+  const area = document.getElementById("areaImagem");
 
-      const canvas = await html2canvas(area, {
-        backgroundColor: "#ffffff",
-        useCORS: true,
-        scale: 3
-      });
+  document.body.classList.add("capturando");
+  await new Promise(r => requestAnimationFrame(() => r()));
 
-      document.body.classList.remove("capturando");
+  const canvas = await html2canvas(area, {
+    backgroundColor: "#ffffff",
+    useCORS: true,
+    scale: 3
+  });
 
-      const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-      if(!blob){
-        alert("Não foi possível gerar a imagem. Tente novamente.");
-        return;
-      }
+  document.body.classList.remove("capturando");
+
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+  if(!blob){
+    alert("Não foi possível gerar a imagem.");
+    return;
+  }
+
+  const mobile = isMobileDevice();
+
+  // ✅ No celular tenta compartilhar
+  if(modo === "share" && mobile && navigator.share){
+    const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+    try{
+      await navigator.share({ files:[file] });
+      return;
+    }catch(e){
+      return;
+    }
+  }
+
+  // ✅ No PC sempre baixa
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "orcamento_hapvida.png";
+  a.click();
+  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+}
+
+async function gerarImagemDeElemento(elementId, fileName){
+  const area = document.getElementById(elementId);
+
+  document.body.classList.add("capturando");
+  await new Promise(r => requestAnimationFrame(() => r()));
+
+  const canvas = await html2canvas(area, {
+    backgroundColor: "#ffffff",
+    useCORS: true,
+    scale: 3
+  });
+
+  document.body.classList.remove("capturando");
+
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+  if(!blob){
+    alert("Não foi possível gerar a imagem.");
+    return;
+  }
+
+  const mobile = isMobileDevice();
+
+  // ✅ Celular compartilha
+  if(mobile && navigator.share){
+    const file = new File([blob], fileName, { type:"image/png" });
+    try{
+      await navigator.share({ files:[file] });
+      return;
+    }catch(e){
+      return;
+    }
+  }
+
+  // ✅ PC baixa direto
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = fileName;
+  a.click();
+  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+}
 
       const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
 
@@ -1523,14 +1592,7 @@
       await gerarImagemDeElemento(alvoId, nome);
     }
 
-    async function gerarImagemDeElemento(elementId, fileName){
-      const area = document.getElementById(elementId);
-      if(!area){
-        alert("Área não encontrada para gerar imagem.");
-        return;
-      }
-
-      document.body.classList.add("capturando");
+         document.body.classList.add("capturando");
       await new Promise(r => requestAnimationFrame(() => r()));
 
       const canvas = await html2canvas(area, {
