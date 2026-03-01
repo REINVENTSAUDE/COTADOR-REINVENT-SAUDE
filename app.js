@@ -6,108 +6,24 @@ const CIDADES_CFG = {
   salvador:  { titulo: "Salvador",  uf: "BA", odontoJaIncluso: true,  arquivo: "./tabelas-salvador.js" }
 };
 
+// ====== estado cidade/tabelas ======
 let cidadeAtiva = "fortaleza";
 let tabelasAtivas = window.TABELAS_FORTALEZA || {};
 
+// ====== estado seleção ======
 const tiposAtivos = new Set();
 let selecionados = [];
 
 const NOVIDADES_STORAGE_KEY = "hapvida_novidades_fechadas_v3";
 
-/* ===== UI cidade ===== */
-function atualizarUIcidade(){
-  const cfg = CIDADES_CFG[cidadeAtiva] || CIDADES_CFG.fortaleza;
-
-  const t = document.getElementById("cidadeTitulo");
-  if(t) t.textContent = `${cfg.titulo} - ${cfg.uf}`;
-
-  const bF = document.getElementById("btnFortaleza");
-  const bS = document.getElementById("btnSalvador");
-  if(bF) bF.classList.toggle("ativo", cidadeAtiva === "fortaleza");
-  if(bS) bS.classList.toggle("ativo", cidadeAtiva === "salvador");
-}
-
-function resetarTudo(){
-  tiposAtivos.clear();
-  selecionados = [];
-
-  const ta = document.getElementById("idades");
-  if(ta) ta.value = "";
-
-  const extras = document.getElementById("opcoesExtras");
-  if(extras) extras.innerHTML = "";
-
-  // limpa visuais
-  document.querySelectorAll(".tipo").forEach(b=> b.classList.remove("ativo"));
-  document.querySelectorAll(".opcao").forEach(b=>{
-    b.classList.remove("ativo");
-    b.classList.add("disabled");
+/* =======================
+   UTILIDADES
+======================= */
+function formatarBR(valor){
+  return Number(valor).toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
   });
-
-  limparResultado();
-  atualizarOpcoesAtivas();
-}
-
-function limparResultado(){
-  const r = document.getElementById("resultado");
-  if(r) r.style.display = "none";
-  const c = document.getElementById("orcamentosContainer");
-  if(c) c.innerHTML = "";
-  mostrarAjuda();
-}
-
-async function carregarScript(src){
-  return new Promise((resolve, reject)=>{
-    const s = document.createElement("script");
-    s.src = src + (src.includes("?") ? "" : ("?v=" + Date.now()));
-    s.onload = () => resolve();
-    s.onerror = () => reject(new Error("Falha ao carregar: " + src));
-    document.head.appendChild(s);
-  });
-}
-
-async function setCidade(cidade){
-  if(!CIDADES_CFG[cidade]) return;
-  if(cidade === cidadeAtiva) return;
-
-  cidadeAtiva = cidade;
-  resetarTudo();
-  atualizarUIcidade();
-
-  if(cidadeAtiva === "salvador"){
-    try{
-      if(!window.TABELAS_SALVADOR){
-        await carregarScript(CIDADES_CFG.salvador.arquivo);
-      }
-      tabelasAtivas = window.TABELAS_SALVADOR || {};
-    }catch(e){
-      alert("Não consegui carregar a tabela de Salvador. Confira se o arquivo 'tabelas-salvador.js' está na mesma pasta do index.html.");
-      cidadeAtiva = "fortaleza";
-      tabelasAtivas = window.TABELAS_FORTALEZA || {};
-      atualizarUIcidade();
-    }
-  }else{
-    tabelasAtivas = window.TABELAS_FORTALEZA || {};
-  }
-}
-
-/* ===== novidades ===== */
-function mostrarNovidades(){
-  const box = document.getElementById("novidadesBox");
-  if(!box) return;
-  const fechado = localStorage.getItem(NOVIDADES_STORAGE_KEY) === "1";
-  box.style.display = fechado ? "none" : "block";
-}
-function fecharNovidades(){
-  const box = document.getElementById("novidadesBox");
-  if(box) box.style.display = "none";
-  try{ localStorage.setItem(NOVIDADES_STORAGE_KEY, "1"); }catch(e){}
-}
-
-/* ===== utils ===== */
-function isMobileDevice(){
-  const ua = navigator.userAgent || "";
-  return /Android|iPhone|iPad|iPod/i.test(ua);
 }
 
 function dataHojeBR(){
@@ -118,16 +34,15 @@ function dataHojeBR(){
   return `${dd}/${mm}/${yyyy}`;
 }
 
-function formatarBR(valor){
-  return Number(valor).toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
+function isMobileDevice(){
+  const ua = navigator.userAgent || "";
+  return /Android|iPhone|iPad|iPod/i.test(ua);
 }
 
 let toastTimer = null;
 function showToast(msg){
   const t = document.getElementById("toast");
+  if(!t) return;
   t.textContent = msg;
   t.classList.add("show");
   clearTimeout(toastTimer);
@@ -142,11 +57,22 @@ function mostrarAjuda(){
   const ajuda = document.getElementById("ajudaPasso");
   if(ajuda) ajuda.style.display = "block";
 }
-function blurActive(){
-  if (document.activeElement) document.activeElement.blur();
+
+function limparResultado(){
+  const r = document.getElementById("resultado");
+  if(r) r.style.display = "none";
+  const c = document.getElementById("orcamentosContainer");
+  if(c) c.innerHTML = "";
+  mostrarAjuda();
 }
 
-/* ===== logo fallback ===== */
+function blurActive(){
+  if(document.activeElement) document.activeElement.blur();
+}
+
+/* =======================
+   LOGO fallback
+======================= */
 function tentarCarregarLogo(){
   const candidatos = [
     "./logo-hapvida.png",
@@ -177,7 +103,9 @@ function tentarCarregarLogo(){
   })();
 }
 
-/* ===== nomes completos (para orçamento/imagem) ===== */
+/* =======================
+   NOME COMPLETO (ORÇAMENTO)
+======================= */
 const nomesClienteBase = {
   ind_enf: "NOSSO PLANO ENFERMARIA COPARTICIPAÇÃO",
   ind_amb: "NOSSO PLANO AMBULATORIAL COPARTICIPAÇÃO",
@@ -192,7 +120,6 @@ function isSuperSimples(tipo){
 
 function nomeClienteCompletoHTML(tipo, modo){
   let base = nomesClienteBase[tipo] || "";
-  // no seu original você exibiu SS como empresarial no texto do cliente
   if(isSuperSimples(tipo)){
     base = base.replace(/^SUPER SIMPLES /, "PLANO EMPRESARIAL ");
   }
@@ -203,7 +130,96 @@ function nomeClienteCompletoHTML(tipo, modo){
   return `${base} ${mod}`.trim();
 }
 
-/* ===== seleção ===== */
+/* =======================
+   CIDADE
+======================= */
+function atualizarUIcidade(){
+  const cfg = CIDADES_CFG[cidadeAtiva] || CIDADES_CFG.fortaleza;
+
+  const titulo = document.getElementById("cidadeTitulo");
+  if(titulo) titulo.textContent = `${cfg.titulo} - ${cfg.uf}`;
+
+  // IMPORTANTÍSSIMO: aqui só mexe nos botões de cidade
+  const bF = document.getElementById("btnFortaleza");
+  const bS = document.getElementById("btnSalvador");
+  if(bF) bF.classList.toggle("ativo", cidadeAtiva === "fortaleza");
+  if(bS) bS.classList.toggle("ativo", cidadeAtiva === "salvador");
+}
+
+async function carregarScript(src){
+  return new Promise((resolve, reject)=>{
+    const s = document.createElement("script");
+    s.src = src + (src.includes("?") ? "" : ("?v=" + Date.now()));
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error("Falha ao carregar: " + src));
+    document.head.appendChild(s);
+  });
+}
+
+function resetarSelecoesPlanos(){
+  tiposAtivos.clear();
+  selecionados = [];
+
+  const ta = document.getElementById("idades");
+  if(ta) ta.value = "";
+
+  const extras = document.getElementById("opcoesExtras");
+  if(extras) extras.innerHTML = "";
+
+  // IMPORTANTÍSSIMO: só limpa botões de PLANO, não os de cidade
+  document.querySelectorAll(".grupo-plano .tipo").forEach(b=> b.classList.remove("ativo"));
+  document.querySelectorAll(".grupo-plano .opcao[data-plan][data-modo]").forEach(b=>{
+    b.classList.remove("ativo");
+    b.classList.add("disabled");
+  });
+
+  limparResultado();
+  atualizarOpcoesAtivas();
+}
+
+async function setCidade(cidade){
+  if(!CIDADES_CFG[cidade]) return;
+  if(cidade === cidadeAtiva) return;
+
+  cidadeAtiva = cidade;
+  atualizarUIcidade();
+  resetarSelecoesPlanos();
+
+  if(cidadeAtiva === "salvador"){
+    try{
+      if(!window.TABELAS_SALVADOR){
+        await carregarScript(CIDADES_CFG.salvador.arquivo);
+      }
+      tabelasAtivas = window.TABELAS_SALVADOR || {};
+    }catch(e){
+      alert("Não consegui carregar a tabela de Salvador. Confira se 'tabelas-salvador.js' está na mesma pasta do index.html.");
+      cidadeAtiva = "fortaleza";
+      tabelasAtivas = window.TABELAS_FORTALEZA || {};
+      atualizarUIcidade();
+    }
+  }else{
+    tabelasAtivas = window.TABELAS_FORTALEZA || {};
+  }
+}
+
+/* =======================
+   NOVIDADES
+======================= */
+function mostrarNovidades(){
+  const box = document.getElementById("novidadesBox");
+  if(!box) return;
+  const fechado = localStorage.getItem(NOVIDADES_STORAGE_KEY) === "1";
+  box.style.display = fechado ? "none" : "block";
+}
+function fecharNovidades(){
+  const box = document.getElementById("novidadesBox");
+  if(box) box.style.display = "none";
+  try{ localStorage.setItem(NOVIDADES_STORAGE_KEY, "1"); }catch(e){}
+}
+
+/* =======================
+   SELEÇÃO (PLANOS)
+======================= */
 function atualizarCheckboxes(){
   const temIND = selecionados.some(s => !isSuperSimples(s.tipo));
   const temSS  = selecionados.some(s => isSuperSimples(s.tipo));
@@ -230,7 +246,7 @@ function atualizarCheckboxes(){
   }
 
   if(temSS){
-    const odontoIncluso = !!(CIDADES_CFG[cidadeAtiva] && CIDADES_CFG[cidadeAtiva].odontoJaIncluso);
+    const odontoIncluso = !!CIDADES_CFG[cidadeAtiva].odontoJaIncluso;
     if(!odontoIncluso){
       container.insertAdjacentHTML("beforeend", `
         <label class="opt-label">
@@ -249,6 +265,7 @@ function atualizarCheckboxes(){
 }
 
 function atualizarOpcoesAtivas(){
+  // IMPORTANTÍSSIMO: só mexe em grupo-plano, nada de mexer nos botões de cidade
   document.querySelectorAll(".grupo-plano").forEach(grupo=>{
     const plan = grupo.dataset.plan;
     const tipoBtn = grupo.querySelector(".tipo");
@@ -257,7 +274,7 @@ function atualizarOpcoesAtivas(){
     if(ativo) tipoBtn.classList.add("ativo");
     else tipoBtn.classList.remove("ativo");
 
-    grupo.querySelectorAll(".opcao").forEach(op=>{
+    grupo.querySelectorAll(".opcao[data-plan][data-modo]").forEach(op=>{
       if(ativo) op.classList.remove("disabled");
       else{
         op.classList.add("disabled");
@@ -266,7 +283,7 @@ function atualizarOpcoesAtivas(){
     });
   });
 
-  document.querySelectorAll(".opcao").forEach(op=>{
+  document.querySelectorAll(".grupo-plano .opcao[data-plan][data-modo]").forEach(op=>{
     const tipo = op.dataset.plan;
     const modo = op.dataset.modo;
     const selected = selecionados.some(s => s.tipo===tipo && s.modo===modo);
@@ -281,11 +298,9 @@ function toggleTipo(planKey){
   if(tiposAtivos.has(planKey)){
     tiposAtivos.delete(planKey);
     selecionados = selecionados.filter(s => s.tipo !== planKey);
-    limparResultado();
-    atualizarOpcoesAtivas();
-    return;
+  }else{
+    tiposAtivos.add(planKey);
   }
-  tiposAtivos.add(planKey);
   limparResultado();
   atualizarOpcoesAtivas();
 }
@@ -297,25 +312,23 @@ function toggleModo(btn){
   if(!tiposAtivos.has(tipo) || btn.classList.contains("disabled")) return;
 
   const idx = selecionados.findIndex(s => s.tipo===tipo && s.modo===modo);
-
   if(idx >= 0){
     selecionados.splice(idx, 1);
-    limparResultado();
-    atualizarOpcoesAtivas();
-    return;
+  }else{
+    if(selecionados.length >= LIMITE_ORCAMENTOS){
+      showToast("Máximo de 2 orçamentos por vez.");
+      return;
+    }
+    selecionados.push({ tipo, modo });
   }
 
-  if(selecionados.length >= LIMITE_ORCAMENTOS){
-    showToast("Máximo de 2 orçamentos por vez.");
-    return;
-  }
-
-  selecionados.push({ tipo, modo });
   limparResultado();
   atualizarOpcoesAtivas();
 }
 
-/* ===== cálculo ===== */
+/* =======================
+   CÁLCULO
+======================= */
 function parseIdades(){
   return document.getElementById("idades").value
     .split(",")
@@ -387,21 +400,10 @@ function calcular(){
     return;
   }
 
-  if (typeof gtag === "function") {
-    gtag("event", "orcamento_calculado", {
-      cidade: cidadeAtiva,
-      orcamentos_qtd: selecionados.length,
-      modo_tabela: completa ? "completa" : "idades",
-      promo_15: 1
-    });
-  }
-
   const familiarEl = document.getElementById("familiar1grau");
   const odontoEl   = document.getElementById("odontoSS");
 
   const familiarAtivo = (familiarEl) ? familiarEl.checked : false;
-
-  // Odonto SS só se a cidade permitir (Fortaleza)
   const odontoPermitido = !CIDADES_CFG[cidadeAtiva].odontoJaIncluso;
   const odontoAtivo = (odontoEl && odontoPermitido) ? odontoEl.checked : false;
 
@@ -417,6 +419,7 @@ function calcular(){
   selecionados.forEach((sel, idx)=>{
     const chave = `${sel.tipo}_${sel.modo}`;
     const lista = tabelasAtivas[chave];
+
     if(!lista){
       alert("Tabela não encontrada para um dos planos selecionados (verifique a cidade/tabelas).");
       return;
@@ -429,7 +432,6 @@ function calcular(){
     let totalNormal = 0;
     let total15 = 0;
     let total5 = 0;
-
     let rowsHTML = "";
 
     if(completa){
@@ -452,7 +454,7 @@ function calcular(){
           </tr>
         `;
       });
-    } else {
+    }else{
       idades.forEach(idade=>{
         const faixa = lista.find(f => idade >= f[1] && idade <= f[2]);
         if(!faixa) return;
@@ -484,28 +486,24 @@ function calcular(){
 
     let totalHTML = "";
     if(!completa){
-      if(aplicarFamiliar){
-        totalHTML = `
-          <div class="totais">
-            <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
-            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
-          </div>
-        `;
-      } else {
-        totalHTML = `
-          <div class="totais">
-            <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
-            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
-          </div>
-        `;
-      }
+      totalHTML = aplicarFamiliar ? `
+        <div class="totais">
+          <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
+          <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+        </div>
+      ` : `
+        <div class="totais">
+          <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
+          <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+        </div>
+      `;
     }
 
     let odontoInfo = "";
     if(aplicarOdonto){
       if(completa){
         odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário — incluído no valor</div>`;
-      } else {
+      }else{
         const totalOdonto = ODONTO_POR_VIDA * idades.length;
         odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário (R$ ${formatarBR(totalOdonto)}) — incluído nos valores</div>`;
       }
@@ -561,7 +559,9 @@ function calcular(){
   }, 200);
 }
 
-/* ===== gerar imagem ===== */
+/* =======================
+   IMAGEM
+======================= */
 async function gerarImagem(modo = "share"){
   const area = document.getElementById("areaImagem");
 
@@ -644,7 +644,9 @@ async function gerarImagemDeElemento(elementId, fileName){
   setTimeout(()=> URL.revokeObjectURL(a.href), 800);
 }
 
-/* ===== modal info ===== */
+/* =======================
+   MODAL
+======================= */
 function abrirModalInfo(){
   const m = document.getElementById("modalInfo");
   if(m) m.style.display = "flex";
@@ -674,8 +676,16 @@ async function compartilharInfo(tipo){
   await gerarImagemDeElemento(alvoId, nome);
 }
 
-/* ===== init ===== */
-atualizarUIcidade();
-atualizarOpcoesAtivas();
-mostrarNovidades();
-tentarCarregarLogo();
+/* =======================
+   INIT
+======================= */
+document.addEventListener("DOMContentLoaded", () => {
+  // Fortaleza ativo por padrão
+  cidadeAtiva = "fortaleza";
+  tabelasAtivas = window.TABELAS_FORTALEZA || {};
+
+  atualizarUIcidade();
+  atualizarOpcoesAtivas();
+  mostrarNovidades();
+  tentarCarregarLogo();
+});
