@@ -1,630 +1,681 @@
-/* ===== CONFIG ===== */
-
 const LIMITE_ORCAMENTOS = 2;
 const ODONTO_POR_VIDA = 23.25;
 
 const CIDADES_CFG = {
-  fortaleza:{
-    titulo:"Fortaleza",
-    odontoJaIncluso:false,
-    arquivo:null
-  },
-  salvador:{
-    titulo:"Salvador",
-    odontoJaIncluso:true,
-    arquivo:"./tabelas-salvador.js"
-  }
+  fortaleza: { titulo: "Fortaleza", uf: "CE", odontoJaIncluso: false, arquivo: null },
+  salvador:  { titulo: "Salvador",  uf: "BA", odontoJaIncluso: true,  arquivo: "./tabelas-salvador.js" }
 };
 
-let cidadeAtiva="fortaleza";
-let tabelasAtivas=window.TABELAS_FORTALEZA;
+let cidadeAtiva = "fortaleza";
+let tabelasAtivas = window.TABELAS_FORTALEZA || {};
 
+const tiposAtivos = new Set();
+let selecionados = [];
 
-/* ===== ESTADO ===== */
+const NOVIDADES_STORAGE_KEY = "hapvida_novidades_fechadas_v3";
 
-const tiposAtivos=new Set();
-let selecionados=[];
+/* ===== UI cidade ===== */
+function atualizarUIcidade(){
+  const cfg = CIDADES_CFG[cidadeAtiva] || CIDADES_CFG.fortaleza;
 
+  const t = document.getElementById("cidadeTitulo");
+  if(t) t.textContent = `${cfg.titulo} - ${cfg.uf}`;
 
-/* ===== UTIL ===== */
-
-function formatarBR(valor){
-return Number(valor).toLocaleString("pt-BR",{minimumFractionDigits:2});
+  const bF = document.getElementById("btnFortaleza");
+  const bS = document.getElementById("btnSalvador");
+  if(bF) bF.classList.toggle("ativo", cidadeAtiva === "fortaleza");
+  if(bS) bS.classList.toggle("ativo", cidadeAtiva === "salvador");
 }
 
-function dataHojeBR(){
-const d=new Date();
-return d.toLocaleDateString("pt-BR");
-}
+function resetarTudo(){
+  tiposAtivos.clear();
+  selecionados = [];
 
-function isMobileDevice(){
-const ua=navigator.userAgent;
-return /Android|iPhone|iPad/i.test(ua);
-}
+  const ta = document.getElementById("idades");
+  if(ta) ta.value = "";
 
-function showToast(msg){
+  const extras = document.getElementById("opcoesExtras");
+  if(extras) extras.innerHTML = "";
 
-const t=document.getElementById("toast");
+  // limpa visuais
+  document.querySelectorAll(".tipo").forEach(b=> b.classList.remove("ativo"));
+  document.querySelectorAll(".opcao").forEach(b=>{
+    b.classList.remove("ativo");
+    b.classList.add("disabled");
+  });
 
-t.textContent=msg;
-
-t.classList.add("show");
-
-setTimeout(()=>{
-t.classList.remove("show");
-},1500)
-
-}
-
-function esconderAjuda(){
-document.getElementById("ajudaPasso").style.display="none";
-}
-
-function mostrarAjuda(){
-document.getElementById("ajudaPasso").style.display="block";
+  limparResultado();
+  atualizarOpcoesAtivas();
 }
 
 function limparResultado(){
-
-document.getElementById("resultado").style.display="none";
-
-document.getElementById("orcamentosContainer").innerHTML="";
-
-mostrarAjuda();
-
+  const r = document.getElementById("resultado");
+  if(r) r.style.display = "none";
+  const c = document.getElementById("orcamentosContainer");
+  if(c) c.innerHTML = "";
+  mostrarAjuda();
 }
 
-
-/* ===== CIDADE ===== */
-
-function atualizarUIcidade(){
-
-document.getElementById("cidadeTitulo").innerText=
-CIDADES_CFG[cidadeAtiva].titulo;
-
-document.getElementById("btnFortaleza")
-.classList.toggle("ativo",cidadeAtiva==="fortaleza");
-
-document.getElementById("btnSalvador")
-.classList.toggle("ativo",cidadeAtiva==="salvador");
-
+async function carregarScript(src){
+  return new Promise((resolve, reject)=>{
+    const s = document.createElement("script");
+    s.src = src + (src.includes("?") ? "" : ("?v=" + Date.now()));
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error("Falha ao carregar: " + src));
+    document.head.appendChild(s);
+  });
 }
-
-
-function resetarTudo(){
-
-tiposAtivos.clear();
-
-selecionados=[];
-
-document.getElementById("idades").value="";
-
-document.getElementById("opcoesExtras").innerHTML="";
-
-document.querySelectorAll(".tipo")
-.forEach(b=>b.classList.remove("ativo"));
-
-document.querySelectorAll(".opcao")
-.forEach(b=>{
-b.classList.remove("ativo");
-b.classList.add("disabled");
-})
-
-limparResultado();
-
-}
-
-
-
-async function carregarSalvador(){
-
-return new Promise((resolve,reject)=>{
-
-const s=document.createElement("script");
-
-s.src=CIDADES_CFG.salvador.arquivo+"?v="+Date.now();
-
-s.onload=resolve;
-
-s.onerror=reject;
-
-document.head.appendChild(s);
-
-})
-
-}
-
 
 async function setCidade(cidade){
+  if(!CIDADES_CFG[cidade]) return;
+  if(cidade === cidadeAtiva) return;
 
-if(cidade===cidadeAtiva)return;
+  cidadeAtiva = cidade;
+  resetarTudo();
+  atualizarUIcidade();
 
-cidadeAtiva=cidade;
-
-resetarTudo();
-
-atualizarUIcidade();
-
-if(cidade==="salvador"){
-
-if(!window.TABELAS_SALVADOR){
-
-try{
-
-await carregarSalvador();
-
-}catch{
-
-alert("Erro carregar Salvador");
-
-cidadeAtiva="fortaleza";
-
-tabelasAtivas=window.TABELAS_FORTALEZA;
-
-return;
-
+  if(cidadeAtiva === "salvador"){
+    try{
+      if(!window.TABELAS_SALVADOR){
+        await carregarScript(CIDADES_CFG.salvador.arquivo);
+      }
+      tabelasAtivas = window.TABELAS_SALVADOR || {};
+    }catch(e){
+      alert("Não consegui carregar a tabela de Salvador. Confira se o arquivo 'tabelas-salvador.js' está na mesma pasta do index.html.");
+      cidadeAtiva = "fortaleza";
+      tabelasAtivas = window.TABELAS_FORTALEZA || {};
+      atualizarUIcidade();
+    }
+  }else{
+    tabelasAtivas = window.TABELAS_FORTALEZA || {};
+  }
 }
 
+/* ===== novidades ===== */
+function mostrarNovidades(){
+  const box = document.getElementById("novidadesBox");
+  if(!box) return;
+  const fechado = localStorage.getItem(NOVIDADES_STORAGE_KEY) === "1";
+  box.style.display = fechado ? "none" : "block";
+}
+function fecharNovidades(){
+  const box = document.getElementById("novidadesBox");
+  if(box) box.style.display = "none";
+  try{ localStorage.setItem(NOVIDADES_STORAGE_KEY, "1"); }catch(e){}
 }
 
-tabelasAtivas=window.TABELAS_SALVADOR;
-
-}
-else{
-
-tabelasAtivas=window.TABELAS_FORTALEZA;
-
+/* ===== utils ===== */
+function isMobileDevice(){
+  const ua = navigator.userAgent || "";
+  return /Android|iPhone|iPad|iPod/i.test(ua);
 }
 
+function dataHojeBR(){
+  const d = new Date();
+  const dd = String(d.getDate()).padStart(2,"0");
+  const mm = String(d.getMonth()+1).padStart(2,"0");
+  const yyyy = d.getFullYear();
+  return `${dd}/${mm}/${yyyy}`;
 }
 
+function formatarBR(valor){
+  return Number(valor).toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
 
-/* ===== PLANOS ===== */
+let toastTimer = null;
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> t.classList.remove("show"), 1600);
+}
 
+function esconderAjuda(){
+  const ajuda = document.getElementById("ajudaPasso");
+  if(ajuda) ajuda.style.display = "none";
+}
+function mostrarAjuda(){
+  const ajuda = document.getElementById("ajudaPasso");
+  if(ajuda) ajuda.style.display = "block";
+}
+function blurActive(){
+  if (document.activeElement) document.activeElement.blur();
+}
+
+/* ===== logo fallback ===== */
+function tentarCarregarLogo(){
+  const candidatos = [
+    "./logo-hapvida.png",
+    "logo-hapvida.png",
+    "./hapvida.png",
+    "hapvida.png",
+    "./img/hapvida.png",
+    "img/hapvida.png",
+    "./images/hapvida.png",
+    "images/hapvida.png"
+  ];
+
+  const testar = (src) => new Promise((resolve) => {
+    const t = new Image();
+    t.onload = () => resolve({ ok:true, src });
+    t.onerror = () => resolve({ ok:false, src });
+    t.src = src + (src.includes("?") ? "" : ("?v=" + Date.now()));
+  });
+
+  (async () => {
+    for(const src of candidatos){
+      const r = await testar(src);
+      if(r.ok){
+        document.querySelectorAll(".logo-hapvida-img").forEach(img => { img.src = src; });
+        return;
+      }
+    }
+  })();
+}
+
+/* ===== nomes completos (para orçamento/imagem) ===== */
+const nomesClienteBase = {
+  ind_enf: "NOSSO PLANO ENFERMARIA COPARTICIPAÇÃO",
+  ind_amb: "NOSSO PLANO AMBULATORIAL COPARTICIPAÇÃO",
+  ind_apto:"NOSSO PLANO APARTAMENTO COPARTICIPAÇÃO",
+  ss_enf:  "SUPER SIMPLES ENFERMARIA COPARTICIPAÇÃO",
+  ss_amb:  "SUPER SIMPLES AMBULATORIAL COPARTICIPAÇÃO"
+};
+
+function isSuperSimples(tipo){
+  return typeof tipo === "string" && tipo.startsWith("ss_");
+}
+
+function nomeClienteCompletoHTML(tipo, modo){
+  let base = nomesClienteBase[tipo] || "";
+  // no seu original você exibiu SS como empresarial no texto do cliente
+  if(isSuperSimples(tipo)){
+    base = base.replace(/^SUPER SIMPLES /, "PLANO EMPRESARIAL ");
+  }
+  const mod = (modo || "").toUpperCase();
+  if(mod === "TOTAL"){
+    return `${base} <span class="total-red">TOTAL</span>`;
+  }
+  return `${base} ${mod}`.trim();
+}
+
+/* ===== seleção ===== */
 function atualizarCheckboxes(){
+  const temIND = selecionados.some(s => !isSuperSimples(s.tipo));
+  const temSS  = selecionados.some(s => isSuperSimples(s.tipo));
 
-const temIND=selecionados.some(s=>!s.tipo.startsWith("ss"));
+  const container = document.getElementById("opcoesExtras");
+  container.innerHTML = "";
 
-const temSS=selecionados.some(s=>s.tipo.startsWith("ss"));
+  if(!temIND && !temSS) return;
 
-const c=document.getElementById("opcoesExtras");
+  container.insertAdjacentHTML("beforeend", `
+    <label class="opt-label">
+      <input type="checkbox" id="tabelaCompleta" />
+      Tabela completa (por faixa etária - sem idades)
+    </label>
+  `);
 
-c.innerHTML="";
+  if(temIND){
+    container.insertAdjacentHTML("beforeend", `
+      <label class="opt-label">
+        <input type="checkbox" id="familiar1grau" />
+        Familiar 1º grau (5% sobre o valor)
+      </label>
+    `);
+  }
 
-if(!temIND&&!temSS)return;
-
-c.insertAdjacentHTML("beforeend",`
-
-<label class="opt-label">
-
-<input type="checkbox" id="tabelaCompleta">
-
-Tabela completa
-
-</label>
-
-`);
-
-if(temIND){
-
-c.insertAdjacentHTML("beforeend",`
-
-<label class="opt-label">
-
-<input type="checkbox" id="familiar1grau">
-
-Familiar 1º grau (5%)
-
-</label>
-
-`);
-
+  if(temSS){
+    const odontoIncluso = !!(CIDADES_CFG[cidadeAtiva] && CIDADES_CFG[cidadeAtiva].odontoJaIncluso);
+    if(!odontoIncluso){
+      container.insertAdjacentHTML("beforeend", `
+        <label class="opt-label">
+          <input type="checkbox" id="odontoSS" />
+          Odonto (somar R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário)
+        </label>
+      `);
+    }else{
+      container.insertAdjacentHTML("beforeend", `
+        <div class="opt-label" style="opacity:.85;">
+          ✅ Odonto já incluso nos valores de Salvador
+        </div>
+      `);
+    }
+  }
 }
-
-if(temSS){
-
-if(!CIDADES_CFG[cidadeAtiva].odontoJaIncluso){
-
-c.insertAdjacentHTML("beforeend",`
-
-<label class="opt-label">
-
-<input type="checkbox" id="odontoSS">
-
-Odonto R$ ${formatarBR(ODONTO_POR_VIDA)}
-
-</label>
-
-`);
-
-}else{
-
-c.insertAdjacentHTML("beforeend",`
-
-<div class="opt-label">
-
-Odonto já incluso
-
-</div>
-
-`);
-
-}
-
-}
-
-}
-
-
 
 function atualizarOpcoesAtivas(){
+  document.querySelectorAll(".grupo-plano").forEach(grupo=>{
+    const plan = grupo.dataset.plan;
+    const tipoBtn = grupo.querySelector(".tipo");
+    const ativo = tiposAtivos.has(plan);
 
-document.querySelectorAll(".grupo-plano")
+    if(ativo) tipoBtn.classList.add("ativo");
+    else tipoBtn.classList.remove("ativo");
 
-.forEach(grupo=>{
+    grupo.querySelectorAll(".opcao").forEach(op=>{
+      if(ativo) op.classList.remove("disabled");
+      else{
+        op.classList.add("disabled");
+        op.classList.remove("ativo");
+      }
+    });
+  });
 
-const plan=grupo.dataset.plan;
+  document.querySelectorAll(".opcao").forEach(op=>{
+    const tipo = op.dataset.plan;
+    const modo = op.dataset.modo;
+    const selected = selecionados.some(s => s.tipo===tipo && s.modo===modo);
+    if(selected) op.classList.add("ativo");
+    else op.classList.remove("ativo");
+  });
 
-const ativo=tiposAtivos.has(plan);
-
-grupo.querySelector(".tipo")
-
-.classList.toggle("ativo",ativo);
-
-grupo.querySelectorAll(".opcao")
-
-.forEach(o=>{
-
-if(ativo)o.classList.remove("disabled");
-
-else{
-
-o.classList.add("disabled");
-
-o.classList.remove("ativo");
-
+  atualizarCheckboxes();
 }
 
-})
-
-})
-
-document.querySelectorAll(".opcao")
-
-.forEach(o=>{
-
-const t=o.dataset.plan;
-
-const m=o.dataset.modo;
-
-const sel=selecionados
-
-.some(s=>s.tipo===t&&s.modo===m);
-
-o.classList.toggle("ativo",sel);
-
-})
-
-atualizarCheckboxes();
-
+function toggleTipo(planKey){
+  if(tiposAtivos.has(planKey)){
+    tiposAtivos.delete(planKey);
+    selecionados = selecionados.filter(s => s.tipo !== planKey);
+    limparResultado();
+    atualizarOpcoesAtivas();
+    return;
+  }
+  tiposAtivos.add(planKey);
+  limparResultado();
+  atualizarOpcoesAtivas();
 }
-
-
-function toggleTipo(plan){
-
-if(tiposAtivos.has(plan)){
-
-tiposAtivos.delete(plan);
-
-selecionados=selecionados.filter(s=>s.tipo!==plan);
-
-}
-else{
-
-tiposAtivos.add(plan);
-
-}
-
-limparResultado();
-
-atualizarOpcoesAtivas();
-
-}
-
 
 function toggleModo(btn){
+  const tipo = btn.dataset.plan;
+  const modo = btn.dataset.modo;
 
-const tipo=btn.dataset.plan;
+  if(!tiposAtivos.has(tipo) || btn.classList.contains("disabled")) return;
 
-const modo=btn.dataset.modo;
+  const idx = selecionados.findIndex(s => s.tipo===tipo && s.modo===modo);
 
-if(btn.classList.contains("disabled"))return;
+  if(idx >= 0){
+    selecionados.splice(idx, 1);
+    limparResultado();
+    atualizarOpcoesAtivas();
+    return;
+  }
 
-const idx=selecionados
+  if(selecionados.length >= LIMITE_ORCAMENTOS){
+    showToast("Máximo de 2 orçamentos por vez.");
+    return;
+  }
 
-.findIndex(s=>s.tipo===tipo&&s.modo===modo);
-
-if(idx>=0){
-
-selecionados.splice(idx,1);
-
-}
-else{
-
-if(selecionados.length>=2){
-
-showToast("Máx 2");
-
-return;
-
+  selecionados.push({ tipo, modo });
+  limparResultado();
+  atualizarOpcoesAtivas();
 }
 
-selecionados.push({tipo,modo});
-
-}
-
-limparResultado();
-
-atualizarOpcoesAtivas();
-
-}
-
-
-
-/* ===== CALCULO ===== */
-
-
+/* ===== cálculo ===== */
 function parseIdades(){
-
-return document.getElementById("idades")
-
-.value.split(",")
-
-.map(x=>parseInt(x))
-
-.filter(n=>!isNaN(n));
-
+  return document.getElementById("idades").value
+    .split(",")
+    .map(s => parseInt(s.trim(), 10))
+    .filter(n => Number.isFinite(n));
 }
 
+function taxaAdesaoTexto(tipo, vidas){
+  if(isSuperSimples(tipo)){
+    return `Taxa de adesão: R$ 20,00 por beneficiário (R$ ${formatarBR(20*vidas)})`;
+  }
+  return `Taxa de adesão: R$ 35,00 por contrato`;
+}
 
+function colgroupHTML({ completa=false }){
+  if(completa){
+    return `
+      <colgroup>
+        <col style="width:46%;">
+        <col style="width:27%;">
+        <col style="width:27%;">
+      </colgroup>
+    `;
+  }
+  return `
+    <colgroup>
+      <col style="width:32%;">
+      <col style="width:14%;">
+      <col style="width:27%;">
+      <col style="width:27%;">
+    </colgroup>
+  `;
+}
+
+function cabecalhoTabelaHTML({ completa=false, familiar=false }){
+  const col3 = familiar ? "5%<br>Familiar" : "VALOR<br>Normal";
+  return `
+    <tr class="cab">
+      <th>Faixa<br>Etária</th>
+      ${completa ? "" : "<th>Idade</th>"}
+      <th>${col3}</th>
+      <th>15%<br>(3 meses)</th>
+    </tr>
+  `;
+}
+
+function corTabelaCompletaPorIndice(i){
+  const n = (i % 6) + 1;
+  return `tblc-${n}`;
+}
 
 function calcular(){
+  blurActive();
 
-if(selecionados.length===0){
+  if(selecionados.length === 0){
+    alert("Selecione até 2 orçamentos (tipo + parcial/total).");
+    return;
+  }
 
-alert("Selecione plano");
+  esconderAjuda();
 
-return;
+  const tabelaCompletaEl = document.getElementById("tabelaCompleta");
+  const completa = tabelaCompletaEl ? tabelaCompletaEl.checked : false;
 
+  const idades = completa ? [] : parseIdades();
+
+  if(!completa && idades.length === 0){
+    alert("Informe ao menos uma idade (ex: 23, 35, 62) ou marque 'Tabela completa'.");
+    return;
+  }
+
+  if (typeof gtag === "function") {
+    gtag("event", "orcamento_calculado", {
+      cidade: cidadeAtiva,
+      orcamentos_qtd: selecionados.length,
+      modo_tabela: completa ? "completa" : "idades",
+      promo_15: 1
+    });
+  }
+
+  const familiarEl = document.getElementById("familiar1grau");
+  const odontoEl   = document.getElementById("odontoSS");
+
+  const familiarAtivo = (familiarEl) ? familiarEl.checked : false;
+
+  // Odonto SS só se a cidade permitir (Fortaleza)
+  const odontoPermitido = !CIDADES_CFG[cidadeAtiva].odontoJaIncluso;
+  const odontoAtivo = (odontoEl && odontoPermitido) ? odontoEl.checked : false;
+
+  const cont = document.getElementById("orcamentosContainer");
+  cont.innerHTML = "";
+
+  const cfg = CIDADES_CFG[cidadeAtiva];
+  document.getElementById("linhaDataGeral").textContent =
+    `Orçamento dia ${dataHojeBR()} — ${cfg.titulo} - ${cfg.uf}`;
+
+  document.getElementById("resultado").style.display = "block";
+
+  selecionados.forEach((sel, idx)=>{
+    const chave = `${sel.tipo}_${sel.modo}`;
+    const lista = tabelasAtivas[chave];
+    if(!lista){
+      alert("Tabela não encontrada para um dos planos selecionados (verifique a cidade/tabelas).");
+      return;
+    }
+
+    const isSS = isSuperSimples(sel.tipo);
+    const aplicarOdonto   = (isSS) && odontoAtivo;
+    const aplicarFamiliar = (!isSS) && familiarAtivo;
+
+    let totalNormal = 0;
+    let total15 = 0;
+    let total5 = 0;
+
+    let rowsHTML = "";
+
+    if(completa){
+      lista.forEach(faixa=>{
+        let vN = Number(faixa[3]) || 0;
+        let v15 = Number(faixa[4]) || 0;
+
+        if(aplicarOdonto){
+          vN += ODONTO_POR_VIDA;
+          v15 += ODONTO_POR_VIDA;
+        }
+
+        const v5 = vN * 0.95;
+
+        rowsHTML += `
+          <tr>
+            <td>${faixa[0]}</td>
+            <td>R$ ${formatarBR(aplicarFamiliar ? v5 : vN)}</td>
+            <td>R$ ${formatarBR(v15)}</td>
+          </tr>
+        `;
+      });
+    } else {
+      idades.forEach(idade=>{
+        const faixa = lista.find(f => idade >= f[1] && idade <= f[2]);
+        if(!faixa) return;
+
+        let vN = Number(faixa[3]) || 0;
+        let v15 = Number(faixa[4]) || 0;
+
+        if(aplicarOdonto){
+          vN += ODONTO_POR_VIDA;
+          v15 += ODONTO_POR_VIDA;
+        }
+
+        const v5 = vN * 0.95;
+
+        totalNormal += vN;
+        total15 += v15;
+        total5 += v5;
+
+        rowsHTML += `
+          <tr>
+            <td>${faixa[0]}</td>
+            <td>${idade}</td>
+            <td>R$ ${formatarBR(aplicarFamiliar ? v5 : vN)}</td>
+            <td>R$ ${formatarBR(v15)}</td>
+          </tr>
+        `;
+      });
+    }
+
+    let totalHTML = "";
+    if(!completa){
+      if(aplicarFamiliar){
+        totalHTML = `
+          <div class="totais">
+            <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
+            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+          </div>
+        `;
+      } else {
+        totalHTML = `
+          <div class="totais">
+            <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
+            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+          </div>
+        `;
+      }
+    }
+
+    let odontoInfo = "";
+    if(aplicarOdonto){
+      if(completa){
+        odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário — incluído no valor</div>`;
+      } else {
+        const totalOdonto = ODONTO_POR_VIDA * idades.length;
+        odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário (R$ ${formatarBR(totalOdonto)}) — incluído nos valores</div>`;
+      }
+    }
+
+    let familiarInfo = "";
+    if(aplicarFamiliar){
+      familiarInfo = `<div class="familiar-info">*Aplicado desconto de 5% para familiar de 1º grau</div>`;
+    }
+
+    let ssAviso = "";
+    if(isSS){
+      ssAviso = `<div class="ss-aviso">Condição empresarial: a partir de 2 vidas</div>`;
+    }
+
+    const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
+    const taxa = completa ? "" : taxaAdesaoTexto(sel.tipo, idades.length);
+
+    const classeCompleta = completa ? `tabela-completa ${corTabelaCompletaPorIndice(idx)}` : "";
+    const colCount = completa ? 3 : 4;
+
+    cont.insertAdjacentHTML("beforeend", `
+      <div class="orcamento ${classeCompleta}">
+        <div class="tabela-wrap">
+          <table class="tabela-precos">
+            ${colgroupHTML({ completa })}
+            <thead>
+              <tr class="titulo-tabela">
+                <th colspan="${colCount}">${nomeDentroTabelaHTML}</th>
+              </tr>
+              ${cabecalhoTabelaHTML({ completa, familiar: aplicarFamiliar })}
+            </thead>
+            <tbody>
+              ${rowsHTML}
+            </tbody>
+          </table>
+        </div>
+
+        ${ssAviso}
+        ${completa ? "" : `<div class="taxa-adesao">${taxa}</div>`}
+        ${totalHTML}
+        ${odontoInfo}
+        ${familiarInfo}
+      </div>
+    `);
+  });
+
+  setTimeout(() => {
+    document.getElementById("ancoraResultado").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }, 200);
 }
 
-esconderAjuda();
+/* ===== gerar imagem ===== */
+async function gerarImagem(modo = "share"){
+  const area = document.getElementById("areaImagem");
 
-const completa=
-document.getElementById("tabelaCompleta")
-?.checked;
+  document.body.classList.add("capturando");
+  await new Promise(r => requestAnimationFrame(() => r()));
 
-const idades=completa?[]:parseIdades();
+  const canvas = await html2canvas(area, {
+    backgroundColor: "#ffffff",
+    useCORS: true,
+    scale: 3
+  });
 
-if(!completa&&idades.length===0){
+  document.body.classList.remove("capturando");
 
-alert("Digite idade");
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+  if(!blob){
+    alert("Não foi possível gerar a imagem.");
+    return;
+  }
 
-return;
+  const mobile = isMobileDevice();
 
+  if(modo === "share" && mobile && navigator.share){
+    const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+    try{
+      await navigator.share({ title: "Orçamento", files: [file] });
+      return;
+    }catch(e){
+      return;
+    }
+  }
+
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "orcamento_hapvida.png";
+  a.click();
+  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
 }
 
-document.getElementById("resultado")
-.style.display="block";
+async function gerarImagemDeElemento(elementId, fileName){
+  const area = document.getElementById(elementId);
+  if(!area){
+    alert("Área não encontrada para gerar imagem.");
+    return;
+  }
 
-document.getElementById("linhaDataGeral")
-.innerText="Orçamento dia "+dataHojeBR();
+  document.body.classList.add("capturando");
+  await new Promise(r => requestAnimationFrame(() => r()));
 
-const cont=document.getElementById("orcamentosContainer");
+  const canvas = await html2canvas(area, {
+    backgroundColor: "#ffffff",
+    useCORS: true,
+    scale: 3
+  });
 
-cont.innerHTML="";
+  document.body.classList.remove("capturando");
 
-selecionados.forEach(sel=>{
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+  if(!blob){
+    alert("Não foi possível gerar a imagem.");
+    return;
+  }
 
-const lista=tabelasAtivas[
-sel.tipo+"_"+sel.modo
-];
+  const mobile = isMobileDevice();
 
-let rows="";
+  if(mobile && navigator.share){
+    const file = new File([blob], fileName, { type:"image/png" });
+    try{
+      await navigator.share({ title: "Hapvida", files: [file] });
+      return;
+    }catch(e){
+      return;
+    }
+  }
 
-let total=0;
-
-let total15=0;
-
-if(completa){
-
-lista.forEach(f=>{
-
-rows+=`
-
-<tr>
-
-<td>${f[0]}</td>
-
-<td>R$ ${formatarBR(f[3])}</td>
-
-<td>R$ ${formatarBR(f[4])}</td>
-
-</tr>
-
-`;
-
-})
-
-}else{
-
-idades.forEach(idade=>{
-
-const faixa=lista.find(f=>idade>=f[1]&&idade<=f[2]);
-
-if(!faixa)return;
-
-total+=faixa[3];
-
-total15+=faixa[4];
-
-rows+=`
-
-<tr>
-
-<td>${faixa[0]}</td>
-
-<td>${idade}</td>
-
-<td>R$ ${formatarBR(faixa[3])}</td>
-
-<td>R$ ${formatarBR(faixa[4])}</td>
-
-</tr>
-
-`;
-
-})
-
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = fileName;
+  a.click();
+  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
 }
 
-const col=completa?3:4;
-
-cont.insertAdjacentHTML("beforeend",`
-
-<div class="orcamento">
-
-<div class="tabela-wrap">
-
-<table class="tabela-precos">
-
-<thead>
-
-<tr class="titulo-tabela">
-
-<th colspan="${col}">
-
-${sel.tipo.toUpperCase()} ${sel.modo.toUpperCase()}
-
-</th>
-
-</tr>
-
-<tr class="cab">
-
-<th>Faixa</th>
-
-${completa?"":"<th>Idade</th>"}
-
-<th>Normal</th>
-
-<th>15%</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-${rows}
-
-</tbody>
-
-</table>
-
-</div>
-
-${
-completa?"":`
-
-<div class="totais">
-
-<div>Total normal R$ ${formatarBR(total)}</div>
-
-<div>Total 15% R$ ${formatarBR(total15)}</div>
-
-</div>
-
-`
-}
-
-</div>
-
-`);
-
-})
-
-}
-
-
-
-/* ===== IMAGEM ===== */
-
-async function gerarImagem(){
-
-const area=document.getElementById("areaImagem");
-
-document.body.classList.add("capturando");
-
-await new Promise(r=>requestAnimationFrame(r));
-
-const canvas=await html2canvas(area,{scale:3});
-
-document.body.classList.remove("capturando");
-
-const blob=await new Promise(r=>canvas.toBlob(r));
-
-if(isMobileDevice()&&navigator.share){
-
-const file=new File([blob],"orcamento.png");
-
-navigator.share({files:[file]});
-
-return;
-
-}
-
-const a=document.createElement("a");
-
-a.href=URL.createObjectURL(blob);
-
-a.download="orcamento.png";
-
-a.click();
-
-}
-
-
-
-/* ===== MODAL ===== */
-
+/* ===== modal info ===== */
 function abrirModalInfo(){
+  const m = document.getElementById("modalInfo");
+  if(m) m.style.display = "flex";
 
-document.getElementById("modalInfo").style.display="flex";
-
-document.getElementById("dataCopart").innerText=dataHojeBR();
-
-document.getElementById("dataCarencias").innerText=dataHojeBR();
-
+  const hoje = dataHojeBR();
+  const d1 = document.getElementById("dataCopart");
+  const d2 = document.getElementById("dataCarencias");
+  if(d1) d1.textContent = hoje;
+  if(d2) d2.textContent = hoje;
 }
 
 function fecharModalInfo(){
-
-document.getElementById("modalInfo").style.display="none";
-
+  const m = document.getElementById("modalInfo");
+  if(m) m.style.display = "none";
 }
 
 function clicouForaModal(e){
-
-if(e.target.id==="modalInfo")
-
-fecharModalInfo();
-
+  if(e.target && e.target.id === "modalInfo"){
+    fecharModalInfo();
+  }
 }
 
+async function compartilharInfo(tipo){
+  fecharModalInfo();
+  const alvoId = (tipo === "copart") ? "areaCopart" : "areaCarencias";
+  const nome = (tipo === "copart") ? "coparticipacoes_hapvida.png" : "carencias_hapvida.png";
+  await gerarImagemDeElemento(alvoId, nome);
+}
 
-/* ===== INICIO ===== */
-
+/* ===== init ===== */
 atualizarUIcidade();
-
-mostrarAjuda();
+atualizarOpcoesAtivas();
+mostrarNovidades();
+tentarCarregarLogo();
