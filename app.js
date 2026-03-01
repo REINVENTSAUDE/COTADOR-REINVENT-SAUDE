@@ -670,10 +670,44 @@ function clicouForaModal(e){
 }
 
 async function compartilharInfo(tipo){
+
   fecharModalInfo();
-  const alvoId = (tipo === "copart") ? "areaCopart" : "areaCarencias";
-  const nome = (tipo === "copart") ? "coparticipacoes_hapvida.png" : "carencias_hapvida.png";
-  await gerarImagemDeElemento(alvoId, nome);
+
+  if(tipo === "copartFortaleza"){
+
+    document.getElementById("dataCopart").textContent = dataHojeBR();
+
+    await gerarImagemDeElemento(
+      "areaCopart",
+      "coparticipacoes_fortaleza.png"
+    );
+
+    return;
+  }
+
+  if(tipo === "copartSalvador"){
+
+    document.getElementById("dataCopartSalvador").textContent = dataHojeBR();
+
+    await gerarImagemDeElemento(
+      "areaCopartSalvador",
+      "coparticipacoes_salvador.png"
+    );
+
+    return;
+  }
+
+  if(tipo === "carencias"){
+
+    document.getElementById("dataCarencias").textContent = dataHojeBR();
+
+    await gerarImagemDeElemento(
+      "areaCarencias",
+      "carencias_hapvida.png"
+    );
+
+    return;
+  }
 }
 
 /* =======================
