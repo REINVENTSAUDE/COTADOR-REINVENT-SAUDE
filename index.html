@@ -136,8 +136,17 @@
         <button class="modal-close" type="button" onclick="fecharModalInfo()">✕</button>
       </div>
       <div class="modal-body">
-        <button class="btn-modal" type="button" onclick="compartilharInfo('copart')">Compartilhar Coparticipações</button>
-        <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Compartilhar Carências</button>
+        <button class="btn-modal" type="button" onclick="compartilharInfo('copartFortaleza')">
+Compartilhar Coparticipações Fortaleza
+</button>
+
+<button class="btn-modal" type="button" onclick="compartilharInfo('copartSalvador')">
+Compartilhar Coparticipações Salvador
+</button>
+
+<button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">
+Compartilhar Carências
+</button>
         <div class="modal-hint">
           *No celular abre o compartilhar. No computador baixa automaticamente.
         </div>
@@ -187,7 +196,67 @@
       </div>
     </div>
   </div>
+<div class="offscreen">
+  <div id="areaCopartSalvador" class="capture-area">
 
+    <div class="logos">
+      <div class="logo-wrap">
+        <img class="logo logo-hapvida-img" src="./logo-hapvida.png">
+      </div>
+    </div>
+
+    <div class="info-title">
+      COPARTICIPAÇÕES — SALVADOR
+    </div>
+
+    <div class="info-sub">
+      Atualizado em <span id="dataCopartSalvador"></span>
+    </div>
+
+    <div class="info-card">
+
+      <div class="head">
+        Coparticipação Total
+      </div>
+
+      <div class="body">
+
+        <div class="kv">
+          <span>Consulta Eletiva</span>
+          <span>R$ 25,42</span>
+        </div>
+
+        <div class="kv">
+          <span>Consulta Urgência</span>
+          <span>R$ 43,63</span>
+        </div>
+
+        <div class="kv">
+          <span>Exames Simples</span>
+          <span>40% máx R$ 45,79</span>
+        </div>
+
+        <div class="kv">
+          <span>Exames Complexos</span>
+          <span>40% máx R$ 114,48</span>
+        </div>
+
+        <div class="kv">
+          <span>Terapias Neurológicas</span>
+          <span>R$ 78,87</span>
+        </div>
+
+        <div class="kv">
+          <span>Demais Terapias</span>
+          <span>R$ 24,27</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
   <!-- OFFSCREEN: CARÊNCIAS -->
   <div class="offscreen">
     <div id="areaCarencias" class="capture-area">
