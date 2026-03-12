@@ -6,18 +6,16 @@ const CIDADES_CFG = {
   salvador:  { titulo: "Salvador",  uf: "BA", odontoJaIncluso: true,  arquivo: "./tabelas-salvador.js" }
 };
 
-// ====== estado cidade/tabelas ======
 let cidadeAtiva = "fortaleza";
 let tabelasAtivas = window.TABELAS_FORTALEZA || {};
 
-// ====== estado seleção ======
 const tiposAtivos = new Set();
 let selecionados = [];
 
-const NOVIDADES_STORAGE_KEY = "hapvida_novidades_fechadas_v3";
+const NOVIDADES_STORAGE_KEY = "hapvida_novidades_fechadas_v4";
 
 /* =======================
-   UTILIDADES
+   UTIL
 ======================= */
 function formatarBR(valor){
   return Number(valor).toLocaleString("pt-BR", {
@@ -39,6 +37,14 @@ function isMobileDevice(){
   return /Android|iPhone|iPad|iPod/i.test(ua);
 }
 
+function getIOSShareInfo(){
+  const ua = navigator.userAgent || "";
+  return {
+    isIOS: /iPhone|iPad|iPod/i.test(ua),
+    isChromeIOS: /CriOS/i.test(ua)
+  };
+}
+
 let toastTimer = null;
 function showToast(msg){
   const t = document.getElementById("toast");
@@ -46,13 +52,14 @@ function showToast(msg){
   t.textContent = msg;
   t.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=> t.classList.remove("show"), 1600);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 1600);
 }
 
 function esconderAjuda(){
   const ajuda = document.getElementById("ajudaPasso");
   if(ajuda) ajuda.style.display = "none";
 }
+
 function mostrarAjuda(){
   const ajuda = document.getElementById("ajudaPasso");
   if(ajuda) ajuda.style.display = "block";
@@ -61,8 +68,10 @@ function mostrarAjuda(){
 function limparResultado(){
   const r = document.getElementById("resultado");
   if(r) r.style.display = "none";
+
   const c = document.getElementById("orcamentosContainer");
   if(c) c.innerHTML = "";
+
   mostrarAjuda();
 }
 
@@ -71,7 +80,7 @@ function blurActive(){
 }
 
 /* =======================
-   LOGO fallback
+   FALLBACK LOGO
 ======================= */
 function tentarCarregarLogo(){
   const candidatos = [
@@ -96,7 +105,9 @@ function tentarCarregarLogo(){
     for(const src of candidatos){
       const r = await testar(src);
       if(r.ok){
-        document.querySelectorAll(".logo-hapvida-img").forEach(img => { img.src = src; });
+        document.querySelectorAll(".logo-hapvida-img").forEach(img => {
+          img.src = src;
+        });
         return;
       }
     }
@@ -104,7 +115,26 @@ function tentarCarregarLogo(){
 }
 
 /* =======================
-   NOME COMPLETO (ORÇAMENTO)
+   NOVIDADES
+======================= */
+function mostrarNovidades(){
+  const box = document.getElementById("novidadesBox");
+  if(!box) return;
+
+  const fechado = localStorage.getItem(NOVIDADES_STORAGE_KEY) === "1";
+  box.style.display = fechado ? "none" : "block";
+}
+
+function fecharNovidades(){
+  const box = document.getElementById("novidadesBox");
+  if(box) box.style.display = "none";
+  try{
+    localStorage.setItem(NOVIDADES_STORAGE_KEY, "1");
+  }catch(e){}
+}
+
+/* =======================
+   NOMES COMPLETOS
 ======================= */
 const nomesClienteBase = {
   ind_enf: "NOSSO PLANO ENFERMARIA COPARTICIPAÇÃO",
@@ -139,9 +169,9 @@ function atualizarUIcidade(){
   const titulo = document.getElementById("cidadeTitulo");
   if(titulo) titulo.textContent = `${cfg.titulo} - ${cfg.uf}`;
 
-  // IMPORTANTÍSSIMO: aqui só mexe nos botões de cidade
   const bF = document.getElementById("btnFortaleza");
   const bS = document.getElementById("btnSalvador");
+
   if(bF) bF.classList.toggle("ativo", cidadeAtiva === "fortaleza");
   if(bS) bS.classList.toggle("ativo", cidadeAtiva === "salvador");
 }
@@ -166,9 +196,8 @@ function resetarSelecoesPlanos(){
   const extras = document.getElementById("opcoesExtras");
   if(extras) extras.innerHTML = "";
 
-  // IMPORTANTÍSSIMO: só limpa botões de PLANO, não os de cidade
-  document.querySelectorAll(".grupo-plano .tipo").forEach(b=> b.classList.remove("ativo"));
-  document.querySelectorAll(".grupo-plano .opcao[data-plan][data-modo]").forEach(b=>{
+  document.querySelectorAll(".grupo-plano .tipo").forEach(b => b.classList.remove("ativo"));
+  document.querySelectorAll(".grupo-plano .opcao[data-plan][data-modo]").forEach(b => {
     b.classList.remove("ativo");
     b.classList.add("disabled");
   });
@@ -192,7 +221,7 @@ async function setCidade(cidade){
       }
       tabelasAtivas = window.TABELAS_SALVADOR || {};
     }catch(e){
-      alert("Não consegui carregar a tabela de Salvador. Confira se 'tabelas-salvador.js' está na mesma pasta do index.html.");
+      alert("Não consegui carregar a tabela de Salvador. Confira se o arquivo 'tabelas-salvador.js' está na mesma pasta do index.html.");
       cidadeAtiva = "fortaleza";
       tabelasAtivas = window.TABELAS_FORTALEZA || {};
       atualizarUIcidade();
@@ -203,22 +232,7 @@ async function setCidade(cidade){
 }
 
 /* =======================
-   NOVIDADES
-======================= */
-function mostrarNovidades(){
-  const box = document.getElementById("novidadesBox");
-  if(!box) return;
-  const fechado = localStorage.getItem(NOVIDADES_STORAGE_KEY) === "1";
-  box.style.display = fechado ? "none" : "block";
-}
-function fecharNovidades(){
-  const box = document.getElementById("novidadesBox");
-  if(box) box.style.display = "none";
-  try{ localStorage.setItem(NOVIDADES_STORAGE_KEY, "1"); }catch(e){}
-}
-
-/* =======================
-   SELEÇÃO (PLANOS)
+   CHECKBOXES / PLANOS
 ======================= */
 function atualizarCheckboxes(){
   const temIND = selecionados.some(s => !isSuperSimples(s.tipo));
@@ -247,6 +261,7 @@ function atualizarCheckboxes(){
 
   if(temSS){
     const odontoIncluso = !!CIDADES_CFG[cidadeAtiva].odontoJaIncluso;
+
     if(!odontoIncluso){
       container.insertAdjacentHTML("beforeend", `
         <label class="opt-label">
@@ -265,7 +280,6 @@ function atualizarCheckboxes(){
 }
 
 function atualizarOpcoesAtivas(){
-  // IMPORTANTÍSSIMO: só mexe em grupo-plano, nada de mexer nos botões de cidade
   document.querySelectorAll(".grupo-plano").forEach(grupo=>{
     const plan = grupo.dataset.plan;
     const tipoBtn = grupo.querySelector(".tipo");
@@ -275,8 +289,9 @@ function atualizarOpcoesAtivas(){
     else tipoBtn.classList.remove("ativo");
 
     grupo.querySelectorAll(".opcao[data-plan][data-modo]").forEach(op=>{
-      if(ativo) op.classList.remove("disabled");
-      else{
+      if(ativo){
+        op.classList.remove("disabled");
+      }else{
         op.classList.add("disabled");
         op.classList.remove("ativo");
       }
@@ -286,7 +301,7 @@ function atualizarOpcoesAtivas(){
   document.querySelectorAll(".grupo-plano .opcao[data-plan][data-modo]").forEach(op=>{
     const tipo = op.dataset.plan;
     const modo = op.dataset.modo;
-    const selected = selecionados.some(s => s.tipo===tipo && s.modo===modo);
+    const selected = selecionados.some(s => s.tipo === tipo && s.modo === modo);
     if(selected) op.classList.add("ativo");
     else op.classList.remove("ativo");
   });
@@ -301,6 +316,7 @@ function toggleTipo(planKey){
   }else{
     tiposAtivos.add(planKey);
   }
+
   limparResultado();
   atualizarOpcoesAtivas();
 }
@@ -311,7 +327,8 @@ function toggleModo(btn){
 
   if(!tiposAtivos.has(tipo) || btn.classList.contains("disabled")) return;
 
-  const idx = selecionados.findIndex(s => s.tipo===tipo && s.modo===modo);
+  const idx = selecionados.findIndex(s => s.tipo === tipo && s.modo === modo);
+
   if(idx >= 0){
     selecionados.splice(idx, 1);
   }else{
@@ -338,7 +355,7 @@ function parseIdades(){
 
 function taxaAdesaoTexto(tipo, vidas){
   if(isSuperSimples(tipo)){
-    return `Taxa de adesão: R$ 20,00 por beneficiário (R$ ${formatarBR(20*vidas)})`;
+    return `Taxa de adesão: R$ 20,00 por beneficiário (R$ ${formatarBR(20 * vidas)})`;
   }
   return `Taxa de adesão: R$ 35,00 por contrato`;
 }
@@ -353,6 +370,7 @@ function colgroupHTML({ completa=false }){
       </colgroup>
     `;
   }
+
   return `
     <colgroup>
       <col style="width:32%;">
@@ -400,10 +418,19 @@ function calcular(){
     return;
   }
 
-  const familiarEl = document.getElementById("familiar1grau");
-  const odontoEl   = document.getElementById("odontoSS");
+  if(typeof gtag === "function"){
+    gtag("event", "orcamento_calculado", {
+      cidade: cidadeAtiva,
+      orcamentos_qtd: selecionados.length,
+      modo_tabela: completa ? "completa" : "idades",
+      promo_15: 1
+    });
+  }
 
-  const familiarAtivo = (familiarEl) ? familiarEl.checked : false;
+  const familiarEl = document.getElementById("familiar1grau");
+  const odontoEl = document.getElementById("odontoSS");
+
+  const familiarAtivo = familiarEl ? familiarEl.checked : false;
   const odontoPermitido = !CIDADES_CFG[cidadeAtiva].odontoJaIncluso;
   const odontoAtivo = (odontoEl && odontoPermitido) ? odontoEl.checked : false;
 
@@ -421,17 +448,18 @@ function calcular(){
     const lista = tabelasAtivas[chave];
 
     if(!lista){
-      alert("Tabela não encontrada para um dos planos selecionados (verifique a cidade/tabelas).");
+      alert("Tabela não encontrada para um dos planos selecionados.");
       return;
     }
 
     const isSS = isSuperSimples(sel.tipo);
-    const aplicarOdonto   = (isSS) && odontoAtivo;
-    const aplicarFamiliar = (!isSS) && familiarAtivo;
+    const aplicarOdonto   = isSS && odontoAtivo;
+    const aplicarFamiliar = !isSS && familiarAtivo;
 
     let totalNormal = 0;
     let total15 = 0;
     let total5 = 0;
+
     let rowsHTML = "";
 
     if(completa){
@@ -486,17 +514,21 @@ function calcular(){
 
     let totalHTML = "";
     if(!completa){
-      totalHTML = aplicarFamiliar ? `
-        <div class="totais">
-          <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
-          <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
-        </div>
-      ` : `
-        <div class="totais">
-          <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
-          <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
-        </div>
-      `;
+      if(aplicarFamiliar){
+        totalHTML = `
+          <div class="totais">
+            <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
+            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+          </div>
+        `;
+      }else{
+        totalHTML = `
+          <div class="totais">
+            <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
+            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+          </div>
+        `;
+      }
     }
 
     let odontoInfo = "";
@@ -552,16 +584,27 @@ function calcular(){
   });
 
   setTimeout(() => {
-    document.getElementById("ancoraResultado").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    const ancora = document.getElementById("ancoraResultado");
+    if(ancora){
+      ancora.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
   }, 200);
 }
 
 /* =======================
-   IMAGEM
+   IMAGEM / SHARE
 ======================= */
+async function baixarBlob(blob, fileName){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = fileName;
+  a.click();
+  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+}
+
 async function gerarImagem(modo = "share"){
   const area = document.getElementById("areaImagem");
 
@@ -582,28 +625,29 @@ async function gerarImagem(modo = "share"){
     return;
   }
 
-  const mobile = isMobileDevice();
+  const { isIOS, isChromeIOS } = getIOSShareInfo();
 
-  if(modo === "share" && mobile && navigator.share){
-    const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
+  // Safari iPhone/iPad tenta compartilhar; Chrome iOS baixa
+  if(modo === "share" && navigator.share && !(isIOS && isChromeIOS)){
+    const file = new File([blob], "orcamento_hapvida.png", { type: "image/png" });
+
     try{
       await navigator.share({
-  title: "Orçamento Hapvida",
-  text: "Segue o orçamento do plano de saúde.",
-  url: location.href,
-  files: [file]
-});
+        title: "Orçamento Hapvida",
+        text: "Segue o orçamento do plano de saúde.",
+        files: [file]
+      });
       return;
     }catch(e){
-      return;
+      // cai no download
     }
   }
 
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "orcamento_hapvida.png";
-  a.click();
-  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+  await baixarBlob(blob, "orcamento_hapvida.png");
+
+  if(modo === "share" && isIOS && isChromeIOS){
+    alert("No Chrome do iPhone a imagem será baixada. Depois é só compartilhar pela galeria/arquivos.");
+  }
 }
 
 async function gerarImagemDeElemento(elementId, fileName){
@@ -630,37 +674,45 @@ async function gerarImagemDeElemento(elementId, fileName){
     return;
   }
 
-  const mobile = isMobileDevice();
+  const { isIOS, isChromeIOS } = getIOSShareInfo();
 
-  if(mobile && navigator.share){
-    const file = new File([blob], fileName, { type:"image/png" });
+  if(navigator.share && !(isIOS && isChromeIOS)){
+    const file = new File([blob], fileName, { type: "image/png" });
     try{
-      await navigator.share({ title: "Hapvida", files: [file] });
+      await navigator.share({
+        title: "Hapvida",
+        text: "Segue a imagem.",
+        files: [file]
+      });
       return;
     }catch(e){
-      return;
+      // cai no download
     }
   }
 
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = fileName;
-  a.click();
-  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+  await baixarBlob(blob, fileName);
+
+  if(isIOS && isChromeIOS){
+    alert("No Chrome do iPhone a imagem será baixada. Depois é só compartilhar pela galeria/arquivos.");
+  }
 }
 
 /* =======================
-   MODAL
+   MODAL / INFO
 ======================= */
 function abrirModalInfo(){
   const m = document.getElementById("modalInfo");
   if(m) m.style.display = "flex";
 
   const hoje = dataHojeBR();
+
   const d1 = document.getElementById("dataCopart");
   const d2 = document.getElementById("dataCarencias");
+  const d3 = document.getElementById("dataCopartSalvador");
+
   if(d1) d1.textContent = hoje;
   if(d2) d2.textContent = hoje;
+  if(d3) d3.textContent = hoje;
 }
 
 function fecharModalInfo(){
@@ -675,43 +727,26 @@ function clicouForaModal(e){
 }
 
 async function compartilharInfo(tipo){
-
   fecharModalInfo();
 
   if(tipo === "copartFortaleza"){
-
-    document.getElementById("dataCopart").textContent = dataHojeBR();
-
-    await gerarImagemDeElemento(
-      "areaCopart",
-      "coparticipacoes_fortaleza.png"
-    );
-
+    const d = document.getElementById("dataCopart");
+    if(d) d.textContent = dataHojeBR();
+    await gerarImagemDeElemento("areaCopart", "coparticipacoes_fortaleza.png");
     return;
   }
 
   if(tipo === "copartSalvador"){
-
-    document.getElementById("dataCopartSalvador").textContent = dataHojeBR();
-
-    await gerarImagemDeElemento(
-      "areaCopartSalvador",
-      "coparticipacoes_salvador.png"
-    );
-
+    const d = document.getElementById("dataCopartSalvador");
+    if(d) d.textContent = dataHojeBR();
+    await gerarImagemDeElemento("areaCopartSalvador", "coparticipacoes_salvador.png");
     return;
   }
 
   if(tipo === "carencias"){
-
-    document.getElementById("dataCarencias").textContent = dataHojeBR();
-
-    await gerarImagemDeElemento(
-      "areaCarencias",
-      "carencias_hapvida.png"
-    );
-
-    return;
+    const d = document.getElementById("dataCarencias");
+    if(d) d.textContent = dataHojeBR();
+    await gerarImagemDeElemento("areaCarencias", "carencias_hapvida.png");
   }
 }
 
@@ -719,7 +754,6 @@ async function compartilharInfo(tipo){
    INIT
 ======================= */
 document.addEventListener("DOMContentLoaded", () => {
-  // Fortaleza ativo por padrão
   cidadeAtiva = "fortaleza";
   tabelasAtivas = window.TABELAS_FORTALEZA || {};
 
