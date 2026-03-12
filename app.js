@@ -587,7 +587,12 @@ async function gerarImagem(modo = "share"){
   if(modo === "share" && mobile && navigator.share){
     const file = new File([blob], "orcamento_hapvida.png", { type:"image/png" });
     try{
-      await navigator.share({ title: "Orçamento", files: [file] });
+      await navigator.share({
+  title: "Orçamento Hapvida",
+  text: "Segue o orçamento do plano de saúde.",
+  url: location.href,
+  files: [file]
+});
       return;
     }catch(e){
       return;
