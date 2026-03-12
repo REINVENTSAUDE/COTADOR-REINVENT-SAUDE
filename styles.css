@@ -638,24 +638,73 @@ body.capturando .modal-overlay{ display:none !important; }
   color:#555;
   line-height:1.35;
 }
-/* ===== NOVIDADES: TEMAS ===== */
-.novidades-box{ position:relative; }
+/* ===== NOVIDADES: TEMAS (modo noturno) ===== */
 
-.novidades-box.tema-1{ border-color:#d9e3f2; background:#f3f7fd; }
-.novidades-box.tema-1 .novidades-topo{ color:#005baa; }
+.novidades-box{ 
+  position:relative;
+  color:#e5e7eb;
+}
 
-.novidades-box.tema-2{ border-color:#ffe0b2; background:#fff3e0; }
-.novidades-box.tema-2 .novidades-topo{ color:#e65100; }
+/* azul */
 
-.novidades-box.tema-3{ border-color:#c8e6c9; background:#e8f5e9; }
-.novidades-box.tema-3 .novidades-topo{ color:#1b5e20; }
+.novidades-box.tema-1{
+  background:#1e293b;
+  border:1px solid #3b82f6;
+}
 
-.novidades-box.tema-4{ border-color:#f8bbd0; background:#fce4ec; }
-.novidades-box.tema-4 .novidades-topo{ color:#880e4f; }
+.novidades-box.tema-1 .novidades-topo{
+  color:#60a5fa;
+}
 
-.novidades-box.tema-5{ border-color:#d1c4e9; background:#ede7f6; }
-.novidades-box.tema-5 .novidades-topo{ color:#4a148c; }
+/* laranja */
 
+.novidades-box.tema-2{
+  background:#1f2937;
+  border:1px solid #f59e0b;
+}
+
+.novidades-box.tema-2 .novidades-topo{
+  color:#fbbf24;
+}
+
+/* verde */
+
+.novidades-box.tema-3{
+  background:#1f2937;
+  border:1px solid #22c55e;
+}
+
+.novidades-box.tema-3 .novidades-topo{
+  color:#4ade80;
+}
+
+/* rosa */
+
+.novidades-box.tema-4{
+  background:#1f2937;
+  border:1px solid #ec4899;
+}
+
+.novidades-box.tema-4 .novidades-topo{
+  color:#f472b6;
+}
+
+/* roxo */
+
+.novidades-box.tema-5{
+  background:#1f2937;
+  border:1px solid #a855f7;
+}
+
+.novidades-box.tema-5 .novidades-topo{
+  color:#c084fc;
+}
+
+/* texto sempre claro */
+
+.novidades-conteudo{
+  color:#cbd5e1;
+}
 /* “badge” pra chamar atenção */
 .novidades-box::before{
   content:"NOVA";
