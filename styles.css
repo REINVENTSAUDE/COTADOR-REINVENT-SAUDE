@@ -670,3 +670,152 @@ body.capturando .modal-overlay{ display:none !important; }
   font-weight:900;
   letter-spacing:.6px;
 }
+/* =========================
+   MODO NOTURNO PROFISSIONAL
+========================= */
+
+body{
+background:linear-gradient(180deg,#0c0f14,#141a22);
+color:#e8edf5;
+}
+
+/* container principal */
+
+.container{
+background:#161c24;
+border:1px solid #2a3240;
+box-shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* títulos */
+
+.titulo{
+color:#ffffff;
+}
+
+.subtitulo{
+color:#a9b3c2;
+}
+
+/* caixas */
+
+.box,
+.grupo-plano,
+.resultado,
+.card{
+background:#1d2430;
+border:1px solid #2c3544;
+border-radius:12px;
+}
+
+/* input idades */
+
+#idades{
+background:#121720;
+color:#ffffff;
+border:1px solid #2b3442;
+}
+
+#idades::placeholder{
+color:#7f8aa0;
+}
+
+/* botões tipo plano */
+
+.tipo{
+background:#202938;
+border:1px solid #2f3948;
+color:#e6edf7;
+}
+
+.tipo:hover{
+background:#273243;
+}
+
+/* ativo */
+
+.tipo.ativo{
+background:#005baa;
+color:#ffffff;
+border-color:#005baa;
+box-shadow:0 0 0 2px rgba(0,91,170,0.25);
+}
+
+/* parcial / total */
+
+.opcao{
+background:#202938;
+border:1px solid #2f3948;
+color:#e6edf7;
+}
+
+.opcao:hover{
+background:#273243;
+}
+
+.opcao.ativo{
+background:#005baa;
+color:#ffffff;
+border-color:#005baa;
+}
+
+.opcao.disabled{
+opacity:0.35;
+}
+
+/* botões principais */
+
+button{
+border-radius:10px;
+}
+
+.calcular{
+background:#00a86b;
+color:#ffffff;
+border:none;
+}
+
+.calcular:hover{
+background:#00945e;
+}
+
+/* toast */
+
+#toast{
+background:#0b0f15;
+color:#ffffff;
+border:1px solid #2b3545;
+}
+
+/* novidades */
+
+.novidades-box{
+background:#1c2330;
+border:1px solid #2b3545;
+}
+
+.novidades-topo{
+color:#ffffff;
+}
+
+.novidades-conteudo{
+color:#b7c1d2;
+}
+
+/* modal */
+
+.modal-content{
+background:#1c2330;
+color:#ffffff;
+border:1px solid #2b3545;
+}
+
+/* =========================
+   IMPORTANTE
+   ÁREA DE IMAGEM CONTINUA BRANCA
+========================= */
+
+.capture-area{
+background:#ffffff !important;
+color:#000000 !important;
+}
