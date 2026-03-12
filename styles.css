@@ -823,3 +823,52 @@ color:#e5e7eb;
 background:#ffffff !important;
 color:#000000 !important;
 }
+/* =========================
+   CAIXA NOVIDADES PADRÃO
+========================= */
+
+.novidades-box{
+background:#1e293b;
+border:1px solid #334155;
+color:#e5e7eb;
+border-radius:12px;
+}
+
+/* título novidades */
+
+.novidades-topo{
+color:#ffffff;
+font-weight:700;
+}
+
+/* texto */
+
+.novidades-conteudo{
+color:#cbd5e1;
+}
+
+/* botão fechar */
+
+.novidades-fechar{
+color:#9ca3af;
+}
+
+.novidades-fechar:hover{
+color:#ffffff;
+}
+
+/* badge nova */
+
+.novidades-box::before{
+content:"NOVA";
+position:absolute;
+top:-10px;
+right:14px;
+background:#111;
+color:#fff;
+padding:4px 8px;
+border-radius:20px;
+font-size:11px;
+font-weight:700;
+letter-spacing:0.5px;
+}
