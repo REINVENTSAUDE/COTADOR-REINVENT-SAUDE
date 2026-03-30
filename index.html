@@ -18,6 +18,29 @@
 </head>
 
 <body>
+  <div id="maintenanceScreen" style="display:none;">
+  <div class="maintenance-card">
+    <div class="maintenance-glow"></div>
+
+    <div class="maintenance-badge">ATUALIZAÇÃO EM ANDAMENTO</div>
+
+    <div class="maintenance-icon">⚙️</div>
+
+    <h1>Nova tabela! aguarde, breve voltaremos tudo atualizado.</h1>
+
+    <p class="maintenance-text">
+      Estamos atualizando as tabelas e ajustando o sistema para garantir informações corretas e uma experiência melhor para os vendedores.
+    </p>
+
+    <p class="maintenance-subtext">
+      Volte em instantes.
+    </p>
+
+    <button class="maintenance-button" onclick="location.reload()">
+      Atualizar página
+    </button>
+  </div>
+</div>
   <div class="toast" id="toast"></div>
 
   <div class="container" id="app">
@@ -350,8 +373,8 @@ Compartilhar Carências
 
   <!-- app -->
   <script src="./app.js?v=3"></script>
-  <script>
-  const SITE_EM_MANUTENCAO = true; // troque para true quando quiser suspender
+<script>
+  const SITE_EM_MANUTENCAO = true;
 
   if (SITE_EM_MANUTENCAO) {
     const app = document.getElementById("app");
@@ -362,27 +385,4 @@ Compartilhar Carências
   }
 </script>
 </body>
-  <div id="maintenanceScreen" style="display:none;">
-  <div class="maintenance-card">
-    <div class="maintenance-glow"></div>
-
-    <div class="maintenance-badge">ATUALIZAÇÃO EM ANDAMENTO</div>
-
-    <div class="maintenance-icon">⚙️</div>
-
-    <h1>Aguarde Nova Tabela! breve voltaremos atualizado.</h1>
-
-    <p class="maintenance-text">
-      Estamos atualizando as tabelas e ajustando o sistema para garantir informações corretas e uma experiência melhor para os vendedores.
-    </p>
-
-    <p class="maintenance-subtext">
-      Volte em instantes.
-    </p>
-
-    <button class="maintenance-button" onclick="location.reload()">
-      Atualizar página
-    </button>
-  </div>
-</div>
 </html>
