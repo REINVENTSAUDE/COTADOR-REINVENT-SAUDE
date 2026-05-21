@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRRZ5R5EXZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,61 +13,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>COTADOR - HAPVIDA</title>
 
-  <link rel="stylesheet" href="./styles.css?v=3" />
+  <link rel="stylesheet" href="./styles.css?v=cyber_fixed_v5" />
 </head>
 
 <body>
+  <div class="glow-bg-wave wave-blue"></div>
+  <div class="glow-bg-wave wave-orange"></div>
+  <div class="glow-bg-particle p1"></div>
+  <div class="glow-bg-particle p2"></div>
+
   <div id="maintenanceScreen" style="display:none;">
-  <div class="maintenance-card">
-    <div class="maintenance-glow"></div>
-
-    <div class="maintenance-badge">ATUALIZAÇÃO EM ANDAMENTO</div>
-
-    <div class="maintenance-icon">⚙️</div>
-
-    <h1>Nova tabela! aguarde, breve voltaremos tudo atualizado.</h1>
-
-    <p class="maintenance-text">
-      Estamos atualizando as tabelas e ajustando o sistema para garantir informações corretas e uma experiência melhor para os vendedores.
-    </p>
-
-    <p class="maintenance-subtext">
-      Volte em instantes.
-    </p>
-
-    <button class="maintenance-button" onclick="location.reload()">
-      Atualizar página
-    </button>
+    <div class="maintenance-card">
+      <div class="maintenance-glow"></div>
+      <div class="maintenance-badge">ATUALIZAÇÃO EM ANDAMENTO</div>
+      <div class="maintenance-icon">⚙️</div>
+      <h1>Nova tabela! aguarde, breve voltaremos tudo atualizado.</h1>
+      <p class="maintenance-text">
+        Estamos atualizando as tabelas e ajustando o sistema para garantir informações corretas e uma experiência melhor para os vendedores.
+      </p>
+      <p class="maintenance-subtext">Volte em instantes.</p>
+      <button class="maintenance-button" onclick="location.reload()">Atualizar página</button>
+    </div>
   </div>
-</div>
+
   <div class="toast" id="toast"></div>
 
   <div class="container" id="app">
-    <div class="titulo">COTADOR</div>
-
-    <!-- Cidade dinâmica -->
-    <div class="subtitulo" id="cidadeTitulo">Fortaleza</div>
-
-    <!-- Seletor de cidade -->
-    <div class="opcoes cidade-wrap">
-      <button type="button" class="opcao ativo" id="btnFortaleza" onclick="setCidade('fortaleza')">Fortaleza</button>
-      <button type="button" class="opcao" id="btnSalvador" onclick="setCidade('salvador')">Salvador</button>
-    </div>
-
-    <!-- CAIXA DE NOVIDADES -->
-    <div id="novidadesBox" class="novidades-box tema-5" style="display:none;">
+    
+    <div class="novidades-box" id="novidadesBox" style="display:none;">
       <div class="novidades-topo">
-        <strong>Novidades</strong>
+        <span>📢 NOVIDADES</span>
         <button type="button" onclick="fecharNovidades()">✕</button>
       </div>
       <div class="novidades-conteudo">
         🚀NOVIDADES: <b>TABELAS E PROMOÇÕES MANTIDAS PARA O MÊS DE MAIO.</b>
       </div>
     </div>
+    
+    <h1 class="titulo">COTADOR</h1>
+    <div class="subtitulo" id="cidadeTitulo">Fortaleza</div>
 
-    <!-- BOTÃO CENTRAL -->
+    <div class="opcoes cidade-wrap">
+      <button type="button" class="opcao ativo" id="btnFortaleza" onclick="setCidade('fortaleza')">Fortaleza</button>
+      <button type="button" class="opcao" id="btnSalvador" onclick="setCidade('salvador')">Salvador</button>
+    </div>
+
     <div class="btn-info-central">
-      <button type="button" onclick="abrirModalInfo()">COPARTICIPAÇÕES/CARÊNCIA</button>
+      <button type="button" onclick="abrirModalInfo()">COPARTICIPAÇÕES / CARÊNCIA</button>
     </div>
 
     <div class="planos">
@@ -122,7 +113,6 @@
     <button type="button" class="calcular" onclick="calcular()">Calcular Orçamento</button>
     <div id="ancoraResultado"></div>
 
-    <!-- AJUDA -->
     <div id="ajudaPasso" class="ajuda-passo">
       <div class="ajuda-titulo">Não sabe como cotar?</div>
       <div class="ajuda-linha">1️⃣ Selecione o <b>tipo de plano</b></div>
@@ -136,10 +126,9 @@
       <div id="areaImagem" class="capture-area">
         <div class="logos">
           <div class="logo-wrap">
-            <img id="logoHapvida" class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
+            <img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
           </div>
         </div>
-
         <div class="linhaDataGeral" id="linhaDataGeral"></div>
         <div id="orcamentosContainer"></div>
       </div>
@@ -151,7 +140,6 @@
     </div>
   </div>
 
-  <!-- MODAL -->
   <div class="modal-overlay" id="modalInfo" onclick="clicouForaModal(event)">
     <div class="modal" role="dialog" aria-modal="true">
       <div class="modal-header">
@@ -159,35 +147,19 @@
         <button class="modal-close" type="button" onclick="fecharModalInfo()">✕</button>
       </div>
       <div class="modal-body">
-        <button class="btn-modal" type="button" onclick="compartilharInfo('copartFortaleza')">
-Compartilhar Coparticipações Fortaleza
-</button>
-
-<button class="btn-modal" type="button" onclick="compartilharInfo('copartSalvador')">
-Compartilhar Coparticipações Salvador
-</button>
-
-<button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">
-Compartilhar Carências
-</button>
-        <div class="modal-hint">
-          *No celular abre o compartilhar. No computador baixa automaticamente.
-        </div>
+        <button class="btn-modal" type="button" onclick="compartilharInfo('copartFortaleza')">Compartilhar Coparticipações Fortaleza</button>
+        <button class="btn-modal" type="button" onclick="compartilharInfo('copartSalvador')">Compartilhar Coparticipações Salvador</button>
+        <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Compartilhar Carências</button>
+        <div class="modal-hint">*No celular abre o compartilhar. No computador baixa automaticamente.</div>
       </div>
     </div>
   </div>
 
-  <!-- OFFSCREEN: COPART -->
   <div class="offscreen">
     <div id="areaCopart" class="capture-area">
-      <div class="logos">
-        <div class="logo-wrap">
-          <img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
-        </div>
-      </div>
+      <div class="logos"><div class="logo-wrap"><img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida"></div></div>
       <div class="info-title">COPARTICIPAÇÕES — NOSSO PLANO</div>
       <div class="info-sub">Atualizado em <span id="dataCopart"></span></div>
-
       <div class="info-grid-2">
         <div class="info-card">
           <div class="head">Coparticipação parcial (grupo 1 PF)</div>
@@ -200,7 +172,6 @@ Compartilhar Carências
             <div class="kv"><span>Terapias</span><span>R$ 24,27</span></div>
           </div>
         </div>
-
         <div class="info-card">
           <div class="head">Coparticipação total (grupo 1 PF)</div>
           <div class="body">
@@ -213,176 +184,88 @@ Compartilhar Carências
           </div>
         </div>
       </div>
+      <div class="rodape-info">*Informações em formato de imagem para envio rápido ao cliente.</div>
+    </div>
+  </div>
 
-      <div class="rodape-info">
-        *Informações em formato de imagem para envio rápido ao cliente.
+  <div class="offscreen">
+    <div id="areaCopartSalvador" class="capture-area">
+      <div class="logos"><div class="logo-wrap"><img class="logo logo-hapvida-img" src="./logo-hapvida.png"></div></div>
+      <div class="info-title">COPARTICIPAÇÕES — SALVADOR</div>
+      <div class="info-sub">Atualizado em <span id="dataCopartSalvador"></span></div>
+      <div class="info-card">
+        <div class="head">Coparticipação Total</div>
+        <div class="body">
+          <div class="kv"><span>Consulta Eletiva</span><span>R$ 25,42</span></div>
+          <div class="kv"><span>Consulta Urgência</span><span>R$ 43,63</span></div>
+          <div class="kv"><span>Exames Simples</span><span>40% máx R$ 45,79</span></div>
+          <div class="kv"><span>Exames Complexos</span><span>40% máx R$ 114,48</span></div>
+          <div class="kv"><span>Terapias Neurológicas</span><span>R$ 78,87</span></div>
+          <div class="kv"><span>Demais Terapias</span><span>R$ 24,27</span></div>
+        </div>
       </div>
     </div>
   </div>
-<div class="offscreen">
-  <div id="areaCopartSalvador" class="capture-area">
 
-    <div class="logos">
-      <div class="logo-wrap">
-        <img class="logo logo-hapvida-img" src="./logo-hapvida.png">
-      </div>
-    </div>
-
-    <div class="info-title">
-      COPARTICIPAÇÕES — SALVADOR
-    </div>
-
-    <div class="info-sub">
-      Atualizado em <span id="dataCopartSalvador"></span>
-    </div>
-
-    <div class="info-card">
-
-      <div class="head">
-        Coparticipação Total
-      </div>
-
-      <div class="body">
-
-        <div class="kv">
-          <span>Consulta Eletiva</span>
-          <span>R$ 25,42</span>
-        </div>
-
-        <div class="kv">
-          <span>Consulta Urgência</span>
-          <span>R$ 43,63</span>
-        </div>
-
-        <div class="kv">
-          <span>Exames Simples</span>
-          <span>40% máx R$ 45,79</span>
-        </div>
-
-        <div class="kv">
-          <span>Exames Complexos</span>
-          <span>40% máx R$ 114,48</span>
-        </div>
-
-        <div class="kv">
-          <span>Terapias Neurológicas</span>
-          <span>R$ 78,87</span>
-        </div>
-
-        <div class="kv">
-          <span>Demais Terapias</span>
-          <span>R$ 24,27</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</div>
-  <!-- OFFSCREEN: CARÊNCIAS -->
   <div class="offscreen">
     <div id="areaCarencias" class="capture-area">
-      <div class="logos">
-        <div class="logo-wrap">
-          <img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
-        </div>
-      </div>
+      <div class="logos"><div class="logo-wrap"><img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida"></div></div>
       <div class="info-title">CARÊNCIAS — NOSSO PLANO PF</div>
       <div class="info-sub">Atualizado em <span id="dataCarencias"></span></div>
-
       <div class="carencias-section">
         <div class="head">24hrs* (urgência/emergência)</div>
         <div class="body">casos de urgência/emergência.</div>
       </div>
-
-      <div style="height:10px;"></div>
-
       <div class="carencias-section">
         <div class="head">24hrs* (consultas e exames simples)</div>
         <div class="body">
           <ul>
-            <li>consultas médicas e exames laboratoriais simples (exceto Imunológicos, Hormônios e PAC)</li>
+            <li>consultas médicas e exames laboratoriais simples</li>
             <li>Raio-X simples (Radiografia não contrastada)</li>
             <li>Eletrocardiograma (ECG)</li>
           </ul>
         </div>
       </div>
-
-      <div style="height:10px;"></div>
-
       <div class="carencias-section">
         <div class="head">90 dias*</div>
         <div class="body">
           <ul>
-            <li>Exames cardiológicos: Teste Ergométrico, Holter, Ecocardiograma (Convencional)</li>
-            <li>Oftalmológicos: Curva Tensional, Tonometria, Campimetria, Mapeamento de Retina</li>
-            <li>Otorrinolaringológicos: Audiometrias e Impedanciometrias, Pesquisa de Potencial Evocado (BERA)</li>
-            <li>exceto os considerados de Alta Complexidade (PAC)</li>
-            <li>Raio-X Contrastado</li>
-            <li>Ultrassonografias (exceto endoscópicas)</li>
-            <li>Mamografia Convencional</li>
-            <li>Densitometria Óssea</li>
+            <li>Exames cardiológicos e Oftalmológicos</li>
           </ul>
         </div>
       </div>
-
-      <div style="height:10px;"></div>
-
       <div class="carencias-section">
         <div class="head">180 dias*</div>
         <div class="body">
-          Para os seguintes procedimentos, desde que não estejam relacionados às patologia(s) para a(s) qual(is) o beneficiário cumpre CPT – Cobertura Parcial Temporária:
           <ul>
-            <li>Cirurgias Ambulatoriais</li>
-            <li>Procedimentos de Alta Complexidade (PAC), como: Tomografia Computadorizada, Ressonância Magnética, Endoscopias, Colonoscopia</li>
-            <li>Medicina Nuclear</li>
-            <li>Angiografia (cerebral central e/ou periférica)</li>
-            <li>procedimentos que necessitem de Hemodinâmica (ex.: Cateterismo Cardíaco)</li>
-            <li>Radioterapia e Quimioterapia</li>
-            <li>Consultas, Sessões e Terapias Simples, Especiais, Isoladas e Multidisciplinares, inclusive com métodos específicos — ABA, BOBATH e outras (ex.: psicoterapia, fonoaudiologia, nutricionista, fisioterapia, terapia ocupacional)</li>
+            <li>Cirurgias e Procedimentos de Alta Complexidade</li>
           </ul>
         </div>
       </div>
-
-      <div style="height:10px;"></div>
-
       <div class="carencias-section">
         <div class="head">300 dias*</div>
-        <div class="body">Partos a termo (somente para planos com segmentação HOSPITALAR COM OBSTETRÍCIA)</div>
+        <div class="body">Partos a termo</div>
       </div>
-
-      <div style="height:10px;"></div>
-
       <div class="carencias-section">
         <div class="head">720 dias*</div>
         <div class="body">Cobertura de doenças ou lesões pré-existentes.</div>
       </div>
-
-      <div class="rodape-info">
-        *Estas carências correspondem ao plano Nosso Plano PF. Elas podem variar de acordo com o plano apresentado.
-      </div>
+      <div class="rodape-info">*Estas carências correspondem ao plano Nosso Plano PF.</div>
     </div>
   </div>
 
-  <!-- libs -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
-  <!-- dados -->
   <script src="./tabelas-fortaleza.js?v=3"></script>
-
-  <!-- app -->
   <script src="./app.js?v=3"></script>
-<script>
-  const SITE_EM_MANUTENCAO = false;
 
-  if (SITE_EM_MANUTENCAO) {
-    const app = document.getElementById("app");
-    const maintenance = document.getElementById("maintenanceScreen");
-
-    if (app) app.style.display = "none";
-    if (maintenance) maintenance.style.display = "flex";
-  }
-</script>
+  <script>
+    const SITE_EM_MANUTENCAO = false;
+    if (SITE_EM_MANUTENCAO) {
+      const app = document.getElementById("app");
+      const maintenance = document.getElementById("maintenanceScreen");
+      if (app) app.style.display = "none";
+      if (maintenance) maintenance.style.display = "flex";
+    }
+  </script>
 </body>
 </html>
