@@ -84,14 +84,13 @@ function blurActive(){
 ======================= */
 function tentarCarregarLogo(){
   const candidatos = [
+    "./logo-hapvida (1).png",
     "./logo-hapvida.png",
     "logo-hapvida.png",
     "./hapvida.png",
     "hapvida.png",
     "./img/hapvida.png",
-    "img/hapvida.png",
-    "./images/hapvida.png",
-    "images/hapvida.png"
+    "img/hapvida.png"
   ];
 
   const testar = (src) => new Promise((resolve) => {
@@ -239,6 +238,7 @@ function atualizarCheckboxes(){
   const temSS  = selecionados.some(s => isSuperSimples(s.tipo));
 
   const container = document.getElementById("opcoesExtras");
+  if(!container) return;
   container.innerHTML = "";
 
   if(!temIND && !temSS) return;
@@ -277,6 +277,13 @@ function atualizarCheckboxes(){
       `);
     }
   }
+
+  const tc = document.getElementById("tabelaCompleta");
+  if(tc) tc.addEventListener("change", limparResultado);
+  const f1 = document.getElementById("familiar1grau");
+  if(f1) f1.addEventListener("change", limparResultado);
+  const oss = document.getElementById("odontoSS");
+  if(oss) oss.addEventListener("change", limparResultado);
 }
 
 function atualizarOpcoesAtivas(){
@@ -438,8 +445,10 @@ function calcular(){
   cont.innerHTML = "";
 
   const cfg = CIDADES_CFG[cidadeAtiva];
-  document.getElementById("linhaDataGeral").textContent =
-    `Orçamento dia ${dataHojeBR()} — ${cfg.titulo} - ${cfg.uf}`;
+  
+  // Data Geral em NEGRITO
+  document.getElementById("linhaDataGeral").innerHTML =
+    `<strong>Orçamento dia ${dataHojeBR()} — ${cfg.titulo} - ${cfg.uf}</strong>`;
 
   document.getElementById("resultado").style.display = "block";
 
@@ -512,18 +521,19 @@ function calcular(){
       });
     }
 
+    // Totais em NEGRITO e alinhados à esquerda (padrão)
     let totalHTML = "";
     if(!completa){
       if(aplicarFamiliar){
         totalHTML = `
-          <div class="totais">
+          <div class="totais" style="font-weight: bold; text-align: left;">
             <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
             <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
           </div>
         `;
       }else{
         totalHTML = `
-          <div class="totais">
+          <div class="totais" style="font-weight: bold; text-align: left;">
             <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
             <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
           </div>
@@ -575,7 +585,7 @@ function calcular(){
         </div>
 
         ${ssAviso}
-        ${completa ? "" : `<div class="taxa-adesao">${taxa}</div>`}
+        ${completa ? "" : `<div class="taxa-adesao" style="text-align: right; font-weight: bold; margin-top: 10px;">${taxa}</div>`}
         ${totalHTML}
         ${odontoInfo}
         ${familiarInfo}
@@ -594,59 +604,73 @@ function calcular(){
   }, 200);
 }
 
-/* =======================
-   IMAGEM / SHARE
-======================= */
+/* ==========================================================================
+   MECANISMO DE CAPTURA E DOWNLOAD CORRIGIDO
+   ========================================================================== */
 async function baixarBlob(blob, fileName){
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = fileName;
+  document.body.appendChild(a);
   a.click();
-  setTimeout(()=> URL.revokeObjectURL(a.href), 800);
+  setTimeout(()=> {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  }, 800);
 }
 
 async function gerarImagem(modo = "share"){
   const area = document.getElementById("areaImagem");
+  if(!area){
+    alert("Área de captura não encontrada.");
+    return;
+  }
 
   document.body.classList.add("capturando");
   await new Promise(r => requestAnimationFrame(() => r()));
 
-  const canvas = await html2canvas(area, {
-    backgroundColor: "#ffffff",
-    useCORS: true,
-    scale: 3
-  });
+  try {
+    const canvas = await html2canvas(area, {
+      backgroundColor: "#ffffff",
+      useCORS: true,
+      allowTaint: true,
+      scale: 3,
+      logging: false
+    });
 
-  document.body.classList.remove("capturando");
+    document.body.classList.remove("capturando");
 
-  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-  if(!blob){
-    alert("Não foi possível gerar a imagem.");
-    return;
-  }
-
-  const { isIOS, isChromeIOS } = getIOSShareInfo();
-
-  // Safari iPhone/iPad tenta compartilhar; Chrome iOS baixa
-  if(modo === "share" && navigator.share && !(isIOS && isChromeIOS)){
-    const file = new File([blob], "orcamento_hapvida.png", { type: "image/png" });
-
-    try{
-      await navigator.share({
-        title: "Orçamento Hapvida",
-        text: "Segue o orçamento do plano de saúde.",
-        files: [file]
-      });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+    if(!blob){
+      alert("Não foi possível gerar o arquivo de imagem.");
       return;
-    }catch(e){
-      // cai no download
     }
-  }
 
-  await baixarBlob(blob, "orcamento_hapvida.png");
+    const { isIOS, isChromeIOS } = getIOSShareInfo();
 
-  if(modo === "share" && isIOS && isChromeIOS){
-    alert("No Chrome do iPhone a imagem será baixada. Depois é só compartilhar pela galeria/arquivos.");
+    if(modo === "share" && navigator.share && !(isIOS && isChromeIOS)){
+      const file = new File([blob], "orcamento_hapvida.png", { type: "image/png" });
+      try{
+        await navigator.share({
+          title: "Orçamento Hapvida",
+          text: "Segue o orçamento do plano de saúde.",
+          files: [file]
+        });
+        return;
+      }catch(e){
+        console.log("Falha ou cancelamento na partilha nativa, baixando arquivo...");
+      }
+    }
+
+    await baixarBlob(blob, "orcamento_hapvida.png");
+
+    if(modo === "share" && isIOS && isChromeIOS){
+      alert("No Chrome do iPhone a imagem será baixada. Depois é só partilhar através da sua galeria de fotos.");
+    }
+  } catch(err) {
+    document.body.classList.remove("capturando");
+    console.error("Erro na captura:", err);
+    alert("Erro ao gerar imagem para baixar. Tente novamente.");
   }
 }
 
@@ -660,40 +684,48 @@ async function gerarImagemDeElemento(elementId, fileName){
   document.body.classList.add("capturando");
   await new Promise(r => requestAnimationFrame(() => r()));
 
-  const canvas = await html2canvas(area, {
-    backgroundColor: "#ffffff",
-    useCORS: true,
-    scale: 3
-  });
+  try {
+    const canvas = await html2canvas(area, {
+      backgroundColor: "#ffffff",
+      useCORS: true,
+      allowTaint: true,
+      scale: 3,
+      logging: false
+    });
 
-  document.body.classList.remove("capturando");
+    document.body.classList.remove("capturando");
 
-  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-  if(!blob){
-    alert("Não foi possível gerar a imagem.");
-    return;
-  }
-
-  const { isIOS, isChromeIOS } = getIOSShareInfo();
-
-  if(navigator.share && !(isIOS && isChromeIOS)){
-    const file = new File([blob], fileName, { type: "image/png" });
-    try{
-      await navigator.share({
-        title: "Hapvida",
-        text: "Segue a imagem.",
-        files: [file]
-      });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+    if(!blob){
+      alert("Não foi possível gerar a imagem.");
       return;
-    }catch(e){
-      // cai no download
     }
-  }
 
-  await baixarBlob(blob, fileName);
+    const { isIOS, isChromeIOS } = getIOSShareInfo();
 
-  if(isIOS && isChromeIOS){
-    alert("No Chrome do iPhone a imagem será baixada. Depois é só compartilhar pela galeria/arquivos.");
+    if(navigator.share && !(isIOS && isChromeIOS)){
+      const file = new File([blob], fileName, { type: "image/png" });
+      try{
+        await navigator.share({
+          title: "Hapvida",
+          text: "Segue a imagem.",
+          files: [file]
+          
+        });
+        return;
+      }catch(e){
+        console.log("Falha ou cancelamento na partilha nativa, baixando...");
+      }
+    }
+
+    await baixarBlob(blob, fileName);
+
+    if(isIOS && isChromeIOS){
+      alert("No Chrome do iPhone a imagem será baixada. Depois é só partilhar através da sua galeria.");
+    }
+  } catch(err) {
+    document.body.classList.remove("capturando");
+    console.error("Erro na captura do elemento:", err);
   }
 }
 
