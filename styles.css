@@ -529,3 +529,54 @@ body.capturando .capture-area { width: 760px; max-width: 760px; }
   display: block !important;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5)) !important;
 }
+/* --- OTIMIZAÇÃO MOBILE: COMPACTAÇÃO EXTREMA --- */
+@media (max-width: 600px) {
+  body { padding: 2px !important; }
+  
+  .container {
+    padding: 8px 6px !important;
+    border-radius: 12px !important;
+  }
+
+  .logos-topo {
+    margin-bottom: 5px !important;
+    padding: 2px !important;
+  }
+  
+  .titulo { font-size: 20px !important; margin-bottom: 4px !important; }
+
+  .planos { margin-top: 2px !important; gap: 2px !important; }
+  
+  .grupo-plano {
+    padding: 4px 6px !important;
+    margin-bottom: 3px !important;
+    min-height: 35px !important;
+    gap: 4px !important;
+  }
+
+  .tipo small { font-size: 10px !important; }
+
+  .opcoes { gap: 2px !important; }
+  .opcoes .opcao {
+    padding: 2px 4px !important;
+    min-width: 45px !important;
+    font-size: 8px !important;
+    height: 24px !important;
+  }
+
+  .idades { margin-top: 5px !important; }
+  #idades { height: 35px !important; padding: 5px !important; }
+  
+  .calcular {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    padding: 8px !important;
+    font-size: 13px !important;
+  }
+}/* --- AJUSTE FINAL: PLACEHOLDER DENTRO DA CAIXA DE IDADES --- */
+@media (max-width: 600px) {
+  #idades::placeholder {
+    font-size: 11px !important;
+    opacity: 0.7 !important;
+  }
+}
