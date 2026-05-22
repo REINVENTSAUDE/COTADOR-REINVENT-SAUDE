@@ -585,3 +585,114 @@ body.capturando .capture-area { width: 760px; max-width: 760px; }
     height: 35px !important; /* Altura fixa para garantir centralização */
     margin: 0 2px !important;
   }
+/* ========================================================================== 
+   COPARTICIPAÇÕES / CARÊNCIAS - VISUAL PREMIUM
+   ========================================================================== */
+
+.info-title {
+  text-align: center !important;
+  font-size: 38px !important;
+  font-weight: 900 !important;
+  color: #111827 !important;
+  margin-bottom: 8px !important;
+  text-transform: uppercase !important;
+}
+
+.info-sub {
+  text-align: center !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #4b5563 !important;
+  margin-bottom: 30px !important;
+}
+
+/* Espaçamento entre os cards */
+.info-grid-2 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+}
+
+/* CARD PRINCIPAL */
+.info-card,
+.carencias-section {
+  background: #ffffff !important;
+  border: 1px solid #dbe4f0 !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06) !important;
+}
+
+/* CABEÇALHO AZUL */
+.info-card .head,
+.carencias-section .head {
+  background: #005baa !important;
+  color: #ffffff !important;
+
+  padding: 18px !important;
+
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+
+  border-bottom: 1px solid #004080 !important;
+}
+
+/* CORPO */
+.info-card .body,
+.carencias-section .body {
+  background: #ffffff !important;
+}
+
+/* LINHAS */
+.kv {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+
+  padding: 16px 20px !important;
+
+  border-bottom: 1px solid #edf2f7 !important;
+
+  font-size: 18px !important;
+  color: #111827 !important;
+}
+
+.kv:last-child {
+  border-bottom: none !important;
+}
+
+/* VALORES */
+.kv span:last-child {
+  font-weight: 800 !important;
+}
+
+/* CARÊNCIAS */
+.carencias-section {
+  margin-bottom: 22px !important;
+}
+
+.carencias-section .body {
+  padding: 18px 22px !important;
+  color: #111827 !important;
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+}
+
+.carencias-section ul {
+  margin: 0 !important;
+  padding-left: 22px !important;
+}
+
+.carencias-section li {
+  margin-bottom: 8px !important;
+}
+
+/* RODAPÉ */
+.rodape-info {
+  margin-top: 28px !important;
+  text-align: center !important;
+  font-size: 15px !important;
+  color: #4b5563 !important;
+  font-weight: 600 !important;
+}
