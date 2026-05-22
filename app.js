@@ -701,22 +701,39 @@ async function gerarImagemDeElemento(elementId, fileName){
       return;
     }
 
-    const { isIOS, isChromeIOS } = getIOSShareInfo();
+const { isIOS, isChromeIOS } = getIOSShareInfo();
 
-    if(navigator.share && !(isIOS && isChromeIOS)){
-      const file = new File([blob], fileName, { type: "image/png" });
-      try{
-        await navigator.share({
-          title: "Hapvida",
-          text: "Segue a imagem.",
-          files: [file]
-          
-        });
-        return;
-      }catch(e){
-        console.log("Falha ou cancelamento na partilha nativa, baixando...");
-      }
+if(navigator.share && !(isIOS && isChromeIOS)){
+  const file = new File([blob], fileName, { type: "image/png" });
+
+  try{
+
+    let textoCompartilhar = "Informações Hapvida.";
+
+    if(elementId === "areaCopart"){
+      textoCompartilhar = "Segue as coparticipações de Fortaleza ✅";
     }
+
+    if(elementId === "areaCopartSalvador"){
+      textoCompartilhar = "Segue as coparticipações de Salvador ✅";
+    }
+
+    if(elementId === "areaCarencias"){
+      textoCompartilhar = "Segue as carências atualizadas do plano Hapvida ✅";
+    }
+
+    await navigator.share({
+      title: "Hapvida",
+      text: textoCompartilhar,
+      files: [file]
+    });
+
+    return;
+
+  }catch(e){
+    console.log("Falha ou cancelamento na partilha nativa, baixando...");
+  }
+}
 
     await baixarBlob(blob, fileName);
 
