@@ -200,7 +200,7 @@ html, body {
 }
 
 /* ==========================================================================
-   CARDS E BOTÕES DO TIPO DE PLANO
+   CARDS E BOTÕES DO TIPO DE 
    ========================================================================= */
 .planos {
   margin-top: 10px !important;
@@ -227,12 +227,17 @@ html, body {
 .tipo {
   background: transparent !important;
   border: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  /* Margens negativas para "estourar" o container e cobrir o vazio */
+  margin: -16px -22px !important; 
+  /* Padding compensatório para o texto voltar ao lugar certo */
+  padding: 16px 22px !important; 
+  
   text-align: left !important;
   cursor: pointer !important;
   outline: none !important;
-  width: 100%;
+  width: calc(100% + 44px) !important; /* Soma das margens laterais */
+  display: flex !important;
+  align-items: center !important;
 }
 
 .tipo small {
@@ -257,6 +262,8 @@ html, body {
 .opcoes {
   display: flex;
   gap: 8px;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 .opcoes .opcao {
