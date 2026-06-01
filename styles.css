@@ -19,6 +19,15 @@
   --radius-box: 16px;
   --transition-cyber: all 0.22s ease-out;
 }
+/* Otimização de Resposta ao Toque */
+button, 
+.opcao, 
+.tipo, 
+.calcular, 
+.modal-close, 
+.btn-modal {
+  touch-action: manipulation;
+}
 
 /* ==========================================================================
    ONDAS E EFEITOS FLUIDOS NO FUNDO
