@@ -7,7 +7,18 @@ const CIDADES_CFG = {
 };
 
 let cidadeAtiva = "fortaleza";
-let tabelasAtivas = window.TABELAS_FORTALEZA || {};
+// Novo formato seguro
+let dadosPreco = window.obterPrecoFortaleza(planoSelecionado, idadeDoCliente);
+
+if (dadosPreco) {
+    let faixaEtaria = dadosPreco.faixa;
+    let precoCheio = dadosPreco.valorNormal;
+    let precoComDesconto = dadosPreco.valorDesconto;
+    
+    // Agora você usa essas variáveis para somar no seu orçamento normalmente!
+} else {
+    console.error("Tabela ou faixa etária inválida.");
+}
 
 const tiposAtivos = new Set();
 let selecionados = [];
