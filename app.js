@@ -328,8 +328,12 @@ function toggleTipo(planKey){
   limparResultado();
   atualizarOpcoesAtivas();
 }
+/* =======================
+   FUNÇÕES DE CLIQUE CORRIGIDAS
+======================= */
+
 function clicarNoModo(btn) {
-    // 1. Evita que o clique "suba" para os pais
+    // 1. Evita que o clique "suba" para o container pai
     event.stopPropagation();
     
     const planKey = btn.dataset.plan;
@@ -338,26 +342,33 @@ function clicarNoModo(btn) {
     if (!tiposAtivos.has(planKey)) {
         toggleTipo(planKey);
     }
-function toggleModo(btn){
-  const tipo = btn.dataset.plan;
-  const modo = btn.dataset.modo;
+    
+    // 3. Agora chama a lógica original de seleção de modo
+    toggleModo(btn);
+}
 
-  if(!tiposAtivos.has(tipo) || btn.classList.contains("disabled")) return;
+function toggleModo(btn) {
+    const tipo = btn.dataset.plan;
+    const modo = btn.dataset.modo;
 
-  const idx = selecionados.findIndex(s => s.tipo === tipo && s.modo === modo);
+    // Se o plano não está ativo ou o botão está desabilitado, não faz nada
+    // Nota: Como o clicarNoModo já ativa o plano antes, esta verificação passa a funcionar corretamente
+    if (!tiposAtivos.has(tipo) || btn.classList.contains("disabled")) return;
 
-  if(idx >= 0){
-    selecionados.splice(idx, 1);
-  }else{
-    if(selecionados.length >= LIMITE_ORCAMENTOS){
-      showToast("Máximo de 2 orçamentos por vez.");
-      return;
+    const idx = selecionados.findIndex(s => s.tipo === tipo && s.modo === modo);
+
+    if (idx >= 0) {
+        selecionados.splice(idx, 1);
+    } else {
+        if (selecionados.length >= LIMITE_ORCAMENTOS) {
+            showToast("Máximo de 2 orçamentos por vez.");
+            return;
+        }
+        selecionados.push({ tipo, modo });
     }
-    selecionados.push({ tipo, modo });
-  }
 
-  limparResultado();
-  atualizarOpcoesAtivas();
+    limparResultado();
+    atualizarOpcoesAtivas();
 }
 
 /* =======================
