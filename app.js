@@ -328,7 +328,13 @@ function toggleTipo(planKey){
   limparResultado();
   atualizarOpcoesAtivas();
 }
-
+function clicarNoModo(btn) {
+    const tipo = btn.dataset.plan;
+    
+    // Se o plano não está ativo, ativa ele agora!
+    if (!tiposAtivos.has(tipo)) {
+        toggleTipo(tipo);
+    }
 function toggleModo(btn){
   const tipo = btn.dataset.plan;
   const modo = btn.dataset.modo;
