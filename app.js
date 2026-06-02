@@ -7,18 +7,7 @@ const CIDADES_CFG = {
 };
 
 let cidadeAtiva = "fortaleza";
-// Novo formato seguro
-let dadosPreco = window.obterPrecoFortaleza(planoSelecionado, idadeDoCliente);
-
-if (dadosPreco) {
-    let faixaEtaria = dadosPreco.faixa;
-    let precoCheio = dadosPreco.valorNormal;
-    let precoComDesconto = dadosPreco.valorDesconto;
-    
-    // Agora você usa essas variáveis para somar no seu orçamento normalmente!
-} else {
-    console.error("Tabela ou faixa etária inválida.");
-}
+let tabelasAtivas = {}; // Será preenchido dinamicamente com as tabelas de Salvador se necessário
 
 const tiposAtivos = new Set();
 let selecionados = [];
@@ -221,7 +210,7 @@ async function setCidade(cidade){
   if(!CIDADES_CFG[cidade]) return;
   if(cidade === cidadeAtiva) return;
 
-  cidadeAtiva = cidade;
+  cidadeAtiva = city = cidade;
   atualizarUIcidade();
   resetarSelecoesPlanos();
 
@@ -339,47 +328,41 @@ function toggleTipo(planKey){
   limparResultado();
   atualizarOpcoesAtivas();
 }
+
 /* =======================
    FUNÇÕES DE CLIQUE CORRIGIDAS
 ======================= */
-
 function clicarNoModo(btn) {
-    // 1. Evita que o clique "suba" para o container pai
-    event.stopPropagation();
-    
-    const planKey = btn.dataset.plan;
-    
-    // 2. Se o plano não está ativo, ativa ele primeiro
-    if (!tiposAtivos.has(planKey)) {
-        toggleTipo(planKey);
-    }
-    
-    // 3. Agora chama a lógica original de seleção de modo
-    toggleModo(btn);
+  if (window.event) { window.event.stopPropagation(); }
+  const planKey = btn.dataset.plan;
+  
+  if (!tiposAtivos.has(planKey)) {
+    toggleTipo(planKey);
+  }
+  
+  toggleModo(btn);
 }
 
 function toggleModo(btn) {
-    const tipo = btn.dataset.plan;
-    const modo = btn.dataset.modo;
+  const tipo = btn.dataset.plan;
+  const modo = btn.dataset.modo;
 
-    // Se o plano não está ativo ou o botão está desabilitado, não faz nada
-    // Nota: Como o clicarNoModo já ativa o plano antes, esta verificação passa a funcionar corretamente
-    if (!tiposAtivos.has(tipo) || btn.classList.contains("disabled")) return;
+  if (!tiposAtivos.has(tipo) || btn.classList.contains("disabled")) return;
 
-    const idx = selecionados.findIndex(s => s.tipo === tipo && s.modo === modo);
+  const idx = selecionados.findIndex(s => s.tipo === tipo && s.modo === modo);
 
-    if (idx >= 0) {
-        selecionados.splice(idx, 1);
-    } else {
-        if (selecionados.length >= LIMITE_ORCAMENTOS) {
-            showToast("Máximo de 2 orçamentos por vez.");
-            return;
-        }
-        selecionados.push({ tipo, modo });
+  if (idx >= 0) {
+    selecionados.splice(idx, 1);
+  } else {
+    if (selecionados.length >= LIMITE_ORCAMENTOS) {
+      showToast("Máximo de 2 orçamentos por vez.");
+      return;
     }
+    selecionados.push({ tipo, modo });
+  }
 
-    limparResultado();
-    atualizarOpcoesAtivas();
+  limparResultado();
+  atualizarOpcoesAtivas();
 }
 
 /* =======================
@@ -486,9 +469,29 @@ function calcular(){
 
   selecionados.forEach((sel, idx)=>{
     const chave = `${sel.tipo}_${sel.modo}`;
-    const lista = tabelasAtivas[chave];
+    
+    // --- COMPATIBILIDADE ADAPTADA PARA O FORMATO OCULTO DE FORTALEZA ---
+    let lista = [];
+    if (cidadeAtiva === "fortaleza") {
+      if (completa) {
+        // Idades de amostragem padrão para puxar as 10 faixas da ANS sequencialmente
+        const idadesChave = [0, 20, 25, 30, 35, 40, 45, 50, 55, 60];
+        const faixasAdicionadas = new Set();
+        
+        idadesChave.forEach(id => {
+          let dados = window.obterPrecoFortaleza(chave, id);
+          if (dados && !faixasAdicionadas.has(dados.faixa)) {
+            faixasAdicionadas.add(dados.faixa);
+            // Reestrutura temporariamente como o array legível original: [nome_faixa, null, null, normal, desconto]
+            lista.push([dados.faixa, null, null, dados.valorNormal, dados.valorDesconto]);
+          }
+        });
+      }
+    } else {
+      lista = tabelasAtivas[chave];
+    }
 
-    if(!lista){
+    if(!lista && (cidadeAtiva !== "fortaleza" || completa)){
       alert("Tabela não encontrada para um dos planos selecionados.");
       return;
     }
@@ -525,11 +528,25 @@ function calcular(){
       });
     }else{
       idades.forEach(idade=>{
-        const faixa = lista.find(f => idade >= f[1] && idade <= f[2]);
-        if(!faixa) return;
+        let vN = 0;
+        let v15 = 0;
+        let faixaTexto = "";
 
-        let vN = Number(faixa[3]) || 0;
-        let v15 = Number(faixa[4]) || 0;
+        if (cidadeAtiva === "fortaleza") {
+          // Ponte segura blindada
+          const dadosPreco = window.obterPrecoFortaleza(chave, idade);
+          if (!dadosPreco) return;
+          faixaTexto = dadosPreco.faixa;
+          vN = dadosPreco.valorNormal;
+          v15 = dadosPreco.valorDesconto;
+        } else {
+          // Fallback antigo para Salvador
+          const faixa = lista.find(f => idade >= f[1] && idade <= f[2]);
+          if(!faixa) return;
+          faixaTexto = faixa[0];
+          vN = Number(faixa[3]) || 0;
+          v15 = Number(faixa[4]) || 0;
+        }
 
         if(aplicarOdonto){
           vN += ODONTO_POR_VIDA;
@@ -544,7 +561,7 @@ function calcular(){
 
         rowsHTML += `
           <tr>
-            <td>${faixa[0]}</td>
+            <td>${faixaTexto}</td>
             <td>${idade}</td>
             <td>R$ ${formatarBR(aplicarFamiliar ? v5 : vN)}</td>
             <td>R$ ${formatarBR(v15)}</td>
@@ -553,7 +570,6 @@ function calcular(){
       });
     }
 
-    // Totais em NEGRITO e alinhados à esquerda (padrão)
     let totalHTML = "";
     if(!completa){
       if(aplicarFamiliar){
@@ -637,7 +653,7 @@ function calcular(){
 }
 
 /* ==========================================================================
-   MECANISMO DE CAPTURA E DOWNLOAD CORRIGIDO
+   MECANISMO DE CAPTURA E DOWNLOAD
    ========================================================================== */
 async function baixarBlob(blob, fileName){
   const a = document.createElement("a");
@@ -690,7 +706,7 @@ async function gerarImagem(modo = "share"){
         });
         return;
       }catch(e){
-        console.log("Falha ou cancelamento na partilha nativa, baixando arquivo...");
+        console.log("Falha na partilha nativa, baixando arquivo...");
       }
     }
 
@@ -733,39 +749,34 @@ async function gerarImagemDeElemento(elementId, fileName){
       return;
     }
 
-const { isIOS, isChromeIOS } = getIOSShareInfo();
+    const { isIOS, isChromeIOS } = getIOSShareInfo();
 
-if(navigator.share && !(isIOS && isChromeIOS)){
-  const file = new File([blob], fileName, { type: "image/png" });
+    if(navigator.share && !(isIOS && isChromeIOS)){
+      const file = new File([blob], fileName, { type: "image/png" });
 
-  try{
+      try{
+        let textoCompartilhar = "Informações Hapvida.";
 
-    let textoCompartilhar = "Informações Hapvida.";
+        if(elementId === "areaCopart"){
+          textoCompartilhar = "Segue as coparticipações de Fortaleza ✅";
+        }
+        if(elementId === "areaCopartSalvador"){
+          textoCompartilhar = "Segue as coparticipações de Salvador ✅";
+        }
+        if(elementId === "areaCarencias"){
+          textoCompartilhar = "Segue as carências atualizadas do plano Hapvida ✅";
+        }
 
-    if(elementId === "areaCopart"){
-      textoCompartilhar = "Segue as coparticipações de Fortaleza ✅";
+        await navigator.share({
+          title: "Hapvida",
+          text: textoCompartilhar,
+          files: [file]
+        });
+        return;
+      }catch(e){
+        console.log("Falha na partilha nativa, baixando...");
+      }
     }
-
-    if(elementId === "areaCopartSalvador"){
-      textoCompartilhar = "Segue as coparticipações de Salvador ✅";
-    }
-
-    if(elementId === "areaCarencias"){
-      textoCompartilhar = "Segue as carências atualizadas do plano Hapvida ✅";
-    }
-
-    await navigator.share({
-      title: "Hapvida",
-      text: textoCompartilhar,
-      files: [file]
-    });
-
-    return;
-
-  }catch(e){
-    console.log("Falha ou cancelamento na partilha nativa, baixando...");
-  }
-}
 
     await baixarBlob(blob, fileName);
 
@@ -803,7 +814,7 @@ function fecharModalInfo(){
 
 function clicouForaModal(e){
   if(e.target && e.target.id === "modalInfo"){
-    fecharModalInfo();
+    box = fecharModalInfo();
   }
 }
 
@@ -816,14 +827,12 @@ async function compartilharInfo(tipo){
     await gerarImagemDeElemento("areaCopart", "coparticipacoes_fortaleza.png");
     return;
   }
-
   if(tipo === "copartSalvador"){
     const d = document.getElementById("dataCopartSalvador");
     if(d) d.textContent = dataHojeBR();
     await gerarImagemDeElemento("areaCopartSalvador", "coparticipacoes_salvador.png");
     return;
   }
-
   if(tipo === "carencias"){
     const d = document.getElementById("dataCarencias");
     if(d) d.textContent = dataHojeBR();
