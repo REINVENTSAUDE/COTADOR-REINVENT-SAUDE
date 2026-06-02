@@ -298,7 +298,6 @@ html, body {
 
 .opcoes .opcao.disabled {
   opacity: 0.15 !important;
-  cursor: not-allowed !important;
   background: rgba(1, 4, 13, 0.4) !important;
   border-color: rgba(255,255,255,0.02) !important;
   color: var(--text-dimmed) !important;
