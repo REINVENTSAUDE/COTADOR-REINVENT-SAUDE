@@ -65,13 +65,18 @@
     </div>
 
     <div class="planos">
-      <div class="grupo-plano" data-plan="ind_enf">
-        <button type="button" class="tipo" onclick="toggleTipo('ind_enf')"><small>IND - ENFERMARIA</small></button>
-        <div class="opcoes">
-          <button type="button" class="opcao disabled" data-plan="ind_enf" data-modo="parcial" onclick="toggleModo(this)">PARCIAL</button>
-          <button type="button" class="opcao disabled" data-plan="ind_enf" data-modo="total" onclick="toggleModo(this)">TOTAL</button>
-        </div>
-      </div>
+      <div class="grupo-plano" data-plan="ind_enf" onclick="toggleTipo('ind_enf')">
+  
+  <div class="tipo">
+    <small>NOSSO PLANO ENFERMARIA COPARTICIPAÇÃO</small>
+  </div>
+
+  <div class="opcoes" onclick="event.stopPropagation()">
+    <button type="button" class="opcao disabled" data-plan="ind_enf" data-modo="parcial" onclick="toggleModo(this)">PARCIAL</button>
+    <button type="button" class="opcao disabled" data-plan="ind_enf" data-modo="total" onclick="toggleModo(this)">TOTAL</button>
+  </div>
+
+</div>
 
       <div class="grupo-plano" data-plan="ind_amb">
         <button type="button" class="tipo" onclick="toggleTipo('ind_amb')"><small>IND - AMBULATORIAL</small></button>
