@@ -743,14 +743,18 @@ body.capturando .capture-area { width: 760px; max-width: 760px; }
   }
 }
 
-/* Isso força o cursor em qualquer estado do botão */
-.grupo-plano .opcoes .opcao, 
-.grupo-plano .opcoes .opcao.disabled {
-  cursor: pointer !important;
-  pointer-events: auto !important;
+/* Remove qualquer influência de cursor 'not-allowed' de todo o grupo de planos */
+.grupo-plano, 
+.grupo-plano *, 
+.grupo-plano .opcao, 
+.grupo-plano .opcao.disabled {
+    cursor: pointer !important;
 }
 
-/* Isso remove o estilo de proibido caso ele esteja vindo de uma classe pai */
-.grupo-plano .opcoes .opcao * {
-  cursor: pointer !important;
+/* Isso garante que nenhum elemento, nem mesmo desabilitado, receba o estilo de proibido */
+button.disabled, 
+.opcao.disabled, 
+.disabled {
+    cursor: pointer !important;
+    pointer-events: auto !important;
 }
