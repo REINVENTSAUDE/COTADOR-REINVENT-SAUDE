@@ -329,11 +329,14 @@ function toggleTipo(planKey){
   atualizarOpcoesAtivas();
 }
 function clicarNoModo(btn) {
-    const tipo = btn.dataset.plan;
+    // 1. Evita que o clique "suba" para os pais
+    event.stopPropagation();
     
-    // Se o plano não está ativo, ativa ele agora!
-    if (!tiposAtivos.has(tipo)) {
-        toggleTipo(tipo);
+    const planKey = btn.dataset.plan;
+    
+    // 2. Se o plano não está ativo, ativa ele primeiro
+    if (!tiposAtivos.has(planKey)) {
+        toggleTipo(planKey);
     }
 function toggleModo(btn){
   const tipo = btn.dataset.plan;
