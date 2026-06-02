@@ -741,19 +741,16 @@ body.capturando .capture-area { width: 760px; max-width: 760px; }
   .glow-bg-particle {
     display: none !important;
   }
-} /* <--- AQUI fecha o @media. Não precisa de outra chave depois disso! */
-
-/* --- Correção visual do cursor (FORA do @media) --- */
-.opcao {
-  cursor: pointer !important;
 }
 
-.opcao.disabled {
+/* Isso força o cursor em qualquer estado do botão */
+.grupo-plano .opcoes .opcao, 
+.grupo-plano .opcoes .opcao.disabled {
   cursor: pointer !important;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
+  pointer-events: auto !important;
 }
 
-.opcao.ativo {
-  opacity: 1 !important;
+/* Isso remove o estilo de proibido caso ele esteja vindo de uma classe pai */
+.grupo-plano .opcoes .opcao * {
+  cursor: pointer !important;
 }
