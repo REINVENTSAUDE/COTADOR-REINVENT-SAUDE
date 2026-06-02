@@ -743,7 +743,8 @@ body.capturando .capture-area { width: 760px; max-width: 760px; }
   .glow-bg-particle {
     display: none !important;
   }
-      /* --- Correção visual do cursor --- */
+} 
+   /* --- Correção visual do cursor --- */
 
 /* Garante que o símbolo de proibido não apareça em nenhum botão de opção */
 .opcao {
