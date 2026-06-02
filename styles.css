@@ -742,18 +742,16 @@ body.capturando .capture-area { width: 760px; max-width: 760px; }
   }
 }
 
-/* Remove qualquer influência de cursor 'not-allowed' de todo o grupo de planos */
-.grupo-plano, 
-.grupo-plano *, 
-.grupo-plano .opcao, 
-.grupo-plano .opcao.disabled {
-    cursor: pointer !important;
-}
-
-/* Isso garante que nenhum elemento, nem mesmo desabilitado, receba o estilo de proibido */
-button.disabled, 
-.opcao.disabled, 
-.disabled {
+/* Limpeza absoluta de qualquer cursor de proibido */
+button.opcao, 
+button.opcao.disabled, 
+.opcao, 
+.opcao.disabled {
     cursor: pointer !important;
     pointer-events: auto !important;
+}
+
+/* Remove a regra de cursor proibido de qualquer botão na página */
+button:disabled {
+    cursor: pointer !important;
 }
