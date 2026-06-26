@@ -485,7 +485,7 @@ function construirBotoesPlanos(){
     const ativa = categoriasAtivas.has(mixCat.key);
     html += `<button type="button" class="cat-card card-btn mix-card${ativa ? ' ativo' : ''}" onclick="toggleCategoria('${mixCat.key}')">
       <div class="cat-card-title">MIX</div>
-      <div class="card-btn-label">INDIVIDUAL</div>
+      <div class="card-btn-label">MIX<br>INDIVIDUAL</div>
     </button>`;
   }
 
@@ -495,7 +495,7 @@ function construirBotoesPlanos(){
     const ativa = categoriasAtivas.has(affixCat.key);
     html += `<button type="button" class="cat-card card-btn affix-card${ativa ? ' ativo' : ''}" onclick="toggleCategoria('${affixCat.key}')">
       <div class="cat-card-title">AFFIX</div>
-      <div class="card-btn-label">FECOMÉRCIO</div>
+      <div class="card-btn-label">AFFIX<br>FECOMÉRCIO</div>
     </button>`;
   }
 

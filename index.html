@@ -13,14 +13,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>COTADOR - HAPVIDA</title>
   
-  <link rel="stylesheet" href="./styles.css?v=cyber_fixed_v5" />
+  <link rel="stylesheet" href="./styles.css?v=v2" />
 </head>
 
 <body>
-  <div class="glow-bg-wave wave-blue"></div>
-  <div class="glow-bg-wave wave-orange"></div>
-  <div class="glow-bg-particle p1"></div>
-  <div class="glow-bg-particle p2"></div>
+  <div class="toast" id="toast"></div>
+
+  <header class="app-header">
+    <div class="header-brand">
+      <img class="header-logo" src="./logo-hapvida.png" alt="Hapvida" />
+      <div class="header-text">
+        <h1>Cotador</h1>
+        <span class="header-badge">Hapvida</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" title="Alternar modo noturno">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <span class="header-date" id="cidadeTitulo">Fortaleza - CE</span>
+    </div>
+  </header>
 
   <div id="maintenanceScreen" style="display:none;">
     <div class="maintenance-card">
@@ -36,72 +49,88 @@
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
-
-  <div class="container" id="app">
-    
-    <div class="novidades-box" id="novidadesBox" style="display:none;">
-      <div class="novidades-topo">
-        <span>📢 NOVIDADES</span>
-        <button type="button" onclick="fecharNovidades()">✕</button>
-      </div>
-      <div class="novidades-conteudo">
-        🚀NOVIDADES: <b>tabela fortaleza atualizada! cuida.🚀 .</b>
-      </div>
-    </div>
-    
-    <h1 class="titulo">COTADOR</h1>
-    <div class="subtitulo" id="cidadeTitulo">Fortaleza</div>
-
-    <div class="opcoes cidade-wrap" id="cidadeButtons"></div>
-
-    <div class="planos" id="planosContainer"></div>
-    <div class="idades">
-      <textarea id="idades" placeholder="Digite as idades separadas por vírgula. Ex: 23, 35, 62"></textarea>
-    </div>
-
-    <div class="faixa-container" id="faixaContainer" style="display:none"></div>
-
-    <div class="linha-opcoes" id="opcoesExtras"></div>
-
-    <button type="button" class="calcular" onclick="calcular()">Calcular Orçamento</button>
-    <div id="ancoraResultado"></div>
-
-    <div class="btn-info-central">
-      <button type="button" onclick="abrirModalInfo()">COPARTICIPAÇÕES / CARÊNCIA</button>
-    </div>
-
-    <div id="ajudaPasso" class="ajuda-passo">
-      <div class="ajuda-titulo">Não sabe como cotar?</div>
-      <div class="ajuda-linha">1️⃣ Selecione o <b>tipo de plano</b></div>
-      <div class="ajuda-linha">2️⃣ Escolha <b>Parcial</b> ou <b>Total</b> (até <b>2 orçamentos</b>)</div>
-      <div class="ajuda-linha">3️⃣ Digite as <b>idades</b> (ou marque tabela completa)</div>
-      <div class="ajuda-linha">4️⃣ Clique em <b>Calcular</b></div>
-      <div class="ajuda-linha">5️⃣ Clique em <b>Compartilhar</b> ou <b>Baixar</b> e pronto ✅</div>
-    </div>
-
-    <div id="resultado">
-      <div id="areaImagem" class="capture-area">
-        <div class="logos">
-          <div class="logo-wrap">
-            <img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
-          </div>
+  <div class="app-layout" id="app">
+    <!-- Left Column: Configuration -->
+    <div class="config-panel">
+      <div class="novidades-box" id="novidadesBox" style="display:none;">
+        <div class="novidades-topo">
+          <span>📢 NOVIDADES</span>
+          <button type="button" onclick="fecharNovidades()">✕</button>
         </div>
-        <div class="linhaDataGeral" id="linhaDataGeral"></div>
-        <div id="orcamentosContainer"></div>
+        <div class="novidades-conteudo">
+          🚀NOVIDADES: <b>tabela fortaleza atualizada! cuida.🚀 .</b>
+        </div>
       </div>
 
-      <div class="acoes-resultado">
-        <button type="button" class="share" onclick="gerarImagem('share')">Compartilhar Orçamento</button>
-        <button type="button" class="share share-sec" onclick="gerarImagem('download')">Baixar Orçamento</button>
+      <section class="config-section">
+        <span class="section-label">Cidade</span>
+        <div class="opcoes cidade-wrap" id="cidadeButtons"></div>
+      </section>
+
+      <section class="config-section">
+        <span class="section-label">Tipo de Plano</span>
+        <div class="planos" id="planosContainer"></div>
+      </section>
+
+      <section class="config-section">
+        <span class="section-label" for="idades">Idades dos Beneficiários</span>
+        <textarea id="idades" placeholder="Ex: 23, 35, 62"></textarea>
+      </section>
+
+      <div id="faixaContainer" style="display:none"></div>
+
+      <section class="config-section">
+        <span class="section-label">Opções</span>
+        <div class="linha-opcoes" id="opcoesExtras"></div>
+      </section>
+
+      <button type="button" class="calcular" onclick="calcular()">Calcular Orçamento</button>
+
+      <div class="btn-info-central">
+        <button type="button" onclick="abrirModalInfo()">Coparticipações e Carências</button>
       </div>
+    </div>
+
+    <!-- Right Column: Results -->
+    <div class="results-panel">
+      <div class="results-header">
+        <h2>Orçamento</h2>
+      </div>
+
+      <div id="ajudaPasso" class="ajuda-passo">
+        <div class="ajuda-titulo">Como cotar?</div>
+        <div class="ajuda-linha">1️⃣ Selecione o <b>tipo de plano</b></div>
+        <div class="ajuda-linha">2️⃣ Escolha <b>Parcial</b> ou <b>Total</b> (até <b>2 orçamentos</b>)</div>
+        <div class="ajuda-linha">3️⃣ Digite as <b>idades</b> (ou marque tabela completa)</div>
+        <div class="ajuda-linha">4️⃣ Clique em <b>Calcular</b></div>
+        <div class="ajuda-linha">5️⃣ Compartilhe ou baixe o orçamento ✅</div>
+      </div>
+
+      <div id="resultado" style="display:none">
+        <div id="areaImagem" class="capture-area">
+          <div class="logos">
+            <div class="logo-wrap">
+              <img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida">
+            </div>
+          </div>
+          <div class="linhaDataGeral" id="linhaDataGeral"></div>
+          <div id="orcamentosContainer"></div>
+        </div>
+
+        <div class="acoes-resultado">
+          <button type="button" class="share" onclick="gerarImagem('share')">Compartilhar Orçamento</button>
+          <button type="button" class="share share-sec" onclick="gerarImagem('download')">Baixar Orçamento</button>
+        </div>
+      </div>
+
+      <div id="ancoraResultado"></div>
     </div>
   </div>
 
   <div class="modal-overlay" id="modalInfo" onclick="clicouForaModal(event)">
     <div class="modal" role="dialog" aria-modal="true">
       <div class="modal-header">
-        <div>COPARTICIPAÇÕES / CARÊNCIA</div>
+        <div>Coparticipações / Carência</div>
         <button class="modal-close" type="button" onclick="fecharModalInfo()">✕</button>
       </div>
       <div class="modal-body">
@@ -166,6 +195,35 @@
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="./dados-cidades.js?v=1"></script>
   <script src="./app.js?v=5"></script>
+
+  <script>
+    const SUN_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    const MOON_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.getElementById("themeToggle");
+      const isDark = html.getAttribute("data-theme") === "dark";
+      if (isDark) {
+        html.removeAttribute("data-theme");
+        btn.innerHTML = MOON_SVG;
+        localStorage.setItem("cotador_theme", "light");
+      } else {
+        html.setAttribute("data-theme", "dark");
+        btn.innerHTML = SUN_SVG;
+        localStorage.setItem("cotador_theme", "dark");
+      }
+    }
+
+    (function initTheme() {
+      const saved = localStorage.getItem("cotador_theme");
+      const btn = document.getElementById("themeToggle");
+      if (saved === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        if (btn) btn.innerHTML = SUN_SVG;
+      }
+    })();
+  </script>
 
   <script>
     const SITE_EM_MANUTENCAO = false;
