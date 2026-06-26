@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>COTADOR - HAPVIDA</title>
   
-  <link rel="stylesheet" href="./styles.css?v=cyber_fixed_v6" />
+  <link rel="stylesheet" href="./styles.css?v=cyber_fixed_v5" />
 </head>
 
 <body>
@@ -53,76 +53,23 @@
     <h1 class="titulo">COTADOR</h1>
     <div class="subtitulo" id="cidadeTitulo">Fortaleza</div>
 
-    <div class="opcoes cidade-wrap">
-      <button type="button" class="opcao ativo" id="btnFortaleza" onclick="setCidade('fortaleza')">Fortaleza</button>
-      <button type="button" class="opcao" id="btnSalvador" onclick="setCidade('salvador')" style="display: none !important;">
-  Salvador
-</button>
-    </div>
+    <div class="opcoes cidade-wrap" id="cidadeButtons"></div>
 
-    <div class="btn-info-central">
-      <button type="button" onclick="abrirModalInfo()">COPARTICIPAÇÕES / CARÊNCIA</button>
-    </div>
-
-    <div class="planos">
-
-  <div class="grupo-plano" data-plan="ind_enf" onclick="toggleTipo('ind_enf')">
-    <div class="tipo"><small>IND - ENFERMARIA</small></div>
-    <div class="opcoes" onclick="event.stopPropagation()">
-      <button type="button" class="opcao disabled" data-plan="ind_enf" data-modo="parcial" onclick="clicarNoModo(this)">PARCIAL</button>
-      <button type="button" class="opcao disabled" data-plan="ind_enf" data-modo="total" onclick="clicarNoModo(this)">TOTAL</button>
-    </div>
-  </div>
-
-  <div class="grupo-plano" data-plan="ind_amb" onclick="toggleTipo('ind_amb')">
-    <div class="tipo"><small>IND - AMBULATORIAL</small></div>
-    <div class="opcoes" onclick="event.stopPropagation()">
-      <button type="button" class="opcao disabled" data-plan="ind_amb" data-modo="parcial" onclick="clicarNoModo(this)">PARCIAL</button>
-      <button type="button" class="opcao disabled" data-plan="ind_amb" data-modo="total" onclick="clicarNoModo(this)">TOTAL</button>
-    </div>
-  </div>
-
-  <div class="grupo-plano" data-plan="ind_apto" onclick="toggleTipo('ind_apto')">
-    <div class="tipo"><small>IND - APARTAMENTO</small></div>
-    <div class="opcoes" onclick="event.stopPropagation()">
-      <button type="button" class="opcao disabled" data-plan="ind_apto" data-modo="parcial" onclick="clicarNoModo(this)">PARCIAL</button>
-      <button type="button" class="opcao disabled" data-plan="ind_apto" data-modo="total" onclick="clicarNoModo(this)">TOTAL</button>
-    </div>
-  </div>
-
-  <div class="grupo-plano" data-plan="ss_enf" onclick="toggleTipo('ss_enf')">
-    <div class="tipo"><small>SS - ENFERMARIA</small></div>
-    <div class="opcoes" onclick="event.stopPropagation()">
-      <button type="button" class="opcao disabled" data-plan="ss_enf" data-modo="parcial" onclick="clicarNoModo(this)">PARCIAL</button>
-      <button type="button" class="opcao disabled" data-plan="ss_enf" data-modo="total" onclick="clicarNoModo(this)">TOTAL</button>
-    </div>
-  </div>
-
-  <div class="grupo-plano" data-plan="ss_amb" onclick="toggleTipo('ss_amb')">
-    <div class="tipo"><small>SS - AMBULATORIAL</small></div>
-    <div class="opcoes" onclick="event.stopPropagation()">
-      <button type="button" class="opcao disabled" data-plan="ss_amb" data-modo="parcial" onclick="clicarNoModo(this)">PARCIAL</button>
-      <button type="button" class="opcao disabled" data-plan="ss_amb" data-modo="total" onclick="clicarNoModo(this)">TOTAL</button>
-    </div>
-  </div>
-
-  <div class="grupo-plano" data-plan="ss_apto" onclick="toggleTipo('ss_apto')">
-    <div class="tipo"><small>SS - APARTAMENTO</small></div>
-    <div class="opcoes" onclick="event.stopPropagation()">
-      <button type="button" class="opcao disabled" data-plan="ss_apto" data-modo="parcial" onclick="clicarNoModo(this)">PARCIAL</button>
-      <button type="button" class="opcao disabled" data-plan="ss_apto" data-modo="total" onclick="clicarNoModo(this)">TOTAL</button>
-    </div>
-  </div>
-
-</div>
+    <div class="planos" id="planosContainer"></div>
     <div class="idades">
       <textarea id="idades" placeholder="Digite as idades separadas por vírgula. Ex: 23, 35, 62"></textarea>
     </div>
+
+    <div class="faixa-container" id="faixaContainer" style="display:none"></div>
 
     <div class="linha-opcoes" id="opcoesExtras"></div>
 
     <button type="button" class="calcular" onclick="calcular()">Calcular Orçamento</button>
     <div id="ancoraResultado"></div>
+
+    <div class="btn-info-central">
+      <button type="button" onclick="abrirModalInfo()">COPARTICIPAÇÕES / CARÊNCIA</button>
+    </div>
 
     <div id="ajudaPasso" class="ajuda-passo">
       <div class="ajuda-titulo">Não sabe como cotar?</div>
@@ -158,8 +105,7 @@
         <button class="modal-close" type="button" onclick="fecharModalInfo()">✕</button>
       </div>
       <div class="modal-body">
-        <button class="btn-modal" type="button" onclick="compartilharInfo('copartFortaleza')">Compartilhar Coparticipações Fortaleza</button>
-        <button class="btn-modal" type="button" onclick="compartilharInfo('copartSalvador')">Compartilhar Coparticipações Salvador</button>
+        <button class="btn-modal btn-copart" type="button" onclick="compartilharInfo('coparticipacoes')">Compartilhar Coparticipações</button>
         <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Compartilhar Carências</button>
         <div class="modal-hint">*No celular abre o compartilhar. No computador baixa automaticamente.</div>
       </div>
@@ -167,55 +113,7 @@
   </div>
 
   <div class="offscreen">
-    <div id="areaCopart" class="capture-area">
-      <div class="logos"><div class="logo-wrap"><img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida"></div></div>
-      <div class="info-title">COPARTICIPAÇÕES — NOSSO PLANO</div>
-      <div class="info-sub">Atualizado em <span id="dataCopart"></span></div>
-      <div class="info-grid-2">
-        <div class="info-card">
-          <div class="head">Coparticipação parcial (grupo 1 PF)</div>
-          <div class="body">
-            <div class="kv"><span>Consulta Eletiva</span><span>Isenta</span></div>
-            <div class="kv"><span>Consulta de Urgência</span><span>Isenta</span></div>
-            <div class="kv"><span>Exames Simples</span><span>Isenta</span></div>
-            <div class="kv"><span>Exames Complexos</span><span>Isenta</span></div>
-            <div class="kv"><span>Terapias Neurológicas Especiais</span><span>R$ 78,87</span></div>
-            <div class="kv"><span>Terapias</span><span>R$ 24,27</span></div>
-          </div>
-        </div>
-        <div class="info-card">
-          <div class="head">Coparticipação total (grupo 1 PF)</div>
-          <div class="body">
-            <div class="kv"><span>Consulta Eletiva</span><span>R$ 25,42</span></div>
-            <div class="kv"><span>Consulta de Urgência</span><span>R$ 43,63</span></div>
-            <div class="kv"><span>Exames Simples</span><span>40% (máx R$ 45,79)</span></div>
-            <div class="kv"><span>Exames Complexos</span><span>40% (máx R$ 114,48)</span></div>
-            <div class="kv"><span>Terapias Neurológicas Especiais</span><span>R$ 78,87</span></div>
-            <div class="kv"><span>Terapias</span><span>R$ 24,27</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="rodape-info">*Informações em formato de imagem para envio rápido ao cliente.</div>
-    </div>
-  </div>
-
-  <div class="offscreen">
-    <div id="areaCopartSalvador" class="capture-area">
-      <div class="logos"><div class="logo-wrap"><img class="logo logo-hapvida-img" src="./logo-hapvida.png"></div></div>
-      <div class="info-title">COPARTICIPAÇÕES — SALVADOR</div>
-      <div class="info-sub">Atualizado em <span id="dataCopartSalvador"></span></div>
-      <div class="info-card">
-        <div class="head">Coparticipação Total</div>
-        <div class="body">
-          <div class="kv"><span>Consulta Eletiva</span><span>R$ 25,42</span></div>
-          <div class="kv"><span>Consulta Urgência</span><span>R$ 43,63</span></div>
-          <div class="kv"><span>Exames Simples</span><span>40% máx R$ 45,79</span></div>
-          <div class="kv"><span>Exames Complexos</span><span>40% máx R$ 114,48</span></div>
-          <div class="kv"><span>Terapias Neurológicas</span><span>R$ 78,87</span></div>
-          <div class="kv"><span>Demais Terapias</span><span>R$ 24,27</span></div>
-        </div>
-      </div>
-    </div>
+    <div id="areaCopart" class="capture-area"></div>
   </div>
 
   <div class="offscreen">
@@ -266,8 +164,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="./tabelas-fortaleza.js?v=6"></script>
-  <script src="./app.js?v=4"></script>
+  <script src="./dados-cidades.js?v=1"></script>
+  <script src="./app.js?v=5"></script>
 
   <script>
     const SITE_EM_MANUTENCAO = false;
