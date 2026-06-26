@@ -1,5 +1,6 @@
 const LIMITE_ORCAMENTOS = 2;
 const ODONTO_POR_VIDA = 23.25;
+const ODONTO_INCLUSAO_POR_VIDA = 23.90;
 
 const CIDADES_CFG = {
   fortaleza: { titulo: "Fortaleza", uf: "CE", odontoJaIncluso: false, arquivo: null },
@@ -270,6 +271,12 @@ function atualizarCheckboxes(){
           Odonto (somar R$ ${formatarBR(ODONTO_POR_VIDA)} por beneficiário)
         </label>
       `);
+      container.insertAdjacentHTML("beforeend", `
+        <label class="opt-label">
+          <input type="checkbox" id="odontoInclusao" />
+          ODONTO (INCLUSÃO - BOLETO SEPARADO) R$ ${formatarBR(ODONTO_INCLUSAO_POR_VIDA)}
+        </label>
+      `);
     }else{
       container.insertAdjacentHTML("beforeend", `
         <div class="opt-label" style="opacity:.85;">
@@ -285,6 +292,8 @@ function atualizarCheckboxes(){
   if(f1) f1.addEventListener("change", limparResultado);
   const oss = document.getElementById("odontoSS");
   if(oss) oss.addEventListener("change", limparResultado);
+  const oi = document.getElementById("odontoInclusao");
+  if(oi) oi.addEventListener("change", limparResultado);
 }
 
 function atualizarOpcoesAtivas(){
@@ -455,6 +464,8 @@ function calcular(){
   const familiarAtivo = familiarEl ? familiarEl.checked : false;
   const odontoPermitido = !CIDADES_CFG[cidadeAtiva].odontoJaIncluso;
   const odontoAtivo = (odontoEl && odontoPermitido) ? odontoEl.checked : false;
+  const odontoInclusaoEl = document.getElementById("odontoInclusao");
+  const odontoInclusaoAtivo = (odontoInclusaoEl && odontoPermitido) ? odontoInclusaoEl.checked : false;
 
   const cont = document.getElementById("orcamentosContainer");
   cont.innerHTML = "";
@@ -498,6 +509,7 @@ function calcular(){
 
     const isSS = isSuperSimples(sel.tipo);
     const aplicarOdonto   = isSS && odontoAtivo;
+    const aplicarOdontoInclusao = isSS && odontoInclusaoAtivo;
     const aplicarFamiliar = !isSS && familiarAtivo;
 
     let totalNormal = 0;
@@ -599,6 +611,11 @@ function calcular(){
       }
     }
 
+    let odontoInclusaoInfo = "";
+    if(aplicarOdontoInclusao){
+      odontoInclusaoInfo = `<div class="odonto-info">ODONTO (INCLUSÃO - BOLETO SEPARADO): R$ ${formatarBR(ODONTO_INCLUSAO_POR_VIDA)} por beneficiário</div>`;
+    }
+
     let familiarInfo = "";
     if(aplicarFamiliar){
       familiarInfo = `<div class="familiar-info">*Aplicado desconto de 5% para familiar de 1º grau</div>`;
@@ -636,6 +653,7 @@ function calcular(){
         ${completa ? "" : `<div class="taxa-adesao" style="text-align: right; font-weight: bold; margin-top: 10px;">${taxa}</div>`}
         ${totalHTML}
         ${odontoInfo}
+        ${odontoInclusaoInfo}
         ${familiarInfo}
       </div>
     `);
