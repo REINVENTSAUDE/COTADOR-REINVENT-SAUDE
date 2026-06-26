@@ -388,6 +388,14 @@ html, body {
   margin-top: 15px !important;
 }
 
+/* Texto informativo de odonto */
+.odonto-info {
+  font-size: 12px;
+  color: #4b5563;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
 /* Taxa de adesão em negrito e alinhada à direita */
 .orcamento .taxa-adesao {
   font-weight: 900 !important;
