@@ -613,7 +613,12 @@ function calcular(){
 
     let odontoInclusaoInfo = "";
     if(aplicarOdontoInclusao){
-      odontoInclusaoInfo = `<div class="odonto-info">ODONTO (INCLUSÃO - BOLETO SEPARADO): R$ ${formatarBR(ODONTO_INCLUSAO_POR_VIDA)} por beneficiário</div>`;
+      if(completa){
+        odontoInclusaoInfo = `<div class="odonto-info">ODONTO (INCLUSÃO - BOLETO SEPARADO): R$ ${formatarBR(ODONTO_INCLUSAO_POR_VIDA)} por beneficiário</div>`;
+      }else{
+        const totalOdontoInc = ODONTO_INCLUSAO_POR_VIDA * idades.length;
+        odontoInclusaoInfo = `<div class="odonto-info">ODONTO (INCLUSÃO - BOLETO SEPARADO): R$ ${formatarBR(ODONTO_INCLUSAO_POR_VIDA)} por beneficiário (R$ ${formatarBR(totalOdontoInc)})</div>`;
+      }
     }
 
     let familiarInfo = "";
