@@ -894,7 +894,7 @@ function taxaAdesaoTexto(tipo, vidas){
 
 function colgroupHTML({ completa=false, usandoFaixa=false }){
   if(usandoFaixa){
-    return '<colgroup><col style="width:26%;"><col style="width:10%;"><col style="width:32%;"><col style="width:32%;"></colgroup>';
+    return '<colgroup><col style="width:20%;"><col style="width:22%;"><col style="width:10%;"><col style="width:24%;"><col style="width:24%;"></colgroup>';
   }
   if(completa){
     return '<colgroup><col style="width:46%;"><col style="width:27%;"><col style="width:27%;"></colgroup>';
@@ -907,7 +907,8 @@ function cabecalhoTabelaHTML({ completa=false, usandoFaixa=false, familiar=false
     return `
       <tr class="cab">
         <th>Faixa<br>Etária</th>
-        <th>Qtde</th>
+        <th>Valor<br>por Faixa</th>
+        <th>Usuários</th>
         <th>VALOR<br>Normal</th>
         <th>15%<br>(3 meses)</th>
       </tr>
@@ -1065,6 +1066,7 @@ function calcular(){
         rowsHTML += `
           <tr>
             <td>${faixa[0]}</td>
+            <td>R$ ${formatarBR(vN)}</td>
             <td>${q}</td>
             <td>R$ ${formatarBR(vTotalN)}</td>
             <td>R$ ${formatarBR(vTotal15)}</td>
@@ -1074,6 +1076,7 @@ function calcular(){
       rowsHTML += `
         <tr class="faixa-total-row">
           <td><strong>Total</strong></td>
+          <td></td>
           <td><strong>${qtdeTotalFaixa}</strong></td>
           <td><strong>R$ ${formatarBR(totalNormal)}</strong></td>
           <td><strong>R$ ${formatarBR(total15)}</strong></td>
@@ -1182,11 +1185,11 @@ function calcular(){
 
     const nomeDentroTabelaHTML = nomeClienteCompletoHTML(sel.tipo, sel.modo);
     const totalVidas = usandoFaixa ? qtdeTotalFaixa : idades.length;
-    const mostrarTaxa = !completa && (!usandoFaixa || sel.tipo.startsWith("pme_"));
+    const mostrarTaxa = !completa && (!usandoFaixa || sel.tipo.startsWith("pme_")) && !sel.tipo.startsWith("affix_");
     const taxa = mostrarTaxa ? taxaAdesaoTexto(sel.tipo, totalVidas) : "";
 
     const classeEspecial = (completa || usandoFaixa) ? `tabela-completa ${corTabelaCompletaPorIndice(idx)}` : "";
-    const colCount = (completa || usandoFaixa) ? 4 : 4;
+    const colCount = usandoFaixa ? 5 : 4;
 
     cont.insertAdjacentHTML("beforeend", `
       <div class="orcamento ${classeEspecial}">
