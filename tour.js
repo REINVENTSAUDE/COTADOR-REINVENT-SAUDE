@@ -3,12 +3,12 @@
   var STEPS = [
     { text: "👆 Escolha uma cidade",      selector: "#cidadeButtons",   dir: "right",  done: function(){ return !!document.querySelector("#cidadeButtons .opcao.ativo"); } },
     { text: "📋 Selecione o tipo de plano",selector: "#planosContainer",dir: "bottom", done: function(){ return !!document.querySelector(".cat-btn.ativo, .card-btn.ativo"); } },
-    { text: "✅ Escolha Parcial ou Total", selector: ".grupo-plano",    dir: "bottom", done: function(){ return !!document.querySelector(".opcoes .opcao.ativo"); } },
+    { text: "✅ Escolha Parcial ou Total", selector: ".grupo-plano", hl: ".opcoes", dir: "bottom", done: function(){ return !!document.querySelector(".opcoes .opcao.ativo"); } },
     { text: "✏️ Informe as idades",        selector: "#idades",         dir: "right",  done: function(){
       var i = document.getElementById("idades");
       return (i && i.value.trim() !== "") || !!(document.getElementById("tabelaCompleta") && document.getElementById("tabelaCompleta").checked) || !!(document.getElementById("faixaEtaria") && document.getElementById("faixaEtaria").checked);
     } },
-    { text: "🚀 Clique em Calcular",       selector: ".calcular",       dir: "left",   done: function(){
+    { text: "⚙️ Configure as opções e clique em Calcular", selector: ".calcular", dir: "left", done: function(){
       var r = document.getElementById("resultado");
       return r && r.style.display === "block";
     } },
@@ -51,7 +51,15 @@
     balloon.style.bottom = "auto";
 
     if(vw < 768){
-      var top = Math.max(16, Math.min(r.top + r.height/2 - balH/2, vh - balH - 16));
+      var top;
+      if(vh - (r.bottom + 12) >= balH){
+        top = r.bottom + 12;
+      } else if(r.top - 12 >= balH){
+        top = r.top - balH - 12;
+      } else {
+        top = Math.max(16, Math.min(r.top + r.height/2 - balH/2, vh - balH - 16));
+      }
+      top = Math.max(16, Math.min(top, vh - balH - 16));
       balloon.style.right = "12px";
       balloon.style.top = top + "px";
       setDir("right");
@@ -88,6 +96,18 @@
     }
   }
 
+  function clearHL(){
+    var els = document.querySelectorAll(".tour-highlight");
+    for(var i = 0; i < els.length; i++) els[i].classList.remove("tour-highlight");
+  }
+
+  function addHL(sel, hlSel){
+    var s = hlSel || sel;
+    if(!s) return;
+    var els = document.querySelectorAll(s);
+    for(var i = 0; i < els.length; i++) els[i].classList.add("tour-highlight");
+  }
+
   function showStep(idx){
     if(dismissed) return;
     if(idx >= STEPS.length){
@@ -97,9 +117,11 @@
     var s = STEPS[idx];
     step = idx;
     if(!balloon) return;
+    clearHL();
     balloon.querySelector(".tour-text").textContent = s.text;
     setPos(s.selector, s.dir);
     tgl(true);
+    addHL(s.selector, s.hl);
 
     if(checkTimer) clearInterval(checkTimer);
     if(step < STEPS.length - 1){

@@ -26,6 +26,8 @@
   --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
   --shadow-lg: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
   --hover-bg: rgba(0,0,0,0.04);
+  --pulse-ring: rgba(37, 99, 235, 0.25);
+  --pulse-glow: rgba(37, 99, 235, 0.07);
   --radius: 8px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -46,6 +48,8 @@
   --text-secondary: #94a3b8;
   --text-tertiary: #64748b;
   --hover-bg: rgba(255,255,255,0.06);
+  --pulse-ring: rgba(96, 165, 250, 0.35);
+  --pulse-glow: rgba(96, 165, 250, 0.12);
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
   --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.2);
@@ -1587,4 +1591,14 @@ body.capturando .capture-area {
   color: var(--text);
   padding-right: 16px;
   white-space: pre-line;
+}
+
+.tour-highlight {
+  animation: tour-pulse 1.5s ease-in-out infinite !important;
+  border-radius: var(--radius) !important;
+}
+
+@keyframes tour-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--pulse-glow); }
+  50%      { box-shadow: 0 0 0 5px var(--pulse-ring); }
 }
