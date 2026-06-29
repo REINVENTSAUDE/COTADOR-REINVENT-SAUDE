@@ -41,6 +41,7 @@
     var s = STEPS[idx];
     step = idx;
     clearHL();
+    void document.documentElement.offsetHeight;
     addHL(s.hl);
 
     if(checkTimer) clearInterval(checkTimer);
@@ -74,9 +75,11 @@
     setTimeout(function(){
       showStep(0);
 
-      document.addEventListener("click", function(){
+      document.addEventListener("click", function(e){
         if(dismissed) return;
         if(step >= 0 && step < STEPS.length - 1 && STEPS[step].done()){
+          var t = e.target;
+          if(t && (t.id === "compararCheckbox" || t.closest(".comparar-toggle"))) return;
           if(checkTimer) clearInterval(checkTimer);
           setTimeout(function(){ showStep(step + 1); }, 300);
         }
