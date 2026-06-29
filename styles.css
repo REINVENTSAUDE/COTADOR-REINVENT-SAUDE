@@ -1134,6 +1134,12 @@ body.capturando .capture-area {
   max-width: 760px !important;
 }
 
+body.capturando .orcamento th,
+body.capturando .orcamento td {
+  font-size: 13px !important;
+  padding: 10px 12px !important;
+}
+
 /* ==========================================================================
    COPARTICIPAÇÕES / CARÊNCIAS — Info Image Styles
    ========================================================================== */
