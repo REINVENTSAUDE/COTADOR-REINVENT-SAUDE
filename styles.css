@@ -334,6 +334,51 @@ html, body {
 }
 
 /* ==========================================================================
+   OPERADORA BUTTONS
+   ========================================================================== */
+
+.operadora-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.operadora-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font);
+}
+
+.operadora-btn.ativo {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 1px 3px rgba(37,99,235,0.2);
+}
+
+.operadora-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+  border-style: dashed;
+}
+
+.operadora-logo {
+  display: block;
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ==========================================================================
    PLAN CATEGORIES — Segmented Tab Bar
    ========================================================================== */
 
@@ -1298,6 +1343,15 @@ body.capturando .orcamento td {
     padding: 5px 10px;
   }
 
+  .operadora-btn {
+    min-width: 64px;
+    padding: 5px 10px;
+  }
+
+  .operadora-logo {
+    height: 18px;
+  }
+
   .cat-btn, .card-btn {
     font-size: 11px;
     padding: 8px 6px;
@@ -1381,6 +1435,15 @@ body.capturando .orcamento td {
   #btnOutrasCidades {
     font-size: 11px;
     padding: 4px 8px;
+  }
+
+  .operadora-btn {
+    min-width: 56px;
+    padding: 4px 8px;
+  }
+
+  .operadora-logo {
+    height: 16px;
   }
 
   .cat-btn, .card-btn {
