@@ -1260,7 +1260,7 @@ async function gerarImagem(modo = "share"){
     if(modo === "share" && navigator.share && !(isIOS && isChromeIOS)){
       const file = new File([blob], "orcamento_hapvida.png", { type: "image/png" });
       try{
-        await navigator.share({ title: "Orçamento Hapvida", text: "Segue o orçamento do plano de saúde.", files: [file] });
+        await navigator.share({ title: "Orçamento Hapvida", files: [file] });
         return;
       }catch(e){ console.log("Falha na partilha nativa, baixando arquivo..."); }
     }
@@ -1296,11 +1296,7 @@ async function gerarImagemDeElemento(elementId, fileName){
     if(navigator.share && !(isIOS && isChromeIOS)){
       const file = new File([blob], fileName, { type: "image/png" });
       try{
-        let textoCompartilhar = "Informações Hapvida.";
-        if(elementId === "areaCopart") textoCompartilhar = "Segue as coparticipações de Fortaleza ✅";
-        if(elementId === "areaCopartSalvador") textoCompartilhar = "Segue as coparticipações de Salvador ✅";
-        if(elementId === "areaCarencias") textoCompartilhar = "Segue as carências atualizadas do plano Hapvida ✅";
-        await navigator.share({ title: "Hapvida", text: textoCompartilhar, files: [file] });
+        await navigator.share({ title: "Hapvida", files: [file] });
         return;
       }catch(e){ console.log("Falha na partilha nativa, baixando..."); }
     }
