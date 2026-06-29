@@ -217,6 +217,50 @@ html, body {
   margin-bottom: 8px;
 }
 
+.section-label-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.section-label-wrap .section-label {
+  margin-bottom: 0;
+}
+
+.comparar-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  user-select: none;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: var(--transition);
+}
+
+.comparar-toggle:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.comparar-toggle input {
+  accent-color: var(--primary);
+}
+
+.comparar-toggle:has(input:checked) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+}
+
 /* ==========================================================================
    CITY SELECTOR
    ========================================================================== */
@@ -460,6 +504,23 @@ html, body {
 /* ==========================================================================
    SUB-PLAN ROWS (AMB, ENF, APTO, etc.)
    ========================================================================== */
+
+.planos-cat-subtitle {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 14px 4px;
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.planos-cat-subtitle:first-of-type {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
 
 .planos-sub {
   margin-top: 12px;
@@ -1395,6 +1456,11 @@ body.capturando .orcamento td {
     gap: 8px;
     margin-top: 14px;
   }
+
+  .comparar-toggle {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
 }
 
 /* ==========================================================================
@@ -1496,6 +1562,16 @@ body.capturando .orcamento td {
 
   .faixa-label {
     font-size: 11px;
+  }
+
+  .comparar-toggle {
+    font-size: 9px;
+    padding: 1px 5px;
+  }
+
+  .planos-cat-subtitle {
+    font-size: 9px;
+    padding: 6px 10px 3px;
   }
 }
 

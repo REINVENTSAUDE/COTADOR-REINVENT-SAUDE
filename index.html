@@ -83,7 +83,13 @@
       </section>
 
       <section class="config-section">
-        <span class="section-label">Tipo de Plano</span>
+        <div class="section-label-wrap">
+          <span class="section-label">Tipo de Plano</span>
+          <label class="comparar-toggle">
+            <input type="checkbox" id="compararCheckbox" onchange="toggleCompararModo()">
+            Comparar
+          </label>
+        </div>
         <div class="planos" id="planosContainer"></div>
       </section>
 

@@ -138,6 +138,7 @@ let cidadeAtiva = "fortaleza";
 let tabelasAtivas = {};
 const tiposAtivos = new Set();
 let selecionados = [];
+let compararAtivo = false;
 let faixaMode = false;
 let faixaCounts = [];
 
@@ -379,34 +380,57 @@ function construirBotoesCidade(){
 ======================= */
 const CATEGORIAS = [
   { key: 'ind', label: 'INDIVIDUAL' },
-  { key: 'ss', label: 'EMPRESARIAL<br>02 A 29 VIDAS' },
-  { key: 'pme', label: 'EMPRESARIAL<br>30 A 99 VIDAS' },
+  { key: 'ss', label: 'EMPRESARIAL' },
+  { key: 'pme', label: 'EMPRESARIAL PME' },
   { key: 'mix', label: 'MIX' },
   { key: 'affix', label: 'AFFIX<br>FECOMÉRCIO' }
 ];
 
 const categoriasAtivas = new Set();
 
+function toggleCompararModo(){
+  compararAtivo = document.getElementById("compararCheckbox").checked;
+  if (!compararAtivo) {
+    categoriasAtivas.clear();
+    tiposAtivos.clear();
+    selecionados = [];
+    limparResultado();
+    construirBotoesPlanos();
+    atualizarOpcoesAtivas();
+  }
+}
+
 function toggleCategoria(catKey){
-  // Toggle off if already active
-  if (categoriasAtivas.has(catKey)) {
-    categoriasAtivas.delete(catKey);
-    const planos = getPlanosCategoria(catKey);
-    planos.forEach(p => {
-      tiposAtivos.delete(p.key);
-      selecionados = selecionados.filter(s => s.tipo !== p.key);
-    });
-  } else {
-    // Deactivate all other categories
-    categoriasAtivas.forEach(otherKey => {
-      const planos = getPlanosCategoria(otherKey);
+  if (compararAtivo) {
+    if (categoriasAtivas.has(catKey)) {
+      categoriasAtivas.delete(catKey);
+      const planos = getPlanosCategoria(catKey);
       planos.forEach(p => {
         tiposAtivos.delete(p.key);
         selecionados = selecionados.filter(s => s.tipo !== p.key);
       });
-    });
-    categoriasAtivas.clear();
-    categoriasAtivas.add(catKey);
+    } else {
+      categoriasAtivas.add(catKey);
+    }
+  } else {
+    if (categoriasAtivas.has(catKey)) {
+      categoriasAtivas.delete(catKey);
+      const planos = getPlanosCategoria(catKey);
+      planos.forEach(p => {
+        tiposAtivos.delete(p.key);
+        selecionados = selecionados.filter(s => s.tipo !== p.key);
+      });
+    } else {
+      categoriasAtivas.forEach(otherKey => {
+        const planos = getPlanosCategoria(otherKey);
+        planos.forEach(p => {
+          tiposAtivos.delete(p.key);
+          selecionados = selecionados.filter(s => s.tipo !== p.key);
+        });
+      });
+      categoriasAtivas.clear();
+      categoriasAtivas.add(catKey);
+    }
   }
   limparResultado();
   construirBotoesPlanos();
@@ -505,6 +529,10 @@ function construirBotoesPlanos(){
   html += '<div class="planos-sub">';
   cats.forEach(c => {
     if (!categoriasAtivas.has(c.key)) return;
+    if (compararAtivo) {
+      const catLabels = { ind: 'INDIVIDUAL', ss: 'EMPRESARIAL', pme: 'EMPRESARIAL PME', mix: 'MIX', affix: 'AFFIX' };
+      html += `<div class="planos-cat-subtitle">${catLabels[c.key] || c.key}</div>`;
+    }
     const planos = getPlanosCategoria(c.key);
     planos.forEach(p => {
       const ativo = tiposAtivos.has(p.key);
@@ -987,26 +1015,26 @@ function calcular(){
   const familiarEl = document.getElementById("familiar1grau");
   const familiarAtivo = familiarEl ? familiarEl.checked : false;
 
-  // Validate vidas for SS (2-29) and PME (30-99)
+  // Validate vidas for SS and PME
   const temSS = selecionados.some(s => s.tipo.startsWith("ss_"));
   const temPME = selecionados.some(s => s.tipo.startsWith("pme_"));
   const totalVidasGeral = usandoFaixa
     ? faixaCounts.reduce((s, c) => s + c, 0)
     : idades.length;
-  if (temSS && !completa && !usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
-    alert("Plano EMPRESARIAL 2-29: o total de vidas deve ser entre 2 e 29.");
+  if (temSS && !completa && !usandoFaixa && totalVidasGeral < 1) {
+    alert("Plano EMPRESARIAL: o total de vidas deve ser no mínimo 1.");
     return;
   }
-  if (temSS && usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
-    alert("Plano EMPRESARIAL 2-29: o total de vidas deve ser entre 2 e 29.");
+  if (temSS && usandoFaixa && totalVidasGeral < 1) {
+    alert("Plano EMPRESARIAL: o total de vidas deve ser no mínimo 1.");
     return;
   }
-  if (temPME && !completa && !usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
-    alert("Plano EMPRESARIAL 30-99: o total de vidas deve ser entre 30 e 99.");
+  if (temPME && !completa && !usandoFaixa && totalVidasGeral < 1) {
+    alert("Plano EMPRESARIAL PME: o total de vidas deve ser no mínimo 1.");
     return;
   }
-  if (temPME && usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
-    alert("Plano EMPRESARIAL 30-99: o total de vidas deve ser entre 30 e 99.");
+  if (temPME && usandoFaixa && totalVidasGeral < 1) {
+    alert("Plano EMPRESARIAL PME: o total de vidas deve ser no mínimo 1.");
     return;
   }
 
@@ -1177,9 +1205,9 @@ function calcular(){
       if (sel.tipo.startsWith("affix_")) {
         empAviso = `<div class="ss-aviso">Condição empresarial – 1 vida</div>`;
       } else if (sel.tipo.startsWith("pme_")) {
-        empAviso = `<div class="ss-aviso">Condição empresarial: 30 a 99 vidas</div>`;
+        empAviso = `<div class="ss-aviso">Condição empresarial: a partir de 1 vida</div>`;
       } else {
-        empAviso = `<div class="ss-aviso">Condição empresarial: a partir de 2 vidas</div>`;
+        empAviso = `<div class="ss-aviso">Condição empresarial: a partir de 1 vida</div>`;
       }
     }
 
@@ -1259,8 +1287,17 @@ async function gerarImagem(modo = "share"){
 
     if(modo === "share" && navigator.share && !(isIOS && isChromeIOS)){
       const file = new File([blob], "orcamento_hapvida.png", { type: "image/png" });
+      const planEnf = selecionados.find(s => {
+        const parts = s.tipo.split("_");
+        return parts.length >= 2 && parts[1] === "enf" && s.modo === "parcial";
+      });
+      const shareObj = { title: "Orçamento Hapvida", files: [file] };
+      if (planEnf) {
+        const tabela = isIndividual(planEnf.tipo) ? "CPF" : "CNPJ";
+        shareObj.text = `✅ PROPOSTA HAPVIDA\nTabela: ${tabela}\n\nPlano ENFERMARIA: \n√ Urgências e emergências;\n√ Consultas para todas as especialidades;\n√ Exames laboratoriais e radiológicos;\n√ Sessões multidisciplinares;\n√ Internações hospitalares e Cirurgias;\n√ Unidade de Terapia Intensiva (UTI)\n\nSem coparticipação exceto para Terapias`;
+      }
       try{
-        await navigator.share({ title: "Orçamento Hapvida", files: [file] });
+        await navigator.share(shareObj);
         return;
       }catch(e){ console.log("Falha na partilha nativa, baixando arquivo..."); }
     }
