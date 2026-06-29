@@ -1015,26 +1015,26 @@ function calcular(){
   const familiarEl = document.getElementById("familiar1grau");
   const familiarAtivo = familiarEl ? familiarEl.checked : false;
 
-  // Validate vidas for SS and PME
+  // Validate vidas for SS (2-29) and PME (30-99)
   const temSS = selecionados.some(s => s.tipo.startsWith("ss_"));
   const temPME = selecionados.some(s => s.tipo.startsWith("pme_"));
   const totalVidasGeral = usandoFaixa
     ? faixaCounts.reduce((s, c) => s + c, 0)
     : idades.length;
-  if (temSS && !completa && !usandoFaixa && totalVidasGeral < 1) {
-    alert("Plano EMPRESARIAL: o total de vidas deve ser no mínimo 1.");
+  if (temSS && !completa && !usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
+    alert("Plano EMPRESARIAL 2-29: o total de vidas deve ser entre 2 e 29.");
     return;
   }
-  if (temSS && usandoFaixa && totalVidasGeral < 1) {
-    alert("Plano EMPRESARIAL: o total de vidas deve ser no mínimo 1.");
+  if (temSS && usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
+    alert("Plano EMPRESARIAL 2-29: o total de vidas deve ser entre 2 e 29.");
     return;
   }
-  if (temPME && !completa && !usandoFaixa && totalVidasGeral < 1) {
-    alert("Plano EMPRESARIAL PME: o total de vidas deve ser no mínimo 1.");
+  if (temPME && !completa && !usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
+    alert("Plano EMPRESARIAL 30-99: o total de vidas deve ser entre 30 e 99.");
     return;
   }
-  if (temPME && usandoFaixa && totalVidasGeral < 1) {
-    alert("Plano EMPRESARIAL PME: o total de vidas deve ser no mínimo 1.");
+  if (temPME && usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
+    alert("Plano EMPRESARIAL 30-99: o total de vidas deve ser entre 30 e 99.");
     return;
   }
 
@@ -1205,9 +1205,9 @@ function calcular(){
       if (sel.tipo.startsWith("affix_")) {
         empAviso = `<div class="ss-aviso">Condição empresarial – 1 vida</div>`;
       } else if (sel.tipo.startsWith("pme_")) {
-        empAviso = `<div class="ss-aviso">Condição empresarial: a partir de 1 vida</div>`;
+        empAviso = `<div class="ss-aviso">Condição empresarial: 30 a 99 vidas</div>`;
       } else {
-        empAviso = `<div class="ss-aviso">Condição empresarial: a partir de 1 vida</div>`;
+        empAviso = `<div class="ss-aviso">Condição empresarial: a partir de 2 vidas</div>`;
       }
     }
 
