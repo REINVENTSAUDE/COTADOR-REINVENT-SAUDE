@@ -6,6 +6,17 @@ const ODONTO_AFFIX = 23.95;
 const TAXA_CONTRATO = 35;
 const TAXA_VIDA = 20;
 
+// Override temporário: Fortaleza Individual com dados do PDF 3º trimestre 2026
+// Vigência a partir de 01/07/2026
+// Remove dados-fortaleza-novo.js do HTML para reverter
+if (window.DADOS_FORTALEZA_NOVOS && window.DADOS_CIDADES && window.DADOS_CIDADES.fortaleza) {
+  const hoje = new Date();
+  const dataVigencia = new Date(2026, 6, 1);
+  if (hoje >= dataVigencia) {
+    Object.assign(window.DADOS_CIDADES.fortaleza.tabelas, window.DADOS_FORTALEZA_NOVOS);
+  }
+}
+
 const NOVIDADES_STORAGE_KEY = "hapvida_novidades_fechadas_v4";
 
 const PLANO_LABELS = {
@@ -920,18 +931,37 @@ function taxaAdesaoTexto(tipo, vidas){
   return `Taxa de adesão: R$ ${formatarBR(TAXA_CONTRATO)} por contrato`;
 }
 
-function colgroupHTML({ completa=false, usandoFaixa=false }){
+function colgroupHTML({ completa=false, usandoFaixa=false, semDesconto=false }){
   if(usandoFaixa){
+    if(semDesconto){
+      return '<colgroup><col style="width:20%;"><col style="width:22%;"><col style="width:10%;"><col style="width:48%;"></colgroup>';
+    }
     return '<colgroup><col style="width:20%;"><col style="width:22%;"><col style="width:10%;"><col style="width:24%;"><col style="width:24%;"></colgroup>';
   }
   if(completa){
+    if(semDesconto){
+      return '<colgroup><col style="width:46%;"><col style="width:54%;"></colgroup>';
+    }
     return '<colgroup><col style="width:46%;"><col style="width:27%;"><col style="width:27%;"></colgroup>';
+  }
+  if(semDesconto){
+    return '<colgroup><col style="width:32%;"><col style="width:14%;"><col style="width:54%;"></colgroup>';
   }
   return '<colgroup><col style="width:32%;"><col style="width:14%;"><col style="width:27%;"><col style="width:27%;"></colgroup>';
 }
 
-function cabecalhoTabelaHTML({ completa=false, usandoFaixa=false, familiar=false }){
+function cabecalhoTabelaHTML({ completa=false, usandoFaixa=false, familiar=false, semDesconto=false }){
   if(usandoFaixa){
+    if(semDesconto){
+      return `
+        <tr class="cab">
+          <th>Faixa<br>Etária</th>
+          <th>Valor<br>por Faixa</th>
+          <th>Usuários</th>
+          <th>VALOR<br>Normal</th>
+        </tr>
+      `;
+    }
     return `
       <tr class="cab">
         <th>Faixa<br>Etária</th>
@@ -943,6 +973,15 @@ function cabecalhoTabelaHTML({ completa=false, usandoFaixa=false, familiar=false
     `;
   }
   const col3 = familiar ? "5%<br>Familiar" : "VALOR<br>Normal";
+  if(semDesconto){
+    return `
+      <tr class="cab">
+        <th>Faixa<br>Etária</th>
+        ${completa ? "" : "<th>Idade</th>"}
+        <th>${col3}</th>
+      </tr>
+    `;
+  }
   return `
     <tr class="cab">
       <th>Faixa<br>Etária</th>
@@ -1063,6 +1102,8 @@ function calcular(){
       return;
     }
 
+    const temDesconto = lista.length > 0 && Number(lista[0][3]) !== Number(lista[0][4]);
+
     const isIND = isIndividual(sel.tipo);
     const isEmp = isEmpresarial(sel.tipo);
     const isAmb = sel.tipo.includes("amb");
@@ -1097,7 +1138,7 @@ function calcular(){
             <td>R$ ${formatarBR(vN)}</td>
             <td>${q}</td>
             <td>R$ ${formatarBR(vTotalN)}</td>
-            <td>R$ ${formatarBR(vTotal15)}</td>
+            ${temDesconto ? `<td>R$ ${formatarBR(vTotal15)}</td>` : ""}
           </tr>
         `;
       });
@@ -1107,7 +1148,7 @@ function calcular(){
           <td></td>
           <td><strong>${qtdeTotalFaixa}</strong></td>
           <td><strong>R$ ${formatarBR(totalNormal)}</strong></td>
-          <td><strong>R$ ${formatarBR(total15)}</strong></td>
+          ${temDesconto ? `<td><strong>R$ ${formatarBR(total15)}</strong></td>` : ""}
         </tr>
       `;
     }else if(completa){
@@ -1123,7 +1164,7 @@ function calcular(){
           <tr>
             <td>${faixa[0]}</td>
             <td>R$ ${formatarBR(aplicarFamiliar ? v5 : vN)}</td>
-            <td>R$ ${formatarBR(v15)}</td>
+            ${temDesconto ? `<td>R$ ${formatarBR(v15)}</td>` : ""}
           </tr>
         `;
       });
@@ -1147,7 +1188,7 @@ function calcular(){
             <td>${faixa[0]}</td>
             <td>${idade}</td>
             <td>R$ ${formatarBR(aplicarFamiliar ? v5 : vN)}</td>
-            <td>R$ ${formatarBR(v15)}</td>
+            ${temDesconto ? `<td>R$ ${formatarBR(v15)}</td>` : ""}
           </tr>
         `;
       });
@@ -1156,26 +1197,42 @@ function calcular(){
     let totalHTML = "";
     if(!completa){
       if(usandoFaixa){
-        totalHTML = `
-          <div class="totais" style="font-weight: bold; text-align: left;">
-            <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
-            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
-          </div>
-        `;
+        if(temDesconto){
+          totalHTML = `
+            <div class="totais" style="font-weight: bold; text-align: left;">
+              <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
+              <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+            </div>
+          `;
+        }else{
+          totalHTML = `
+            <div class="totais" style="font-weight: bold; text-align: left;">
+              <div>Total: R$ ${formatarBR(totalNormal)}</div>
+            </div>
+          `;
+        }
       }else if(aplicarFamiliar){
         totalHTML = `
           <div class="totais" style="font-weight: bold; text-align: left;">
             <div>Total 5% Familiar: R$ ${formatarBR(total5)}</div>
-            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+            ${temDesconto ? `<div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>` : ""}
           </div>
         `;
       }else{
-        totalHTML = `
-          <div class="totais" style="font-weight: bold; text-align: left;">
-            <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
-            <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
-          </div>
-        `;
+        if(temDesconto){
+          totalHTML = `
+            <div class="totais" style="font-weight: bold; text-align: left;">
+              <div>Total normal: R$ ${formatarBR(totalNormal)}</div>
+              <div>Total 15% (3 meses): R$ ${formatarBR(total15)}</div>
+            </div>
+          `;
+        }else{
+          totalHTML = `
+            <div class="totais" style="font-weight: bold; text-align: left;">
+              <div>Total: R$ ${formatarBR(totalNormal)}</div>
+            </div>
+          `;
+        }
       }
     }
 
@@ -1217,18 +1274,21 @@ function calcular(){
     const taxa = mostrarTaxa ? taxaAdesaoTexto(sel.tipo, totalVidas) : "";
 
     const classeEspecial = (completa || usandoFaixa) ? `tabela-completa ${corTabelaCompletaPorIndice(idx)}` : "";
-    const colCount = usandoFaixa ? 5 : 4;
+    const colCount = temDesconto
+      ? (usandoFaixa ? 5 : completa ? 3 : 4)
+      : (usandoFaixa ? 4 : completa ? 2 : 3);
+    const semDesconto = !temDesconto;
 
     cont.insertAdjacentHTML("beforeend", `
       <div class="orcamento ${classeEspecial}">
         <div class="tabela-wrap">
           <table class="tabela-precos">
-            ${colgroupHTML({ completa, usandoFaixa })}
+            ${colgroupHTML({ completa, usandoFaixa, semDesconto })}
             <thead>
               <tr class="titulo-tabela">
                 <th colspan="${colCount}">${nomeDentroTabelaHTML}</th>
               </tr>
-              ${cabecalhoTabelaHTML({ completa, usandoFaixa, familiar: aplicarFamiliar })}
+              ${cabecalhoTabelaHTML({ completa, usandoFaixa, familiar: aplicarFamiliar, semDesconto })}
             </thead>
             <tbody>
               ${rowsHTML}

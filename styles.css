@@ -3,7 +3,7 @@
    ========================================================================== */
 
 :root {
-  --bg: #f3f4f6;
+  --bg: #f8fafc;
   --surface: #ffffff;
   --border: #e2e8f0;
   --border-light: #f1f5f9;
@@ -98,26 +98,17 @@ html, body {
   gap: 12px;
 }
 
-.header-logo {
-  height: 32px;
-  width: auto;
-  object-fit: contain;
-}
-
-.header-text h1 {
+.header-subtitle {
   margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.3px;
-}
-
-.header-text .header-badge {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  max-width: 380px;
+  padding-left: 16px;
+  border-left: 2px solid var(--primary);
+  letter-spacing: 0.3px;
+  font-style: italic;
 }
 
 .header-meta {
@@ -410,10 +401,12 @@ html, body {
 }
 
 .operadora-btn:disabled {
-  opacity: 0.35;
+  opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
   border-style: dashed;
+  border-color: rgba(37,99,235,0.45);
+  background: rgba(37,99,235,0.06);
 }
 
 .operadora-logo {
@@ -1379,12 +1372,8 @@ body.capturando .orcamento td {
     padding: 10px 14px;
   }
 
-  .header-text h1 {
-    font-size: 16px;
-  }
-
-  .header-logo {
-    height: 26px;
+  .header-subtitle {
+    display: none;
   }
 
   .header-date {
@@ -1475,18 +1464,6 @@ body.capturando .orcamento td {
 
   .app-header {
     padding: 8px 10px;
-  }
-
-  .header-text h1 {
-    font-size: 14px;
-  }
-
-  .header-text .header-badge {
-    font-size: 10px;
-  }
-
-  .header-logo {
-    height: 22px;
   }
 
   .header-date {
