@@ -1643,19 +1643,23 @@ body.capturando .capture-area .head {
 
 body.capturando .orcamento th,
 body.capturando .orcamento td {
-  font-size: 18px !important;
+  font-size: 22px !important;
   padding: 12px 16px !important;
 }
 
 body.capturando .orcamento .cab th {
-  font-size: 15px !important;
+  font-size: 22px !important;
 }
 
 body.capturando .orcamento .titulo-tabela th {
-  font-size: 18px !important;
+  font-size: 22px !important;
 }
 
 body.capturando .orcamento .totais {
+  font-size: 22px !important;
+}
+
+body.capturando .orcamento .taxa-adesao {
   font-size: 18px !important;
 }
 
