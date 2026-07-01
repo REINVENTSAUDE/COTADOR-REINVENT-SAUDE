@@ -1643,8 +1643,20 @@ body.capturando .capture-area .head {
 
 body.capturando .orcamento th,
 body.capturando .orcamento td {
-  font-size: 14px !important;
-  padding: 10px 14px !important;
+  font-size: 18px !important;
+  padding: 12px 16px !important;
+}
+
+body.capturando .orcamento .cab th {
+  font-size: 15px !important;
+}
+
+body.capturando .orcamento .titulo-tabela th {
+  font-size: 18px !important;
+}
+
+body.capturando .orcamento .totais {
+  font-size: 18px !important;
 }
 
 body.capturando .capture-area .kv {
