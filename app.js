@@ -1499,6 +1499,10 @@ const COPART_CIDADE_GRUPO = {
   curitiba: 'grupoA'
 };
 
+function getGrupoCopart(cidade){
+  return COPART_CIDADE_GRUPO[cidade] || 'grupoB';
+}
+
 function getCoparticipacaoHTML(cidade){
   const grupo = COPART_DATA[getGrupoCopart(cidade)];
   const cfg = CIDADES_CFG[cidade] || CIDADES_CFG.fortaleza;
