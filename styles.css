@@ -1622,3 +1622,43 @@ body.capturando .orcamento td {
   0%, 100% { box-shadow: 0 0 0 0 var(--pulse-glow); }
   50%      { box-shadow: 0 0 0 5px var(--pulse-ring); }
 }
+
+/* ==========================================================================
+   CAPTURE OVERRIDES (must be last to win over mobile media queries)
+   ========================================================================== */
+
+body.capturando .capture-area .info-title,
+body.capturando .capture-area .info-sub,
+body.capturando .capture-area .rodape-info,
+body.capturando .capture-area .kv,
+body.capturando .capture-area .kv span,
+body.capturando .capture-area .carencias-section .body,
+body.capturando .capture-area .carencias-section li {
+  color: #000000 !important;
+}
+
+body.capturando .capture-area .head {
+  color: #ffffff !important;
+}
+
+body.capturando .orcamento th,
+body.capturando .orcamento td {
+  font-size: 14px !important;
+  padding: 10px 14px !important;
+}
+
+body.capturando .capture-area .kv {
+  font-size: 20px !important;
+  padding: 18px 22px !important;
+}
+
+body.capturando .capture-area .info-card .head,
+body.capturando .capture-area .carencias-section .head {
+  font-size: 26px !important;
+  padding: 20px !important;
+}
+
+body.capturando .capture-area .carencias-section .body {
+  font-size: 19px !important;
+  padding: 20px 24px !important;
+}
