@@ -5,6 +5,7 @@ const ODONTO_PME = 14.87;
 const ODONTO_AFFIX = 23.95;
 const TAXA_CONTRATO = 35;
 const TAXA_VIDA = 20;
+const APENAS_FORTALEZA = true; // Remove esta linha para liberar as demais cidades
 
 // Override temporário: Fortaleza Individual com dados do PDF 3º trimestre 2026
 // Vigência a partir de 01/07/2026
@@ -329,61 +330,66 @@ function construirBotoesCidade(){
 
   fixas.forEach(c => {
     const semDados = !CIDADES_CFG[c.key] || !CIDADES_CFG[c.key].temDados;
+    const suspenso = APENAS_FORTALEZA && c.key !== 'fortaleza';
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "opcao" + (cidadeAtiva === c.key ? " ativo" : "");
     btn.textContent = c.label;
     btn.dataset.cidade = c.key;
-    if (semDados) {
+    if (semDados || suspenso) {
       btn.disabled = true;
-      btn.title = "Em breve";
+      btn.title = suspenso ? "Em atualização" : "Em breve";
       btn.style.opacity = "0.4";
     }
-    btn.addEventListener("click", () => setCidade(c.key));
+    btn.addEventListener("click", () => {
+      if (!btn.disabled) setCidade(c.key);
+    });
     wrap.appendChild(btn);
   });
 
-  const outrasWrap = document.createElement("div");
-  outrasWrap.className = "cidade-outras-wrap";
+  if (!APENAS_FORTALEZA) {
+    const outrasWrap = document.createElement("div");
+    outrasWrap.className = "cidade-outras-wrap";
 
-  const btnOutras = document.createElement("button");
-  btnOutras.type = "button";
-  btnOutras.className = "opcao";
-  btnOutras.id = "btnOutrasCidades";
-  btnOutras.textContent = "Outras Cidades ▾";
-  btnOutras.addEventListener("click", () => {
-    const dd = document.getElementById("outrasDropdown");
-    if (dd) dd.classList.toggle("show");
-  });
-  outrasWrap.appendChild(btnOutras);
-
-  const dropdown = document.createElement("div");
-  dropdown.className = "cidade-outras-dropdown";
-  dropdown.id = "outrasDropdown";
-
-  const dropdownItems = [...OUTRAS_CIDADES];
-  if (isMobile) dropdownItems.push({ key:'natal', label:'Natal' });
-
-  dropdownItems.forEach(c => {
-    const a = document.createElement("button");
-    a.type = "button";
-    a.textContent = c.label;
-    a.className = cidadeAtiva === c.key ? "ativo" : "";
-    a.addEventListener("click", () => {
-      setCidade(c.key);
-      dropdown.classList.remove("show");
+    const btnOutras = document.createElement("button");
+    btnOutras.type = "button";
+    btnOutras.className = "opcao";
+    btnOutras.id = "btnOutrasCidades";
+    btnOutras.textContent = "Outras Cidades ▾";
+    btnOutras.addEventListener("click", () => {
+      const dd = document.getElementById("outrasDropdown");
+      if (dd) dd.classList.toggle("show");
     });
-    dropdown.appendChild(a);
-  });
+    outrasWrap.appendChild(btnOutras);
 
-  outrasWrap.appendChild(dropdown);
-  wrap.appendChild(outrasWrap);
+    const dropdown = document.createElement("div");
+    dropdown.className = "cidade-outras-dropdown";
+    dropdown.id = "outrasDropdown";
 
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".cidade-outras-wrap")) {
-      if (dropdown) dropdown.classList.remove("show");
-    }
-  });
+    const dropdownItems = [...OUTRAS_CIDADES];
+    if (isMobile) dropdownItems.push({ key:'natal', label:'Natal' });
+
+    dropdownItems.forEach(c => {
+      const a = document.createElement("button");
+      a.type = "button";
+      a.textContent = c.label;
+      a.className = cidadeAtiva === c.key ? "ativo" : "";
+      a.addEventListener("click", () => {
+        setCidade(c.key);
+        dropdown.classList.remove("show");
+      });
+      dropdown.appendChild(a);
+    });
+
+    outrasWrap.appendChild(dropdown);
+    wrap.appendChild(outrasWrap);
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".cidade-outras-wrap")) {
+        if (dropdown) dropdown.classList.remove("show");
+      }
+    });
+  }
 }
 
 /* =======================
@@ -1544,4 +1550,10 @@ document.addEventListener("DOMContentLoaded", () => {
   atualizarOpcoesAtivas();
   mostrarNovidades();
   tentarCarregarLogo();
+
+  // Mostra banner de atualização apenas quando APENAS_FORTALEZA está ativo
+  const banner = document.getElementById("atualizacaoBanner");
+  if (banner) {
+    banner.style.display = APENAS_FORTALEZA ? "flex" : "none";
+  }
 });
