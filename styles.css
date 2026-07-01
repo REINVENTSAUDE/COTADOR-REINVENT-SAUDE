@@ -1373,7 +1373,12 @@ body.capturando .orcamento td {
   }
 
   .header-subtitle {
-    display: none;
+    display: block;
+    font-size: 10px;
+    max-width: 180px;
+    padding-left: 10px;
+    border-left-width: 1px;
+    line-height: 1.5;
   }
 
   .header-date {
