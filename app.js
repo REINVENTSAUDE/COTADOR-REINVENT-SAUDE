@@ -18,6 +18,17 @@ if (window.DADOS_FORTALEZA_NOVOS && window.DADOS_CIDADES && window.DADOS_CIDADES
   }
 }
 
+// Remove 15% do Empresarial Fortaleza (SS e PME) — mesmo sem dados novos, zera o desconto
+if (window.DADOS_CIDADES && window.DADOS_CIDADES.fortaleza) {
+  const ft = window.DADOS_CIDADES.fortaleza.tabelas;
+  ['ss_amb_total','ss_amb_parcial','ss_enf_total','ss_enf_parcial',
+   'ss_apto_total','ss_apto_parcial','pme_amb_total','pme_amb_parcial',
+   'pme_enf_total','pme_enf_parcial','pme_apto_total','pme_apto_parcial']
+    .forEach(key => {
+      if (ft[key]) ft[key] = ft[key].map(r => [r[0], r[1], r[2], r[3], r[3]]);
+    });
+}
+
 const NOVIDADES_STORAGE_KEY = "hapvida_novidades_fechadas_v4";
 
 const PLANO_LABELS = {
