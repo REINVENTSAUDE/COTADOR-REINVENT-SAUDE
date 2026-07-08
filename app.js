@@ -5,7 +5,106 @@ const ODONTO_PME = 14.87;
 const ODONTO_AFFIX = 23.95;
 const TAXA_CONTRATO = 35;
 const TAXA_VIDA = 20;
-const APENAS_FORTALEZA = true; // Remove esta linha para liberar as demais cidades
+
+// All cities metadata
+const CIDADES_META = {
+  anapolis:       { titulo: "Anápolis", uf: "GO" },
+  aracaju:        { titulo: "Aracaju", uf: "SE" },
+  alagoinhas:     { titulo: "Alagoinhas", uf: "BA" },
+  araraquara:     { titulo: "Araraquara", uf: "SP" },
+  barretos:       { titulo: "Barretos", uf: "SP" },
+  bauru:          { titulo: "Bauru", uf: "SP" },
+  belem:          { titulo: "Belém", uf: "PA" },
+  belo_horizonte: { titulo: "Belo Horizonte", uf: "MG" },
+  brasilia:       { titulo: "Brasília", uf: "DF" },
+  camacari:       { titulo: "Camaçari", uf: "BA" },
+  campina_grande: { titulo: "Campina Grande", uf: "PB" },
+  campo_grande:   { titulo: "Campo Grande", uf: "MS" },
+  cuiaba:         { titulo: "Cuiabá", uf: "MT" },
+  curitiba:       { titulo: "Curitiba", uf: "PR" },
+  dourados:       { titulo: "Dourados", uf: "MS" },
+  feira_de_santana: { titulo: "Feira de Santana", uf: "BA" },
+  fortaleza:      { titulo: "Fortaleza", uf: "CE" },
+  franca:         { titulo: "Franca", uf: "SP" },
+  goiania:        { titulo: "Goiânia", uf: "GO" },
+  jaboticabal:    { titulo: "Jaboticabal", uf: "SP" },
+  joao_pessoa:    { titulo: "João Pessoa", uf: "PB" },
+  joinville:      { titulo: "Joinville", uf: "SC" },
+  juazeiro_do_norte: { titulo: "Juazeiro do Norte", uf: "CE" },
+  limeira:        { titulo: "Limeira", uf: "SP" },
+  lins:           { titulo: "Lins", uf: "SP" },
+  maceio:         { titulo: "Maceió", uf: "AL" },
+  manaus:         { titulo: "Manaus", uf: "AM" },
+  marilia:        { titulo: "Marília", uf: "SP" },
+  mossoro:        { titulo: "Mossoró", uf: "RN" },
+  natal:          { titulo: "Natal", uf: "RN" },
+  parauapebas:    { titulo: "Parauapebas", uf: "PA" },
+  piracicaba:     { titulo: "Piracicaba", uf: "SP" },
+  pirassununga:   { titulo: "Pirassununga", uf: "SP" },
+  quirinopolis:   { titulo: "Quirinópolis", uf: "GO" },
+  recife:         { titulo: "Recife", uf: "PE" },
+  ribeirao_preto: { titulo: "Ribeirão Preto", uf: "SP" },
+  rio_verde:      { titulo: "Rio Verde", uf: "GO" },
+  rondonopolis:   { titulo: "Rondonópolis", uf: "MT" },
+  salvador:       { titulo: "Salvador", uf: "BA" },
+  sao_carlos:     { titulo: "São Carlos", uf: "SP" },
+  sao_jose_dos_campos: { titulo: "São José dos Campos", uf: "SP" },
+  sao_luis:       { titulo: "São Luís", uf: "MA" },
+  sao_paulo:      { titulo: "São Paulo", uf: "SP" },
+  sertaozinho:    { titulo: "Sertãozinho", uf: "SP" },
+  teresina:       { titulo: "Teresina", uf: "PI" },
+  tres_lagoas:    { titulo: "Três Lagoas", uf: "MS" },
+  uberaba:        { titulo: "Uberaba", uf: "MG" },
+  uberlandia:     { titulo: "Uberlândia", uf: "MG" }
+};
+
+// Merge new Individual data (Julho 2026) into DADOS_CIDADES
+if (DADOS_CIDADES_JULHO_2026 && window.DADOS_CIDADES) {
+  Object.keys(DADOS_CIDADES_JULHO_2026).forEach(function(cityKey) {
+    if (!DADOS_CIDADES[cityKey]) {
+      var meta = CIDADES_META[cityKey] || { titulo: cityKey, uf: '' };
+      DADOS_CIDADES[cityKey] = { titulo: meta.titulo, uf: meta.uf, tabelas: {} };
+    }
+    Object.assign(DADOS_CIDADES[cityKey].tabelas, DADOS_CIDADES_JULHO_2026[cityKey]);
+  });
+}
+
+// Merge new Empresarial data (Julho 2026) into DADOS_CIDADES
+if (DADOS_CIDADES_EMPRESARIAL_JULHO_2026 && window.DADOS_CIDADES) {
+  Object.keys(DADOS_CIDADES_EMPRESARIAL_JULHO_2026).forEach(function(cityKey) {
+    if (!DADOS_CIDADES[cityKey]) {
+      var meta = CIDADES_META[cityKey] || { titulo: cityKey, uf: '' };
+      DADOS_CIDADES[cityKey] = { titulo: meta.titulo, uf: meta.uf, tabelas: {} };
+    }
+    Object.assign(DADOS_CIDADES[cityKey].tabelas, DADOS_CIDADES_EMPRESARIAL_JULHO_2026[cityKey]);
+  });
+}
+
+// Merge new PME data (Julho 2026) into DADOS_CIDADES
+if (DADOS_CIDADES_PME_JULHO_2026 && window.DADOS_CIDADES) {
+  Object.keys(DADOS_CIDADES_PME_JULHO_2026).forEach(function(cityKey) {
+    if (!DADOS_CIDADES[cityKey]) {
+      var meta = CIDADES_META[cityKey] || { titulo: cityKey, uf: '' };
+      DADOS_CIDADES[cityKey] = { titulo: meta.titulo, uf: meta.uf, tabelas: {} };
+    }
+    Object.assign(DADOS_CIDADES[cityKey].tabelas, DADOS_CIDADES_PME_JULHO_2026[cityKey]);
+  });
+}
+
+// Ensure all known cities exist in DADOS_CIDADES (for cities with no new data, like curitiba/uberaba)
+Object.keys(CIDADES_META).forEach(function(cityKey) {
+  if (!DADOS_CIDADES[cityKey]) {
+    var meta = CIDADES_META[cityKey];
+    DADOS_CIDADES[cityKey] = { titulo: meta.titulo, uf: meta.uf, tabelas: {} };
+  } else {
+    // Sync titulo/uf from metadata if missing
+    var meta = CIDADES_META[cityKey];
+    if (meta) {
+      if (!DADOS_CIDADES[cityKey].titulo) DADOS_CIDADES[cityKey].titulo = meta.titulo;
+      if (!DADOS_CIDADES[cityKey].uf) DADOS_CIDADES[cityKey].uf = meta.uf;
+    }
+  }
+});
 
 // Override temporário: Fortaleza Individual com dados do PDF 3º trimestre 2026
 // Vigência a partir de 01/07/2026
@@ -18,15 +117,17 @@ if (window.DADOS_FORTALEZA_NOVOS && window.DADOS_CIDADES && window.DADOS_CIDADES
   }
 }
 
-// Remove 15% do Empresarial Fortaleza (SS e PME) — mesmo sem dados novos, zera o desconto
-if (window.DADOS_CIDADES && window.DADOS_CIDADES.fortaleza) {
-  const ft = window.DADOS_CIDADES.fortaleza.tabelas;
-  ['ss_amb_total','ss_amb_parcial','ss_enf_total','ss_enf_parcial',
-   'ss_apto_total','ss_apto_parcial','pme_amb_total','pme_amb_parcial',
-   'pme_enf_total','pme_enf_parcial','pme_apto_total','pme_apto_parcial']
-    .forEach(key => {
-      if (ft[key]) ft[key] = ft[key].map(r => [r[0], r[1], r[2], r[3], r[3]]);
+// Remove 15% de TODAS as tabelas Empresariais (ss_ e pme_) — nenhuma cidade deve ter desconto
+if (window.DADOS_CIDADES) {
+  Object.keys(window.DADOS_CIDADES).forEach(function(cityKey) {
+    var tbls = window.DADOS_CIDADES[cityKey].tabelas;
+    if (!tbls) return;
+    Object.keys(tbls).forEach(function(key) {
+      if (key.indexOf('ss_') === 0 || key.indexOf('pme_') === 0) {
+        tbls[key] = tbls[key].map(function(r) { return [r[0], r[1], r[2], r[3], r[3]]; });
+      }
     });
+  });
 }
 
 const NOVIDADES_STORAGE_KEY = "hapvida_novidades_fechadas_v4";
@@ -54,23 +155,7 @@ const PRODUTO_PLAN_KEYS = {
   mix_apto: "mix_apto"
 };
 
-const CIDADES_CFG = {
-  fortaleza:       { titulo: "Fortaleza", uf: "CE", planos: { ind:['amb','enf','apto','mix_enf','mix_apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'], affix:['amb','enf','apto'] }, temDados: true },
-  salvador:        { titulo: "Salvador", uf: "BA", planos: { ind:['amb','enf','apto','mix_enf','mix_apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  belem:           { titulo: "Belém", uf: "PA", planos: { ind:['amb','enf','apto','mix_enf','mix_apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  belo_horizonte:  { titulo: "Belo Horizonte", uf: "MG", planos: { ind:['amb','enf','apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  curitiba:        { titulo: "Curitiba", uf: "PR", planos: { ind:['amb','enf','apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  goiania:         { titulo: "Goiânia", uf: "GO", planos: { ind:['amb','enf','apto'], ss:['enf','apto'], pme:['enf','apto'] }, temDados: true },
-  juazeiro_do_norte: { titulo: "Juazeiro do Norte", uf: "CE", planos: { ind:['amb','enf','apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  manaus:          { titulo: "Manaus", uf: "AM", planos: { ind:['amb','enf','apto','mix_enf','mix_apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  recife:          { titulo: "Recife", uf: "PE", planos: { ind:['amb','enf','apto','mix_enf','mix_apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  sao_luis:        { titulo: "São Luís", uf: "MA", planos: { ind:['amb','enf','apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  uberaba:         { titulo: "Uberaba", uf: "MG", planos: { ind:['amb','enf','apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  uberlandia:      { titulo: "Uberlândia", uf: "MG", planos: { ind:['amb','enf','apto'], ss:['amb','enf','apto'], pme:['amb','enf','apto'] }, temDados: true },
-  sao_paulo:       { titulo: "São Paulo", uf: "SP", planos: null, temDados: false },
-  natal:           { titulo: "Natal", uf: "RN", planos: null, temDados: false }
-};
-
+// AFFIX tables (hardcoded, available for Fortaleza)
 window.AFFIX_TABELAS = {
   affix_amb_parcial: [
     ["0 a 18",0,18,143.36,121.86],
@@ -146,16 +231,58 @@ window.AFFIX_TABELAS = {
   ]
 };
 
-const OUTRAS_CIDADES = [
-  { key: 'belo_horizonte', label: 'Belo Horizonte' },
-  { key: 'curitiba', label: 'Curitiba' },
-  { key: 'juazeiro_do_norte', label: 'Juazeiro do Norte' },
-  { key: 'manaus', label: 'Manaus' },
-  { key: 'recife', label: 'Recife' },
-  { key: 'sao_luis', label: 'São Luís' },
-  { key: 'uberaba', label: 'Uberaba' },
-  { key: 'uberlandia', label: 'Uberlândia' }
-].sort((a,b) => a.label.localeCompare(b.label));
+// Inject AFFIX data into DADOS_CIDADES.fortaleza so buildCidadesCfg detects it
+if (window.DADOS_CIDADES && window.DADOS_CIDADES.fortaleza && window.DADOS_CIDADES.fortaleza.tabelas) {
+  Object.assign(window.DADOS_CIDADES.fortaleza.tabelas, window.AFFIX_TABELAS);
+}
+
+// Build CIDADES_CFG dynamically from merged data
+function buildCidadesCfg() {
+  var cfg = {};
+  Object.keys(DADOS_CIDADES).forEach(function(cityKey) {
+    var city = DADOS_CIDADES[cityKey];
+    if (!city || !city.tabelas) return;
+    var meta = CIDADES_META[cityKey] || { titulo: cityKey, uf: '' };
+    var planos = { ind: [], ss: [], pme: [], affix: [] };
+    Object.keys(city.tabelas).forEach(function(tblKey) {
+      var parts = tblKey.split('_');
+      if (parts.length >= 3) {
+        var cat = parts[0];
+        var prod = parts.slice(1, -1).join('_');
+        if (planos[cat] && planos[cat].indexOf(prod) === -1) {
+          planos[cat].push(prod);
+        }
+      }
+    });
+    var hasAny = planos.ind.length > 0 || planos.ss.length > 0 || planos.pme.length > 0 || planos.affix.length > 0;
+    cfg[cityKey] = {
+      titulo: meta.titulo,
+      uf: meta.uf,
+      planos: hasAny ? planos : null,
+      temDados: hasAny
+    };
+  });
+  return cfg;
+}
+
+var CIDADES_CFG = buildCidadesCfg();
+
+// Fixed city buttons (always visible)
+const CIDADE_FIXAS = ['fortaleza', 'salvador', 'belem', 'goiania'];
+
+// Rest of cities go to "Outras Cidades" dropdown
+const OUTRAS_CIDADES = (function() {
+  var list = [];
+  Object.keys(CIDADES_CFG).forEach(function(key) {
+    if (CIDADE_FIXAS.indexOf(key) === -1) {
+      var cfg = CIDADES_CFG[key];
+      if (cfg.uf === "SP") return;
+      list.push({ key: key, label: cfg.titulo + '-' + cfg.uf, temDados: cfg.temDados });
+    }
+  });
+  list.sort(function(a, b) { return a.label.localeCompare(b.label); });
+  return list;
+})();
 
 let cidadeAtiva = "fortaleza";
 let tabelasAtivas = {};
@@ -276,6 +403,11 @@ function fecharNovidades(){
   try{ localStorage.setItem(NOVIDADES_STORAGE_KEY, "1"); }catch(e){}
 }
 
+function fecharUpdateBar(){
+  const el = document.querySelector(".atualizacao-banner");
+  if (el) el.style.display = "none";
+}
+
 /* =======================
    NOMES COMPLETOS
 ======================= */
@@ -330,77 +462,123 @@ function construirBotoesCidade(){
   wrap.innerHTML = "";
 
   const isMobile = window.innerWidth <= 600;
-  const fixas = [
-    { key:'fortaleza', label:'Fortaleza' },
-    { key:'salvador', label:'Salvador' },
-    { key:'belem', label:'Belém' },
-    { key:'goiania', label:'Goiânia' },
-    { key:'sao_paulo', label:'São Paulo', semDados:true }
-  ];
-  if (!isMobile) fixas.push({ key:'natal', label:'Natal', semDados:true });
 
-  fixas.forEach(c => {
-    const semDados = !CIDADES_CFG[c.key] || !CIDADES_CFG[c.key].temDados;
-    const suspenso = APENAS_FORTALEZA && c.key !== 'fortaleza';
+  CIDADE_FIXAS.forEach(key => {
+    const cfg = CIDADES_CFG[key];
+    const semDados = !cfg || !cfg.temDados;
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "opcao" + (cidadeAtiva === c.key ? " ativo" : "");
-    btn.textContent = c.label;
-    btn.dataset.cidade = c.key;
-    if (semDados || suspenso) {
+    btn.className = "opcao" + (cidadeAtiva === key ? " ativo" : "");
+    btn.textContent = cfg ? (cfg.titulo + '-' + cfg.uf) : key;
+    btn.dataset.cidade = key;
+    if (semDados) {
       btn.disabled = true;
-      btn.title = suspenso ? "Em atualização" : "Em breve";
+      btn.title = "Em breve";
       btn.style.opacity = "0.4";
     }
     btn.addEventListener("click", () => {
-      if (!btn.disabled) setCidade(c.key);
+      if (!btn.disabled) setCidade(key);
     });
     wrap.appendChild(btn);
   });
 
-  if (!APENAS_FORTALEZA) {
-    const outrasWrap = document.createElement("div");
-    outrasWrap.className = "cidade-outras-wrap";
+  // "Outras Cidades" dropdown
+  const outrasWrap = document.createElement("div");
+  outrasWrap.className = "cidade-outras-wrap";
 
-    const btnOutras = document.createElement("button");
-    btnOutras.type = "button";
-    btnOutras.className = "opcao";
-    btnOutras.id = "btnOutrasCidades";
-    btnOutras.textContent = "Outras Cidades ▾";
-    btnOutras.addEventListener("click", () => {
-      const dd = document.getElementById("outrasDropdown");
-      if (dd) dd.classList.toggle("show");
+  const btnOutras = document.createElement("button");
+  btnOutras.type = "button";
+  btnOutras.className = "opcao";
+  btnOutras.id = "btnOutrasCidades";
+  btnOutras.textContent = "Outras Cidades ▾";
+  btnOutras.addEventListener("click", () => {
+    const dd = document.getElementById("outrasDropdown");
+    if (!dd) return;
+    const isOpening = !dd.classList.contains("show");
+    dd.classList.toggle("show");
+    if (isOpening) {
+      const input = dd.querySelector(".cidade-search-input");
+      if (input) {
+        input.value = "";
+        input.focus();
+        dd.querySelectorAll("button").forEach(b => b.style.display = "");
+      }
+    }
+  });
+  outrasWrap.appendChild(btnOutras);
+
+  const dropdown = document.createElement("div");
+  dropdown.className = "cidade-outras-dropdown";
+  dropdown.id = "outrasDropdown";
+
+  // Search input
+  const buscaInput = document.createElement("input");
+  buscaInput.type = "text";
+  buscaInput.placeholder = "Buscar cidade...";
+  buscaInput.className = "cidade-search-input";
+  buscaInput.addEventListener("input", function() {
+    const term = this.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const items = dropdown.querySelectorAll("button");
+    items.forEach(btn => {
+      const label = btn.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      btn.style.display = label.includes(term) ? "" : "none";
     });
-    outrasWrap.appendChild(btnOutras);
+  });
+  buscaInput.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      dropdown.classList.remove("show");
+      btnOutras.focus();
+      return;
+    }
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const visible = [...dropdown.querySelectorAll("button")].filter(b => b.style.display !== "none" && !b.disabled);
+      if (visible.length > 0) visible[0].click();
+      return;
+    }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const visible = [...dropdown.querySelectorAll("button")].filter(b => b.style.display !== "none");
+      if (visible.length === 0) return;
+      const cur = visible.indexOf(document.activeElement);
+      let next;
+      if (e.key === "ArrowDown") {
+        next = cur < visible.length - 1 ? cur + 1 : 0;
+      } else {
+        next = cur > 0 ? cur - 1 : visible.length - 1;
+      }
+      visible[next].focus();
+    }
+  });
+  dropdown.appendChild(buscaInput);
 
-    const dropdown = document.createElement("div");
-    dropdown.className = "cidade-outras-dropdown";
-    dropdown.id = "outrasDropdown";
-
-    const dropdownItems = [...OUTRAS_CIDADES];
-    if (isMobile) dropdownItems.push({ key:'natal', label:'Natal' });
-
-    dropdownItems.forEach(c => {
-      const a = document.createElement("button");
-      a.type = "button";
-      a.textContent = c.label;
-      a.className = cidadeAtiva === c.key ? "ativo" : "";
-      a.addEventListener("click", () => {
+  OUTRAS_CIDADES.forEach(c => {
+    const a = document.createElement("button");
+    a.type = "button";
+    a.textContent = c.label;
+    a.className = cidadeAtiva === c.key ? "ativo" : "";
+    a.disabled = !c.temDados;
+    if (!c.temDados) {
+      a.title = "Em breve";
+      a.style.opacity = "0.4";
+    }
+    a.addEventListener("click", () => {
+      if (!a.disabled) {
         setCidade(c.key);
         dropdown.classList.remove("show");
-      });
-      dropdown.appendChild(a);
-    });
-
-    outrasWrap.appendChild(dropdown);
-    wrap.appendChild(outrasWrap);
-
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".cidade-outras-wrap")) {
-        if (dropdown) dropdown.classList.remove("show");
       }
     });
-  }
+    dropdown.appendChild(a);
+  });
+
+  outrasWrap.appendChild(dropdown);
+  wrap.appendChild(outrasWrap);
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".cidade-outras-wrap")) {
+      if (dropdown) dropdown.classList.remove("show");
+    }
+  });
 }
 
 /* =======================
@@ -641,13 +819,12 @@ async function setCidade(cidade){
     ? window.DADOS_CIDADES[cidade].tabelas
     : {};
 
-  // Update "Outras Cidades" button text to show selected city
   const isOutra = OUTRAS_CIDADES.some(c => c.key === cidade);
   const btnOutras = document.getElementById("btnOutrasCidades");
   if (btnOutras) {
     if (isOutra) {
       const cfg = CIDADES_CFG[cidade];
-      btnOutras.textContent = `${cfg.titulo} ▾`;
+      btnOutras.textContent = (cfg.titulo + '-' + cfg.uf) + ' ▾';
     } else {
       btnOutras.textContent = "Outras Cidades ▾";
     }
@@ -723,14 +900,7 @@ function atualizarCheckboxes(){
     `);
   }
 
-  if(temPME){
-    container.insertAdjacentHTML("beforeend", `
-      <label class="opt-label">
-        <input type="checkbox" id="odontoPME" />
-        Odonto (somar R$ ${formatarBR(ODONTO_PME)} por beneficiário)
-      </label>
-    `);
-  }
+  // Odonto PME já incluso nos preços — checkbox removido
 
   if(temAFFIX){
     container.insertAdjacentHTML("beforeend", `
@@ -784,8 +954,6 @@ function atualizarCheckboxes(){
   if(f1) f1.addEventListener("change", limparResultado);
   const oss = document.getElementById("odontoSS");
   if(oss) oss.addEventListener("change", limparResultado);
-  const opme = document.getElementById("odontoPME");
-  if(opme) opme.addEventListener("change", limparResultado);
   const oaffix = document.getElementById("odontoAffix");
   if(oaffix) oaffix.addEventListener("change", limparResultado);
   const oib = document.getElementById("odontoInclusaoBoleto");
@@ -803,7 +971,14 @@ function atualizarOpcoesAtivas(){
 
     grupo.querySelectorAll(".opcao[data-plan][data-modo]").forEach(op=>{
       if(ativo){
-        op.classList.remove("disabled");
+        const modo = op.dataset.modo;
+        const chave = plan + '_' + modo;
+        if (tabelasAtivas[chave]) {
+          op.classList.remove("disabled");
+        } else {
+          op.classList.add("disabled");
+          op.classList.remove("ativo");
+        }
       }else{
         op.classList.add("disabled");
         op.classList.remove("ativo");
@@ -1021,8 +1196,7 @@ function getOdontoValor(tipo, isAmb){
     return (el && el.checked) ? ODONTO_AFFIX : 0;
   }
   if (tipo.startsWith("pme_")) {
-    const el = document.getElementById("odontoPME");
-    return (el && el.checked) ? ODONTO_PME : 0;
+    return ODONTO_PME;
   }
   if (tipo.startsWith("ss_")) {
     const el = document.getElementById("odontoSS");
@@ -1077,19 +1251,19 @@ function calcular(){
   const totalVidasGeral = usandoFaixa
     ? faixaCounts.reduce((s, c) => s + c, 0)
     : idades.length;
-  if (temSS && !completa && !usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
+  if (!compararAtivo && temSS && !completa && !usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
     alert("Plano EMPRESARIAL 2-29: o total de vidas deve ser entre 2 e 29.");
     return;
   }
-  if (temSS && usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
+  if (!compararAtivo && temSS && usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
     alert("Plano EMPRESARIAL 2-29: o total de vidas deve ser entre 2 e 29.");
     return;
   }
-  if (temPME && !completa && !usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
+  if (!compararAtivo && temPME && !completa && !usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
     alert("Plano EMPRESARIAL 30-99: o total de vidas deve ser entre 30 e 99.");
     return;
   }
-  if (temPME && usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
+  if (!compararAtivo && temPME && usandoFaixa && (totalVidasGeral < 30 || totalVidasGeral > 99)) {
     alert("Plano EMPRESARIAL 30-99: o total de vidas deve ser entre 30 e 99.");
     return;
   }
@@ -1119,12 +1293,12 @@ function calcular(){
       return;
     }
 
-    const temDesconto = lista.length > 0 && Number(lista[0][3]) !== Number(lista[0][4]);
-
     const isIND = isIndividual(sel.tipo);
     const isEmp = isEmpresarial(sel.tipo);
     const isAmb = sel.tipo.includes("amb");
     const aplicarFamiliar = isIND && familiarAtivo;
+
+    const temDesconto = !isIND && lista.length > 0 && Number(lista[0][3]) !== Number(lista[0][4]);
 
     let totalNormal = 0;
     let total15 = 0;
@@ -1322,12 +1496,170 @@ function calcular(){
     `);
   });
 
+  gerarTextoOrcamento();
+
   setTimeout(() => {
-    const ancora = document.getElementById("ancoraResultado");
+    const ancora = document.getElementById("areaImagem");
     if(ancora){
       ancora.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, 50);
+  }, 100);
+}
+
+/* ==========================================================================
+   TEXTO DO ORÇAMENTO
+   ========================================================================== */
+
+function gerarTextoOrcamento() {
+  const container = document.getElementById("textoOrcamento");
+  const wrapper = document.querySelector(".texto-orcamento-wrapper");
+  if (!container) return;
+
+  const tabelaCompleta = document.getElementById("tabelaCompleta");
+  if (tabelaCompleta && tabelaCompleta.checked) {
+    container.innerHTML = "";
+    if (wrapper) wrapper.style.display = "none";
+    return;
+  }
+
+  const dataEl = document.getElementById("linhaDataGeral");
+  const orcamentos = document.querySelectorAll("#orcamentosContainer .orcamento");
+
+  if (!dataEl || orcamentos.length === 0) {
+    container.innerHTML = "";
+    return;
+  }
+
+  let temPME = false;
+  orcamentos.forEach(orc => {
+    const titulo = orc.querySelector(".titulo-tabela th");
+    if (titulo && titulo.textContent.includes("PME")) temPME = true;
+  });
+  if (temPME) {
+    container.innerHTML = "";
+    if (wrapper) wrapper.style.display = "none";
+    return;
+  }
+
+  if (wrapper) wrapper.style.display = "";
+
+  function txt(el) {
+    const c = el.cloneNode(true);
+    c.querySelectorAll("br").forEach(b => b.replaceWith(" "));
+    return c.textContent.replace(/\s+/g, " ").trim();
+  }
+
+  const lines = [];
+
+  lines.push("*ORÇAMENTO HAPVIDA*");
+  lines.push("══════════════");
+  const dataTexto = dataEl.textContent.trim();
+  const sepIdx = dataTexto.indexOf(" — ");
+  if (sepIdx > 0) {
+    lines.push(dataTexto.slice(0, sepIdx));
+    lines.push(dataTexto.slice(sepIdx + 3));
+  } else {
+    lines.push(dataTexto);
+  }
+  lines.push("");
+
+  orcamentos.forEach((orc, idx) => {
+    if (idx > 0) {
+      lines.push("");
+      lines.push("─── ⋆ ───");
+      lines.push("");
+    }
+
+    const tituloEl = orc.querySelector(".titulo-tabela th");
+    lines.push("*" + (tituloEl ? txt(tituloEl) : "") + "*");
+    lines.push("");
+
+    const cabEls = orc.querySelectorAll(".cab th");
+    const headers = Array.from(cabEls).map(th => txt(th));
+    const has15 = headers.some(h => h.includes("15%"));
+    const hasUsuarios = headers.some(h => h.toLowerCase().includes("usu"));
+    const hasIdade = headers.some(h => h.toLowerCase().includes("idade") && !h.toLowerCase().includes("faixa"));
+
+    const rows = orc.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+      const cells = row.querySelectorAll("td");
+      const vals = Array.from(cells).map(td => td.textContent.trim());
+      if (vals.length === 0) return;
+
+      if (row.classList.contains("faixa-total-row") || vals[0] === "Total") {
+        const nz = vals.filter(v => v !== "");
+        const sub = nz.slice(1).join(" — ");
+        lines.push("*Total:* " + sub);
+        return;
+      }
+
+      const faixa = vals[0];
+      let rest;
+
+      if (hasIdade && vals.length >= 3) {
+        rest = "Idade: " + vals[1] + " anos — " + vals[2];
+        if (has15 && vals[3]) rest += " — " + vals[3] + " (15%)";
+      } else if (hasUsuarios && vals.length >= 4) {
+        rest = vals[1] + "/un — " + vals[2] + " usuário(s) — " + vals[3];
+        if (has15 && vals[4]) rest += " — " + vals[4] + " (15%)";
+      } else if (vals.length >= 2) {
+        rest = vals[1];
+        if (has15 && vals[2]) rest += " — " + vals[2] + " (15%)";
+      } else {
+        rest = vals.slice(1).join(" — ");
+      }
+
+      lines.push("(" + faixa + ") " + rest);
+    });
+
+    const totais = orc.querySelector(".totais");
+    if (totais) {
+      lines.push("");
+      totais.textContent.trim().split("\n").map(s => s.trim()).filter(Boolean).forEach(line => {
+        lines.push("*" + line + "*");
+      });
+    }
+
+    [".taxa-adesao", ".ss-aviso", ".odonto-info", ".familiar-info", ".odonto-inclusao-info"].forEach(sel => {
+      const el = orc.querySelector(sel);
+      if (el) lines.push("_" + el.textContent.trim() + "_");
+    });
+  });
+
+  container.innerHTML = lines.join("\n");
+}
+
+function copiarTextoOrcamento() {
+  const container = document.getElementById("textoOrcamento");
+  const btn = document.getElementById("btnCopiar");
+  if (!container) return;
+
+  const texto = container.textContent || container.innerText;
+  if (!texto.trim()) return;
+
+  navigator.clipboard.writeText(texto).then(() => {
+    btn.textContent = "Copiado!";
+    btn.classList.add("btn-copiar--copiado");
+    setTimeout(() => {
+      btn.textContent = "Copiar texto";
+      btn.classList.remove("btn-copiar--copiado");
+    }, 2000);
+  }).catch(() => {
+    const ta = document.createElement("textarea");
+    ta.value = texto;
+    ta.style.cssText = "position:fixed;opacity:0;pointer-events:none;";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    btn.textContent = "Copiado!";
+    btn.classList.add("btn-copiar--copiado");
+    setTimeout(() => {
+      btn.textContent = "Copiar texto";
+      btn.classList.remove("btn-copiar--copiado");
+    }, 2000);
+  });
 }
 
 /* ==========================================================================
@@ -1565,10 +1897,4 @@ document.addEventListener("DOMContentLoaded", () => {
   atualizarOpcoesAtivas();
   mostrarNovidades();
   tentarCarregarLogo();
-
-  // Mostra banner de atualização apenas quando APENAS_FORTALEZA está ativo
-  const banner = document.getElementById("atualizacaoBanner");
-  if (banner) {
-    banner.style.display = APENAS_FORTALEZA ? "flex" : "none";
-  }
 });

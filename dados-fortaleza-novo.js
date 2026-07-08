@@ -1,4 +1,5 @@
 // Novas tabelas Individual de Fortaleza (PDF 3º trimestre 2026)
+// VALOR PROMO (R$ 24,50) já incluído nos preços.
 // Carregar após dados-cidades.js — substitui apenas Fortaleza Individual
 // Para reverter: remova a tag <script> deste arquivo do HTML
 window.DADOS_FORTALEZA_NOVOS = {

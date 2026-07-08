@@ -23,16 +23,28 @@
   <div class="toast" id="toast"></div>
 
   <header class="app-header">
-    <div class="header-brand">
-      <p class="header-subtitle">Crie cotações profissionais em segundos, com menos tempo preenchendo e mais tempo vendendo.</p>
+    <div class="header-left">
+      <div class="rounded-wrap">
+        <img class="header-logo" src="cotapronto.png" alt="Cota Pronto">
+      </div>
     </div>
-    <div class="header-meta">
+    <div class="header-center">
+      <div class="circle-wrap">
+        <img class="header-icon" src="icone_cotapronto.png" alt="Meu Cotador">
+      </div>
+    </div>
+    <div class="header-right">
       <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" title="Alternar modo noturno">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
       <span class="header-date" id="cidadeTitulo">Fortaleza - CE</span>
     </div>
   </header>
+  <nav class="header-nav">
+    <a href="#" class="nav-link nav-link--active">Página Inicial</a>
+    <a href="#" class="nav-link">Quem Somos</a>
+    <a href="#" class="nav-link">Contato</a>
+  </nav>
 
   <div id="maintenanceScreen" style="display:none;">
     <div class="maintenance-card">
@@ -66,8 +78,9 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
         <div class="banner-texto">
-          <strong>Tabelas Fortaleza Atualizadas!</strong> Demais cidades estão sendo atualizadas e serão liberadas em breve.
+          <strong>Atualizações!</strong> Várias cidades atualizadas e novo orçamento em texto disponível.
         </div>
+        <button class="banner-close" type="button" onclick="fecharUpdateBar()">✕</button>
       </div>
 
       <section class="config-section">
@@ -148,6 +161,14 @@
           <button type="button" class="share" onclick="gerarImagem('share')">Compartilhar Orçamento</button>
           <button type="button" class="share share-sec" onclick="gerarImagem('download')">Baixar Orçamento</button>
         </div>
+
+        <div class="texto-orcamento-wrapper">
+          <div class="texto-orcamento-header">
+            <span class="texto-orcamento-label">Versão em texto</span>
+            <button class="btn-copiar" id="btnCopiar" type="button" onclick="copiarTextoOrcamento()">Copiar texto</button>
+          </div>
+          <pre class="texto-orcamento" id="textoOrcamento">Clique em "Copiar" para copiar o orçamento como texto.</pre>
+        </div>
       </div>
 
       <div id="ancoraResultado"></div>
@@ -221,6 +242,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script>document.write('<script src="./dados-cidades.js?v=' + Date.now() + '"><\/script>');</script>
+  <script>document.write('<script src="./dados-cidades-julho-2026.js?v=' + Date.now() + '"><\/script>');</script>
+  <script>document.write('<script src="./dados-cidades-empresarial-07-2026.js?v=' + Date.now() + '"><\/script>');</script>
+  <script>document.write('<script src="./dados-cidades-pme-07-2026.js?v=' + Date.now() + '"><\/script>');</script>
   <script>document.write('<script src="./dados-fortaleza-novo.js?v=' + Date.now() + '"><\/script>');</script>
   <script>document.write('<script src="./app.js?v=' + Date.now() + '"><\/script>');</script>
   <script>document.write('<script src="./tour.js?v=' + Date.now() + '"><\/script>');</script>
