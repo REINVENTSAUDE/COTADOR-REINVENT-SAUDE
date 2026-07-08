@@ -62,6 +62,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+input, textarea, select {
+  font-size: 16px;
+}
+
 button, .opcao, .tipo, .calcular, .modal-close, .btn-modal {
   touch-action: manipulation;
 }
@@ -1729,7 +1733,7 @@ body.capturando .orcamento td {
   }
 
   #idades {
-    font-size: 13px;
+    font-size: 16px;
     padding: 10px 12px;
     height: 48px;
   }
