@@ -127,9 +127,16 @@ html, body {
   transition: background 0.25s ease, border-color 0.25s ease;
 }
 
-[data-theme="dark"] .rounded-wrap {
-  background: var(--circle-bg);
-  border: var(--circle-border);
+[data-theme="dark"] .header-logo {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .circle-wrap {
+  background: transparent;
+}
+
+[data-theme="dark"] .header-icon {
+  filter: brightness(0) invert(1);
 }
 
 .header-logo {
@@ -1577,6 +1584,7 @@ body.capturando .orcamento td {
 
   .app-header {
     padding: 10px 14px;
+    column-gap: 6px;
   }
 
   .header-subtitle {
@@ -1676,6 +1684,7 @@ body.capturando .orcamento td {
 
   .app-header {
     padding: 8px 10px;
+    column-gap: 4px;
   }
 
   .header-date {
