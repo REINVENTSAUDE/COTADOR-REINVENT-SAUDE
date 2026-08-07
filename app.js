@@ -1118,9 +1118,9 @@ function parseIdades(){
 
 function taxaAdesaoTexto(tipo, vidas){
   if(isEmpresarial(tipo)){
-    return `Taxa de adesão: R$ ${formatarBR(TAXA_VIDA)} por beneficiário (R$ ${formatarBR(TAXA_VIDA * vidas)})`;
+    return `Somar taxa de adesão: R$ ${formatarBR(TAXA_VIDA)} por beneficiário (R$ ${formatarBR(TAXA_VIDA * vidas)})`;
   }
-  return `Taxa de adesão: R$ ${formatarBR(TAXA_CONTRATO)} por contrato`;
+  return `Somar taxa de adesão: R$ ${formatarBR(TAXA_CONTRATO)} por contrato`;
 }
 
 function colgroupHTML({ completa=false, usandoFaixa=false, semDesconto=false }){
