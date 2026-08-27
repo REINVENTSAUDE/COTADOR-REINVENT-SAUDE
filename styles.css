@@ -1888,3 +1888,47 @@ body.capturando .capture-area .carencias-section .body {
   font-size: 19px !important;
   padding: 20px 24px !important;
 }
+
+/* ==========================================================================
+   REDE PRÓPRIA
+   ========================================================================== */
+
+.rp-filtros{background:var(--surface);padding:12px 18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--border)}
+.rp-filtros select,.rp-filtros input{padding:8px 12px;border:2px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;outline:none;background:var(--surface);color:var(--text)}
+.rp-filtros select:focus,.rp-filtros input:focus{border-color:var(--primary)}
+.rp-label{font-size:12px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.5px}
+.rp-busca{flex:1;min-width:200px}
+.rp-stats{padding:10px 18px;font-size:13px;color:var(--text-secondary);background:var(--surface);border-bottom:1px solid var(--border)}
+.rp-stats b{color:var(--success)}
+.rp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;padding:18px;max-width:1400px;margin:0 auto}
+.rp-card{background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);transition:.2s;cursor:pointer;border:1px solid var(--border)}
+.rp-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.rp-card-img{width:100%;height:180px;object-fit:cover;background:#e0e0e0;display:block}
+.rp-card-body{padding:14px 16px}
+.rp-card-tipo{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:4px;margin-bottom:6px}
+.rp-tipo-hospital{background:#e3f2fd;color:#1565c0}
+.rp-tipo-clinica{background:#e8f5e9;color:#2e7d32}
+.rp-tipo-pa{background:#fff3e0;color:#e65100}
+.rp-tipo-diag{background:#f3e5f5;color:#7b1fa2}
+.rp-card-nome{font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px}
+.rp-card-end{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.rp-card-cidade{font-size:12px;font-weight:700;color:var(--success);margin-top:6px}
+.rp-modal-box{background:var(--surface);border-radius:14px;width:94%;max-width:700px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:rpIn .2s ease}
+@keyframes rpIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.rp-modal-close{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.5);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;z-index:10}
+.rp-modal-close:hover{background:rgba(0,0,0,.8)}
+.rp-modal-imgs{display:flex;gap:4px;overflow-x:auto;padding:4px;background:#000}
+.rp-modal-imgs img{height:250px;width:auto;border-radius:4px;flex-shrink:0}
+.rp-modal-info{padding:20px}
+.rp-modal-info h2{font-size:20px;color:var(--text);margin-bottom:4px}
+.rp-modal-info .rp-tipo-badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:10px}
+.rp-modal-info .rp-endereco{font-size:14px;color:var(--text);line-height:1.5;margin-bottom:8px}
+.rp-modal-info .rp-cidade-uf{font-size:13px;font-weight:700;color:var(--success)}
+.rp-modal-info .rp-regiao{font-size:12px;color:var(--text-secondary);margin-top:4px}
+.rp-vazio{text-align:center;padding:60px 20px;color:var(--text-secondary)}
+.rp-vazio h3{font-size:18px;margin-bottom:8px}
+.modal-overlay.vis{display:flex}
+@media(max-width:700px){
+  .rp-grid{grid-template-columns:1fr;padding:12px}
+  .rp-filtros{flex-direction:column;gap:6px}
+}

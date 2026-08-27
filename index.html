@@ -128,6 +128,10 @@
       <div class="btn-info-central">
         <button type="button" onclick="abrirModalInfo()">Coparticipações e Carências</button>
       </div>
+
+      <div class="btn-info-central">
+        <button type="button" class="calcular" onclick="abrirRedePropria()" style="background:#00a651;margin-top:6px;color:#fff">Rede Própria</button>
+      </div>
     </div>
 
     <!-- Right Column: Results -->
@@ -172,6 +176,38 @@
       </div>
 
       <div id="ancoraResultado"></div>
+    </div>
+
+    <!-- Rede Própria (escondida por padrão) -->
+    <div id="redePropriaPagina" style="display:none">
+      <div class="rp-filtros">
+        <span class="rp-label">Filtros:</span>
+        <select id="filtroEstado"><option value="">Todos os Estados</option></select>
+        <select id="filtroCidade"><option value="">Todas as Cidades</option></select>
+        <select id="filtroTipo">
+          <option value="">Todos os Tipos</option>
+          <option value="Hospitais">Hospitais</option>
+          <option value="Clínicas">Clínicas</option>
+          <option value="Prontos Atendimentos">Prontos Atendimentos</option>
+          <option value="Pronto Atendimento">Pronto Atendimento</option>
+          <option value="Diagnósticos">Diagnósticos</option>
+        </select>
+        <input type="text" class="rp-busca" id="buscaNome" placeholder="Buscar por nome...">
+      </div>
+      <div class="rp-stats" id="rpStats"></div>
+      <div class="rp-grid" id="rpGrid"></div>
+      <div class="rp-vazio" id="rpVazio" style="display:none">
+        <h3>Nenhuma unidade encontrada</h3>
+        <p>Tente ajustar os filtros de busca.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="rpModal" onclick="if(event.target===this)fecharModalRede()">
+    <div class="rp-modal-box" style="position:relative">
+      <button class="rp-modal-close" onclick="fecharModalRede()">&times;</button>
+      <div class="rp-modal-imgs" id="rpModalImgs"></div>
+      <div class="rp-modal-info" id="rpModalInfo"></div>
     </div>
   </div>
 
@@ -246,6 +282,7 @@
   <script>document.write('<script src="./dados-cidades-empresarial-07-2026.js?v=' + Date.now() + '"><\/script>');</script>
   <script>document.write('<script src="./dados-cidades-pme-07-2026.js?v=' + Date.now() + '"><\/script>');</script>
   <script>document.write('<script src="./dados-fortaleza-novo.js?v=' + Date.now() + '"><\/script>');</script>
+  <script>document.write('<script src="./dados-rede-propria.js?v=' + Date.now() + '"><\/script>');</script>
   <script>document.write('<script src="./app.js?v=' + Date.now() + '"><\/script>');</script>
   <script>document.write('<script src="./tour.js?v=' + Date.now() + '"><\/script>');</script>
 
@@ -286,6 +323,138 @@
       if (app) app.style.display = "none";
       if (maintenance) maintenance.style.display = "flex";
     }
+  </script>
+
+  <script>
+    function abrirRedePropria() {
+      document.querySelector('.config-panel').style.display = 'none';
+      document.querySelector('.results-header').style.display = 'none';
+      document.getElementById('ajudaPasso').style.display = 'none';
+      document.getElementById('resultado').style.display = 'none';
+      document.getElementById('redePropriaPagina').style.display = '';
+
+      var btnVoltar = document.createElement('button');
+      btnVoltar.type = 'button';
+      btnVoltar.className = 'share share-sec';
+      btnVoltar.textContent = '← Voltar ao Orçamento';
+      btnVoltar.style.marginBottom = '14px';
+      btnVoltar.onclick = function() { fecharRedePropria(); };
+
+      var rpPagina = document.getElementById('redePropriaPagina');
+      if (!document.getElementById('rpBtnVoltar')) {
+        btnVoltar.id = 'rpBtnVoltar';
+        rpPagina.insertBefore(btnVoltar, rpPagina.firstChild);
+      }
+
+      if (window.REDE_DATA && window.REDE_DATA.length > 0 && !window._redeInit) {
+        window._redeInit = true;
+        initFiltrosRede();
+      }
+    }
+
+    function fecharRedePropria() {
+      document.getElementById('redePropriaPagina').style.display = 'none';
+      document.querySelector('.config-panel').style.display = '';
+      document.querySelector('.results-header').style.display = '';
+      document.getElementById('ajudaPasso').style.display = '';
+      if (document.getElementById('resultado').querySelector('#orcamentosContainer').children.length > 0) {
+        document.getElementById('resultado').style.display = '';
+      }
+    }
+
+    function initFiltrosRede() {
+      var filtroEstado = document.getElementById('filtroEstado');
+      var filtroCidade = document.getElementById('filtroCidade');
+      var filtroTipo = document.getElementById('filtroTipo');
+      var buscaNome = document.getElementById('buscaNome');
+
+      var estados = [...new Set(window.REDE_DATA.map(function(u) { return u.estado; }))].sort();
+      estados.forEach(function(e) {
+        var o = document.createElement('option');
+        o.value = e;
+        o.textContent = e;
+        filtroEstado.appendChild(o);
+      });
+
+      filtroEstado.addEventListener('change', function() {
+        var est = this.value;
+        filtroCidade.innerHTML = '<option value="">Todas as Cidades</option>';
+        if (est) {
+          var cids = [...new Set(window.REDE_DATA.filter(function(u) { return u.estado === est; }).map(function(u) { return u.cidade; }))].sort();
+          cids.forEach(function(c) {
+            var o = document.createElement('option');
+            o.value = c;
+            o.textContent = c;
+            filtroCidade.appendChild(o);
+          });
+        }
+        aplicarFiltrosRede();
+      });
+
+      filtroCidade.addEventListener('change', aplicarFiltrosRede);
+      filtroTipo.addEventListener('change', aplicarFiltrosRede);
+      buscaNome.addEventListener('input', aplicarFiltrosRede);
+
+      aplicarFiltrosRede();
+    }
+
+    function aplicarFiltrosRede() {
+      var e = document.getElementById('filtroEstado').value;
+      var c = document.getElementById('filtroCidade').value;
+      var t = document.getElementById('filtroTipo').value;
+      var n = document.getElementById('buscaNome').value.trim().toLowerCase();
+      var res = window.REDE_DATA.filter(function(u) {
+        if (e && u.estado !== e) return false;
+        if (c && u.cidade !== c) return false;
+        if (t && u.tipo !== t) return false;
+        if (n && u.nome.toLowerCase().indexOf(n) === -1) return false;
+        return true;
+      });
+      renderizarRede(res);
+    }
+
+    function renderizarRede(lista) {
+      var grid = document.getElementById('rpGrid');
+      var vazio = document.getElementById('rpVazio');
+      document.getElementById('rpStats').innerHTML = '<b>' + lista.length + '</b> unidades encontradas';
+      if (lista.length === 0) { grid.innerHTML = ''; vazio.style.display = 'block'; return; }
+      vazio.style.display = 'none';
+      var h = '';
+      lista.forEach(function(u, i) {
+        var img = u.imagens && u.imagens.length > 0 ? 'imgs_rede/' + u.imagens[0] : '';
+        var tipoClass = u.tipo.indexOf('Hosp') !== -1 ? 'rp-tipo-hospital' : u.tipo.indexOf('Cl') !== -1 ? 'rp-tipo-clinica' : u.tipo.indexOf('Atend') !== -1 ? 'rp-tipo-pa' : 'rp-tipo-diag';
+        h += '<div class="rp-card" onclick="abrirModalRede(' + i + ')">';
+        if (img) h += '<img class="rp-card-img" src="' + img + '" alt="' + u.nome + '" onerror="this.style.display=\'none\'">';
+        else h += '<div class="rp-card-img" style="display:flex;align-items:center;justify-content:center;color:#999;font-size:14px">Sem foto</div>';
+        h += '<div class="rp-card-body">';
+        h += '<span class="rp-card-tipo ' + tipoClass + '">' + u.tipo + '</span>';
+        h += '<div class="rp-card-nome">' + u.nome + '</div>';
+        h += '<div class="rp-card-end">' + u.endereco + '</div>';
+        h += '<div class="rp-card-cidade">' + u.cidade + ' - ' + u.estado + '</div>';
+        h += '</div></div>';
+      });
+      grid.innerHTML = h;
+    }
+
+    function abrirModalRede(idx) {
+      var u = window.REDE_DATA[idx];
+      var imgsDiv = document.getElementById('rpModalImgs');
+      if (u.imagens && u.imagens.length > 0) {
+        imgsDiv.innerHTML = u.imagens.map(function(img) { return '<img src="imgs_rede/' + img + '" alt="' + u.nome + '">'; }).join('');
+        imgsDiv.style.display = 'flex';
+      } else { imgsDiv.style.display = 'none'; }
+      var tipoClass = u.tipo.indexOf('Hosp') !== -1 ? 'rp-tipo-hospital' : u.tipo.indexOf('Cl') !== -1 ? 'rp-tipo-clinica' : u.tipo.indexOf('Atend') !== -1 ? 'rp-tipo-pa' : 'rp-tipo-diag';
+      var info = document.getElementById('rpModalInfo');
+      info.innerHTML = '<span class="rp-tipo-badge ' + tipoClass + '">' + u.tipo + '</span>' +
+        '<h2>' + u.nome + '</h2>' +
+        '<div class="rp-endereco">' + u.endereco + '</div>' +
+        '<div class="rp-cidade-uf">' + u.cidade + ' - ' + u.estado + '</div>' +
+        '<div class="rp-regiao">Região: ' + u.regiao + '</div>';
+      document.getElementById('rpModal').classList.add('vis');
+    }
+
+    function fecharModalRede() { document.getElementById('rpModal').classList.remove('vis'); }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') fecharModalRede(); });
   </script>
 </body>
 </html>

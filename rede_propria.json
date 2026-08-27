@@ -1,0 +1,7305 @@
+[
+  {
+    "nome": "Hospital Rio Negro",
+    "endereco": "Rua Tapajós, 561 – Centro, Manaus -",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "",
+    "pagina": 14,
+    "imagens": [
+      "p14_6.jpeg",
+      "p14_7.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Rio Amazonas",
+    "endereco": "Rua Professor Marciano Armond, 1401 –",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Hospitais",
+    "pagina": 15,
+    "imagens": [
+      "p15_8.jpeg",
+      "p15_9.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Nilton Lins",
+    "endereco": "Av. Prof. Nilton Lins, 3259 - Flores,",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Hospitais",
+    "pagina": 15,
+    "imagens": [
+      "p15_8.jpeg",
+      "p15_9.jpeg"
+    ]
+  },
+  {
+    "nome": "Cidade Nova",
+    "endereco": "Av. Camapuã, 695 - Cidade Nova,",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Pronto Atendimento",
+    "pagina": 16,
+    "imagens": [
+      "p16_10.jpeg",
+      "p16_11.jpeg"
+    ]
+  },
+  {
+    "nome": "Distrito",
+    "endereco": "Av. Buriti, 3727 – Distrito Industrial,",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Pronto Atendimento",
+    "pagina": 16,
+    "imagens": [
+      "p16_10.jpeg",
+      "p16_11.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Parque Dez",
+    "endereco": "Av. Tancredo Neves, 1324 -",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Cachoeirinha",
+    "endereco": "Av. Tefé, 625 - Cachoeirinha,",
+    "cidade": "Parque 10, Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Flores",
+    "endereco": "Av. Torquato Tapajós, 5320 -",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Zona Leste",
+    "endereco": "Rua Autaz Mirim, 7602 - Tancredo",
+    "cidade": "Flores, Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Duque de Caxias",
+    "endereco": "Rua Duque de Caxias, 1905 -",
+    "cidade": "Neves, Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica São Geraldo",
+    "endereco": "Rua João Valério, 123 - São",
+    "cidade": "Praça 14 de Janeiro, Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Vieiralves",
+    "endereco": "Rua João Valério, 85 - São Geraldo,",
+    "cidade": "Geraldo, Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Silves",
+    "endereco": "Rua Silves, 1658 - Crespo,",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 17,
+    "imagens": [
+      "p17_12.jpeg",
+      "p17_13.jpeg",
+      "p17_14.jpeg",
+      "p17_15.jpeg",
+      "p17_16.jpeg",
+      "p17_17.jpeg",
+      "p17_18.jpeg",
+      "p17_19.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Andrianópolis",
+    "endereco": "Av. Mario Ypiranga, 508 -",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Clínicas",
+    "pagina": 18,
+    "imagens": [
+      "p18_20.jpeg",
+      "p18_21.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Palmares",
+    "endereco": "Av. Cosme Ferreira, 5122 - Aleixo,",
+    "cidade": "Adrianopolis, Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Clínicas",
+    "pagina": 18,
+    "imagens": [
+      "p18_20.jpeg",
+      "p18_21.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Alexandre Amorim",
+    "endereco": "Rua Alexandre Amorim, 470 – Aparecida,",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Clínicas",
+    "pagina": 19,
+    "imagens": [
+      "p19_22.jpeg"
+    ]
+  },
+  {
+    "nome": "Ananindeua",
+    "endereco": "Rod. BR 316, 90 - Guanabara,",
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "tipo": "Pronto Atendimento",
+    "pagina": 21,
+    "imagens": [
+      "p21_23.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Metropolitana",
+    "endereco": "Rod. BR 316 - Coqueiro, Ananindeua - PA",
+    "cidade": "Ananindeua",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Pronto Atendimento",
+    "pagina": 22,
+    "imagens": [
+      "p22_24.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Layr Maia",
+    "endereco": "Av. Alcindo Cacela, 1581 - Nazaré, Belém",
+    "cidade": "Belém",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Hospitais",
+    "pagina": 23,
+    "imagens": [
+      "p23_25.jpeg",
+      "p23_26.jpeg"
+    ]
+  },
+  {
+    "nome": "Conselheiro",
+    "endereco": "Av. Conselheiro Furtado, 1855 -",
+    "cidade": "Belém",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Hospitais",
+    "pagina": 24,
+    "imagens": [
+      "p24_27.jpeg",
+      "p24_28.jpeg",
+      "p24_29.jpeg",
+      "p24_30.jpeg",
+      "p24_31.jpeg",
+      "p24_32.jpeg",
+      "p24_33.jpeg",
+      "p24_34.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Marco",
+    "endereco": "Av. Rômulo Maiorana, 1662 -",
+    "cidade": "Cremação, Belém",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Hospitais",
+    "pagina": 24,
+    "imagens": [
+      "p24_27.jpeg",
+      "p24_28.jpeg",
+      "p24_29.jpeg",
+      "p24_30.jpeg",
+      "p24_31.jpeg",
+      "p24_32.jpeg",
+      "p24_33.jpeg",
+      "p24_34.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Augusto Montenegro",
+    "endereco": "Rod. Augusto Montenegro, 55 -",
+    "cidade": "Marco, Belém",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Hospitais",
+    "pagina": 24,
+    "imagens": [
+      "p24_27.jpeg",
+      "p24_28.jpeg",
+      "p24_29.jpeg",
+      "p24_30.jpeg",
+      "p24_31.jpeg",
+      "p24_32.jpeg",
+      "p24_33.jpeg",
+      "p24_34.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Mundurucus",
+    "endereco": "Rua Quintino, 2313 - Cremação,",
+    "cidade": "Parque Verde, Belém",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Hospitais",
+    "pagina": 24,
+    "imagens": [
+      "p24_27.jpeg",
+      "p24_28.jpeg",
+      "p24_29.jpeg",
+      "p24_30.jpeg",
+      "p24_31.jpeg",
+      "p24_32.jpeg",
+      "p24_33.jpeg",
+      "p24_34.jpeg"
+    ]
+  },
+  {
+    "nome": "de Parauapebas",
+    "endereco": "Rua H, 248 - União, Parauapebas - PA",
+    "cidade": "TV. Chaco, 2429 - Marco, Belém",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Clínicas",
+    "pagina": 25,
+    "imagens": [
+      "p25_35.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Rio Azul",
+    "endereco": "Rua Rio Azul, 149 - Beira Rio,",
+    "cidade": "Parauapebas",
+    "estado": "PA",
+    "regiao": "Norte",
+    "tipo": "Clínicas",
+    "pagina": 26,
+    "imagens": [
+      "p26_36.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Maceió",
+    "endereco": "Av. Presidente Getúlio Vargas, 300,",
+    "cidade": "Parauapebas",
+    "estado": "PA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 29,
+    "imagens": [
+      "p29_38.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Fernandes Lima",
+    "endereco": "Av. Fernandes Lima, 139 - Farol,",
+    "cidade": "Maceió",
+    "estado": "AL",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 30,
+    "imagens": [
+      "p30_39.jpeg",
+      "p30_40.jpeg",
+      "p30_41.jpeg"
+    ]
+  },
+  {
+    "nome": "Paranhos",
+    "endereco": "Rua Oldemburgo da Silva Paranhos,",
+    "cidade": "Maceió",
+    "estado": "AL",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 30,
+    "imagens": [
+      "p30_39.jpeg",
+      "p30_40.jpeg",
+      "p30_41.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Jatiuca",
+    "endereco": "Rua Mario Palmeira Junior, 43 -",
+    "cidade": "Maceió",
+    "estado": "AL",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 30,
+    "imagens": [
+      "p30_39.jpeg",
+      "p30_40.jpeg",
+      "p30_41.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Cetro",
+    "endereco": "Rua Elvira Dórea, 1 - Centro, Alagoinhas",
+    "cidade": "Jatiuca, Maceió",
+    "estado": "AL",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 32,
+    "imagens": [
+      "p32_42.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Semed",
+    "endereco": "Rua Francisco Drumond, 238 - Centro,",
+    "cidade": "Alagoinhas",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 34,
+    "imagens": [
+      "p34_44.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Camaçari",
+    "endereco": "Av. Dr. Manoel Mercês, S/n -",
+    "cidade": "Camaçari",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 35,
+    "imagens": [
+      "p35_45.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Dois de Maio",
+    "endereco": "Rua Dois de Maio, 7 - Centro,",
+    "cidade": "Camaçari",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 36,
+    "imagens": [
+      "p36_46.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Cidade de Candeias",
+    "endereco": "Rod. BA, 578 - Urbis 1, Candeias - BA",
+    "cidade": "Camaçari",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 37,
+    "imagens": [
+      "p37_47.jpeg"
+    ]
+  },
+  {
+    "nome": "de Sande",
+    "endereco": "Rua Professora Edelvira De Oliveira, 140 -",
+    "cidade": "Candeias",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 38,
+    "imagens": [
+      "p38_48.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Feira de Santana",
+    "endereco": "Av. Visconde do Rio Branco, 555 -",
+    "cidade": "Feira de Santana",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 39,
+    "imagens": [
+      "p39_49.jpeg"
+    ]
+  },
+  {
+    "nome": "Freitas",
+    "endereco": "Rod. BA, 2077 - Centro, Lauro de",
+    "cidade": "Centro, Feira de Santana",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 40,
+    "imagens": [
+      "p40_50.jpeg"
+    ]
+  },
+  {
+    "nome": "Lisieux",
+    "endereco": "Av. Antônio Carlos Magalhães, 2408 -",
+    "cidade": "Lauro de Freitas",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 41,
+    "imagens": [
+      "p41_51.jpeg"
+    ]
+  },
+  {
+    "nome": "Cajazeiras",
+    "endereco": "Rua Estrada do Coqueiro Grande, 2023",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 42,
+    "imagens": [
+      "p42_52.jpeg",
+      "p42_53.jpeg"
+    ]
+  },
+  {
+    "nome": "Uruguai",
+    "endereco": "Rua do Uruguay, 852 - Uruguai, Salvador - BA",
+    "cidade": "- Fazenda Grande II, Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 42,
+    "imagens": [
+      "p42_52.jpeg",
+      "p42_53.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Garibaldi",
+    "endereco": "Av. Anita Garibaldi, 391 - Ondina,",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 43,
+    "imagens": [
+      "p43_54.jpeg",
+      "p43_55.jpeg",
+      "p43_56.jpeg",
+      "p43_57.jpeg",
+      "p43_58.jpeg",
+      "p43_59.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Uruguai",
+    "endereco": "Rua do Uruguay, 852 - Uruguai,",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 43,
+    "imagens": [
+      "p43_54.jpeg",
+      "p43_55.jpeg",
+      "p43_56.jpeg",
+      "p43_57.jpeg",
+      "p43_58.jpeg",
+      "p43_59.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Vasco da Gama",
+    "endereco": "Av. Vasco da Gama, 309 - Federação,",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 43,
+    "imagens": [
+      "p43_54.jpeg",
+      "p43_55.jpeg",
+      "p43_56.jpeg",
+      "p43_57.jpeg",
+      "p43_58.jpeg",
+      "p43_59.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Pituba II",
+    "endereco": "Rua Minas Gerais, 544 - Pituba,",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 43,
+    "imagens": [
+      "p43_54.jpeg",
+      "p43_55.jpeg",
+      "p43_56.jpeg",
+      "p43_57.jpeg",
+      "p43_58.jpeg",
+      "p43_59.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Pituba I",
+    "endereco": "Rua Rio de Janeiro, 253 -",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 43,
+    "imagens": [
+      "p43_54.jpeg",
+      "p43_55.jpeg",
+      "p43_56.jpeg",
+      "p43_57.jpeg",
+      "p43_58.jpeg",
+      "p43_59.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Costa Azul",
+    "endereco": "Rua Adelaide Fernandes da Costa,",
+    "cidade": "Pituba, Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 43,
+    "imagens": [
+      "p43_54.jpeg",
+      "p43_55.jpeg",
+      "p43_56.jpeg",
+      "p43_57.jpeg",
+      "p43_58.jpeg",
+      "p43_59.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Parque Bela Vista",
+    "endereco": "Av. Santiago de Compostela, 222 -",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 44,
+    "imagens": [
+      "p44_60.jpeg",
+      "p44_61.jpeg",
+      "p44_62.jpeg",
+      "p44_63.jpeg",
+      "p44_64.jpeg"
+    ]
+  },
+  {
+    "nome": "do Tororó",
+    "endereco": "Av. Vasco da Gama, 206 -",
+    "cidade": "Parque Bela Vista, Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 44,
+    "imagens": [
+      "p44_60.jpeg",
+      "p44_61.jpeg",
+      "p44_62.jpeg",
+      "p44_63.jpeg",
+      "p44_64.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Amaralina",
+    "endereco": "Rua Fernando de Noronha, 98 -",
+    "cidade": "Grande II, Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 44,
+    "imagens": [
+      "p44_60.jpeg",
+      "p44_61.jpeg",
+      "p44_62.jpeg",
+      "p44_63.jpeg",
+      "p44_64.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Itaigara",
+    "endereco": "Rua Altino Serbeto de Barros, 119, 12°",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 44,
+    "imagens": [
+      "p44_60.jpeg",
+      "p44_61.jpeg",
+      "p44_62.jpeg",
+      "p44_63.jpeg",
+      "p44_64.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Lucaia",
+    "endereco": "Av. Juracy Magalhães Júnior,",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 45,
+    "imagens": [
+      "p45_65.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Praia do Forte",
+    "endereco": "Rod. Quadra A S, 5 - Praia do Forte,",
+    "cidade": "Salvador",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 46,
+    "imagens": [
+      "p46_66.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Simões Filho",
+    "endereco": "Av. Luís Eduardo Magalhães, 187,",
+    "cidade": "Mata de São João",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 47,
+    "imagens": [
+      "p47_67.jpeg"
+    ]
+  },
+  {
+    "nome": "Santana",
+    "endereco": "Rua Agripo Ramos, 86 - Centro,",
+    "cidade": "Simões Filho",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 48,
+    "imagens": [
+      "p48_68.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Dias D’Ávila",
+    "endereco": "Rua da Magueira, 64 - Centro,",
+    "cidade": "Catu",
+    "estado": "BA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 49,
+    "imagens": [
+      "p49_69.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Aldeota",
+    "endereco": "Av. Pe. Antônio Tomás, 2056 - Aldeota,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 51,
+    "imagens": [
+      "p51_70.jpeg",
+      "p51_71.jpeg"
+    ]
+  },
+  {
+    "nome": "Prudente Fortaleza",
+    "endereco": "Av. Aguanambi, 1827 - Bairro de Fátima,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 51,
+    "imagens": [
+      "p51_70.jpeg",
+      "p51_71.jpeg"
+    ]
+  },
+  {
+    "nome": "Eugênia Pinheiro",
+    "endereco": "Av. Heráclito Graça, 500 - Centro,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 52,
+    "imagens": [
+      "p52_72.jpeg",
+      "p52_73.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Luís França",
+    "endereco": "Av. Heráclito Graça, 100 - Centro,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 52,
+    "imagens": [
+      "p52_72.jpeg",
+      "p52_73.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Santa Maria",
+    "endereco": "Rua Eusébio de Souza, 1560 - José",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 53,
+    "imagens": [
+      "p53_74.jpeg"
+    ]
+  },
+  {
+    "nome": "Bezerra De Menezes",
+    "endereco": "Rua Ribeiro da Silva, 727- São Geraldo,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 54,
+    "imagens": [
+      "p54_75.jpeg",
+      "p54_76.jpeg"
+    ]
+  },
+  {
+    "nome": "Parangaba",
+    "endereco": "Av. Godofredo Maciel, 88 - Parangaba,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 54,
+    "imagens": [
+      "p54_75.jpeg",
+      "p54_76.jpeg"
+    ]
+  },
+  {
+    "nome": "Mário Barreto",
+    "endereco": "Rua São Raimundo, 1781 - Cambeba,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 55,
+    "imagens": [
+      "p55_77.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Messejana",
+    "endereco": "Rua Tenente Jurandir Alencar,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Barão de Studart",
+    "endereco": "Av. Barão de Studart, 2260 -",
+    "cidade": "234 - Messejana, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Dom Manuel",
+    "endereco": "Av. Dom Manoel, 1395 -  Centro,",
+    "cidade": "Dionísio Torres, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Joaquim Távora",
+    "endereco": "Av. Antônio Sales, 60 - Joaquim",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Lobo Filho",
+    "endereco": "Rua João Lobo Filho, 72 -",
+    "cidade": "Távora, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica São Gerardo",
+    "endereco": "Av. Bezerra de Menezes, 981 - São",
+    "cidade": "Fátima, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Rodrigues Júnior",
+    "endereco": "Rua Rodrigues Júnior, 1280 -",
+    "cidade": "Gerardo, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Antônio Sales",
+    "endereco": "Av. Antônio Sales, 2238 -",
+    "cidade": "Centro, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 56,
+    "imagens": [
+      "p56_78.jpeg",
+      "p56_79.jpeg",
+      "p56_80.jpeg",
+      "p56_81.jpeg",
+      "p56_82.jpeg",
+      "p56_83.jpeg",
+      "p56_84.jpeg",
+      "p56_85.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica José Walter",
+    "endereco": "Av. João De Araújo Lima, 591 -",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Monte Castelo",
+    "endereco": "Rua Ribeiro da Silva, 763 - Monte",
+    "cidade": "Prefeito José Walter, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Conjunto Ceará",
+    "endereco": "Av. Ministro Albuquerque de Lima,",
+    "cidade": "Castelo, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Montese",
+    "endereco": "Av. Professor Gomes de Matos,",
+    "cidade": "1421 - Conjunto Ceará, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Francisco Sá",
+    "endereco": "Av. Francisco Sá, 5271 - Álvaro",
+    "cidade": "1737 - Montese, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Heráclito Graça",
+    "endereco": "Av. Heráclito Graça, 500 B -",
+    "cidade": "Weyne, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Santos Dumont",
+    "endereco": "Av. Santos Dumont, 1058 –",
+    "cidade": "Centro, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Pereira Filgueiras",
+    "endereco": "Rua Pereira Filgueiras, 825 –",
+    "cidade": "Aldeota, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 57,
+    "imagens": [
+      "p57_86.jpeg",
+      "p57_87.jpeg",
+      "p57_88.jpeg",
+      "p57_89.jpeg",
+      "p57_90.jpeg",
+      "p57_91.jpeg",
+      "p57_92.jpeg",
+      "p57_93.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Isaac Newton",
+    "endereco": "Rua Visconde de Mauá, 1593 -",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 58,
+    "imagens": [
+      "p58_94.jpeg",
+      "p58_95.jpeg",
+      "p58_96.jpeg",
+      "p58_97.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Aquarela",
+    "endereco": "Av. Antônio Sales, 1740 -",
+    "cidade": "Meireles, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 58,
+    "imagens": [
+      "p58_94.jpeg",
+      "p58_95.jpeg",
+      "p58_96.jpeg",
+      "p58_97.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Presidente Kennedy",
+    "endereco": "Av. Sgt Hermínio Sampaio, 3100 -",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 58,
+    "imagens": [
+      "p58_94.jpeg",
+      "p58_95.jpeg",
+      "p58_96.jpeg",
+      "p58_97.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica das Marias",
+    "endereco": "Av. Antônio Sales, 1740 - Dionísio",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 58,
+    "imagens": [
+      "p58_94.jpeg",
+      "p58_95.jpeg",
+      "p58_96.jpeg",
+      "p58_97.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Harmony",
+    "endereco": "Av. Dom Luís, 1233 - Meireles,",
+    "cidade": "Torres, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 58,
+    "imagens": [
+      "p58_94.jpeg",
+      "p58_95.jpeg",
+      "p58_96.jpeg",
+      "p58_97.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Padre Valdevino",
+    "endereco": "Rua Padre Valdevino, 2640 - Aldeota,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 59,
+    "imagens": [
+      "p59_98.jpeg",
+      "p59_99.jpeg",
+      "p59_100.jpeg",
+      "p59_101.jpeg",
+      "p59_102.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Heráclito Graça",
+    "endereco": "Av. Heráclito Graça, 1357 - Centro,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 59,
+    "imagens": [
+      "p59_98.jpeg",
+      "p59_99.jpeg",
+      "p59_100.jpeg",
+      "p59_101.jpeg",
+      "p59_102.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Conjunto Ceará",
+    "endereco": "Av. Ministro Albuquerque Lima, 228",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 59,
+    "imagens": [
+      "p59_98.jpeg",
+      "p59_99.jpeg",
+      "p59_100.jpeg",
+      "p59_101.jpeg",
+      "p59_102.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Parangaba",
+    "endereco": "Av. Carlos Amora, 150 -",
+    "cidade": "- Conjunto Ceará, Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 59,
+    "imagens": [
+      "p59_98.jpeg",
+      "p59_99.jpeg",
+      "p59_100.jpeg",
+      "p59_101.jpeg",
+      "p59_102.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Lobo Filho",
+    "endereco": "Rua João Lobo Filho, 117 -",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 59,
+    "imagens": [
+      "p59_98.jpeg",
+      "p59_99.jpeg",
+      "p59_100.jpeg",
+      "p59_101.jpeg",
+      "p59_102.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Ana Lima",
+    "endereco": "Av. Sen. Virgílio Távora, s/n - Pajuçara,",
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 60,
+    "imagens": [
+      "p60_103.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Maracanaú",
+    "endereco": "Av. Parque Comercial, S/N -",
+    "cidade": "Maracanaú",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 61,
+    "imagens": [
+      "p61_104.jpeg",
+      "p61_105.jpeg",
+      "p61_106.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Maracanaú",
+    "endereco": "Av. Yolanda Pontes Vidal Queiroz, 57 -",
+    "cidade": "Distrito Industrial, Maracanaú",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 61,
+    "imagens": [
+      "p61_104.jpeg",
+      "p61_105.jpeg",
+      "p61_106.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Padre Cícero",
+    "endereco": "Av. Padre Cícero, S/N, KM 02 - Triângulo,",
+    "cidade": "Timbo, Maracanaú",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 62,
+    "imagens": [
+      "p62_107.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Padre Cícero",
+    "endereco": "Av. Padre Cícero, 3996 - São",
+    "cidade": "Juazeiro do Norte",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 63,
+    "imagens": [
+      "p63_108.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Triângulo",
+    "endereco": "Av. Eduardo Mclain, 440 - Romeirao,",
+    "cidade": "Juazeiro do Norte",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 63,
+    "imagens": [
+      "p63_108.jpeg"
+    ]
+  },
+  {
+    "nome": "Pacajus",
+    "endereco": "Rua Naide Costa Menezes, 405 -",
+    "cidade": "Pacajus",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 64,
+    "imagens": [
+      "p64_109.jpeg"
+    ]
+  },
+  {
+    "nome": "Pecém",
+    "endereco": "Av. Antônio Brasileiro, 06 - Pecém, São",
+    "cidade": "Centro, Pacajus",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 65,
+    "imagens": [
+      "p65_110.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica do Cajueiro",
+    "endereco": "Rua Francisco Câncio, 524 -",
+    "cidade": "São Gonçalo do Amarante",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 66,
+    "imagens": [
+      "p66_111.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Guarás",
+    "endereco": "Rua Armando Vieira da Silva, S/N -",
+    "cidade": "São Gonçalo do Amarante",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 68,
+    "imagens": [
+      "p68_112.jpeg"
+    ]
+  },
+  {
+    "nome": "Albuquerque",
+    "endereco": "Av. Jerônimo de Albuquerque,",
+    "cidade": "São Luís",
+    "estado": "MA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 69,
+    "imagens": [
+      "p69_113.jpeg",
+      "p69_114.jpeg",
+      "p69_115.jpeg",
+      "p69_116.jpeg",
+      "p69_117.jpeg",
+      "p69_118.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Lia Varela",
+    "endereco": "Av. Senador Vitorino Freire, 1956,",
+    "cidade": "Cruzeiro do Anil, São Luís",
+    "estado": "MA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 69,
+    "imagens": [
+      "p69_113.jpeg",
+      "p69_114.jpeg",
+      "p69_115.jpeg",
+      "p69_116.jpeg",
+      "p69_117.jpeg",
+      "p69_118.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Holandeses",
+    "endereco": "Av. dos Holandeses, 6940 - Calhau,",
+    "cidade": "Areinha, São Luís",
+    "estado": "MA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 69,
+    "imagens": [
+      "p69_113.jpeg",
+      "p69_114.jpeg",
+      "p69_115.jpeg",
+      "p69_116.jpeg",
+      "p69_117.jpeg",
+      "p69_118.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica São Luís",
+    "endereco": "Av. Guaxenduba, 260, Centro,",
+    "cidade": "São Luís",
+    "estado": "MA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 69,
+    "imagens": [
+      "p69_113.jpeg",
+      "p69_114.jpeg",
+      "p69_115.jpeg",
+      "p69_116.jpeg",
+      "p69_117.jpeg",
+      "p69_118.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica La Touche",
+    "endereco": "Av. Daniel de La Touche, 987, Cond.",
+    "cidade": "São Luís",
+    "estado": "MA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 69,
+    "imagens": [
+      "p69_113.jpeg",
+      "p69_114.jpeg",
+      "p69_115.jpeg",
+      "p69_116.jpeg",
+      "p69_117.jpeg",
+      "p69_118.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Areinha",
+    "endereco": "Av. Senador Vitorino Freire,",
+    "cidade": "1307 - Maranhão Novo, São Luís",
+    "estado": "MA",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 69,
+    "imagens": [
+      "p69_113.jpeg",
+      "p69_114.jpeg",
+      "p69_115.jpeg",
+      "p69_116.jpeg",
+      "p69_117.jpeg",
+      "p69_118.jpeg"
+    ]
+  },
+  {
+    "nome": "Paraíba",
+    "endereco": "Av. Júlia Freire, 1058  - Torre, João",
+    "cidade": "São Luís",
+    "estado": "MA",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 71,
+    "imagens": [
+      "p71_119.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Ariano Suassuna",
+    "endereco": "Av. Presidente Epitácio Pessoa,",
+    "cidade": "João Pessoa",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 72,
+    "imagens": [
+      "p72_120.jpeg",
+      "p72_121.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Solón Lucena",
+    "endereco": "Rua Treze de Maio, 73 - Centro,",
+    "cidade": "João Pessoa",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 72,
+    "imagens": [
+      "p72_120.jpeg",
+      "p72_121.jpeg"
+    ]
+  },
+  {
+    "nome": "Borborema",
+    "endereco": "Rua José de Alencar, 454 - Prata,",
+    "cidade": "João Pessoa",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 72,
+    "imagens": [
+      "p72_120.jpeg",
+      "p72_121.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Epitácio Pessoa",
+    "endereco": "Av. Presidente Epitácio Pessoa, 1605 –",
+    "cidade": "Campina Grande",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 73,
+    "imagens": [
+      "p73_122.jpeg"
+    ]
+  },
+  {
+    "nome": "Campinense",
+    "endereco": "Rua Doutor Severino Ribeiro Cruz, 265",
+    "cidade": "João Pessoa",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 74,
+    "imagens": [
+      "p74_123.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Cabo",
+    "endereco": "Av. Presidente Getúlio Vargas, 428 -",
+    "cidade": "- Centro, Campina Grande",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 76,
+    "imagens": [
+      "p76_124.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Cabo",
+    "endereco": "Av. Presidente Getúlio Vargas,",
+    "cidade": "Cabo de Santo Agostinho",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 77,
+    "imagens": [
+      "p77_125.jpeg"
+    ]
+  },
+  {
+    "nome": "Goiana",
+    "endereco": "Av. Marechal Deodoro da Fonseca, 234",
+    "cidade": "Cabo de Santo Agostinho",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 78,
+    "imagens": [
+      "p78_126.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Piedade",
+    "endereco": "Av. Bernardo Vieira de Melo,",
+    "cidade": "Goiana",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 79,
+    "imagens": [
+      "p79_127.jpeg"
+    ]
+  },
+  {
+    "nome": "Olinda",
+    "endereco": "Av. Governador Carlos de Lima",
+    "cidade": "Jaboatão dos Guararapes",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 80,
+    "imagens": [
+      "p80_128.jpeg"
+    ]
+  },
+  {
+    "nome": "Olinda",
+    "endereco": "Av. Presidente Getúlio Vargas, 481 -",
+    "cidade": "Olinda",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 81,
+    "imagens": [
+      "p81_129.jpeg",
+      "p81_130.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Olinda",
+    "endereco": "Av. Presidente Getúlio Vargas,",
+    "cidade": "Bairro Novo, Olinda",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 81,
+    "imagens": [
+      "p81_129.jpeg",
+      "p81_130.jpeg"
+    ]
+  },
+  {
+    "nome": "Paulista",
+    "endereco": "Rua Milton Souza Lopes, 84 - Centro,",
+    "cidade": "Olinda",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 82,
+    "imagens": [
+      "p82_131.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Paulista",
+    "endereco": "Rua Epitácio Pessoa, 231 -",
+    "cidade": "Paulista",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 83,
+    "imagens": [
+      "p83_132.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Ilha do Leite",
+    "endereco": "Rua Doutor João Asfora, 35 - Ilha do",
+    "cidade": "Centro, Paulista",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 84,
+    "imagens": [
+      "p84_133.jpeg",
+      "p84_134.jpeg"
+    ]
+  },
+  {
+    "nome": "Mandacaru",
+    "endereco": "Av. Governador Agamenon Magalhães,",
+    "cidade": "Leite, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 84,
+    "imagens": [
+      "p84_133.jpeg",
+      "p84_134.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Vasco Lucena",
+    "endereco": "Rua do Progresso, 47 - Soledade,",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 85,
+    "imagens": [
+      "p85_135.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Capibaribe",
+    "endereco": "Rua do Paissandu, 767 - Paissandu,",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 86,
+    "imagens": [
+      "p86_136.jpeg",
+      "p86_137.jpeg"
+    ]
+  },
+  {
+    "nome": "Suassuna",
+    "endereco": "Av. Gov. Agamenon Magalhães, 4623 -",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 86,
+    "imagens": [
+      "p86_136.jpeg",
+      "p86_137.jpeg"
+    ]
+  },
+  {
+    "nome": "Derby",
+    "endereco": "Rua da Baixa Verde, 305 - Derby,",
+    "cidade": "Ilha do Leite, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 87,
+    "imagens": [
+      "p87_138.jpeg",
+      "p87_139.jpeg"
+    ]
+  },
+  {
+    "nome": "Caxangá",
+    "endereco": "Av. Professor Moraes Rego, 314 -",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 87,
+    "imagens": [
+      "p87_138.jpeg",
+      "p87_139.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Barão de Itamaracá",
+    "endereco": "Rua Barão de Itamaracá, 142 -",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Boa Viagem",
+    "endereco": "Rua Dhália, 95 - Boa Viagem,",
+    "cidade": "Espinheiro, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Espinheiro",
+    "endereco": "Rua José Luiz da Silveira Barros,",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Graças",
+    "endereco": "Rua da Hora, 543 - Espinheiro,",
+    "cidade": "122 - Espinheiro, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Epaminondas",
+    "endereco": "Rua Epaminondas de Melo, 177 -",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Pedro da Hora",
+    "endereco": "Rua da Hora, 366 - Espinheiro,",
+    "cidade": "Paissandu, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Recife",
+    "endereco": "Rua do Espinheiro, 119 - Graças,",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Mário Domingues",
+    "endereco": "Rua Mário Domingues, 152 -",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 88,
+    "imagens": [
+      "p88_140.jpeg",
+      "p88_141.jpeg",
+      "p88_142.jpeg",
+      "p88_143.jpeg",
+      "p88_144.jpeg",
+      "p88_145.jpeg",
+      "p88_146.jpeg",
+      "p88_147.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Conselheiro Aguiar",
+    "endereco": "Av. Conselheiro Aguiar, 3763 - Boa",
+    "cidade": "Boa Vista, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade da Mulher",
+    "endereco": "Rua Francisco Alves, 938 - Ilha",
+    "cidade": "Viagem, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Casa Forte",
+    "endereco": "Rua Edson Álvares, 370 -  Casa",
+    "cidade": "do Leite, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Zona Sul",
+    "endereco": "Rua João Cardoso Aires, 647 -",
+    "cidade": "Forte, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Parque Amorim",
+    "endereco": "Rua João Fernandes Vieira, 699 –",
+    "cidade": "Boa Viagem, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Boa Vista",
+    "endereco": "Av. Manoel Borba, 737 - Boa Vista,",
+    "cidade": "Boa Vista, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Maciel Pinheiro",
+    "endereco": "Praça Maciel Pinheiro, 360, Boa",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Ponte Verde",
+    "endereco": "Rua do Espinheiro, 222 -",
+    "cidade": "Vista, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 89,
+    "imagens": [
+      "p89_148.jpeg",
+      "p89_149.jpeg",
+      "p89_150.jpeg",
+      "p89_151.jpeg",
+      "p89_152.jpeg",
+      "p89_153.jpeg",
+      "p89_154.jpeg",
+      "p89_155.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Madalena",
+    "endereco": "Rua Hermógenes de Morais, 70 –",
+    "cidade": "Espinheiro, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 90,
+    "imagens": [
+      "p90_156.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Paissandu",
+    "endereco": "Rua do Paissandu, 738 – Boa",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 91,
+    "imagens": [
+      "p91_157.jpeg",
+      "p91_158.jpeg"
+    ]
+  },
+  {
+    "nome": "Magalhães",
+    "endereco": "Av. Agamenon Magalhães, 107 –",
+    "cidade": "Vista, Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 91,
+    "imagens": [
+      "p91_157.jpeg",
+      "p91_158.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Rio Poty",
+    "endereco": "Rua Lucídio Freitas, 2070 - Marques,",
+    "cidade": "Recife",
+    "estado": "PE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 93,
+    "imagens": [
+      "p93_159.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Dib Tajra",
+    "endereco": "Rua São Pedro, 3125 - Centro,",
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 94,
+    "imagens": [
+      "p94_160.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Honório de Paiva",
+    "endereco": "Av. Honório de Paiva, 383 -",
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 94,
+    "imagens": [
+      "p94_160.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Teresina",
+    "endereco": "Rua Eliseu Martins, 1672 –",
+    "cidade": "Piçarra, Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 95,
+    "imagens": [
+      "p95_161.jpeg"
+    ]
+  },
+  {
+    "nome": "Prudente Natal",
+    "endereco": "Av. Presidente Quaresma, 930 -",
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 97,
+    "imagens": [
+      "p97_162.jpeg"
+    ]
+  },
+  {
+    "nome": "Zona Norte",
+    "endereco": "Av. Bacharel Tomaz Landin, 1022 - Igapó,",
+    "cidade": "Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 98,
+    "imagens": [
+      "p98_163.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Tirol",
+    "endereco": "Av. Hermes da Fonseca, 1052 –",
+    "cidade": "Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 99,
+    "imagens": [
+      "p99_164.jpeg",
+      "p99_165.jpeg",
+      "p99_166.jpeg",
+      "p99_167.jpeg",
+      "p99_168.jpeg",
+      "p99_169.jpeg",
+      "p99_170.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Felipe Camarão",
+    "endereco": "Rua Felipe Camarão, 417 – Sala",
+    "cidade": "Tirol, Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 99,
+    "imagens": [
+      "p99_164.jpeg",
+      "p99_165.jpeg",
+      "p99_166.jpeg",
+      "p99_167.jpeg",
+      "p99_168.jpeg",
+      "p99_169.jpeg",
+      "p99_170.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Zona Norte",
+    "endereco": "Av. Bacharel Tomaz Landim, 1211",
+    "cidade": "HP – Cidade Alta, Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 99,
+    "imagens": [
+      "p99_164.jpeg",
+      "p99_165.jpeg",
+      "p99_166.jpeg",
+      "p99_167.jpeg",
+      "p99_168.jpeg",
+      "p99_169.jpeg",
+      "p99_170.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Potengi",
+    "endereco": "Av. Dr. João Medeiros Filho, 301",
+    "cidade": "-  Jardim Lola, Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 99,
+    "imagens": [
+      "p99_164.jpeg",
+      "p99_165.jpeg",
+      "p99_166.jpeg",
+      "p99_167.jpeg",
+      "p99_168.jpeg",
+      "p99_169.jpeg",
+      "p99_170.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Lagoa Nova",
+    "endereco": "Rua Anísio de Souza, 2545 -",
+    "cidade": "- Igapó, Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 99,
+    "imagens": [
+      "p99_164.jpeg",
+      "p99_165.jpeg",
+      "p99_166.jpeg",
+      "p99_167.jpeg",
+      "p99_168.jpeg",
+      "p99_169.jpeg",
+      "p99_170.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Complexo Alecrim",
+    "endereco": "Rua Presidente Quaresma, 967,",
+    "cidade": "Candelária, Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 99,
+    "imagens": [
+      "p99_164.jpeg",
+      "p99_165.jpeg",
+      "p99_166.jpeg",
+      "p99_167.jpeg",
+      "p99_168.jpeg",
+      "p99_169.jpeg",
+      "p99_170.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Zona Sul",
+    "endereco": "Rua Alameda das Acácias, 4421 -",
+    "cidade": "Lado A - Alecrim, Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 99,
+    "imagens": [
+      "p99_164.jpeg",
+      "p99_165.jpeg",
+      "p99_166.jpeg",
+      "p99_167.jpeg",
+      "p99_168.jpeg",
+      "p99_169.jpeg",
+      "p99_170.jpeg"
+    ]
+  },
+  {
+    "nome": "Guimarães",
+    "endereco": "Av. Raimundo Leão de Moura, 10 - Nova",
+    "cidade": "Natal",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 100,
+    "imagens": [
+      "p100_171.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Rodolfo Fernandes",
+    "endereco": "Av. Diocesana, 260 - Nova Betânia,",
+    "cidade": "Mossoró",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 101,
+    "imagens": [
+      "p101_172.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Gabriel Soares",
+    "endereco": "Rua Itabaiana, 690, Centro, Aracaju - SE",
+    "cidade": "Mossoró",
+    "estado": "RN",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 103,
+    "imagens": [
+      "p103_173.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Aracaju",
+    "endereco": "Rua Campo do Brito, 1180 - São",
+    "cidade": "Aracaju",
+    "estado": "SE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 104,
+    "imagens": [
+      "p104_174.jpeg",
+      "p104_175.jpeg",
+      "p104_176.jpeg",
+      "p104_177.jpeg",
+      "p104_178.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Hermes Fontes",
+    "endereco": "Av. Hermes Fontes, 160 - Suiça,",
+    "cidade": "José, Aracaju",
+    "estado": "SE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 104,
+    "imagens": [
+      "p104_174.jpeg",
+      "p104_175.jpeg",
+      "p104_176.jpeg",
+      "p104_177.jpeg",
+      "p104_178.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Gentil Tavares",
+    "endereco": "Av. Engenheiro Gentil Tavares,",
+    "cidade": "Aracaju",
+    "estado": "SE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 104,
+    "imagens": [
+      "p104_174.jpeg",
+      "p104_175.jpeg",
+      "p104_176.jpeg",
+      "p104_177.jpeg",
+      "p104_178.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Campos de Sergipe",
+    "endereco": "Rua Campos, 927 - São José,",
+    "cidade": "Aracaju",
+    "estado": "SE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 104,
+    "imagens": [
+      "p104_174.jpeg",
+      "p104_175.jpeg",
+      "p104_176.jpeg",
+      "p104_177.jpeg",
+      "p104_178.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Centro",
+    "endereco": "Rua Itabaianinha, 66 - Centro,",
+    "cidade": "Aracaju",
+    "estado": "SE",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 105,
+    "imagens": [
+      "p105_179.jpeg"
+    ]
+  },
+  {
+    "nome": "Taguatinga",
+    "endereco": "Rua Eixo 312, QS 5, SH Arniqueiras -",
+    "cidade": "Brasília",
+    "estado": "DF",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 109,
+    "imagens": [
+      "p109_182.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Taguatinga Sul",
+    "endereco": "Rua 312, QS 05 , LOTE 10 E 12, S/N",
+    "cidade": "Lote 14 - Asa Sul, Brasília",
+    "estado": "DF",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 110,
+    "imagens": [
+      "p110_183.jpeg",
+      "p110_184.jpeg",
+      "p110_185.jpeg",
+      "p110_186.jpeg"
+    ]
+  },
+  {
+    "nome": "Anápolis",
+    "endereco": "Rua Coronel Batista, 29 - Setor Central,",
+    "cidade": "Anápolis",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 112,
+    "imagens": [
+      "p112_187.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Setor Central",
+    "endereco": "Rua Coronel Batista, 83 - Setor",
+    "cidade": "Anápolis",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 113,
+    "imagens": [
+      "p113_188.jpeg",
+      "p113_189.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Rio João Leite",
+    "endereco": "Av. Senador José Lourenço Dias,",
+    "cidade": "Anápolis",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 113,
+    "imagens": [
+      "p113_188.jpeg",
+      "p113_189.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Chapadão do Céu",
+    "endereco": "Rua Ipê Leste, 377 - Cidade Jardim,",
+    "cidade": "594 - Centro, Anápolis",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 114,
+    "imagens": [
+      "p114_190.jpeg"
+    ]
+  },
+  {
+    "nome": "Edéia",
+    "endereco": "Av. Presidente Kennedy, 276 - Setor",
+    "cidade": "Chapadão do Céu",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 115,
+    "imagens": [
+      "p115_191.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital América",
+    "endereco": "Al. Coronel Joaquim de Bastos, 120,",
+    "cidade": "Edéia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 116,
+    "imagens": [
+      "p116_192.jpeg",
+      "p116_193.jpeg"
+    ]
+  },
+  {
+    "nome": "América",
+    "endereco": "Rua C 148, 1280 - Jardim América,",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 116,
+    "imagens": [
+      "p116_192.jpeg",
+      "p116_193.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Promed",
+    "endereco": "Rua C 184, 401, Quadra 453, Lote 1/5",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Hospitais",
+    "pagina": 117,
+    "imagens": [
+      "p117_194.jpeg"
+    ]
+  },
+  {
+    "nome": "Cora Coralina",
+    "endereco": "Av. Anhanguera, 11231, Quadra 20, Lote",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 118,
+    "imagens": [
+      "p118_195.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Setor Sul",
+    "endereco": "Rua 96, 27, Quadra F-13, Lote 01 -",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 119,
+    "imagens": [
+      "p119_196.jpeg",
+      "p119_197.jpeg",
+      "p119_198.jpeg",
+      "p119_199.jpeg",
+      "p119_200.jpeg",
+      "p119_201.jpeg",
+      "p119_202.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Areião",
+    "endereco": "Rua 1138, 312, Quadra 253, Lote",
+    "cidade": "Setor Sul, Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 119,
+    "imagens": [
+      "p119_196.jpeg",
+      "p119_197.jpeg",
+      "p119_198.jpeg",
+      "p119_199.jpeg",
+      "p119_200.jpeg",
+      "p119_201.jpeg",
+      "p119_202.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Rio Araguaia",
+    "endereco": "Av. T-1, 1633, Quadra 74, Lote 08 -",
+    "cidade": "03 - Setor Marista, Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 119,
+    "imagens": [
+      "p119_196.jpeg",
+      "p119_197.jpeg",
+      "p119_198.jpeg",
+      "p119_199.jpeg",
+      "p119_200.jpeg",
+      "p119_201.jpeg",
+      "p119_202.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica C-139",
+    "endereco": "Rua C-139, 820, Quadra 322, Lote 13-",
+    "cidade": "Setor Bueno, Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 119,
+    "imagens": [
+      "p119_196.jpeg",
+      "p119_197.jpeg",
+      "p119_198.jpeg",
+      "p119_199.jpeg",
+      "p119_200.jpeg",
+      "p119_201.jpeg",
+      "p119_202.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica C-147",
+    "endereco": "Rua C-139, 874, Quadra 321, Lote 12",
+    "cidade": "15 - Jardim América, Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 119,
+    "imagens": [
+      "p119_196.jpeg",
+      "p119_197.jpeg",
+      "p119_198.jpeg",
+      "p119_199.jpeg",
+      "p119_200.jpeg",
+      "p119_201.jpeg",
+      "p119_202.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Avenida 85",
+    "endereco": "Av. 85, 2138 - Setor Marista,",
+    "cidade": "- Jardim América, Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 119,
+    "imagens": [
+      "p119_196.jpeg",
+      "p119_197.jpeg",
+      "p119_198.jpeg",
+      "p119_199.jpeg",
+      "p119_200.jpeg",
+      "p119_201.jpeg",
+      "p119_202.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Castelo Branco",
+    "endereco": "Av. Castelo Branco, 945 – Setor",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 119,
+    "imagens": [
+      "p119_196.jpeg",
+      "p119_197.jpeg",
+      "p119_198.jpeg",
+      "p119_199.jpeg",
+      "p119_200.jpeg",
+      "p119_201.jpeg",
+      "p119_202.jpeg"
+    ]
+  },
+  {
+    "nome": "Funcionários",
+    "endereco": "Rua P-16, 690 - Setor dos",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 120,
+    "imagens": [
+      "p120_203.jpeg",
+      "p120_204.jpeg",
+      "p120_205.jpeg",
+      "p120_206.jpeg",
+      "p120_207.jpeg",
+      "p120_208.jpeg"
+    ]
+  },
+  {
+    "nome": "América",
+    "endereco": "Rua C 148, 1280 - Jardim América,",
+    "cidade": "Funcionários - Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 120,
+    "imagens": [
+      "p120_203.jpeg",
+      "p120_204.jpeg",
+      "p120_205.jpeg",
+      "p120_206.jpeg",
+      "p120_207.jpeg",
+      "p120_208.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Setor Bueno",
+    "endereco": "Av. T-2, 2787, Quadra 98, Lote 4 -",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 120,
+    "imagens": [
+      "p120_203.jpeg",
+      "p120_204.jpeg",
+      "p120_205.jpeg",
+      "p120_206.jpeg",
+      "p120_207.jpeg",
+      "p120_208.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Nova Suíça",
+    "endereco": "Rua C 267, S/N, Quadra 603, Lote",
+    "cidade": "Setor Bueno, Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 120,
+    "imagens": [
+      "p120_203.jpeg",
+      "p120_204.jpeg",
+      "p120_205.jpeg",
+      "p120_206.jpeg",
+      "p120_207.jpeg",
+      "p120_208.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Setor Oeste",
+    "endereco": "Rua 5, 75 - Setor Oeste, Goiânia - GO",
+    "cidade": "13 - Nova Suiça, Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 120,
+    "imagens": [
+      "p120_203.jpeg",
+      "p120_204.jpeg",
+      "p120_205.jpeg",
+      "p120_206.jpeg",
+      "p120_207.jpeg",
+      "p120_208.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Goiânia",
+    "endereco": "Rua C-149, 1400 - Jardim",
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 121,
+    "imagens": [
+      "p121_209.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Vila Aparecida",
+    "endereco": "Av. Jaguarão, Quadra 23, R. Lote 11, -",
+    "cidade": "Aparecida de Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 123,
+    "imagens": [
+      "p123_211.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Quirinópolis",
+    "endereco": "Av. Lazaro Xavier, 21 - Centro,",
+    "cidade": "Vila Brasilia, Aparecida de Goiânia",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 124,
+    "imagens": [
+      "p124_212.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Quirinópolis",
+    "endereco": "Av. Garibaldi Teixeira, 122 - Centro,",
+    "cidade": "Quirinópolis",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 125,
+    "imagens": [
+      "p125_213.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Rio Verde",
+    "endereco": "Rua Rosulino Ferreira Guimarães, 1082,",
+    "cidade": "Quirinópolis",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 126,
+    "imagens": [
+      "p126_214.jpeg"
+    ]
+  },
+  {
+    "nome": "Aparecida do Taboado",
+    "endereco": "Rua Duque de Caxias, 4049 - Centro,",
+    "cidade": "Rio Verde",
+    "estado": "GO",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 128,
+    "imagens": [
+      "p128_215.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Monte Castelo",
+    "endereco": "Rua Dr. Dolor Ferreira de Andrade,",
+    "cidade": "Grande",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 129,
+    "imagens": [
+      "p129_216.jpeg",
+      "p129_217.jpeg",
+      "p129_218.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Dom Aquino",
+    "endereco": "Rua Dom Aquino, 2274 -",
+    "cidade": "Campo Grande",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Clínicas",
+    "pagina": 129,
+    "imagens": [
+      "p129_216.jpeg",
+      "p129_217.jpeg",
+      "p129_218.jpeg"
+    ]
+  },
+  {
+    "nome": "Dourados",
+    "endereco": "Av. Pres. Vargas, 2145 - Cohafaba III",
+    "cidade": "Amambaí, Campo Grande",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 130,
+    "imagens": [
+      "p130_219.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Dourados",
+    "endereco": "Rua Ciro Melo, 1470 - Jardim",
+    "cidade": "Dourados",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 131,
+    "imagens": [
+      "p131_220.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica de Ivinhema",
+    "endereco": "Av. Brasil, 647 - Centro, Ivinhema - MS",
+    "cidade": "Ivinhema",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 132,
+    "imagens": [
+      "p132_221.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Rio Brilhante",
+    "endereco": "Rua Dr. Júlio Siqueira Maia, 591 -",
+    "cidade": "Av. Brasil, 647 - Centro, Ivinhema",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 133,
+    "imagens": [
+      "p133_222.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Sonora",
+    "endereco": "Rua Da Justiça, 103 - Centro,",
+    "cidade": "Rio Brilhante",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 134,
+    "imagens": [
+      "p134_223.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica e Diagnóstico Guarani",
+    "endereco": "Av. Capitão Olinto Mancini, 2560 -",
+    "cidade": "Sonora",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 135,
+    "imagens": [
+      "p135_224.jpeg"
+    ]
+  },
+  {
+    "nome": "Rondonópolis",
+    "endereco": "Rua Agostinho de Figueiredo, 60 -",
+    "cidade": "Três Lagoas",
+    "estado": "MS",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 137,
+    "imagens": [
+      "p137_225.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Jardim Guanabara",
+    "endereco": "Rua Getúlio Vargas, 49 - Jardim",
+    "cidade": "Rondonópolis",
+    "estado": "MT",
+    "regiao": "Nordeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 138,
+    "imagens": [
+      "p138_226.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Alfenas",
+    "endereco": "Rua Adolfo Engel, 19 - Jardim",
+    "cidade": "Rondonópolis",
+    "estado": "MT",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 141,
+    "imagens": [
+      "p141_228.jpeg"
+    ]
+  },
+  {
+    "nome": "Octaviano Neves",
+    "endereco": "Rua Ceará, 186 - Santa Efigênia, Belo",
+    "cidade": "Alfenas",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 142,
+    "imagens": [
+      "p142_229.jpeg",
+      "p142_230.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Vera Cruz",
+    "endereco": "Av. Barbacena, 653 - Barro Preto, Belo",
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 142,
+    "imagens": [
+      "p142_229.jpeg",
+      "p142_230.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Lifecenter",
+    "endereco": "Av. do Contorno, 4747 - Funcionários,",
+    "cidade": "Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 143,
+    "imagens": [
+      "p143_231.jpeg"
+    ]
+  },
+  {
+    "nome": "Contorno",
+    "endereco": "Av. do Contorno, 2001 - Santa Efigênia",
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 144,
+    "imagens": [
+      "p144_232.jpeg",
+      "p144_233.jpeg"
+    ]
+  },
+  {
+    "nome": "HVC - Entrada 3",
+    "endereco": "Av. Barbacena, 653 - Barro Preto, Belo",
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 144,
+    "imagens": [
+      "p144_232.jpeg",
+      "p144_233.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Barreiro",
+    "endereco": "Av. Sinfrônio Brochado, 587 -",
+    "cidade": "Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 145,
+    "imagens": [
+      "p145_234.jpeg",
+      "p145_235.jpeg",
+      "p145_236.jpeg"
+    ]
+  },
+  {
+    "nome": "Clinica Octaviano Neves",
+    "endereco": "Rua Domingos Vieira, 561, Santa",
+    "cidade": "Barreiro, Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 145,
+    "imagens": [
+      "p145_234.jpeg",
+      "p145_235.jpeg",
+      "p145_236.jpeg"
+    ]
+  },
+  {
+    "nome": "Amazonas",
+    "endereco": "Av. Amazonas, 641, 5º andar -",
+    "cidade": "Efigênia, Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 145,
+    "imagens": [
+      "p145_234.jpeg",
+      "p145_235.jpeg",
+      "p145_236.jpeg"
+    ]
+  },
+  {
+    "nome": "HVC Day (Edifício Minerva)",
+    "endereco": "Rua dos Aimores, 3000, 4º e",
+    "cidade": "Centro, Belo Horizonte",
+    "estado": "BH",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 145,
+    "imagens": [
+      "p145_234.jpeg",
+      "p145_235.jpeg",
+      "p145_236.jpeg"
+    ]
+  },
+  {
+    "nome": "Nova",
+    "endereco": "Rua Dr. Álvaro Camargos, 2002​ - São",
+    "cidade": "Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 145,
+    "imagens": [
+      "p145_234.jpeg",
+      "p145_235.jpeg",
+      "p145_236.jpeg"
+    ]
+  },
+  {
+    "nome": "HVC - Entrada 04",
+    "endereco": "Rua dos Timbiras, 3210 - Barro",
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 145,
+    "imagens": [
+      "p145_234.jpeg",
+      "p145_235.jpeg",
+      "p145_236.jpeg"
+    ]
+  },
+  {
+    "nome": "Gabaglia",
+    "endereco": "Av. Raja Gabaglia, 4091",
+    "cidade": "Preto, Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 146,
+    "imagens": [
+      "p146_237.jpeg",
+      "p146_238.jpeg",
+      "p146_239.jpeg",
+      "p146_240.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Timbiras",
+    "endereco": "Rua dos Timbiras, 3210 -",
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 146,
+    "imagens": [
+      "p146_237.jpeg",
+      "p146_238.jpeg",
+      "p146_239.jpeg",
+      "p146_240.jpeg"
+    ]
+  },
+  {
+    "nome": "Infusões",
+    "endereco": "Rua Rio Grande do Sul,",
+    "cidade": "Belo Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 146,
+    "imagens": [
+      "p146_237.jpeg",
+      "p146_238.jpeg",
+      "p146_239.jpeg",
+      "p146_240.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Efigênia",
+    "endereco": "Rua Rio Grande do Norte,",
+    "cidade": "Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 146,
+    "imagens": [
+      "p146_237.jpeg",
+      "p146_238.jpeg",
+      "p146_239.jpeg",
+      "p146_240.jpeg"
+    ]
+  },
+  {
+    "nome": "Betim",
+    "endereco": "Rua Edmeia Mattos Lazzarotti, 2192 -",
+    "cidade": "Horizonte",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 147,
+    "imagens": [
+      "p147_241.jpeg"
+    ]
+  },
+  {
+    "nome": "Contagem",
+    "endereco": "Rua das Mangueiras, 150 - Eldorado,",
+    "cidade": "Betim",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 148,
+    "imagens": [
+      "p148_242.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Médico Proclin",
+    "endereco": "Av. João Cesar de Oliveira, 1009 -",
+    "cidade": "Contagem",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 149,
+    "imagens": [
+      "p149_243.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Santa Monica",
+    "endereco": "Rua Pedro F. Amaral, 33 - Padre Liberio,",
+    "cidade": "Contagem",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 150,
+    "imagens": [
+      "p150_244.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Divinópolis",
+    "endereco": "Av. Sete de Setembro, 951 -",
+    "cidade": "Divinópolis",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 151,
+    "imagens": [
+      "p151_245.jpeg"
+    ]
+  },
+  {
+    "nome": "Bioimagem Divinópolis",
+    "endereco": "Rua Pedro F. Amaral, 33 - Padre",
+    "cidade": "Centro, Divinópolis",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 152,
+    "imagens": [
+      "p152_246.jpeg",
+      "p152_247.jpeg"
+    ]
+  },
+  {
+    "nome": "Posto de Coleta Divinópolis",
+    "endereco": "Rua Pedro F. Amaral, 33 - Padre",
+    "cidade": "Liberio, Divinópolis",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 152,
+    "imagens": [
+      "p152_246.jpeg",
+      "p152_247.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Ituiutaba",
+    "endereco": "Rua Vinte e Seis, 1547 - Centro,",
+    "cidade": "Liberio, Divinópolis",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 153,
+    "imagens": [
+      "p153_248.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Dr. Santos",
+    "endereco": "Rua Dr. Santos, 223 - Sala 204 -",
+    "cidade": "Ituiutaba",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 154,
+    "imagens": [
+      "p154_249.jpeg"
+    ]
+  },
+  {
+    "nome": "Caldas",
+    "endereco": "Rua Frei Cristóvão de Figueiredo, 125 -",
+    "cidade": "Montes Claros",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 155,
+    "imagens": [
+      "p155_250.jpeg"
+    ]
+  },
+  {
+    "nome": "Uberaba",
+    "endereco": "Av. Santos Dumont, 2140 - Santos",
+    "cidade": "Uberaba",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 156,
+    "imagens": [
+      "p156_251.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Triângulo Sul",
+    "endereco": "Rua Ituiutaba, 577, Anexo 555 -",
+    "cidade": "Dumont, Uberaba",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 157,
+    "imagens": [
+      "p157_252.jpeg",
+      "p157_253.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Uberaba",
+    "endereco": "Av. Santa Beatriz da Silva, 1880 -",
+    "cidade": "São Benedito, Uberaba",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 157,
+    "imagens": [
+      "p157_252.jpeg",
+      "p157_253.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Sete Colinas",
+    "endereco": "Av. Santa Beatriz da Silva, 1861 -",
+    "cidade": "Uberaba",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 158,
+    "imagens": [
+      "p158_254.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Madrecor",
+    "endereco": "Av. Francisco Ribeiro, 1111 - Santa",
+    "cidade": "São Benedito, Uberaba",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 159,
+    "imagens": [
+      "p159_255.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Médica Uberlândia",
+    "endereco": "Rua Virgílio Melo Franco, 465 -",
+    "cidade": "Uberlândia",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 160,
+    "imagens": [
+      "p160_256.jpeg",
+      "p160_257.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Marechal Deodoro",
+    "endereco": "Rua Marechal Deodoro, 11, Centro,",
+    "cidade": "Uberlândia",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 160,
+    "imagens": [
+      "p160_256.jpeg",
+      "p160_257.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Varginha",
+    "endereco": "Av. Antonieta Esper Kallas, 299 -",
+    "cidade": "Marechal Deodoro",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 161,
+    "imagens": [
+      "p161_258.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Notrecare Rio",
+    "endereco": "Rua Silva Teles, 52 – Andaraí, Rio de",
+    "cidade": "Varginha",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 163,
+    "imagens": [
+      "p163_259.jpeg",
+      "p163_260.jpeg"
+    ]
+  },
+  {
+    "nome": "Cidade Nova",
+    "endereco": "Rua Pinto de Azevedo, 105 - Cidade",
+    "cidade": "Jacarepaguá, Rio de Janeiro",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 164,
+    "imagens": [
+      "p164_261.jpeg",
+      "p164_262.jpeg"
+    ]
+  },
+  {
+    "nome": "Duque de Caxias",
+    "endereco": "Rua Marechal Floriano, 117 - Jardim",
+    "cidade": "Duque de Caxias",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 165,
+    "imagens": [
+      "p165_263.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Madureira",
+    "endereco": "Rua Dagmar da Fonseca, 192 -",
+    "cidade": "Santa Rosa, Niterói",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 167,
+    "imagens": [
+      "p167_265.jpeg",
+      "p167_266.jpeg",
+      "p167_267.jpeg",
+      "p167_268.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida Rio de Janeiro",
+    "endereco": "Rua São Francisco Xavier, 163 -",
+    "cidade": "de Janeiro",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 167,
+    "imagens": [
+      "p167_265.jpeg",
+      "p167_266.jpeg",
+      "p167_267.jpeg",
+      "p167_268.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico São Gonçalo",
+    "endereco": "Rua Doutor Alfredo Backer, 191 -",
+    "cidade": "Tijuca, Rio de Janeiro",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 167,
+    "imagens": [
+      "p167_265.jpeg",
+      "p167_266.jpeg",
+      "p167_267.jpeg",
+      "p167_268.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Duque de Caxias",
+    "endereco": "Rua Professor José de Souza Herdy,",
+    "cidade": "Rio de Janeiro",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 168,
+    "imagens": [
+      "p168_269.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica José de Assis Ferreira",
+    "endereco": "Rua José de Assis Ferreira, 53 -",
+    "cidade": "Nova Iguaçu",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 169,
+    "imagens": [
+      "p169_270.jpeg"
+    ]
+  },
+  {
+    "nome": "Nossa Senhora Rosário",
+    "endereco": "Rua Dr. Edson de Melo, 357 - Vila Maria,",
+    "cidade": "Chacrinha, Nova Iguaçu",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 171,
+    "imagens": [
+      "p171_271.jpeg",
+      "p171_272.jpeg"
+    ]
+  },
+  {
+    "nome": "Saúde",
+    "endereco": "Av. Bosque da Saúde, 1926 - Saúde,",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 171,
+    "imagens": [
+      "p171_271.jpeg",
+      "p171_272.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Salvalus",
+    "endereco": "Rua Bresser, 1954 - Mooca, São Paulo -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 172,
+    "imagens": [
+      "p172_273.jpeg",
+      "p172_274.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Jardim Anália",
+    "endereco": "Av. Montemagno, 243 - Vila Formosa - SP",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 172,
+    "imagens": [
+      "p172_273.jpeg",
+      "p172_274.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Itaquera",
+    "endereco": "Av. Itaquera, 7426 - Itaquera, São Paulo -",
+    "cidade": "Av. Montemagno, 243 - Vila Formosa",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 173,
+    "imagens": [
+      "p173_275.jpeg",
+      "p173_276.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Zona Sul",
+    "endereco": "Av. João Dias, 76/96 - Santo Amaro, São",
+    "cidade": "Av. Montemagno, 243 - Vila Formosa",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 173,
+    "imagens": [
+      "p173_275.jpeg",
+      "p173_276.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Médico Santana",
+    "endereco": "Av. Cruzeiro do Sul, 2977 - Santana, São",
+    "cidade": "Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 174,
+    "imagens": [
+      "p174_277.jpeg",
+      "p174_278.jpeg"
+    ]
+  },
+  {
+    "nome": "Gabriel",
+    "endereco": "Av. Amador Bueno da Veiga, 195 - Penha",
+    "cidade": "Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 174,
+    "imagens": [
+      "p174_277.jpeg",
+      "p174_278.jpeg"
+    ]
+  },
+  {
+    "nome": "Salvalus",
+    "endereco": "Rua Hipódromo, 987 - Mooca, São Paulo - SP",
+    "cidade": "de França, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 175,
+    "imagens": [
+      "p175_279.jpeg",
+      "p175_280.jpeg"
+    ]
+  },
+  {
+    "nome": "Funda",
+    "endereco": "Av. Francisco Matarazzo, 612 - Água",
+    "cidade": "Rua Hipódromo, 987 - Mooca, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 175,
+    "imagens": [
+      "p175_279.jpeg",
+      "p175_280.jpeg"
+    ]
+  },
+  {
+    "nome": "Brigadeiro",
+    "endereco": "Av. Brigadeiro Luís Antônio, 3797 -",
+    "cidade": "Branca, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 176,
+    "imagens": [
+      "p176_281.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Anália Franco",
+    "endereco": "Rua Acuruí, 493 - Vila Formosa,",
+    "cidade": "Paraíso, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Belém",
+    "endereco": "Rua Cesário Alvim, 174 -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Pedro",
+    "endereco": "Av. Dom Pedro I, 372 - Vila",
+    "cidade": "Belenzinho, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Lemos",
+    "endereco": "Rua Hermínio Lemos, 385 -",
+    "cidade": "Monumento, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Interlagos",
+    "endereco": "Av. Interlagos, 2825 - Jardim",
+    "cidade": "Cambuci, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Ipiranga",
+    "endereco": "Rua Maurício de Castilho, 416 - Vila",
+    "cidade": "Umuarama, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Lapa",
+    "endereco": "Rua George Smith, 287 - Lapa,",
+    "cidade": "Monumento, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Pompeia",
+    "endereco": "Av. Pompéia, 1165 - Perdizes,",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 177,
+    "imagens": [
+      "p177_282.jpeg",
+      "p177_283.jpeg",
+      "p177_284.jpeg",
+      "p177_285.jpeg",
+      "p177_286.jpeg",
+      "p177_287.jpeg",
+      "p177_288.jpeg",
+      "p177_289.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico São Miguel",
+    "endereco": "Rua Tenente Luís Fernando Lobo, 51 -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Tatuapé",
+    "endereco": "Rua Platina, 215 - Tatuapé,",
+    "cidade": "São Miguel Paulista, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Zona Norte",
+    "endereco": "Av. Nova Cantareira, 229 -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Médico São Gabriel",
+    "endereco": "Av. Amador Bueno da Veiga, 195 -",
+    "cidade": "Tucuruvi, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida Angélica",
+    "endereco": "Av. Angélica, 381 - Santa",
+    "cidade": "Penha de França, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida Higienópolis",
+    "endereco": "Rua São Vicente de Paulo, 463 -",
+    "cidade": "Cecília, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Avançada Salvalus",
+    "endereco": "Rua Hipódromo, 987 - Mooca,",
+    "cidade": "Santa Cecília, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Zona Oeste",
+    "endereco": "Rua M.M.D.C, 18 - Butantã,",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 178,
+    "imagens": [
+      "p178_290.jpeg",
+      "p178_291.jpeg",
+      "p178_292.jpeg",
+      "p178_293.jpeg",
+      "p178_294.jpeg",
+      "p178_295.jpeg",
+      "p178_296.jpeg",
+      "p178_297.jpeg"
+    ]
+  },
+  {
+    "nome": "Autódromo",
+    "endereco": "Av. Interlagos, 6092 - Interlagos,",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 179,
+    "imagens": [
+      "p179_298.jpeg",
+      "p179_299.jpeg",
+      "p179_300.jpeg",
+      "p179_301.jpeg"
+    ]
+  },
+  {
+    "nome": "Henrique Mazzei",
+    "endereco": "Av. Tucuruvi, 25 - Vila Mazzei,",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 179,
+    "imagens": [
+      "p179_298.jpeg",
+      "p179_299.jpeg",
+      "p179_300.jpeg",
+      "p179_301.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Cidade Vargas",
+    "endereco": "Rua dos Comerciários, 220 -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 179,
+    "imagens": [
+      "p179_298.jpeg",
+      "p179_299.jpeg",
+      "p179_300.jpeg",
+      "p179_301.jpeg"
+    ]
+  },
+  {
+    "nome": "Garcia",
+    "endereco": "Praça Pádua Dias, 30 - Tatuapé,",
+    "cidade": "Cidade Vargas, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 179,
+    "imagens": [
+      "p179_298.jpeg",
+      "p179_299.jpeg",
+      "p179_300.jpeg",
+      "p179_301.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida Angélica",
+    "endereco": "Av. Angélica, 1045 -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 180,
+    "imagens": [
+      "p180_302.jpeg",
+      "p180_303.jpeg",
+      "p180_304.jpeg",
+      "p180_305.jpeg",
+      "p180_306.jpeg",
+      "p180_307.jpeg",
+      "p180_308.jpeg",
+      "p180_309.jpeg"
+    ]
+  },
+  {
+    "nome": "Tatuapé",
+    "endereco": "Rua Icém, 57 - Tatuapé, São",
+    "cidade": "Ipiranga, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 180,
+    "imagens": [
+      "p180_302.jpeg",
+      "p180_303.jpeg",
+      "p180_304.jpeg",
+      "p180_305.jpeg",
+      "p180_306.jpeg",
+      "p180_307.jpeg",
+      "p180_308.jpeg",
+      "p180_309.jpeg"
+    ]
+  },
+  {
+    "nome": "Itaquera",
+    "endereco": "Rua Santa Cruz do Piauí, 17 -",
+    "cidade": "Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 180,
+    "imagens": [
+      "p180_302.jpeg",
+      "p180_303.jpeg",
+      "p180_304.jpeg",
+      "p180_305.jpeg",
+      "p180_306.jpeg",
+      "p180_307.jpeg",
+      "p180_308.jpeg",
+      "p180_309.jpeg"
+    ]
+  },
+  {
+    "nome": "Santo Amaro (Ghelfond)",
+    "endereco": "Rua São José, 49 - Santo Amaro, São",
+    "cidade": "Itaquera, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 180,
+    "imagens": [
+      "p180_302.jpeg",
+      "p180_303.jpeg",
+      "p180_304.jpeg",
+      "p180_305.jpeg",
+      "p180_306.jpeg",
+      "p180_307.jpeg",
+      "p180_308.jpeg",
+      "p180_309.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico João Dias",
+    "endereco": "Av. João Dias, 102 - Santo Amaro,",
+    "cidade": "Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 180,
+    "imagens": [
+      "p180_302.jpeg",
+      "p180_303.jpeg",
+      "p180_304.jpeg",
+      "p180_305.jpeg",
+      "p180_306.jpeg",
+      "p180_307.jpeg",
+      "p180_308.jpeg",
+      "p180_309.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Penha Guaiaúna",
+    "endereco": "Rua Guaiauna , 280 - Penha,",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 180,
+    "imagens": [
+      "p180_302.jpeg",
+      "p180_303.jpeg",
+      "p180_304.jpeg",
+      "p180_305.jpeg",
+      "p180_306.jpeg",
+      "p180_307.jpeg",
+      "p180_308.jpeg",
+      "p180_309.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Santa Cruz",
+    "endereco": "Rua Loefgren, 1.570 -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 180,
+    "imagens": [
+      "p180_302.jpeg",
+      "p180_303.jpeg",
+      "p180_304.jpeg",
+      "p180_305.jpeg",
+      "p180_306.jpeg",
+      "p180_307.jpeg",
+      "p180_308.jpeg",
+      "p180_309.jpeg"
+    ]
+  },
+  {
+    "nome": "Hapvida Santana II",
+    "endereco": "Av. Cruzeiro do Sul, 3436 -",
+    "cidade": "Vila Clementino, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 181,
+    "imagens": [
+      "p181_310.jpeg",
+      "p181_311.jpeg",
+      "p181_312.jpeg",
+      "p181_313.jpeg",
+      "p181_314.jpeg"
+    ]
+  },
+  {
+    "nome": "do Carmo",
+    "endereco": "Rua Ken Sugaya, 208 –",
+    "cidade": "Santana São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 181,
+    "imagens": [
+      "p181_310.jpeg",
+      "p181_311.jpeg",
+      "p181_312.jpeg",
+      "p181_313.jpeg",
+      "p181_314.jpeg"
+    ]
+  },
+  {
+    "nome": "Vila Carrão",
+    "endereco": "Rua Antônio de Barros, 2102 -",
+    "cidade": "Itaquera, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 181,
+    "imagens": [
+      "p181_310.jpeg",
+      "p181_311.jpeg",
+      "p181_312.jpeg",
+      "p181_313.jpeg",
+      "p181_314.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Itaim Bibi",
+    "endereco": "Av. Engenheiro Luiz Carlos",
+    "cidade": "Vila Carrão, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 181,
+    "imagens": [
+      "p181_310.jpeg",
+      "p181_311.jpeg",
+      "p181_312.jpeg",
+      "p181_313.jpeg",
+      "p181_314.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Mooca",
+    "endereco": "Av. Paes de Barros, 1875 -",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 181,
+    "imagens": [
+      "p181_310.jpeg",
+      "p181_311.jpeg",
+      "p181_312.jpeg",
+      "p181_313.jpeg",
+      "p181_314.jpeg"
+    ]
+  },
+  {
+    "nome": "Especializada de Americana",
+    "endereco": "Rua Tuiuti, 670 - Vila Santa Catarina,",
+    "cidade": "Mooca, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 182,
+    "imagens": [
+      "p182_315.jpeg"
+    ]
+  },
+  {
+    "nome": "Notrelabs Paulista",
+    "endereco": "Av. Paulista, 1267 - Nossa Senhora",
+    "cidade": "Americana",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 183,
+    "imagens": [
+      "p183_316.jpeg"
+    ]
+  },
+  {
+    "nome": "Pronto Socorro Barueri",
+    "endereco": "Rua Campos Sales, 118 - Centro,",
+    "cidade": "de Fátima, Americana",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 184,
+    "imagens": [
+      "p184_317.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Alphaville",
+    "endereco": "Alameda Amazonas, 329 -",
+    "cidade": "Barueri",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 185,
+    "imagens": [
+      "p185_318.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Caieiras",
+    "endereco": "Rua Ambrosina do Carmo",
+    "cidade": "Alphaville Industrial, Barueri",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 186,
+    "imagens": [
+      "p186_319.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Polvilho",
+    "endereco": "Av. Tenente Marques, 1795 -",
+    "cidade": "Caieiras",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 187,
+    "imagens": [
+      "p187_320.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Carapicuíba",
+    "endereco": "Av. Tâmara, 311 - Centro,",
+    "cidade": "Jardim São Luiz, Cajamar",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 188,
+    "imagens": [
+      "p188_321.jpeg"
+    ]
+  },
+  {
+    "nome": "Hapvida NotreLabs Carapicuiba",
+    "endereco": "Rua Atílio Tolaine, altura nº 30 - Centro,",
+    "cidade": "Carapicuíba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 189,
+    "imagens": [
+      "p189_322.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Cotia",
+    "endereco": "Av. Professor Joaquim Barreto, 74 -",
+    "cidade": "Carapicuíba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 190,
+    "imagens": [
+      "p190_323.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Nova Vida Cotia",
+    "endereco": "Av. N. Sra. de Fátima, 1717 - Vila Monte",
+    "cidade": "Centro, Cotia",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 191,
+    "imagens": [
+      "p191_324.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Nova Vida",
+    "endereco": "Av. Carolina de Abreu Paulino, 66 -",
+    "cidade": "Serrat, Cotia",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 192,
+    "imagens": [
+      "p192_325.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Itapevi",
+    "endereco": "Rua Agnaldo José dos Santos, 27 - Vila",
+    "cidade": "Bairro dos Abreus, Itapevi",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 193,
+    "imagens": [
+      "p193_326.jpeg"
+    ]
+  },
+  {
+    "nome": "Jandira I",
+    "endereco": "Rua Conceição Sammaritano, 219 -",
+    "cidade": "Aurora, Itapevi",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 194,
+    "imagens": [
+      "p194_327.jpeg",
+      "p194_328.jpeg"
+    ]
+  },
+  {
+    "nome": "Jandira II",
+    "endereco": "Rua Henrique Sammartino, 143 -",
+    "cidade": "Centro, Jandira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 194,
+    "imagens": [
+      "p194_327.jpeg",
+      "p194_328.jpeg"
+    ]
+  },
+  {
+    "nome": "do Sul",
+    "endereco": "Av. dos Autonomistas, 2502 - Centro,",
+    "cidade": "Vila Anita Costa, Jandira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 195,
+    "imagens": [
+      "p195_329.jpeg"
+    ]
+  },
+  {
+    "nome": "Osasco",
+    "endereco": "Av. dos Autonomistas, 2621 - Centro,",
+    "cidade": "Osasco",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 196,
+    "imagens": [
+      "p196_330.jpeg",
+      "p196_331.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Médico Osasco",
+    "endereco": "Rua Paulo Lício Rizzo, 66 Osasco - São",
+    "cidade": "Osasco",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 196,
+    "imagens": [
+      "p196_330.jpeg",
+      "p196_331.jpeg"
+    ]
+  },
+  {
+    "nome": "Autonomistas",
+    "endereco": "Av. dos Autonomistas, 2606 -",
+    "cidade": "Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 197,
+    "imagens": [
+      "p197_332.jpeg",
+      "p197_333.jpeg"
+    ]
+  },
+  {
+    "nome": "Antônio",
+    "endereco": "Av. Santo Antônio, 1905 - Vila",
+    "cidade": "Centro, Osasco",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 197,
+    "imagens": [
+      "p197_332.jpeg",
+      "p197_333.jpeg"
+    ]
+  },
+  {
+    "nome": "Osasco",
+    "endereco": "Av. dos Autonomistas, 2511 -",
+    "cidade": "Osasco, Osasco",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 198,
+    "imagens": [
+      "p198_334.jpeg",
+      "p198_335.jpeg"
+    ]
+  },
+  {
+    "nome": "Itabuna (Ghelfond)",
+    "endereco": "Rua Itabuna, 76 - Jd. Agu, Osasco -SP",
+    "cidade": "Centro - Osasco",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 198,
+    "imagens": [
+      "p198_334.jpeg",
+      "p198_335.jpeg"
+    ]
+  },
+  {
+    "nome": "Pires",
+    "endereco": "Av. Francisco Monteiro, 543 Centro,",
+    "cidade": "Rua Itabuna, 76 - Jd. Agu, Osasco",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 199,
+    "imagens": [
+      "p199_336.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Centro Alto",
+    "endereco": "Rua Rubião Júnior, 98 - Centro",
+    "cidade": "Ribeirão Pires",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 200,
+    "imagens": [
+      "p200_337.jpeg"
+    ]
+  },
+  {
+    "nome": "Osasco",
+    "endereco": "Av. dos Autonomistas, 2511 -",
+    "cidade": "Alto, Ribeirão Pires",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 201,
+    "imagens": [
+      "p201_338.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Suzano",
+    "endereco": "Rua Nelson Pacheco, 663 - Centro,",
+    "cidade": "Centro - Osasco",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 202,
+    "imagens": [
+      "p202_339.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Family",
+    "endereco": "Rua João Santucci, 250 a 270 - Vila",
+    "cidade": "Suzano",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 203,
+    "imagens": [
+      "p203_340.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Médico Taboão",
+    "endereco": "Estrada São Francisco, 1200 - Vila Sonia",
+    "cidade": "Santa Luzia, Taboão da Serra",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 204,
+    "imagens": [
+      "p204_341.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Varzea Paulista",
+    "endereco": "Av. Fernão Dias Paes Leme, 1670 - Vila",
+    "cidade": "do Taboão, Taboão da Serra",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 205,
+    "imagens": [
+      "p205_342.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital ABC",
+    "endereco": "Rua Aurélia Salazar Jorge, 303 – Rudge",
+    "cidade": "Santa Terezinha, Várzea Paulista",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 206,
+    "imagens": [
+      "p206_343.jpeg",
+      "p206_344.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital São Bernardo",
+    "endereco": "Av. Lucas Nogueira Garcez, 400 –",
+    "cidade": "Ramos, São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 206,
+    "imagens": [
+      "p206_343.jpeg",
+      "p206_344.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Santo André",
+    "endereco": "Rua Gertrudes de Lima, 771 - Vila",
+    "cidade": "Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 207,
+    "imagens": [
+      "p207_345.jpeg",
+      "p207_346.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Diadema",
+    "endereco": "Av. Fábio Eduardo Ramos Esquível, 2421 -",
+    "cidade": "Assunção, Santo André",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 208,
+    "imagens": [
+      "p208_347.jpeg",
+      "p208_348.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Médico ABC",
+    "endereco": "Av. Francisco Prestes Maia, 1547 -",
+    "cidade": "Jardim Concórdia, Diadema",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 208,
+    "imagens": [
+      "p208_347.jpeg",
+      "p208_348.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Médico Mauá",
+    "endereco": "Rua dos Bandeirantes, 570 - Vila",
+    "cidade": "Centro - São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 209,
+    "imagens": [
+      "p209_349.jpeg",
+      "p209_350.jpeg"
+    ]
+  },
+  {
+    "nome": "Pronto Socorro ABC",
+    "endereco": "Av. Lucas Nogueira Garcez, 400 - Jardim",
+    "cidade": "Bocaína, Mauá",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 209,
+    "imagens": [
+      "p209_349.jpeg",
+      "p209_350.jpeg"
+    ]
+  },
+  {
+    "nome": "Case ABC",
+    "endereco": "Rua Bering, 71 A - Jardim do Mar,",
+    "cidade": "do Mar, São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Ipsa",
+    "endereco": "Rua Pref. Justino Paixão, 85 -",
+    "cidade": "São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Santo André",
+    "endereco": "Rua Gertrudes de Lima, 771 - Vila",
+    "cidade": "Centro, Santo André",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Santo André II",
+    "endereco": "Av. Dom Pedro II, 2213 - Bairro Jardim -",
+    "cidade": "Assunção, Santo André",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Andre III",
+    "endereco": "Rua General Glicério, 477 - Centro,",
+    "cidade": "Santo André",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Bernardo I",
+    "endereco": "Rua Paulo Kruger, 68 - Centro, São",
+    "cidade": "Santo André",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Bernardo III",
+    "endereco": "Rua General Osório, 245/ 247",
+    "cidade": "Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Bernardo IV",
+    "endereco": "Rua Armando Sales de Oliveira,",
+    "cidade": "Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 210,
+    "imagens": [
+      "p210_351.jpeg",
+      "p210_352.jpeg",
+      "p210_353.jpeg",
+      "p210_354.jpeg",
+      "p210_355.jpeg",
+      "p210_356.jpeg",
+      "p210_357.jpeg",
+      "p210_358.jpeg"
+    ]
+  },
+  {
+    "nome": "Garcez",
+    "endereco": "Av. Lucas Nogueira Garcez, 442 -",
+    "cidade": "Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 211,
+    "imagens": [
+      "p211_359.jpeg",
+      "p211_360.jpeg",
+      "p211_361.jpeg",
+      "p211_362.jpeg"
+    ]
+  },
+  {
+    "nome": "Caetano",
+    "endereco": "Av. Doutor Augusto de Toledo,",
+    "cidade": "Centro, São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 211,
+    "imagens": [
+      "p211_359.jpeg",
+      "p211_360.jpeg",
+      "p211_361.jpeg",
+      "p211_362.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Oftalmológico",
+    "endereco": "Av. Lucas Nogueira Garcez,",
+    "cidade": "do Sul",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 211,
+    "imagens": [
+      "p211_359.jpeg",
+      "p211_360.jpeg",
+      "p211_361.jpeg",
+      "p211_362.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida ABC",
+    "endereco": "Rua Banda, 37 - Jardim do Mar,",
+    "cidade": "Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 211,
+    "imagens": [
+      "p211_359.jpeg",
+      "p211_360.jpeg",
+      "p211_361.jpeg",
+      "p211_362.jpeg"
+    ]
+  },
+  {
+    "nome": "Banda (Ghelfond)",
+    "endereco": "Rua Banda, 44 - Jardim do Mar,",
+    "cidade": "São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 212,
+    "imagens": [
+      "p212_363.jpeg",
+      "p212_364.jpeg",
+      "p212_365.jpeg",
+      "p212_366.jpeg",
+      "p212_367.jpeg",
+      "p212_368.jpeg",
+      "p212_369.jpeg"
+    ]
+  },
+  {
+    "nome": "Ecoimagem (Ghelfond)",
+    "endereco": "Rua Atlântica, 121 - Jardim do",
+    "cidade": "São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 212,
+    "imagens": [
+      "p212_363.jpeg",
+      "p212_364.jpeg",
+      "p212_365.jpeg",
+      "p212_366.jpeg",
+      "p212_367.jpeg",
+      "p212_368.jpeg",
+      "p212_369.jpeg"
+    ]
+  },
+  {
+    "nome": "Santo André (Ghelfond)",
+    "endereco": "Av. XV de Novembro, 512 -",
+    "cidade": "São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 212,
+    "imagens": [
+      "p212_363.jpeg",
+      "p212_364.jpeg",
+      "p212_365.jpeg",
+      "p212_366.jpeg",
+      "p212_367.jpeg",
+      "p212_368.jpeg",
+      "p212_369.jpeg"
+    ]
+  },
+  {
+    "nome": "Montenegro (Ghelfond)",
+    "endereco": "Rua Benedito Montenegro, 52 -",
+    "cidade": "Bocaina, Mauá",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 212,
+    "imagens": [
+      "p212_363.jpeg",
+      "p212_364.jpeg",
+      "p212_365.jpeg",
+      "p212_366.jpeg",
+      "p212_367.jpeg",
+      "p212_368.jpeg",
+      "p212_369.jpeg"
+    ]
+  },
+  {
+    "nome": "André",
+    "endereco": "Praça Doutor Adhemar de",
+    "cidade": "Centro, São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 212,
+    "imagens": [
+      "p212_363.jpeg",
+      "p212_364.jpeg",
+      "p212_365.jpeg",
+      "p212_366.jpeg",
+      "p212_367.jpeg",
+      "p212_368.jpeg",
+      "p212_369.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Rudge Ramos",
+    "endereco": "Rua Laurindo Ádamo, 40 - Rudge",
+    "cidade": "André",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 212,
+    "imagens": [
+      "p212_363.jpeg",
+      "p212_364.jpeg",
+      "p212_365.jpeg",
+      "p212_366.jpeg",
+      "p212_367.jpeg",
+      "p212_368.jpeg",
+      "p212_369.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Frei Galvão",
+    "endereco": "Rua Dr. Heitor de Moraes, 19/23 -",
+    "cidade": "Ramos, São Bernardo do Campo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 213,
+    "imagens": [
+      "p213_370.jpeg"
+    ]
+  },
+  {
+    "nome": "Santos",
+    "endereco": "Rua Doutor Heitor de Moraes,",
+    "cidade": "Boqueirão, Santos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 214,
+    "imagens": [
+      "p214_371.jpeg",
+      "p214_372.jpeg"
+    ]
+  },
+  {
+    "nome": "São Vicente",
+    "endereco": "Av. Presidente Wilson, 199 - Itararé,",
+    "cidade": "15 - Boqueirão, Santos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 214,
+    "imagens": [
+      "p214_371.jpeg",
+      "p214_372.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Gonzaga",
+    "endereco": "Av. Ana Costa, 163 - Gonzaga,",
+    "cidade": "São Vicente",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 214,
+    "imagens": [
+      "p214_371.jpeg",
+      "p214_372.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Keila Ferreira",
+    "endereco": "Av. Tiradentes, 1015 - Jardim Santa",
+    "cidade": "Santos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 215,
+    "imagens": [
+      "p215_373.jpeg",
+      "p215_374.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Santana",
+    "endereco": "Rua Doutor Osmar Marinho Couto, 71 -",
+    "cidade": "Edwirges, Guarulhos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Hospitais",
+    "pagina": 215,
+    "imagens": [
+      "p215_373.jpeg",
+      "p215_374.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Arujá",
+    "endereco": "Av. João Manoel, S/N - Centro Arujá - SP",
+    "cidade": "Centro, Mogi das Cruzes",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 216,
+    "imagens": [
+      "p216_375.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Mogi das Cruzes",
+    "endereco": "Rua Engenheiro Eugênio Motta,",
+    "cidade": "Av. João Manoel, S/N - Centro Arujá",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 217,
+    "imagens": [
+      "p217_376.jpeg",
+      "p217_377.jpeg",
+      "p217_378.jpeg",
+      "p217_379.jpeg",
+      "p217_380.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Jardim Guarulhos",
+    "endereco": "Rua João Gonçalves, 172 - Centro,",
+    "cidade": "Cruzes",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 217,
+    "imagens": [
+      "p217_376.jpeg",
+      "p217_377.jpeg",
+      "p217_378.jpeg",
+      "p217_379.jpeg",
+      "p217_380.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Guarulhos I",
+    "endereco": "Av. Doutor Timóteo Penteado,",
+    "cidade": "Guarulhos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 217,
+    "imagens": [
+      "p217_376.jpeg",
+      "p217_377.jpeg",
+      "p217_378.jpeg",
+      "p217_379.jpeg",
+      "p217_380.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Guarulhos II",
+    "endereco": "Rua Cabo João Teruel Fregoni,",
+    "cidade": "1168 - Centro, Guarulhos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 217,
+    "imagens": [
+      "p217_376.jpeg",
+      "p217_377.jpeg",
+      "p217_378.jpeg",
+      "p217_379.jpeg",
+      "p217_380.jpeg"
+    ]
+  },
+  {
+    "nome": "Flaviano de Melo",
+    "endereco": "Rua Prof. Flaviano de Melo, 333 -",
+    "cidade": "555 - Pte. Grande, Guarulhos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 217,
+    "imagens": [
+      "p217_376.jpeg",
+      "p217_377.jpeg",
+      "p217_378.jpeg",
+      "p217_379.jpeg",
+      "p217_380.jpeg"
+    ]
+  },
+  {
+    "nome": "Hapvida NotreLabs Arujá",
+    "endereco": "Alameda Nassima Jorge",
+    "cidade": "Centro, Mogi das Cruzes",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 218,
+    "imagens": [
+      "p218_381.jpeg",
+      "p218_382.jpeg",
+      "p218_383.jpeg"
+    ]
+  },
+  {
+    "nome": "Guarulhos (Ghelfond)",
+    "endereco": "Av. Paulo Faccini, 96 -",
+    "cidade": "Centro, Mogi das Cruzes",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 218,
+    "imagens": [
+      "p218_381.jpeg",
+      "p218_382.jpeg",
+      "p218_383.jpeg"
+    ]
+  },
+  {
+    "nome": "Hapvida NotreLabs Mogi",
+    "endereco": "Rua Professor Flaviano de Melo,",
+    "cidade": "Guarulhos, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 218,
+    "imagens": [
+      "p218_381.jpeg",
+      "p218_382.jpeg",
+      "p218_383.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital São José",
+    "endereco": "Av. Heitor Vila Lobos, 2071 – Villa",
+    "cidade": "Guarulhos, São Paulo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 219,
+    "imagens": [
+      "p219_384.jpeg"
+    ]
+  },
+  {
+    "nome": "Pró Infância",
+    "endereco": "Av. Engenheiro Francisco José Longo,",
+    "cidade": "Betânia, São José dos Campos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 220,
+    "imagens": [
+      "p220_385.jpeg",
+      "p220_386.jpeg"
+    ]
+  },
+  {
+    "nome": "Vila Branca",
+    "endereco": "Av. das Letras, 1276 - Villa Branca,",
+    "cidade": "Campos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 220,
+    "imagens": [
+      "p220_385.jpeg",
+      "p220_386.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Centro Médico",
+    "endereco": "Praça Elza Ferreira Rahal, 83 - Vila",
+    "cidade": "Jacareí",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 221,
+    "imagens": [
+      "p221_387.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica São José dos Campos",
+    "endereco": "Av. Engenheiro Francisco José Longo,",
+    "cidade": "Adyana, São José Dos Campos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 221,
+    "imagens": [
+      "p221_387.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Acácias",
+    "endereco": "Rua Taubaté, 101 - Vila Nair -",
+    "cidade": "Campos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 222,
+    "imagens": [
+      "p222_388.jpeg",
+      "p222_389.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital São Lucas",
+    "endereco": "Av. Brasil, 263 - Vila Medon,",
+    "cidade": "Campos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 223,
+    "imagens": [
+      "p223_390.jpeg"
+    ]
+  },
+  {
+    "nome": "Espaço Saúde - Americana",
+    "endereco": "Rua Fortunato Basseto, 157 - Vila",
+    "cidade": "Campos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 224,
+    "imagens": [
+      "p224_391.jpeg"
+    ]
+  },
+  {
+    "nome": "Hapvida NotreLabs Americana",
+    "endereco": "Rua Domingos Nardini, 65 - Vila Medon,",
+    "cidade": "Medon, Americana",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 225,
+    "imagens": [
+      "p225_392.jpeg"
+    ]
+  },
+  {
+    "nome": "Brasiliense",
+    "endereco": "Rua  Maria Mendes, 69 - Vila Cerqueira,",
+    "cidade": "Americana",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 226,
+    "imagens": [
+      "p226_393.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Araraquara",
+    "endereco": "Av. José Bonifácio, 569 - Centro,",
+    "cidade": "Américo Brasiliense",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 227,
+    "imagens": [
+      "p227_394.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade de Araraquara",
+    "endereco": "Rua Nove de Julho, nº 5 –",
+    "cidade": "Araraquara",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 228,
+    "imagens": [
+      "p228_395.jpeg",
+      "p228_396.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Jardim Primavera",
+    "endereco": "Av. Joaquim Alves, 56 - Jardim",
+    "cidade": "Araraquara",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 228,
+    "imagens": [
+      "p228_395.jpeg",
+      "p228_396.jpeg"
+    ]
+  },
+  {
+    "nome": "Hemac Ararquara",
+    "endereco": "Av. Djalma Dutra, 255 - Vila Furlan,",
+    "cidade": "Primavera, Araraquara",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 229,
+    "imagens": [
+      "p229_397.jpeg"
+    ]
+  },
+  {
+    "nome": "Assis",
+    "endereco": "Rua Nagila Jubran, 40 - Jardim Europa,",
+    "cidade": "Araraquara",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 230,
+    "imagens": [
+      "p230_398.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Barra Bonita",
+    "endereco": "Rua Manoel de Almeida Camargo, 135",
+    "cidade": "Assis",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 231,
+    "imagens": [
+      "p231_399.jpeg"
+    ]
+  },
+  {
+    "nome": "Barretos",
+    "endereco": "Av. Eng. Necker Carvalho de Camargo,",
+    "cidade": "– Vila Operaria, Barra Bonita",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 232,
+    "imagens": [
+      "p232_400.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Bauru",
+    "endereco": "Rua Gustavo Maciel, 1585 - Centro,",
+    "cidade": "1701 - América, Barretos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 233,
+    "imagens": [
+      "p233_401.jpeg"
+    ]
+  },
+  {
+    "nome": "de Abreu",
+    "endereco": "Praça Rodrigues de Abreu, 338 -",
+    "cidade": "Bauru",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 234,
+    "imagens": [
+      "p234_402.jpeg"
+    ]
+  },
+  {
+    "nome": "Documenta Bauru",
+    "endereco": "Rua Antônio Alves, 17-26 - Centro,",
+    "cidade": "Centro, Bauru",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 235,
+    "imagens": [
+      "p235_403.jpeg"
+    ]
+  },
+  {
+    "nome": "Hemac Cajuru",
+    "endereco": "Rua Major Palma, 410 - Centro,",
+    "cidade": "Bauru",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 236,
+    "imagens": [
+      "p236_404.jpeg"
+    ]
+  },
+  {
+    "nome": "de Campinas",
+    "endereco": "Av. Barão de Itapura, 1444 - Jardim",
+    "cidade": "Cajuru",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 237,
+    "imagens": [
+      "p237_405.jpeg"
+    ]
+  },
+  {
+    "nome": "Neves I",
+    "endereco": "Rua Mal. Deodoro, 134 - Centro,",
+    "cidade": "Guanabara, Campinas",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 238,
+    "imagens": [
+      "p238_406.jpeg",
+      "p238_407.jpeg",
+      "p238_408.jpeg",
+      "p238_409.jpeg",
+      "p238_410.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica e Diagnóstico Campinas",
+    "endereco": "Av. João Jorge, 370 - Vila Industrial,",
+    "cidade": "Campinas",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 238,
+    "imagens": [
+      "p238_406.jpeg",
+      "p238_407.jpeg",
+      "p238_408.jpeg",
+      "p238_409.jpeg",
+      "p238_410.jpeg"
+    ]
+  },
+  {
+    "nome": "Neves II",
+    "endereco": "Av. Andrade Neves, 1300 -",
+    "cidade": "Campinas",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 238,
+    "imagens": [
+      "p238_406.jpeg",
+      "p238_407.jpeg",
+      "p238_408.jpeg",
+      "p238_409.jpeg",
+      "p238_410.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Itapura",
+    "endereco": "Av. Barão de Itapura, 2642 -",
+    "cidade": "Centro, Campinas",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 238,
+    "imagens": [
+      "p238_406.jpeg",
+      "p238_407.jpeg",
+      "p238_408.jpeg",
+      "p238_409.jpeg",
+      "p238_410.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida Campinas",
+    "endereco": "Av. Barão de Itapura, 1356 - Vila",
+    "cidade": "Jardim Guanabara, Campinas",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 238,
+    "imagens": [
+      "p238_406.jpeg",
+      "p238_407.jpeg",
+      "p238_408.jpeg",
+      "p238_409.jpeg",
+      "p238_410.jpeg"
+    ]
+  },
+  {
+    "nome": "Hapvida NotreLabs Campinas",
+    "endereco": "Av. Prefeito Passos, nº 295 - Jd.",
+    "cidade": "Itapura, Campinas",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 239,
+    "imagens": [
+      "p239_411.jpeg"
+    ]
+  },
+  {
+    "nome": "Capivari",
+    "endereco": "Rua XV de Novembro, 1258 - Centro,",
+    "cidade": "Guanabara - Campinas",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 240,
+    "imagens": [
+      "p240_412.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Vila Santa",
+    "endereco": "Av. Brigadeiro Faria Lima, 40 -",
+    "cidade": "Capivari",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 241,
+    "imagens": [
+      "p241_413.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Descalvado",
+    "endereco": "Av. Guerino Osvaldo, 791 -",
+    "cidade": "Bela Vista, Capivari",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 242,
+    "imagens": []
+  },
+  {
+    "nome": "Unidade de Franca",
+    "endereco": "Rua Doutor Marrey Junior,",
+    "cidade": "Centro, Descalvado",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 244,
+    "imagens": [
+      "p244_415.jpeg",
+      "p244_416.jpeg"
+    ]
+  },
+  {
+    "nome": "Conceição da Franca",
+    "endereco": "Av. Dr. Ysmael Alonso Y Alonso,",
+    "cidade": "s/n - São José, Franca",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 244,
+    "imagens": [
+      "p244_415.jpeg",
+      "p244_416.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Guaíra",
+    "endereco": "Rua 10, 137 - Centro, Guaíra - SP",
+    "cidade": "2001 - Centro, Franca",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 245,
+    "imagens": [
+      "p245_417.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Itu",
+    "endereco": "Av. Doutor Otaviano Pereira",
+    "cidade": "Rua 10, 137 - Centro, Guaíra",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 246,
+    "imagens": [
+      "p246_418.jpeg"
+    ]
+  },
+  {
+    "nome": "Jaboticabal",
+    "endereco": "Rua Dr. Mário de Campos, 921- Jardim São",
+    "cidade": "Mendes, 819 - Liberdade, Itu",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 247,
+    "imagens": [
+      "p247_419.jpeg"
+    ]
+  },
+  {
+    "nome": "Laboratório São Francisco",
+    "endereco": "Rua Mário de Campos, 872 - Jardim",
+    "cidade": "Marcos, Jaboticabal",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 248,
+    "imagens": [
+      "p248_420.jpeg"
+    ]
+  },
+  {
+    "nome": "Sacramento",
+    "endereco": "Rua Quinze de Novembro, 865 - Centro,",
+    "cidade": "São Marcos, Jaboticabal",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 249,
+    "imagens": [
+      "p249_421.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida",
+    "endereco": "Rua São Bento, 41 - Centro,",
+    "cidade": "Jundiaí",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 250,
+    "imagens": [
+      "p250_422.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Leme",
+    "endereco": "Av. Dr. Jambeiro Costa, 850 - Jardim Amália,",
+    "cidade": "Jundiaí",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 251,
+    "imagens": [
+      "p251_423.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Medical",
+    "endereco": "Av. Ana Carolina de Barros",
+    "cidade": "Leme",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 252,
+    "imagens": [
+      "p252_424.jpeg"
+    ]
+  },
+  {
+    "nome": "Clinica de Especialidades",
+    "endereco": "Rua São Benedito, 234 - Vila",
+    "cidade": "Levy, 124 - Centro, Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 253,
+    "imagens": [
+      "p253_425.jpeg",
+      "p253_426.jpeg",
+      "p253_427.jpeg",
+      "p253_428.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Trajano de Barros",
+    "endereco": "Rua Dr. Trajano de Barros",
+    "cidade": "Fascina, Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 253,
+    "imagens": [
+      "p253_425.jpeg",
+      "p253_426.jpeg",
+      "p253_427.jpeg",
+      "p253_428.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Médica",
+    "endereco": "Rua São Benedito, 47 - Vila",
+    "cidade": "Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 253,
+    "imagens": [
+      "p253_425.jpeg",
+      "p253_426.jpeg",
+      "p253_427.jpeg",
+      "p253_428.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Oncologica",
+    "endereco": "Rua Dr Trajano de B Camargo,",
+    "cidade": "Fascina, Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 253,
+    "imagens": [
+      "p253_425.jpeg",
+      "p253_426.jpeg",
+      "p253_427.jpeg",
+      "p253_428.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Vila São João",
+    "endereco": "Av. Piracicaba, 91 - Vila São João,",
+    "cidade": "1445 - Centro, Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 254,
+    "imagens": [
+      "p254_429.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Lins",
+    "endereco": "Av. Nicolau Zarvos, 1640 - Jardim",
+    "cidade": "Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 255,
+    "imagens": [
+      "p255_430.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Lins",
+    "endereco": "Rua Pedro de Toledo, 265",
+    "cidade": "Aeroporto, Lins",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 256,
+    "imagens": [
+      "p256_431.jpeg"
+    ]
+  },
+  {
+    "nome": "Marília",
+    "endereco": "Av. Castro Alves, 1701 e 1717 - Somenzari,",
+    "cidade": "Aeroporto, Lins",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 257,
+    "imagens": [
+      "p257_432.jpeg"
+    ]
+  },
+  {
+    "nome": "Mirassol",
+    "endereco": "Av. Eliezer Magalhaes, 2507 - Lot.",
+    "cidade": "Marília",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 258,
+    "imagens": [
+      "p258_433.jpeg"
+    ]
+  },
+  {
+    "nome": "Piracicaba",
+    "endereco": "Av. Independência, 2475 - Alemães, Piracicaba - SP",
+    "cidade": "Jardim Marilu, Mirassol",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 259,
+    "imagens": [
+      "p259_434.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Campos Sales",
+    "endereco": "Travessa Pedro Ometto, 77 -",
+    "cidade": "Av. Independência, 2475 - Alemães, Piracicaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 260,
+    "imagens": [
+      "p260_435.jpeg",
+      "p260_436.jpeg",
+      "p260_437.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Florença Paulista",
+    "endereco": "Av. Carlos Botelho, 590 - São",
+    "cidade": "Europa, Piracicaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 260,
+    "imagens": [
+      "p260_435.jpeg",
+      "p260_436.jpeg",
+      "p260_437.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Dia",
+    "endereco": "Av. Independência, 2475 -",
+    "cidade": "Dimas, Piracicaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 260,
+    "imagens": [
+      "p260_435.jpeg",
+      "p260_436.jpeg",
+      "p260_437.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Frei Evaristo",
+    "endereco": "Rua Frei Evaristo de Santa",
+    "cidade": "Alemães, Piracicaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 261,
+    "imagens": [
+      "p261_438.jpeg",
+      "p261_439.jpeg"
+    ]
+  },
+  {
+    "nome": "Cecília",
+    "endereco": "Rua Madre Cecília, 1867 -",
+    "cidade": "Piracicaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 261,
+    "imagens": [
+      "p261_438.jpeg",
+      "p261_439.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Porto Ferreira",
+    "endereco": "Rua Bento José de Carvalho, 315 - Centro,",
+    "cidade": "R. Iguaçu, 358 - Jardim Brasília, Pitangueiras",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 263,
+    "imagens": [
+      "p263_441.jpeg"
+    ]
+  },
+  {
+    "nome": "Materno Infantil",
+    "endereco": "Rua Dom Alberto Gonçalves, 1500 -",
+    "cidade": "Centro, Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 264,
+    "imagens": [
+      "p264_442.jpeg",
+      "p264_443.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Mais Saúde",
+    "endereco": "Av. Leão XIII, 1600 - Ribeirania, Ribeirão",
+    "cidade": "Campos Elísios, Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 265,
+    "imagens": [
+      "p265_444.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Garibaldi",
+    "endereco": "Rua Garibaldi, 1148 – Centro,",
+    "cidade": "Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 266,
+    "imagens": [
+      "p266_445.jpeg"
+    ]
+  },
+  {
+    "nome": "CAON",
+    "endereco": "Rua Garibaldi, 1280 - Centro,",
+    "cidade": "Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 266,
+    "imagens": [
+      "p266_445.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade de Fisioterapia (HSF)",
+    "endereco": "Av. Sen. César Vergueiro, 279 - Jardim",
+    "cidade": "Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 266,
+    "imagens": [
+      "p266_445.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Ribeirão Preto",
+    "endereco": "Av. Nove de Julho, 2210 - Centro,",
+    "cidade": "Sao Luiz, Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 266,
+    "imagens": [
+      "p266_445.jpeg"
+    ]
+  },
+  {
+    "nome": "Vista",
+    "endereco": "Rua Marechal Deodoro, 1591,",
+    "cidade": "Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 267,
+    "imagens": [
+      "p267_446.jpeg",
+      "p267_447.jpeg"
+    ]
+  },
+  {
+    "nome": "Hemac - Altino Arantes",
+    "endereco": "Rua Altino Arantes, 656 - Jardim",
+    "cidade": "Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 267,
+    "imagens": [
+      "p267_446.jpeg",
+      "p267_447.jpeg"
+    ]
+  },
+  {
+    "nome": "Hemac",
+    "endereco": "Av. Independência, 1344 - Jardim",
+    "cidade": "Sumaré, Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 267,
+    "imagens": [
+      "p267_446.jpeg",
+      "p267_447.jpeg"
+    ]
+  },
+  {
+    "nome": "Hapvida NotreLabs Cidade Nova",
+    "endereco": "Rua Maceio, 242 - Cidade Nova, Santa",
+    "cidade": "Sumare, Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 268,
+    "imagens": [
+      "p268_448.jpeg"
+    ]
+  },
+  {
+    "nome": "Santa Rosa do Viterbo",
+    "endereco": "Rua Dr. Mário Carneiro da Cunha, 949 -",
+    "cidade": "Bárbara d´Oeste",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 269,
+    "imagens": [
+      "p269_449.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade São Carlos",
+    "endereco": "Rua Nove de Julho, 2075, Centro, São",
+    "cidade": "Centro, Santa Rosa de Viterbo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 270,
+    "imagens": [
+      "p270_450.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Rio Preto",
+    "endereco": "Av. Anísio Haddad, 7195 - Jardim",
+    "cidade": "Carlos",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 271,
+    "imagens": [
+      "p271_451.jpeg"
+    ]
+  },
+  {
+    "nome": "Saúde",
+    "endereco": "Rua Jaci, 3216 - Redentora, São",
+    "cidade": "Vivendas, São José do Rio Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 272,
+    "imagens": [
+      "p272_452.jpeg",
+      "p272_453.jpeg",
+      "p272_454.jpeg"
+    ]
+  },
+  {
+    "nome": "Vista",
+    "endereco": "Av. Campos Sales, 1457 - Boa",
+    "cidade": "José do Rio Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 272,
+    "imagens": [
+      "p272_452.jpeg",
+      "p272_453.jpeg",
+      "p272_454.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro de Diagnóstico",
+    "endereco": "Rua Fritz Jacobs, 3340 - São José",
+    "cidade": "Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 273,
+    "imagens": [
+      "p273_455.jpeg"
+    ]
+  },
+  {
+    "nome": "Campello",
+    "endereco": "Rua Elpídio Gomes, 785 - Centro,",
+    "cidade": "do Rio Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 274,
+    "imagens": [
+      "p274_456.jpeg"
+    ]
+  },
+  {
+    "nome": "Branco",
+    "endereco": "Rua Barão do Rio Branco,",
+    "cidade": "Sertãozinho",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 275,
+    "imagens": [
+      "p275_457.jpeg"
+    ]
+  },
+  {
+    "nome": "Hemac Sertãozinho",
+    "endereco": "Rua Voluntário Otto Gomes Martins,",
+    "cidade": "Sertãozinho",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 276,
+    "imagens": [
+      "p276_458.jpeg"
+    ]
+  },
+  {
+    "nome": "Sorocaba",
+    "endereco": "Rua Rodrigues Pacheco, 145 -",
+    "cidade": "1671, Centro - Sertãozinho",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 277,
+    "imagens": [
+      "p277_459.jpeg",
+      "p277_460.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Modelo",
+    "endereco": "Rua Afonso Pedrazzi, 180 - Vila",
+    "cidade": "Centro, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 277,
+    "imagens": [
+      "p277_459.jpeg",
+      "p277_460.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Trujillo I",
+    "endereco": "Av. Doutor Armando Sales",
+    "cidade": "Trujillo, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Modelo",
+    "endereco": "Rua Mauro Marques da Silva,",
+    "cidade": "Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Trujillo II",
+    "endereco": "Av. Doutor Armando Sales",
+    "cidade": "Trujillo, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Sorocaba",
+    "endereco": "Rua Miranda Azevedo, 58 -",
+    "cidade": "Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Itavuvu",
+    "endereco": "Av. Itavuvu, 155 - Vila Olimpia,",
+    "cidade": "Centro, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Pacheco",
+    "endereco": "Rua Rodrigues Pacheco, 204 -",
+    "cidade": "Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Qualivida Sorocaba",
+    "endereco": "Rua Domingos Fernandes, 198 -",
+    "cidade": "Vila Amélia, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Notrelife 50+ Sorocaba",
+    "endereco": "Rua Quinze de Novembro, 464 -",
+    "cidade": "Vila Trujillo, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 278,
+    "imagens": [
+      "p278_461.jpeg",
+      "p278_462.jpeg",
+      "p278_463.jpeg",
+      "p278_464.jpeg",
+      "p278_465.jpeg",
+      "p278_466.jpeg",
+      "p278_467.jpeg",
+      "p278_468.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Santa Clara",
+    "endereco": "Rua Santa Clara, 162 - Centro,",
+    "cidade": "Centro, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 279,
+    "imagens": [
+      "p279_469.jpeg",
+      "p279_470.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica dos Voluntários",
+    "endereco": "Rua Santa Clara, 289 - Centro,",
+    "cidade": "Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 279,
+    "imagens": [
+      "p279_469.jpeg",
+      "p279_470.jpeg"
+    ]
+  },
+  {
+    "nome": "Ipanema",
+    "endereco": "Av. Ipanema, 532 - Vila Nova",
+    "cidade": "Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 280,
+    "imagens": [
+      "p280_471.jpeg",
+      "p280_472.jpeg",
+      "p280_473.jpeg"
+    ]
+  },
+  {
+    "nome": "Ipanema",
+    "endereco": "Av. Ipanema, 532 - Vila Nova",
+    "cidade": "Sorocaba, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 280,
+    "imagens": [
+      "p280_471.jpeg",
+      "p280_472.jpeg",
+      "p280_473.jpeg"
+    ]
+  },
+  {
+    "nome": "Diagnóstico Sorocaba",
+    "endereco": "Rua Claudio Manoel da Costa, 158 -",
+    "cidade": "Sorocaba, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 280,
+    "imagens": [
+      "p280_471.jpeg",
+      "p280_472.jpeg",
+      "p280_473.jpeg"
+    ]
+  },
+  {
+    "nome": "Sumaré",
+    "endereco": "Rua João Francisco Ramos, 522",
+    "cidade": "Jardim Vergueiro, Sorocaba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 281,
+    "imagens": [
+      "p281_474.jpeg"
+    ]
+  },
+  {
+    "nome": "Sumaré",
+    "endereco": "Rua Maximo Biondo, 310 -",
+    "cidade": "- Centro, Sumaré",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 282,
+    "imagens": [
+      "p282_475.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Viradouro",
+    "endereco": "Rua do Hospital, 53 - Centro, Viradouro",
+    "cidade": "Centro, Sumaré",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 283,
+    "imagens": [
+      "p283_476.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Descalvado",
+    "endereco": "Rua Conselheiro Antônio Prado, 159 -",
+    "cidade": "Centro, Sumaré",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 284,
+    "imagens": [
+      "p284_477.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Guariba",
+    "endereco": "Rua Rui Barbosa, 958 - Centro,",
+    "cidade": "Centro, Descalvado",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 285,
+    "imagens": [
+      "p285_478.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Ibaté",
+    "endereco": "Av. São João, 785 - Centro,",
+    "cidade": "Guariba",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 286,
+    "imagens": [
+      "p286_479.jpeg"
+    ]
+  },
+  {
+    "nome": "Pozzi",
+    "endereco": "Rua Siqueira Campos , 3993 - Jardim",
+    "cidade": "Centro, Pirassununga",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 287,
+    "imagens": [
+      "p287_480.jpeg",
+      "p287_481.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Oncologia",
+    "endereco": "Rua Joaquim Procópio de Araújo -",
+    "cidade": "Santa Rita, Pirassununga",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 287,
+    "imagens": [
+      "p287_480.jpeg",
+      "p287_481.jpeg"
+    ]
+  },
+  {
+    "nome": "Iracemápolis",
+    "endereco": "Rua Duque de Caxias, 222 -",
+    "cidade": "Centro, Pirassununga",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 288,
+    "imagens": [
+      "p288_482.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Jaú",
+    "endereco": "Rua Rangel Pestana, 917 - Vila",
+    "cidade": "Centro, Iracemápolis",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 289,
+    "imagens": [
+      "p289_483.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Luís Antônio (SFSS)",
+    "endereco": "Rua Américo de Araújo Píres, 182 -",
+    "cidade": "Nova, Jaú",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 290,
+    "imagens": [
+      "p290_484.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Morro Agudo",
+    "endereco": "Rua Sebastião Antonio Muniz, 133 -",
+    "cidade": "Centro, Luís Antônio",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 291,
+    "imagens": [
+      "p291_485.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Novo Horizonte",
+    "endereco": "Rua Vinte e Oito de Outubro,",
+    "cidade": "Centro, Morro Agudo",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 292,
+    "imagens": [
+      "p292_486.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Nuporanga",
+    "endereco": "Rua Espírito Santo, 499 -",
+    "cidade": "586-662, Novo Horizonte",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Clínicas",
+    "pagina": 293,
+    "imagens": []
+  },
+  {
+    "nome": "Unidade Orlândia",
+    "endereco": "Rua Dezoito, 565 - Jardim Teixeira,",
+    "cidade": "Centro, Nuporanga",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 294,
+    "imagens": [
+      "p294_487.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Pradópolis",
+    "endereco": "Rua Cel. Junqueira, 1095 -",
+    "cidade": "Orlândia",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 295,
+    "imagens": [
+      "p295_488.jpeg"
+    ]
+  },
+  {
+    "nome": "Palmeiras",
+    "endereco": "Rua Dr. Alcebíades, 136 - Centro,",
+    "cidade": "Centro, Pradópolis",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 296,
+    "imagens": [
+      "p296_489.jpeg"
+    ]
+  },
+  {
+    "nome": "Quatro",
+    "endereco": "Rua Inácio Ribeiro, 423 - Centro, Santa",
+    "cidade": "Santa Cruz das Palmeiras",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 297,
+    "imagens": [
+      "p297_490.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Serrana",
+    "endereco": "Rua Particular, 2 - Centro,",
+    "cidade": "Rita do Passa Quatro",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 298,
+    "imagens": [
+      "p298_491.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Tambaú",
+    "endereco": "Rua Washington Luiz,  1738 -",
+    "cidade": "Serrana",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 299,
+    "imagens": [
+      "p299_492.jpeg"
+    ]
+  },
+  {
+    "nome": "Unidade Vargem Grande do Sul",
+    "endereco": "Praça Nossa Sra. Aparecida, 61 - Jardim",
+    "cidade": "Centro, Tambaú",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "tipo": "Pronto Atendimento",
+    "pagina": 300,
+    "imagens": [
+      "p300_493.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Araucária",
+    "endereco": "Av. Doutor Vítor do Amaral, 665 -",
+    "cidade": "Paraíso, Vargem Grande do Sul",
+    "estado": "SP",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 303,
+    "imagens": [
+      "p303_495.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Mateus Leme",
+    "endereco": "Rua Mateus Leme, 2600 - São",
+    "cidade": "Araucária",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 304,
+    "imagens": [
+      "p304_496.jpeg",
+      "p304_497.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Onix Batel",
+    "endereco": "Av. Vicente Machado, 2321 - Seminário,",
+    "cidade": "Francisco, Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 304,
+    "imagens": [
+      "p304_496.jpeg",
+      "p304_497.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Santa Brígida",
+    "endereco": "Rua Guilherme Pugsley, 1705 - Água",
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Hospitais",
+    "pagina": 305,
+    "imagens": [
+      "p305_498.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Mercês",
+    "endereco": "Av. Manoel Ribas, 552 - Mercês,",
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 306,
+    "imagens": [
+      "p306_499.jpeg",
+      "p306_500.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Pinheiro",
+    "endereco": "Av. Winston Churchill, 1654 -",
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 306,
+    "imagens": [
+      "p306_499.jpeg",
+      "p306_500.jpeg"
+    ]
+  },
+  {
+    "nome": "Boqueirão",
+    "endereco": "Av. Marechal Floriano Peixoto, 7477 -",
+    "cidade": "Pinheirinho, Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 307,
+    "imagens": [
+      "p307_501.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Água Verde",
+    "endereco": "Av. Pres. Getúlio Vargas, 2499 -",
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Pinhais",
+    "endereco": "Av. Maringá, 166 - Centro,",
+    "cidade": "Água Verde, Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica República Argentina",
+    "endereco": "Av. República Argentina, 4357 -",
+    "cidade": "Pinhais",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Colombo",
+    "endereco": "Rua Roberto Lambach Falavinha,",
+    "cidade": "Novo Mundo, Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Barão do Serro Azul",
+    "endereco": "Rua Barão do Serro Azul, 449 -",
+    "cidade": "294 - Maracanã, Colombo",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Centro",
+    "endereco": "Rua Monsenhor Celso, 98 -",
+    "cidade": "São Francisco, Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica São Lourenço",
+    "endereco": "Rua Coronel Brasilino Moura, 80 -",
+    "cidade": "Centro, Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "Cabral",
+    "endereco": "Av. Paraná, 1673 - Boa Vista,",
+    "cidade": "São Lourenço, Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Prontos Atendimentos",
+    "pagina": 308,
+    "imagens": [
+      "p308_502.jpeg",
+      "p308_503.jpeg",
+      "p308_504.jpeg",
+      "p308_505.jpeg",
+      "p308_506.jpeg",
+      "p308_507.jpeg"
+    ]
+  },
+  {
+    "nome": "NotreLabs CMD",
+    "endereco": "Av. Nossa Senhora da Luz, 2169 -",
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 309,
+    "imagens": [
+      "p309_508.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Bela Suíça",
+    "endereco": "Rua Adhemar Pereira de Barros, 1199 -",
+    "cidade": "Londrina",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 310,
+    "imagens": [
+      "p310_509.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Paes Leme",
+    "endereco": "Rua Paes Leme, 1351 - Jardim",
+    "cidade": "Bela Suíça, Londrina",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 311,
+    "imagens": [
+      "p311_510.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica São José dos Pinhais",
+    "endereco": "Av. Rocha Pombo, 1663 - São Cristóvão,",
+    "cidade": "Londrina",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 312,
+    "imagens": [
+      "p312_511.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Canoas",
+    "endereco": "Av. Boqueirão, 33 - Igara,",
+    "cidade": "São José dos Pinhais",
+    "estado": "PR",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 314,
+    "imagens": [
+      "p314_512.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Cachoeirinha",
+    "endereco": "Av. Lídio Batista Soares, 57 -",
+    "cidade": "Canoas",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 315,
+    "imagens": [
+      "p315_513.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Guaíba",
+    "endereco": "Av. 20 de Setembro, 370 -",
+    "cidade": "Cachoeirinha",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 316,
+    "imagens": [
+      "p316_514.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Gravataí",
+    "endereco": "Av. José Loureiro da Silva, 1843",
+    "cidade": "Guaíba",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 317,
+    "imagens": [
+      "p317_515.jpeg"
+    ]
+  },
+  {
+    "nome": "Hamburgo",
+    "endereco": "Rua David Canabarro, 30 - Centro,",
+    "cidade": "Novo Hamburgo",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 318,
+    "imagens": [
+      "p318_516.jpeg"
+    ]
+  },
+  {
+    "nome": "Hospital Humaniza",
+    "endereco": "Rua Ramiro Barcelos, 621 -",
+    "cidade": "Porto Alegre",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 319,
+    "imagens": [
+      "p319_517.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Mais",
+    "endereco": "Av. Alberto Bins, 509 -",
+    "cidade": "Independência, Porto Alegre",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 320,
+    "imagens": [
+      "p320_518.jpeg",
+      "p320_519.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Wallig",
+    "endereco": "Av. Assis Brasil, 2611, 4º andar, Loja 427 -",
+    "cidade": "Centro, Porto Alegre",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 320,
+    "imagens": [
+      "p320_518.jpeg",
+      "p320_519.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica São Leopoldo",
+    "endereco": "Av. João Alberto, 313 - Centro, São",
+    "cidade": "São Leopoldo",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 321,
+    "imagens": [
+      "p321_520.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Viamão",
+    "endereco": "Rua Américo Vespúcio Cabral, 96 -",
+    "cidade": "Leopoldo",
+    "estado": "RS",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 322,
+    "imagens": [
+      "p322_521.jpeg"
+    ]
+  },
+  {
+    "nome": "Balneário Camburiú",
+    "endereco": "Rua Arthur Max Doose, 180 - Pioneiros",
+    "cidade": "Balneário Camburiú",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 324,
+    "imagens": [
+      "p324_522.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Blumenau",
+    "endereco": "Rua Doutor Luiz de Freitas Melro,",
+    "cidade": "Balneário, Camboriú",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 325,
+    "imagens": [
+      "p325_523.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Indaial",
+    "endereco": "Rua Marechal Deodoro da",
+    "cidade": "Blumenau",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 326,
+    "imagens": [
+      "p326_524.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Itajaí",
+    "endereco": "Rua Samuel Heusi, 190 – Centro,",
+    "cidade": "Indaial",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 327,
+    "imagens": [
+      "p327_525.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Jaraguá do Sul",
+    "endereco": "Rua Barão do Rio Branco, 505 -",
+    "cidade": "Itajaí",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 328,
+    "imagens": [
+      "p328_526.jpeg",
+      "p328_527.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Jaraguá (Barra)",
+    "endereco": "Rua Bertha Weege, 484, Sala 4 e",
+    "cidade": "Centro, Jaraguá do Sul",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Pronto Atendimento",
+    "pagina": 328,
+    "imagens": [
+      "p328_526.jpeg",
+      "p328_527.jpeg"
+    ]
+  },
+  {
+    "nome": "Joinville",
+    "endereco": "Rua Itaiópolis, 128 - América,",
+    "cidade": "Joinville",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 329,
+    "imagens": [
+      "p329_528.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica América",
+    "endereco": "Rua Doutor João Colin, 1440 -",
+    "cidade": "Joinville",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 330,
+    "imagens": [
+      "p330_529.jpeg",
+      "p330_530.jpeg",
+      "p330_531.jpeg",
+      "p330_532.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Bucarein",
+    "endereco": "Rua Coronel Procópio Gomes,",
+    "cidade": "América, Joinville",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 330,
+    "imagens": [
+      "p330_529.jpeg",
+      "p330_530.jpeg",
+      "p330_531.jpeg",
+      "p330_532.jpeg"
+    ]
+  },
+  {
+    "nome": "Clínica Zona Leste Joinville",
+    "endereco": "Rua Prefeito Helmuth Fallgatter,",
+    "cidade": "1056 - Bucarein, Joinville",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 330,
+    "imagens": [
+      "p330_529.jpeg",
+      "p330_530.jpeg",
+      "p330_531.jpeg",
+      "p330_532.jpeg"
+    ]
+  },
+  {
+    "nome": "Centro Clínico Joinville",
+    "endereco": "Rua Blumenau, 1215 - América,",
+    "cidade": "3365 - Boa Vista, Joinville",
+    "estado": "SC",
+    "regiao": "Sul",
+    "tipo": "Clínicas",
+    "pagina": 330,
+    "imagens": [
+      "p330_529.jpeg",
+      "p330_530.jpeg",
+      "p330_531.jpeg",
+      "p330_532.jpeg"
+    ]
+  }
+]
