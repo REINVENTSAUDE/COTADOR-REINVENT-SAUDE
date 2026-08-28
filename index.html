@@ -203,14 +203,6 @@
     </div>
   </div>
 
-  <div class="modal-overlay" id="rpModal" onclick="if(event.target===this)fecharModalRede()">
-    <div class="rp-modal-box" style="position:relative">
-      <button class="rp-modal-close" onclick="fecharModalRede()">&times;</button>
-      <div class="rp-modal-imgs" id="rpModalImgs"></div>
-      <div class="rp-modal-info" id="rpModalInfo"></div>
-    </div>
-  </div>
-
   <div class="modal-overlay" id="modalInfo" onclick="clicouForaModal(event)">
     <div class="modal" role="dialog" aria-modal="true">
       <div class="modal-header">
@@ -443,7 +435,7 @@
       lista.forEach(function(u, i) {
         var img = u.imagens && u.imagens.length > 0 ? 'imgs_rede/' + u.imagens[0] : '';
         var tipoClass = u.tipo.indexOf('Hosp') !== -1 ? 'rp-tipo-hospital' : u.tipo.indexOf('Cl') !== -1 ? 'rp-tipo-clinica' : u.tipo.indexOf('Atend') !== -1 ? 'rp-tipo-pa' : 'rp-tipo-diag';
-        h += '<div class="rp-card" onclick="abrirModalRede(' + i + ')">';
+        h += '<div class="rp-card">';
         if (img) h += '<img class="rp-card-img" src="' + img + '" alt="' + u.nome + '" onerror="this.style.display=\'none\'">';
         else h += '<div class="rp-card-img" style="display:flex;align-items:center;justify-content:center;color:#999;font-size:14px">Sem foto</div>';
         h += '<div class="rp-card-body">';
@@ -456,26 +448,9 @@
       grid.innerHTML = h;
     }
 
-    function abrirModalRede(idx) {
-      var u = window.REDE_DATA[idx];
-      var imgsDiv = document.getElementById('rpModalImgs');
-      if (u.imagens && u.imagens.length > 0) {
-        imgsDiv.innerHTML = u.imagens.map(function(img) { return '<img src="imgs_rede/' + img + '" alt="' + u.nome + '">'; }).join('');
-        imgsDiv.style.display = 'flex';
-      } else { imgsDiv.style.display = 'none'; }
-      var tipoClass = u.tipo.indexOf('Hosp') !== -1 ? 'rp-tipo-hospital' : u.tipo.indexOf('Cl') !== -1 ? 'rp-tipo-clinica' : u.tipo.indexOf('Atend') !== -1 ? 'rp-tipo-pa' : 'rp-tipo-diag';
-      var info = document.getElementById('rpModalInfo');
-      info.innerHTML = '<span class="rp-tipo-badge ' + tipoClass + '">' + u.tipo + '</span>' +
-        '<h2>' + u.nome + '</h2>' +
-        '<div class="rp-endereco">' + u.endereco + '</div>' +
-        '<div class="rp-cidade-uf">' + u.cidade + ' - ' + u.estado + '</div>' +
-        '<div class="rp-regiao">Região: ' + u.regiao + '</div>';
-      document.getElementById('rpModal').classList.add('vis');
+    function fecharPreviewImg() {
+      document.getElementById('modalPreviewImg').classList.remove('vis');
     }
-
-    function fecharModalRede() { document.getElementById('rpModal').classList.remove('vis'); }
-
-    function baixarPreview() {
       var btn = document.getElementById('btnBaixarPreview');
       var dataUrl = btn.getAttribute('data-dataurl');
       var fileName = btn.getAttribute('data-filename');
@@ -492,7 +467,7 @@
       document.getElementById('modalPreviewImg').classList.remove('vis');
     }
 
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { fecharModalRede(); fecharPreviewImg(); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') fecharPreviewImg(); });
   </script>
 </body>
 </html>
