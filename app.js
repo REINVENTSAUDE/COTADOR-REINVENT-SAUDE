@@ -1866,18 +1866,43 @@ function getCoparticipacaoHTML(cidade){
    ======================= */
 async function compartilharInfo(tipo){
   fecharModalInfo();
+  let areaId, fileName;
+
   if (tipo === "coparticipacoes") {
     const area = document.getElementById("areaCopart");
     if (!area) return;
     area.innerHTML = getCoparticipacaoHTML(cidadeAtiva);
-    await new Promise(r => requestAnimationFrame(() => r()));
-    await gerarImagemDeElemento("areaCopart", `coparticipacoes_${cidadeAtiva}.png`);
-    return;
-  }
-  if (tipo === "carencias") {
+    areaId = "areaCopart";
+    fileName = `coparticipacoes_${cidadeAtiva}.png`;
+  } else if (tipo === "carencias") {
     const d = document.getElementById("dataCarencias");
     if (d) d.textContent = dataHojeBR();
-    await gerarImagemDeElemento("areaCarencias", "carencias_hapvida.png");
+    areaId = "areaCarencias";
+    fileName = "carencias_hapvida.png";
+  } else return;
+
+  const area = document.getElementById(areaId);
+  if (!area) return;
+
+  document.body.classList.add("capturando");
+  await new Promise(r => requestAnimationFrame(() => r()));
+
+  try {
+    const canvas = await html2canvas(area, {
+      backgroundColor: "#ffffff", useCORS: true, allowTaint: true, scale: 3, logging: false
+    });
+    document.body.classList.remove("capturando");
+
+    const dataUrl = canvas.toDataURL("image/png");
+    const previewImg = document.getElementById("previewImgEl");
+    const btnBaixar = document.getElementById("btnBaixarPreview");
+    previewImg.src = dataUrl;
+    btnBaixar.setAttribute("data-filename", fileName);
+    btnBaixar.setAttribute("data-dataurl", dataUrl);
+    document.getElementById("modalPreviewImg").classList.add("vis");
+  } catch(err) {
+    document.body.classList.remove("capturando");
+    console.error("Erro ao gerar imagem:", err);
   }
 }
 

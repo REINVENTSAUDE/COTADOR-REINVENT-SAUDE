@@ -218,9 +218,23 @@
         <button class="modal-close" type="button" onclick="fecharModalInfo()">✕</button>
       </div>
       <div class="modal-body">
-        <button class="btn-modal btn-copart" type="button" onclick="compartilharInfo('coparticipacoes')">Compartilhar Coparticipações</button>
-        <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Compartilhar Carências</button>
-        <div class="modal-hint">*No celular abre o compartilhar. No computador baixa automaticamente.</div>
+        <button class="btn-modal btn-copart" type="button" onclick="compartilharInfo('coparticipacoes')">Coparticipações</button>
+        <button class="btn-modal secondary" type="button" onclick="compartilharInfo('carencias')">Carências</button>
+        <div class="modal-hint">*Clique para gerar a imagem e baixar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalPreviewImg" onclick="if(event.target===this)fecharPreviewImg()">
+    <div class="modal" role="dialog" aria-modal="true" style="max-width:500px">
+      <div class="modal-header">
+        <div>Visualizar Imagem</div>
+        <button class="modal-close" type="button" onclick="fecharPreviewImg()">✕</button>
+      </div>
+      <div class="modal-body" style="text-align:center;padding:16px">
+        <img id="previewImgEl" src="" style="max-width:100%;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.15);margin-bottom:14px">
+        <br>
+        <button class="btn-modal btn-copart" type="button" id="btnBaixarPreview" onclick="baixarPreview()">Baixar Imagem</button>
       </div>
     </div>
   </div>
@@ -448,7 +462,25 @@
     }
 
     function fecharModalRede() { document.getElementById('rpModal').classList.remove('vis'); }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') fecharModalRede(); });
+
+    function baixarPreview() {
+      var btn = document.getElementById('btnBaixarPreview');
+      var dataUrl = btn.getAttribute('data-dataurl');
+      var fileName = btn.getAttribute('data-filename');
+      if (!dataUrl) return;
+      var link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function fecharPreviewImg() {
+      document.getElementById('modalPreviewImg').classList.remove('vis');
+    }
+
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { fecharModalRede(); fecharPreviewImg(); } });
   </script>
 </body>
 </html>
