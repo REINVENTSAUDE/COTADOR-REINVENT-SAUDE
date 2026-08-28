@@ -362,6 +362,17 @@
       if (window.REDE_DATA && window.REDE_DATA.length > 0 && !window._redeInit) {
         window._redeInit = true;
         initFiltrosRede();
+      } else if (!window._redeInit) {
+        window._redeInit = true;
+        fetch('./rede_propria.json?v=' + Date.now())
+          .then(function(r) { return r.json(); })
+          .then(function(dados) {
+            window.REDE_DATA = dados;
+            initFiltrosRede();
+          })
+          .catch(function() {
+            document.getElementById('rpStats').innerHTML = '<span style="color:#dc2626">Erro ao carregar dados. Verifique se o arquivo rede_propria.json existe.</span>';
+          });
       }
     }
 
