@@ -328,9 +328,7 @@
   <script>
     function abrirRedePropria() {
       document.querySelector('.config-panel').style.display = 'none';
-      document.querySelector('.results-header').style.display = 'none';
-      document.getElementById('ajudaPasso').style.display = 'none';
-      document.getElementById('resultado').style.display = 'none';
+      document.querySelector('.results-panel').style.display = 'none';
       document.getElementById('redePropriaPagina').style.display = '';
 
       var btnVoltar = document.createElement('button');
@@ -355,11 +353,7 @@
     function fecharRedePropria() {
       document.getElementById('redePropriaPagina').style.display = 'none';
       document.querySelector('.config-panel').style.display = '';
-      document.querySelector('.results-header').style.display = '';
-      document.getElementById('ajudaPasso').style.display = '';
-      if (document.getElementById('resultado').querySelector('#orcamentosContainer').children.length > 0) {
-        document.getElementById('resultado').style.display = '';
-      }
+      document.querySelector('.results-panel').style.display = '';
     }
 
     function initFiltrosRede() {

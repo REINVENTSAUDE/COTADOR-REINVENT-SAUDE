@@ -1928,7 +1928,10 @@ body.capturando .capture-area .carencias-section .body {
 .rp-vazio{text-align:center;padding:60px 20px;color:var(--text-secondary)}
 .rp-vazio h3{font-size:18px;margin-bottom:8px}
 .modal-overlay.vis{display:flex}
-@media(max-width:700px){
+#redePropriaPagina{width:100%;flex:1;min-width:0}
+@media(max-width:768px){
   .rp-grid{grid-template-columns:1fr;padding:12px}
   .rp-filtros{flex-direction:column;gap:6px}
+  .rp-filtros select,.rp-filtros input{width:100%}
+  #redePropriaPagina{width:100%}
 }
