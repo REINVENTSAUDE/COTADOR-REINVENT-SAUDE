@@ -11,9 +11,7 @@ const CIDADES_META = {
   anapolis:       { titulo: "Anápolis", uf: "GO" },
   aracaju:        { titulo: "Aracaju", uf: "SE" },
   alagoinhas:     { titulo: "Alagoinhas", uf: "BA" },
-  araraquara:     { titulo: "Araraquara", uf: "SP" },
-  barretos:       { titulo: "Barretos", uf: "SP" },
-  bauru:          { titulo: "Bauru", uf: "SP" },
+
   belem:          { titulo: "Belém", uf: "PA" },
   belo_horizonte: { titulo: "Belo Horizonte", uf: "MG" },
   brasilia:       { titulo: "Brasília", uf: "DF" },
@@ -25,33 +23,29 @@ const CIDADES_META = {
   dourados:       { titulo: "Dourados", uf: "MS" },
   feira_de_santana: { titulo: "Feira de Santana", uf: "BA" },
   fortaleza:      { titulo: "Fortaleza", uf: "CE" },
-  franca:         { titulo: "Franca", uf: "SP" },
+
   goiania:        { titulo: "Goiânia", uf: "GO" },
-  jaboticabal:    { titulo: "Jaboticabal", uf: "SP" },
+
   joao_pessoa:    { titulo: "João Pessoa", uf: "PB" },
   joinville:      { titulo: "Joinville", uf: "SC" },
   juazeiro_do_norte: { titulo: "Juazeiro do Norte", uf: "CE" },
-  limeira:        { titulo: "Limeira", uf: "SP" },
-  lins:           { titulo: "Lins", uf: "SP" },
+
   maceio:         { titulo: "Maceió", uf: "AL" },
   manaus:         { titulo: "Manaus", uf: "AM" },
-  marilia:        { titulo: "Marília", uf: "SP" },
+
   mossoro:        { titulo: "Mossoró", uf: "RN" },
   natal:          { titulo: "Natal", uf: "RN" },
   parauapebas:    { titulo: "Parauapebas", uf: "PA" },
-  piracicaba:     { titulo: "Piracicaba", uf: "SP" },
-  pirassununga:   { titulo: "Pirassununga", uf: "SP" },
+
   quirinopolis:   { titulo: "Quirinópolis", uf: "GO" },
   recife:         { titulo: "Recife", uf: "PE" },
-  ribeirao_preto: { titulo: "Ribeirão Preto", uf: "SP" },
+
   rio_verde:      { titulo: "Rio Verde", uf: "GO" },
   rondonopolis:   { titulo: "Rondonópolis", uf: "MT" },
   salvador:       { titulo: "Salvador", uf: "BA" },
-  sao_carlos:     { titulo: "São Carlos", uf: "SP" },
-  sao_jose_dos_campos: { titulo: "São José dos Campos", uf: "SP" },
+
   sao_luis:       { titulo: "São Luís", uf: "MA" },
-  sao_paulo:      { titulo: "São Paulo", uf: "SP" },
-  sertaozinho:    { titulo: "Sertãozinho", uf: "SP" },
+
   teresina:       { titulo: "Teresina", uf: "PI" },
   tres_lagoas:    { titulo: "Três Lagoas", uf: "MS" },
   uberaba:        { titulo: "Uberaba", uf: "MG" },
@@ -276,7 +270,6 @@ const OUTRAS_CIDADES = (function() {
   Object.keys(CIDADES_CFG).forEach(function(key) {
     if (CIDADE_FIXAS.indexOf(key) === -1) {
       var cfg = CIDADES_CFG[key];
-      if (cfg.uf === "SP") return;
       list.push({ key: key, label: cfg.titulo + '-' + cfg.uf, temDados: cfg.temDados });
     }
   });
@@ -285,6 +278,7 @@ const OUTRAS_CIDADES = (function() {
 })();
 
 let cidadeAtiva = "fortaleza";
+let cidadeBuscaOrigem = ""; // cidade pesquisada no dropdown (para título "Filial - Cidade")
 let tabelasAtivas = {};
 const tiposAtivos = new Set();
 let selecionados = [];
@@ -308,6 +302,11 @@ function dataHojeBR(){
   const mm = String(d.getMonth()+1).padStart(2,"0");
   const yyyy = d.getFullYear();
   return `${dd}/${mm}/${yyyy}`;
+}
+
+// Normaliza texto para busca (minúsculas, sem acentos)
+function normalizarBusca(s){
+  return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function isMobileDevice(){
@@ -469,7 +468,9 @@ function construirBotoesCidade(){
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "opcao" + (cidadeAtiva === key ? " ativo" : "");
-    btn.textContent = cfg ? (cfg.titulo + '-' + cfg.uf) : key;
+    btn.textContent = cfg
+      ? cfg.titulo + '-' + cfg.uf
+      : key;
     btn.dataset.cidade = key;
     if (semDados) {
       btn.disabled = true;
@@ -516,6 +517,7 @@ function construirBotoesCidade(){
   buscaInput.type = "text";
   buscaInput.placeholder = "Buscar cidade...";
   buscaInput.className = "cidade-search-input";
+
   buscaInput.addEventListener("input", function() {
     const term = this.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     const items = dropdown.querySelectorAll("button");
@@ -762,10 +764,25 @@ function construirBotoesPlanos(){
 /* =======================
    CIDADE
 ======================= */
+// Título exibido: "Filial - Cidade" quando veio da busca por cidade associada,
+// senão apenas "Filial - UF" (mesmo formato das demais cidades).
+function tituloCidadeAtivaCompleto(cfg){
+  const meta = CIDADES_META[cidadeAtiva];
+  const tituloFilial = (cfg && cfg.titulo) || (meta && meta.titulo) || "";
+  const ufFilial = (cfg && cfg.uf) || (meta && meta.uf) || "";
+  const base = tituloFilial ? (tituloFilial + ' - ' + ufFilial) : '';
+  if (cidadeBuscaOrigem && cidadeBuscaOrigem.trim()) {
+    if (tituloFilial) {
+      return tituloFilial + ' - ' + cidadeBuscaOrigem;
+    }
+  }
+  return base;
+}
+
 function atualizarUIcidade(){
   const cfg = CIDADES_CFG[cidadeAtiva] || CIDADES_CFG.fortaleza;
   const titulo = document.getElementById("cidadeTitulo");
-  if(titulo) titulo.textContent = `${cfg.titulo} - ${cfg.uf}`;
+  if(titulo) titulo.textContent = tituloCidadeAtivaCompleto(cfg);
 
   document.querySelectorAll("#cidadeButtons .opcao[data-cidade]").forEach(btn => {
     btn.classList.toggle("ativo", btn.dataset.cidade === cidadeAtiva);
@@ -804,9 +821,11 @@ function resetarSelecoesPlanos(){
   atualizarOpcoesAtivas();
 }
 
-async function setCidade(cidade){
-  if(!CIDADES_CFG[cidade]) return;
-  if(cidade === cidadeAtiva) return;
+async function setCidade(cidade, origemCidade){
+  if(!CIDADES_CFG[cidade]) {
+    return;
+  }
+  if(cidade === cidadeAtiva && !origemCidade) return;
 
   const cfg = CIDADES_CFG[cidade];
   if(!cfg.temDados) {
@@ -815,6 +834,7 @@ async function setCidade(cidade){
   }
 
   cidadeAtiva = cidade;
+  cidadeBuscaOrigem = origemCidade || "";
   tabelasAtivas = window.DADOS_CIDADES && window.DADOS_CIDADES[cidade]
     ? window.DADOS_CIDADES[cidade].tabelas
     : {};
@@ -823,8 +843,7 @@ async function setCidade(cidade){
   const btnOutras = document.getElementById("btnOutrasCidades");
   if (btnOutras) {
     if (isOutra) {
-      const cfg = CIDADES_CFG[cidade];
-      btnOutras.textContent = (cfg.titulo + '-' + cfg.uf) + ' ▾';
+      btnOutras.textContent = tituloCidadeAtivaCompleto(CIDADES_CFG[cidade]) + ' ▾';
     } else {
       btnOutras.textContent = "Outras Cidades ▾";
     }
@@ -1273,7 +1292,7 @@ function calcular(){
 
   const cfg = CIDADES_CFG[cidadeAtiva];
   document.getElementById("linhaDataGeral").innerHTML =
-    `<strong>Orçamento dia ${dataHojeBR()} — ${cfg.titulo} - ${cfg.uf}</strong>`;
+    `<strong>Orçamento dia ${dataHojeBR()} — ${tituloCidadeAtivaCompleto(cfg)}</strong>`;
 
   document.getElementById("resultado").style.display = "block";
 
@@ -1766,7 +1785,7 @@ function abrirModalInfo(){
 
   const cfg = CIDADES_CFG[cidadeAtiva] || CIDADES_CFG.fortaleza;
   const btnCopart = document.querySelector("#modalInfo .btn-copart");
-  if (btnCopart) btnCopart.textContent = `Compartilhar Coparticipações ${cfg.titulo}`;
+  if (btnCopart) btnCopart.textContent = `Compartilhar Coparticipações ${tituloCidadeAtivaCompleto(cfg)}`;
 
   const hoje = dataHojeBR();
   const dc = document.getElementById("dataCarencias");
@@ -1841,7 +1860,7 @@ function getCoparticipacaoHTML(cidade){
   const hoje = dataHojeBR();
   return `
     <div class="logos"><div class="logo-wrap"><img class="logo logo-hapvida-img" src="./logo-hapvida.png" alt="Hapvida"></div></div>
-    <div class="info-title">COPARTICIPAÇÕES — ${cfg.titulo.toUpperCase()} - ${cfg.uf}</div>
+    <div class="info-title">COPARTICIPAÇÕES — ${tituloCidadeAtivaCompleto(cfg).toUpperCase()}</div>
     <div class="info-sub">Atualizado em ${hoje}</div>
     <div class="info-grid-2">
       <div class="info-card">
