@@ -85,6 +85,28 @@ if (DADOS_CIDADES_PME_JULHO_2026 && window.DADOS_CIDADES) {
   });
 }
 
+// Merge Empresarial/Setembro 2026 (vigência 28/09/2026 a 31/12/2026) — sobrepõe Julho
+if (typeof DADOS_CIDADES_EMPRESARIAL_SET_2026 !== 'undefined' && window.DADOS_CIDADES) {
+  Object.keys(DADOS_CIDADES_EMPRESARIAL_SET_2026).forEach(function(cityKey) {
+    if (!DADOS_CIDADES[cityKey]) {
+      var meta = CIDADES_META[cityKey] || { titulo: cityKey, uf: '' };
+      DADOS_CIDADES[cityKey] = { titulo: meta.titulo, uf: meta.uf, tabelas: {} };
+    }
+    Object.assign(DADOS_CIDADES[cityKey].tabelas, DADOS_CIDADES_EMPRESARIAL_SET_2026[cityKey]);
+  });
+}
+
+// Merge PME/Setembro 2026 (vigência 28/09/2026 a 31/12/2026) — sobrepõe Julho
+if (typeof DADOS_CIDADES_PME_SET_2026 !== 'undefined' && window.DADOS_CIDADES) {
+  Object.keys(DADOS_CIDADES_PME_SET_2026).forEach(function(cityKey) {
+    if (!DADOS_CIDADES[cityKey]) {
+      var meta = CIDADES_META[cityKey] || { titulo: cityKey, uf: '' };
+      DADOS_CIDADES[cityKey] = { titulo: meta.titulo, uf: meta.uf, tabelas: {} };
+    }
+    Object.assign(DADOS_CIDADES[cityKey].tabelas, DADOS_CIDADES_PME_SET_2026[cityKey]);
+  });
+}
+
 // Ensure all known cities exist in DADOS_CIDADES (for cities with no new data, like curitiba/uberaba)
 Object.keys(CIDADES_META).forEach(function(cityKey) {
   if (!DADOS_CIDADES[cityKey]) {
@@ -919,7 +941,7 @@ function atualizarCheckboxes(){
     `);
   }
 
-  // Odonto PME já incluso nos preços — checkbox removido
+  // Odonto PME não é somado ao valor (R$ 14,87 fica a ser incluído) — checkbox removido
 
   if(temAFFIX){
     container.insertAdjacentHTML("beforeend", `
@@ -1315,6 +1337,7 @@ function calcular(){
     const isIND = isIndividual(sel.tipo);
     const isEmp = isEmpresarial(sel.tipo);
     const isAmb = sel.tipo.includes("amb");
+    const isPME = sel.tipo.startsWith("pme_");
     const aplicarFamiliar = isIND && familiarAtivo;
 
     const temDesconto = !isIND && lista.length > 0 && Number(lista[0][3]) !== Number(lista[0][4]);
@@ -1335,7 +1358,7 @@ function calcular(){
         let v15 = Number(faixa[4]) || 0;
 
         const odonto = getOdontoValor(sel.tipo, isAmb);
-        if (odonto) { vN += odonto; v15 += odonto; }
+        if (odonto && !isPME) { vN += odonto; v15 += odonto; }
 
         const vTotalN = vN * q;
         const vTotal15 = v15 * q;
@@ -1367,7 +1390,7 @@ function calcular(){
         let v15 = Number(faixa[4]) || 0;
 
         const odonto = getOdontoValor(sel.tipo, isAmb);
-        if (odonto) { vN += odonto; v15 += odonto; }
+        if (odonto && !isPME) { vN += odonto; v15 += odonto; }
 
         const v5 = vN * 0.95;
         rowsHTML += `
@@ -1386,7 +1409,7 @@ function calcular(){
         let v15 = Number(faixa[4]) || 0;
 
         const odonto = getOdontoValor(sel.tipo, isAmb);
-        if (odonto) { vN += odonto; v15 += odonto; }
+        if (odonto && !isPME) { vN += odonto; v15 += odonto; }
 
         const v5 = vN * 0.95;
         totalNormal += vN;
@@ -1450,10 +1473,11 @@ function calcular(){
     if(isEmp){
       const odonto = getOdontoValor(sel.tipo, isAmb);
       if (odonto) {
+        const finalOdonto = isPME ? "a ser incluído no valor" : "incluído no valor";
         if (completa || usandoFaixa) {
-          odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(odonto)} por beneficiário — incluído no valor</div>`;
+          odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(odonto)} por beneficiário — ${finalOdonto}</div>`;
         } else {
-          odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(odonto)} por beneficiário (R$ ${formatarBR(odonto * idades.length)}) — incluído nos valores</div>`;
+          odontoInfo = `<div class="odonto-info">Odonto: R$ ${formatarBR(odonto)} por beneficiário (R$ ${formatarBR(odonto * idades.length)}) — ${isPME ? "a ser incluído nos valores" : "incluído nos valores"}</div>`;
         }
       }
     }
