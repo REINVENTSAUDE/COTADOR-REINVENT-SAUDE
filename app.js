@@ -1950,6 +1950,114 @@ async function compartilharInfo(tipo){
 }
 
 /* =======================
+   CALCULADORA DE VIGÊNCIA - BITIX
+======================= */
+const VIG_PRAZOS = [
+  { label: "24hrs", dias: 1 },
+  { label: "5 dias", dias: 5 },
+  { label: "10 dias", dias: 10 },
+  { label: "15 dias", dias: 15 },
+  { label: "30 dias", dias: 30 },
+  { label: "60 dias", dias: 60 },
+  { label: "80 dias", dias: 80 }
+];
+
+function vigVencimentoDisponivel(dia){
+  if (dia <= 5) return 5;
+  if (dia <= 10) return 10;
+  if (dia <= 15) return 15;
+  if (dia <= 20) return 20;
+  if (dia <= 25) return 25;
+  return 30;
+}
+
+function vigFormatarBR(d){
+  const dd = String(d.getDate()).padStart(2, "0");
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  return `${dd}/${mm}/${d.getFullYear()}`;
+}
+
+function vigISOFromDate(d){
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${mm}-${dd}`;
+}
+
+function vigCalcularLinhas(ref){
+  return VIG_PRAZOS.map(function(p){
+    const vig = new Date(ref);
+    vig.setDate(vig.getDate() + p.dias);
+    return { label: p.label, vig: vig, disp: vigVencimentoDisponivel(vig.getDate()) };
+  });
+}
+
+function abrirModalVigencia(){
+  const input = document.getElementById("vigDataRef");
+  if (input) input.value = vigISOFromDate(new Date());
+  calcularVigencia();
+  const m = document.getElementById("modalVigencia");
+  if (m) m.style.display = "flex";
+}
+
+function fecharModalVigencia(){
+  const m = document.getElementById("modalVigencia");
+  if (m) m.style.display = "none";
+}
+
+function vigLinhasFromInput(){
+  const input = document.getElementById("vigDataRef");
+  if (!input || !input.value) return null;
+  const parts = input.value.split("-");
+  const ref = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  return { ref: ref, linhas: vigCalcularLinhas(ref) };
+}
+
+function calcularVigencia(){
+  const dados = vigLinhasFromInput();
+  if (!dados) return;
+  const linhas = dados.linhas;
+
+  const tbody = document.getElementById("vigTbody");
+  if (tbody) {
+    tbody.innerHTML = linhas.map(function(l){
+      return '<tr><td>' + l.label + '</td><td>' + vigFormatarBR(l.vig) + '</td><td>Dia ' + l.disp + '</td></tr>';
+    }).join("");
+  }
+
+  const resumo = document.getElementById("vigResumo");
+  if (resumo) {
+    resumo.innerHTML =
+      '<div class="vig-resumo-item"><span>Primeira vigência</span><b>' + vigFormatarBR(linhas[0].vig) + '</b></div>' +
+      '<div class="vig-resumo-item"><span>Última vigência</span><b>' + vigFormatarBR(linhas[linhas.length - 1].vig) + '</b></div>';
+  }
+}
+
+function copiarVigencia(){
+  const dados = vigLinhasFromInput();
+  if (!dados) return;
+  let txt = "CALCULADORA DE VIGÊNCIA - BITIX\n";
+  txt += "Data de referência: " + vigFormatarBR(dados.ref) + "\n\n";
+  dados.linhas.forEach(function(l){
+    txt += l.label + "  |  Vigência: " + vigFormatarBR(l.vig) + "  |  Vencimento disponível: Dia " + l.disp + "\n";
+  });
+
+  function feedback(ok){
+    showToast(ok ? "Resultado copiado!" : "Não foi possível copiar.");
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(function(){ feedback(true); }, function(){ feedback(false); });
+  } else {
+    const ta = document.createElement("textarea");
+    ta.value = txt;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); feedback(true); } catch(e){ feedback(false); }
+    document.body.removeChild(ta);
+  }
+}
+
+/* =======================
    INIT
 ======================= */
 document.addEventListener("DOMContentLoaded", () => {
