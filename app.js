@@ -933,12 +933,6 @@ function atualizarCheckboxes(){
         Odonto (somar R$ ${formatarBR(ODONTO_SS)} por beneficiário)
       </label>
     `);
-    container.insertAdjacentHTML("beforeend", `
-      <label class="opt-label">
-        <input type="checkbox" id="odontoInclusaoBoleto" />
-        Odonto (inclusão - boleto separado) R$ ${formatarBR(ODONTO_INCLUSAO_BOLETO)} por beneficiário
-      </label>
-    `);
   }
 
   // Odonto PME não é somado ao valor (R$ 14,87 fica a ser incluído) — checkbox removido
@@ -948,6 +942,16 @@ function atualizarCheckboxes(){
       <label class="opt-label">
         <input type="checkbox" id="odontoAffix" />
         Odonto (somar R$ ${formatarBR(ODONTO_AFFIX)} por beneficiário)
+      </label>
+    `);
+  }
+
+  // Odonto inclusão (boleto separado) — Super Simples (SS) e Fecomércio (AFFIX)
+  if(temSS || temAFFIX){
+    container.insertAdjacentHTML("beforeend", `
+      <label class="opt-label">
+        <input type="checkbox" id="odontoInclusaoBoleto" />
+        Odonto (inclusão - boleto separado) R$ ${formatarBR(ODONTO_INCLUSAO_BOLETO)} por beneficiário
       </label>
     `);
   }
