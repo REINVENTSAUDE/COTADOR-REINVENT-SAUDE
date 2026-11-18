@@ -541,6 +541,7 @@ html, body {
 
 .categorias-wrap > * {
   flex: 1;
+  min-width: 0;
 }
 
 .nosso-plano-card {
@@ -550,6 +551,11 @@ html, body {
   background: none;
   border: none;
   border-radius: 0;
+  flex: 3 1 0;
+}
+
+.mix-card, .affix-card {
+  flex: 0 0 auto;
 }
 
 .cat-card-title {
@@ -560,6 +566,7 @@ html, body {
   display: flex;
   flex: 1;
   gap: 3px;
+  min-width: 0;
 }
 
 .cat-btn, .card-btn {
@@ -582,6 +589,14 @@ html, body {
   font-family: var(--font);
   line-height: 1.2;
   user-select: none;
+  min-width: 0;
+}
+
+.cat-btn {
+  white-space: normal;
+  overflow-wrap: break-word;
+  font-size: 11px;
+  padding: 8px 5px;
 }
 
 .cat-btn:hover, .card-btn:hover {

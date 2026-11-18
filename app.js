@@ -752,8 +752,12 @@ function construirBotoesPlanos(){
     nossoPlanoCats.forEach(c => {
       const ativa = categoriasAtivas.has(c.key);
       const emBreve = c.key === 'ss1' && ss1EmBreve();
-      const titulo = emBreve ? ` title="Disponibilização oficial em ${SS1_LIBERACAO_TXT}"` : '';
-      const texto = emBreve ? `${c.label}<small>23/11</small>` : c.label;
+      const titulo = emBreve
+        ? ` title="SUPER SIMPLES 01 VIDA — disponibilização oficial em ${SS1_LIBERACAO_TXT}"`
+        : '';
+      const texto = c.key === 'ss1'
+        ? 'SS 01 VIDA' + (emBreve ? '<small>23/11</small>' : '')
+        : c.label;
       html += `<button type="button" class="cat-btn${ativa ? ' ativo' : ''}${emBreve ? ' ss1-em-breve' : ''}" data-cat="${c.key}" onclick="toggleCategoria('${c.key}')"${titulo}>${texto}</button>`;
     });
     html += '</div></div>';
