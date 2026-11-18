@@ -6,6 +6,18 @@ const ODONTO_AFFIX = 23.95;
 const TAXA_CONTRATO = 35;
 const TAXA_VIDA = 20;
 
+// SUPER SIMPLES 01 VIDA — liberação antecipada liberada; avisos até 23/11/2026
+const SS1_LIBERACAO = new Date(2026, 10, 23);
+const SS1_LIBERACAO_TXT = "23/11/2026";
+function ss1EmBreve(){
+  return new Date() < SS1_LIBERACAO;
+}
+function avisarSS1EmBreve(){
+  if (ss1EmBreve()) {
+    alert("SUPER SIMPLES 01 VIDA: disponibilização oficial a partir de " + SS1_LIBERACAO_TXT + ". Liberação antecipada já habilitada.");
+  }
+}
+
 // All cities metadata
 const CIDADES_META = {
   anapolis:       { titulo: "Anápolis", uf: "GO" },
@@ -133,13 +145,18 @@ if (window.DADOS_FORTALEZA_NOVOS && window.DADOS_CIDADES && window.DADOS_CIDADES
   }
 }
 
-// Remove 15% de TODAS as tabelas Empresariais (ss_ e pme_) — nenhuma cidade deve ter desconto
+// Super Simples 01 Vida — Fortaleza (modalidade nova, não substitui o SS 2-29)
+if (window.DADOS_FORTALEZA_SS1 && window.DADOS_CIDADES && window.DADOS_CIDADES.fortaleza) {
+  Object.assign(window.DADOS_CIDADES.fortaleza.tabelas, window.DADOS_FORTALEZA_SS1);
+}
+
+// Remove 15% de TODAS as tabelas Empresariais (ss_, ss1_ e pme_) — nenhuma cidade deve ter desconto
 if (window.DADOS_CIDADES) {
   Object.keys(window.DADOS_CIDADES).forEach(function(cityKey) {
     var tbls = window.DADOS_CIDADES[cityKey].tabelas;
     if (!tbls) return;
     Object.keys(tbls).forEach(function(key) {
-      if (key.indexOf('ss_') === 0 || key.indexOf('pme_') === 0) {
+      if (key.indexOf('ss_') === 0 || key.indexOf('ss1_') === 0 || key.indexOf('pme_') === 0) {
         tbls[key] = tbls[key].map(function(r) { return [r[0], r[1], r[2], r[3], r[3]]; });
       }
     });
@@ -259,7 +276,7 @@ function buildCidadesCfg() {
     var city = DADOS_CIDADES[cityKey];
     if (!city || !city.tabelas) return;
     var meta = CIDADES_META[cityKey] || { titulo: cityKey, uf: '' };
-    var planos = { ind: [], ss: [], pme: [], affix: [] };
+    var planos = { ind: [], ss: [], ss1: [], pme: [], affix: [] };
     Object.keys(city.tabelas).forEach(function(tblKey) {
       var parts = tblKey.split('_');
       if (parts.length >= 3) {
@@ -270,7 +287,7 @@ function buildCidadesCfg() {
         }
       }
     });
-    var hasAny = planos.ind.length > 0 || planos.ss.length > 0 || planos.pme.length > 0 || planos.affix.length > 0;
+    var hasAny = planos.ind.length > 0 || planos.ss.length > 0 || planos.ss1.length > 0 || planos.pme.length > 0 || planos.affix.length > 0;
     cfg[cityKey] = {
       titulo: meta.titulo,
       uf: meta.uf,
@@ -441,6 +458,9 @@ const nomesClienteBase = {
   ss_amb: "PLANO EMPRESARIAL AMBULATORIAL COM COPARTICIPAÇÃO",
   ss_enf: "PLANO EMPRESARIAL ENFERMARIA COM COPARTICIPAÇÃO",
   ss_apto: "PLANO EMPRESARIAL APARTAMENTO COM COPARTICIPAÇÃO",
+  ss1_amb: "PLANO SUPER SIMPLES 01 VIDA AMBULATORIAL COM COPARTICIPAÇÃO",
+  ss1_enf: "PLANO SUPER SIMPLES 01 VIDA ENFERMARIA COM COPARTICIPAÇÃO",
+  ss1_apto: "PLANO SUPER SIMPLES 01 VIDA APARTAMENTO COM COPARTICIPAÇÃO",
   pme_amb: "PLANO EMPRESARIAL PME AMBULATORIAL COM COPARTICIPAÇÃO",
   pme_enf: "PLANO EMPRESARIAL PME ENFERMARIA COM COPARTICIPAÇÃO",
   pme_apto: "PLANO EMPRESARIAL PME APARTAMENTO COM COPARTICIPAÇÃO",
@@ -450,7 +470,7 @@ const nomesClienteBase = {
 };
 
 function isEmpresarial(tipo){
-  return typeof tipo === "string" && (tipo.startsWith("ss_") || tipo.startsWith("pme_") || tipo.startsWith("affix_"));
+  return typeof tipo === "string" && (tipo.startsWith("ss_") || tipo.startsWith("ss1_") || tipo.startsWith("pme_") || tipo.startsWith("affix_"));
 }
 
 function isIndividual(tipo){
@@ -460,6 +480,7 @@ function isIndividual(tipo){
 function getPlanGroup(tipo){
   if (tipo.startsWith("ind_")) return "ind";
   if (tipo.startsWith("ss_")) return "ss";
+  if (tipo.startsWith("ss1_")) return "ss1";
   if (tipo.startsWith("pme_")) return "pme";
   if (tipo.startsWith("affix_")) return "affix";
   return "";
@@ -611,6 +632,7 @@ function construirBotoesCidade(){
 const CATEGORIAS = [
   { key: 'ind', label: 'INDIVIDUAL' },
   { key: 'ss', label: 'EMPRESARIAL' },
+  { key: 'ss1', label: 'SUPER SIMPLES 01 VIDA' },
   { key: 'pme', label: 'EMPRESARIAL PME' },
   { key: 'mix', label: 'MIX' },
   { key: 'affix', label: 'AFFIX<br>FECOMÉRCIO' }
@@ -631,6 +653,7 @@ function toggleCompararModo(){
 }
 
 function toggleCategoria(catKey){
+  if (catKey === 'ss1') avisarSS1EmBreve();
   if (compararAtivo) {
     if (categoriasAtivas.has(catKey)) {
       categoriasAtivas.delete(catKey);
@@ -728,7 +751,10 @@ function construirBotoesPlanos(){
     html += '<div class="nosso-plano-buttons">';
     nossoPlanoCats.forEach(c => {
       const ativa = categoriasAtivas.has(c.key);
-      html += `<button type="button" class="cat-btn${ativa ? ' ativo' : ''}" data-cat="${c.key}" onclick="toggleCategoria('${c.key}')">${c.label}</button>`;
+      const emBreve = c.key === 'ss1' && ss1EmBreve();
+      const titulo = emBreve ? ` title="Disponibilização oficial em ${SS1_LIBERACAO_TXT}"` : '';
+      const texto = emBreve ? `${c.label}<small>23/11</small>` : c.label;
+      html += `<button type="button" class="cat-btn${ativa ? ' ativo' : ''}${emBreve ? ' ss1-em-breve' : ''}" data-cat="${c.key}" onclick="toggleCategoria('${c.key}')"${titulo}>${texto}</button>`;
     });
     html += '</div></div>';
   }
@@ -755,12 +781,16 @@ function construirBotoesPlanos(){
 
   html += '</div>';
 
+  if (ss1EmBreve() && cfg.planos.ss1 && cfg.planos.ss1.length > 0) {
+    html += `<div class="ss1-aviso-lib">SUPER SIMPLES 01 VIDA — disponibilização oficial em ${SS1_LIBERACAO_TXT} (liberação antecipada já ativa).</div>`;
+  }
+
   // Render sub-plan groups for active categories
   html += '<div class="planos-sub">';
   cats.forEach(c => {
     if (!categoriasAtivas.has(c.key)) return;
     if (compararAtivo) {
-      const catLabels = { ind: 'INDIVIDUAL', ss: 'EMPRESARIAL', pme: 'EMPRESARIAL PME', mix: 'MIX', affix: 'AFFIX' };
+      const catLabels = { ind: 'INDIVIDUAL', ss: 'EMPRESARIAL', ss1: 'SUPER SIMPLES 01 VIDA', pme: 'EMPRESARIAL PME', mix: 'MIX', affix: 'AFFIX' };
       html += `<div class="planos-cat-subtitle">${catLabels[c.key] || c.key}</div>`;
     }
     const planos = getPlanosCategoria(c.key);
@@ -880,9 +910,10 @@ async function setCidade(cidade, origemCidade){
 function atualizarCheckboxes(){
   const temIND = selecionados.some(s => isIndividual(s.tipo));
   const temSS = selecionados.some(s => s.tipo.startsWith("ss_"));
+  const temSS1 = selecionados.some(s => s.tipo.startsWith("ss1_"));
   const temPME = selecionados.some(s => s.tipo.startsWith("pme_"));
   const temAFFIX = selecionados.some(s => s.tipo.startsWith("affix_"));
-  const temEmp = temSS || temPME || temAFFIX;
+  const temEmp = temSS || temSS1 || temPME || temAFFIX;
 
   // Auto faixa mode for PME (30-99 vidas), hide textarea
   const idadesWrap = document.getElementById("idades");
@@ -899,7 +930,7 @@ function atualizarCheckboxes(){
   if(!container) return;
   container.innerHTML = "";
 
-  if(!temIND && !temSS && !temPME && !temAFFIX) return;
+  if(!temIND && !temSS && !temSS1 && !temPME && !temAFFIX) return;
 
   container.insertAdjacentHTML("beforeend", `
     <label class="opt-label">
@@ -926,7 +957,7 @@ function atualizarCheckboxes(){
     `);
   }
 
-  if(temSS){
+  if(temSS || temSS1){
     container.insertAdjacentHTML("beforeend", `
       <label class="opt-label">
         <input type="checkbox" id="odontoSS" />
@@ -946,8 +977,8 @@ function atualizarCheckboxes(){
     `);
   }
 
-  // Odonto inclusão (boleto separado) — Super Simples (SS) e Fecomércio (AFFIX)
-  if(temSS || temAFFIX){
+  // Odonto inclusão (boleto separado) — Super Simples (SS/SS1) e Fecomércio (AFFIX)
+  if(temSS || temSS1 || temAFFIX){
     container.insertAdjacentHTML("beforeend", `
       <label class="opt-label">
         <input type="checkbox" id="odontoInclusaoBoleto" />
@@ -1127,10 +1158,11 @@ function renderizarFaixaCounters(){
   });
   html += '</div>';
 
-  // "Limpar faixas" button for SS and PME
+  // "Limpar faixas" button for SS/SS1 and PME
   const temSS = selecionados.some(s => s.tipo.startsWith("ss_"));
+  const temSS1 = selecionados.some(s => s.tipo.startsWith("ss1_"));
   const temPME = selecionados.some(s => s.tipo.startsWith("pme_"));
-  if (temSS || temPME) {
+  if (temSS || temSS1 || temPME) {
     html += `<button type="button" class="faixa-limpar-btn" onclick="limparFaixas()">Limpar faixas etárias</button>`;
   }
 
@@ -1243,7 +1275,7 @@ function getOdontoValor(tipo, isAmb){
   if (tipo.startsWith("pme_")) {
     return ODONTO_PME;
   }
-  if (tipo.startsWith("ss_")) {
+  if (tipo.startsWith("ss_") || tipo.startsWith("ss1_")) {
     const el = document.getElementById("odontoSS");
     return (el && el.checked) ? ODONTO_SS : 0;
   }
@@ -1290,12 +1322,18 @@ function calcular(){
   const familiarEl = document.getElementById("familiar1grau");
   const familiarAtivo = familiarEl ? familiarEl.checked : false;
 
-  // Validate vidas for SS (2-29) and PME (30-99)
+  // Validate vidas for SS1 (exatamente 1), SS (2-29) e PME (30-99)
   const temSS = selecionados.some(s => s.tipo.startsWith("ss_"));
+  const temSS1 = selecionados.some(s => s.tipo.startsWith("ss1_"));
   const temPME = selecionados.some(s => s.tipo.startsWith("pme_"));
+  if (temSS1) avisarSS1EmBreve();
   const totalVidasGeral = usandoFaixa
     ? faixaCounts.reduce((s, c) => s + c, 0)
     : idades.length;
+  if (!compararAtivo && temSS1 && !completa && totalVidasGeral !== 1) {
+    alert("SUPER SIMPLES 01 VIDA: informe exatamente 1 beneficiário.");
+    return;
+  }
   if (!compararAtivo && temSS && !completa && !usandoFaixa && (totalVidasGeral < 2 || totalVidasGeral > 29)) {
     alert("Plano EMPRESARIAL 2-29: o total de vidas deve ser entre 2 e 29.");
     return;
@@ -1497,7 +1535,9 @@ function calcular(){
 
     let empAviso = "";
     if(isEmp){
-      if (sel.tipo.startsWith("affix_")) {
+      if (sel.tipo.startsWith("ss1_")) {
+        empAviso = `<div class="ss-aviso">Condição empresarial: SUPER SIMPLES 01 VIDA</div>`;
+      } else if (sel.tipo.startsWith("affix_")) {
         empAviso = `<div class="ss-aviso">Condição empresarial – 1 vida</div>`;
       } else if (sel.tipo.startsWith("pme_")) {
         empAviso = `<div class="ss-aviso">Condição empresarial: 30 a 99 vidas</div>`;

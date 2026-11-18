@@ -596,6 +596,29 @@ html, body {
   font-weight: 700;
 }
 
+.cat-btn.ss1-em-breve {
+  border: 1px dashed var(--border);
+}
+
+.cat-btn.ss1-em-breve small {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.ss1-aviso-lib {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--hover-bg);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: var(--font);
+  text-align: center;
+}
+
 .card-btn-label {
   font-size: inherit;
   font-weight: inherit;
