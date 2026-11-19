@@ -2034,8 +2034,9 @@ function vigISOFromDate(d){
 function vigCalcularLinhas(ref){
   return VIG_PRAZOS.map(function(p){
     const vig = new Date(ref);
-    // Nova regra: a contagem começa no dia atual (antes era no dia seguinte)
-    vig.setDate(vig.getDate() + p.dias - 1);
+    // Nova regra: apenas 24hrs é imediato (dia da referência);
+    // os demais prazos continuam sendo ref + prazo (regra normal).
+    vig.setDate(vig.getDate() + (p.dias === 1 ? 0 : p.dias));
     return { label: p.label, vig: vig, disp: vigVencimentoDisponivel(vig.getDate()) };
   });
 }
