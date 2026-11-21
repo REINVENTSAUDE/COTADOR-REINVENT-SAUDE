@@ -619,8 +619,9 @@ html, body {
   box-sizing: border-box;
   padding: 9px 10px;
   border-radius: 7px;
-  background: transparent;
-  border: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
   font-size: 12px;
   font-weight: 600;
   color: var(--text-secondary);
@@ -644,19 +645,28 @@ html, body {
 }
 
 .cat-btn:hover, .card-btn:hover {
-  color: var(--text);
-  background: var(--hover-bg);
+  color: var(--primary);
+  border-color: var(--primary-border);
+  background: var(--primary-light);
 }
 
 .cat-btn.ativo, .card-btn.ativo {
-  background: var(--surface);
-  color: var(--primary);
-  box-shadow: var(--shadow-sm);
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
   font-weight: 700;
 }
 
-.cat-btn.ss1-em-breve {
-  border: 1px dashed var(--border);
+.cat-btn.ativo:hover, .card-btn.ativo:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #ffffff;
+}
+
+.cat-btn.ss1-em-breve:not(.ativo) {
+  border-style: dashed;
+  border-color: var(--primary-border);
 }
 
 .cat-btn.ss1-em-breve small {
