@@ -299,6 +299,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 8px;
 }
 
@@ -310,6 +312,8 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  flex: 0 0 auto;
+  white-space: nowrap;
   font-size: 11px;
   font-weight: 500;
   color: var(--text-secondary);
@@ -532,8 +536,8 @@ html, body {
 
 .categorias-wrap {
   display: flex;
-  gap: 3px;
-  padding: 3px;
+  gap: 6px;
+  padding: 4px;
   background: var(--bg);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
@@ -542,6 +546,22 @@ html, body {
 .categorias-wrap > * {
   flex: 1;
   min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Mobile: quebra em colunas em vez de comprimir tudo em uma linha */
+@media (max-width: 768px) {
+  .categorias-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .categorias-wrap > * {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 .nosso-plano-card {
@@ -569,12 +589,34 @@ html, body {
   min-width: 0;
 }
 
+/* Mobile: o card NOSSO PLANO ocupa a linha inteira e seus botões viram grid */
+@media (max-width: 768px) {
+  .nosso-plano-card {
+    grid-column: 1 / -1;
+    display: block;
+    flex: initial;
+  }
+
+  .nosso-plano-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+  }
+
+  .mix-card, .affix-card {
+    flex: initial;
+    width: 100%;
+  }
+}
+
 .cat-btn, .card-btn {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   padding: 9px 10px;
   border-radius: 7px;
   background: transparent;
@@ -590,11 +632,13 @@ html, body {
   line-height: 1.2;
   user-select: none;
   min-width: 0;
+  max-width: 100%;
 }
 
 .cat-btn {
   white-space: normal;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   font-size: 11px;
   padding: 8px 5px;
 }
@@ -617,9 +661,27 @@ html, body {
 
 .cat-btn.ss1-em-breve small {
   display: block;
+  max-width: 100%;
   font-size: 10px;
   font-weight: 500;
+  line-height: 1.3;
   opacity: 0.75;
+  overflow-wrap: anywhere;
+}
+
+/* Mobile: botões nunca encolhem abaixo do necessário e mantêmaltura confortável */
+@media (max-width: 768px) {
+  .cat-btn, .card-btn {
+    min-height: 48px;
+    padding: 10px 8px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .nosso-plano-buttons .cat-btn {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 .ss1-aviso-lib {
@@ -1666,7 +1728,10 @@ body.capturando .orcamento td {
 
   .cat-btn, .card-btn {
     font-size: 11px;
-    padding: 8px 6px;
+    padding: 10px 8px;
+    min-height: 48px;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .tipo {
@@ -1753,7 +1818,10 @@ body.capturando .orcamento td {
 
   .cat-btn, .card-btn {
     font-size: 10px;
-    padding: 6px 4px;
+    padding: 9px 6px;
+    min-height: 44px;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .grupo-plano {
